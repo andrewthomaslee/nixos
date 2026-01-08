@@ -49,14 +49,14 @@ in {
     # SSH keypair generator for Hetzner Storage Box
     # To add SSH keys to storagebox use the below command, this will ask for the password
     # clan vars get [MACHINE] storagebox-ssh-[USER]/ssh-public-key | ssh -p23 [USER]@[USER].your-storagebox.de[PATH] install-ssh-key
-    clan.core.vars.generators."storagebox-ssh-${cfg.user}" = {
+    clan.core.vars.generators."storagebox-ssh-${cfg.boxUser}" = {
       share = true;
       files.ssh-private-key = {};
       files.ssh-public-key.secret = false;
       runtimeInputs = with pkgs; [openssh];
       script = ''
         mkdir -p $out
-        ssh-keygen -t ed25519 -f $out/ssh-private-key -N "" -C "${cfg.user}-storagebox"
+        ssh-keygen -t ed25519 -f $out/ssh-private-key -N "" -C "${cfg.boxUser}-storagebox"
         mv $out/ssh-private-key.pub $out/ssh-public-key
       '';
     };
@@ -67,7 +67,7 @@ in {
     # Hetzner Storage Box mount with rclone - using proper mount helper
     # Create cache directory for rclone
     systemd.tmpfiles.rules = [
-      "d /var/cache/rclone-storagebox-${cfg.user} 0750 root storage-users -"
+      "d /var/cache/rclone-storagebox-${cfg.boxUser} 0750 root storage-users -"
     ];
 
     fileSystems."${cfg.mountPoint}" = {
@@ -82,15 +82,15 @@ in {
           "args2env"
           "config=/dev/null"
           "vfs_cache_mode=full"
-          "cache_dir=/var/cache/rclone-storagebox-${cfg.user}"
+          "cache_dir=/var/cache/rclone-storagebox-${cfg.boxUser}"
           "checkers=${toString cfg.concurrency}"
           "gid=${toString config.users.groups.storage-users.gid}"
           "umask=007"
           "allow_other"
           "allow_non_empty"
           "links"
-          "sftp_host=${cfg.user}.your-storagebox.de${cfg.path}"
-          "sftp_user=${cfg.user}"
+          "sftp_host=${cfg.boxUser}.your-storagebox.de${cfg.boxPath}"
+          "sftp_user=${cfg.boxUser}"
           "sftp_port=23"
           "sftp_key_file=${config.clan.core.vars.generators."storagebox-ssh".files."ssh-private-key".path}"
           "vfs_cache_max_size=5G"
