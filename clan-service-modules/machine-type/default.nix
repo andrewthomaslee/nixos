@@ -14,5 +14,9 @@
     security.acme.defaults.email = lib.mkDefault "andrewthomaslee.business@gmail.com";
     clan.core.settings.state-version.enable = true;
     hardware.enableRedistributableFirmware = true;
+    environment = {
+      enableAllTerminfo = true;
+      localBinInPath = true;
+    };
   };
 }

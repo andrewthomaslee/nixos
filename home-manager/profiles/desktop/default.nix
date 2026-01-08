@@ -22,6 +22,8 @@
         vscode.enable = true;
         taskwarrior.enable = true;
         go.enable = true;
+        python.enable = true;
+        ghostty.enable = true;
       };
 
       services = {

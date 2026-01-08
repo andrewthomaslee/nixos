@@ -14,19 +14,23 @@ with lib; {
     vim
   ];
 
-  clan-net.defaults = {
-    environment.enable = true;
-    locale.enable = true;
-    nix.enable = true;
-    storagebox = {
-      enable = true;
-      mountOnAccess = true;
-      boxUser = "u488514-sub1";
-      boxPath = "/u488514-sub1";
+  clan-net = {
+    defaults = {
+      environment.enable = true;
+      locale.enable = true;
+      nix.enable = true;
+      storagebox = {
+        enable = true;
+        mountOnAccess = true;
+        boxUser = "u488514-sub1";
+        boxPath = "/u488514-sub1";
+      };
+    };
+    services = {
+      openssh.enable = true;
+      tailscale.enable = true;
     };
   };
-
-  clan-net.services.openssh.enable = true;
 
   # Backup Postgres, if it is running
   services.postgresqlBackup = {

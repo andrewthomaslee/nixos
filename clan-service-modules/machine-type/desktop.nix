@@ -80,6 +80,10 @@
     services = {
       wayland.enable = true;
       openssh.enable = true;
+      tailscale = {
+        enable = true;
+        systray = true;
+      };
     };
   };
 

@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  clan-facts,
   ...
 }:
 with lib; let
@@ -73,7 +74,7 @@ in {
             force-push = "push --force-with-lease";
           };
 
-          user.email = "andrewthomaslee.business@gmail.com";
+          user.email = clan-facts.email;
           user.name = "andrewthomaslee";
         };
       };

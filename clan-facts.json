@@ -3,6 +3,7 @@
         "name": "clan-net",
         "domain": "clan-net"
     },
+    "email": "andrewthomaslee.business@gmail.com",
     "ssh_public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOb4q9LWJR54SzRkfmsA5KWA5/SDEG853oFC8TVilCW/ Clan-Net",
     "machines": {
         "helsinki-vps": {
