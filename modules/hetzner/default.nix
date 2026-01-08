@@ -17,6 +17,7 @@ in {
       };
       # Public Interface
       interfaces.${net.interface} = {
+        useDHCP = true;
         ipv6.addresses = [
           {
             inherit (net.IPv6) address prefixLength;
