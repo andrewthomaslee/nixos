@@ -1,0 +1,136 @@
+{
+    "meta": {
+        "name": "clan-net",
+        "domain": "clan-net"
+    },
+    "ssh_public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOb4q9LWJR54SzRkfmsA5KWA5/SDEG853oFC8TVilCW/ Clan-Net",
+    "machines": {
+        "nbg-m-0": {
+            "networking": {
+                "interface": "enp1s0",
+                "mtu": 1500,
+                "IPv6": {
+                    "address": "2a01:4f9:4b:3a9b::2",
+                    "prefixLength": 64,
+                    "subnet": "2a01:4f9:4b:3a9b::/64",
+                    "gateway": "fe80::1"
+                }
+            },
+            "disks": [
+                {
+                    "device": "/dev/disk/by-id/nvme-SAMSUNG_MZQLB960HAJR-00007_S437NA0N209177",
+                    "label": "main",
+                    "mountpoint": "/",
+                    "zpool": "zroot",
+                    "capacity": "320G",
+                    "format": "zfs"
+                }
+            ]
+        },
+        "kamrui-P1-0": {
+            "networking": {
+                "interface": "enp4s0",
+                "mtu": 1500,
+                "IPv4": {
+                    "address": "192.168.1.251",
+                    "prefixLength": 24,
+                    "gateway": "192.168.1.254"
+                }
+            },
+            "disks": [
+                {
+                    "device": "/dev/disk/by-id/nvme",
+                    "label": "nvme0n1",
+                    "mountpoint": "/",
+                    "zpool": "zroot",
+                    "capacity": "512G",
+                    "format": "zfs"
+                }
+            ]
+        },
+        "nixos": {
+            "networking": {
+                "interface": "enp4s0",
+                "mtu": 1500,
+                "IPv4": {
+                    "address": "192.168.1.253",
+                    "prefixLength": 24,
+                    "gateway": "192.168.1.254"
+                }
+            },
+            "disks": [
+                {
+                    "device": "/dev/disk/by-id/nvme-WD_Blue_SN5100_500GB_25492N805944",
+                    "label": "nvme0n1",
+                    "mountpoint": "/",
+                    "zpool": "zroot",
+                    "capacity": "500G",
+                    "format": "zfs"
+                },
+                {
+                    "device": "/dev/disk/by-id/ata-ST2000DX001-1NS164_Z4Z5RFRN",
+                    "label": "arc",
+                    "mountpoint": "/mnt/arc",
+                    "zpool": "zarc",
+                    "capacity": "1.8T",
+                    "format": "zfs"
+                },
+                {
+                    "device": "/dev/disk/by-id/ata-SanDisk_SD8SBAT256G1122_161808400633",
+                    "label": "san",
+                    "mountpoint": "/mnt/san",
+                    "zpool": "zsan",
+                    "capacity": "256G",
+                    "format": "zfs"
+                },
+                {
+                    "device": "/dev/disk/by-id/ata-WDC_WDBNCE0010PNC_184898801017",
+                    "label": "storage",
+                    "mountpoint": "/mnt/storage",
+                    "zpool": "zstorage",
+                    "capacity": "960G",
+                    "format": "zfs"
+                }
+            ]
+        },
+        "ghost": {
+            "networking": {
+                "interface": "wlp0s20f3",
+                "mtu": 1500,
+                "IPv4": {
+                    "address": "192.168.1.252",
+                    "prefixLength": 24,
+                    "gateway": "192.168.1.254"
+                }
+            },
+            "disks": [
+                {
+                    "device": "/dev/disk/by-id/nvme-eui.5cd2e475228a0100",
+                    "label": "nvme0n1",
+                    "mountpoint": "/var/lib/rancher/k3s",
+                    "capacity": "32G",
+                    "format": "ext4"
+                },
+                {
+                    "device": "/dev/disk/by-id/nvme-eui.5cd2e47911b0139e",
+                    "label": "nvme1n1",
+                    "mountpoint": "/",
+                    "zpool": "zroot",
+                    "capacity": "512G",
+                    "format": "zfs"
+                }
+            ]
+        }
+    },
+    "k3s": {
+        "cluster-cidr": {
+            "IPv6": "fd42::/56"
+        },
+        "service-cidr": {
+            "IPv6": "fd43::/112"
+        }
+    },
+    "tailscale": {
+        "tailnet": "armadillo-frog.ts.net"
+    }
+}
