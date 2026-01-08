@@ -20,7 +20,7 @@
         "storage-users"
       ];
       shell = pkgs.bash;
-      openssh.authorizedKeys.keyFiles = [clan-facts.ssh_public_key];
+      openssh.authorizedKeys.keys = [clan-facts.ssh_public_key];
     };
   };
   nix.settings.allowed-users = ["madi"];

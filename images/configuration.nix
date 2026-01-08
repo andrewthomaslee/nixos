@@ -43,7 +43,7 @@ with lib; {
       permitRootLogin = "yes";
     };
 
-    users.users.root.openssh.authorizedKeys.keyFiles = [clan-facts.ssh_public_key];
+    users.users.root.openssh.authorizedKeys.keys = [clan-facts.ssh_public_key];
 
     # Enable flakes
     nix.package = pkgs.nixVersions.stable;

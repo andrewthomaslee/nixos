@@ -92,7 +92,7 @@ in {
           "sftp_host=${cfg.boxUser}.your-storagebox.de${cfg.boxPath}"
           "sftp_user=${cfg.boxUser}"
           "sftp_port=23"
-          "sftp_key_file=${config.clan.core.vars.generators."storagebox-ssh".files."ssh-private-key".path}"
+          "sftp_key_file=${config.clan.core.vars.generators."storagebox-ssh-${cfg.boxUser}".files."ssh-private-key".path}"
           "vfs_cache_max_size=5G"
           "vfs_cache_max_age=10m"
           "vfs_read_ahead=M"

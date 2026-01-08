@@ -30,6 +30,6 @@ in {
       allowedTCPPorts = [22];
     };
 
-    users.users.root.openssh.authorizedKeys.keyFiles = [clan-facts.ssh_public_key];
+    users.users.root.openssh.authorizedKeys.keys = [clan-facts.ssh_public_key];
   };
 }

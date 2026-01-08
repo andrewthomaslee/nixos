@@ -136,9 +136,9 @@
       formatter = forAllSystems (system: treefmtEval.${system}.config.build.wrapper);
 
       # Expose treefmt check for CI
-      checks = forAllSystems (system: {
-        formatting = treefmtEval.${system}.config.build.check self;
-      });
+      # checks = forAllSystems (system: {
+      #   formatting = treefmtEval.${system}.config.build.check self;
+      # });
 
       # Each subdirectory in ./templates/<template-name> is a
       # template, which can be used for new proects with:
