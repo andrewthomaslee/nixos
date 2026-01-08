@@ -41,8 +41,8 @@ in {
             "PreferredAuthentications" = "publickey";
           };
         };
-        "nbg-m-0" = {
-          hostname = "nbg-m-0.${tailnet}";
+        "helsinki-vps" = {
+          hostname = "helsinki-vps.${tailnet}";
           user = "root";
           port = 22;
           addKeysToAgent = "yes";
