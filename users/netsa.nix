@@ -1,6 +1,7 @@
 {
   pkgs,
   clan-facts,
+  config,
   ...
 }: {
   users = {
@@ -30,4 +31,15 @@
     };
   };
   nix.settings.allowed-users = ["netsa"];
+
+  home-manager.users.netsa.imports = [
+    {
+      programs.bash = {
+        shellAliases = {
+          nixos-rebuild-boot = "sudo nixos-rebuild boot --flake /home/netsa/nixos#${config.networking.hostName}";
+          nixos-rebuild-switch = "sudo nixos-rebuild switch --flake /home/netsa/nixos#${config.networking.hostName}";
+        };
+      };
+    }
+  ];
 }

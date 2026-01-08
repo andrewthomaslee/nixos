@@ -23,6 +23,10 @@
         taskwarrior.enable = true;
         go.enable = true;
       };
+
+      services = {
+        ksshaskpass.enable = true;
+      };
     };
 
     # Install these packages for my user
