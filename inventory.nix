@@ -16,7 +16,7 @@
     internet = {
       module.name = "internet";
       roles.default.machines = {
-        helsinki-vps.settings.host = clan-facts.machines.helsinki-vps.networking.IPv6.address;
+        helsinki-vps.settings.host = clan-facts.machines.helsinki-vps.networking.IPv4.address;
       };
     };
 

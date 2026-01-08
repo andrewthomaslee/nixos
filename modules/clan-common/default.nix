@@ -5,8 +5,8 @@
 }: {
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-  # Default to depolying to the hostname
-  clan.core.networking.targetHost = lib.mkDefault "${config.networking.hostName}.${config.clan.core.settings.domain}";
+  # Default to depolying to the tailscale magic dns hostname
+  clan.core.networking.targetHost = lib.mkDefault "root@${config.networking.hostName}";
 
   nix.settings.trusted-substituters = [
     "https://cache.clan.lol"

@@ -10,7 +10,6 @@ in {
   options.clan-net.hetzner.cloud.enable = lib.mkEnableOption "Hetzner Cloud Settings";
 
   config = lib.mkIf cfg.enable {
-    clan.core.networking.targetHost = net.IPv6.address;
     networking = {
       defaultGateway6 = {
         address = net.IPv6.gateway;
