@@ -22,6 +22,7 @@ with lib; {
     _module.args = {
       flake-inputs = flake-self.inputs;
       clan-net-utils = import ../../utils {inherit pkgs;};
+      clan-facts = builtins.fromJSON (builtins.readFile ./../../clan-facts.json);
     };
 
     # Include man-pages
