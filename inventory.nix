@@ -9,14 +9,14 @@
     ghost.tags = ["desktop"];
 
     kamrui-P1-0.tags = ["server"];
-    nbg-m-0.tags = ["server"];
+    helsinki-vps.tags = ["server"];
   };
 
   instances = {
     internet = {
       module.name = "internet";
       roles.default.machines = {
-        nbg-m-0.settings.host = clan-facts.machines.nbg-m-0.networking.IPv6.address;
+        helsinki-vps.settings.host = clan-facts.machines.helsinki-vps.networking.IPv6.address;
       };
     };
 
