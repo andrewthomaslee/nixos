@@ -63,7 +63,7 @@
 
     user-robot = {
       module.name = "users";
-      roles.default.tags = ["server" "vps"];
+      roles.default.tags = ["server"];
       roles.default.settings = {
         user = "robot";
         share = true;

@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  lib,
+  config,
+  ...
+}: let
   cfg = config.clan-net.filesystems.ext4;
 in {
   options.clan-net.filesystems.ext4.enable = lib.mkEnableOption "ext4 support";

@@ -53,7 +53,7 @@
               content = {
                 type = "filesystem";
                 format = "ext4";
-                mountpoint = "/";
+                mountpoint = "/mnt/storage";
                 mountOptions = ["noatime"];
               };
             };
@@ -72,7 +72,7 @@
               content = {
                 type = "filesystem";
                 format = "ext4";
-                mountpoint = "/";
+                mountpoint = "/mnt/arc";
                 mountOptions = ["noatime"];
               };
             };
@@ -91,7 +91,7 @@
               content = {
                 type = "filesystem";
                 format = "ext4";
-                mountpoint = "/";
+                mountpoint = "/mnt/san";
                 mountOptions = ["noatime"];
               };
             };
