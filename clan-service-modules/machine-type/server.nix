@@ -18,6 +18,12 @@ with lib; {
     environment.enable = true;
     locale.enable = true;
     nix.enable = true;
+    storagebox = {
+      enable = true;
+      mountOnAccess = true;
+      boxUser = "u488514-sub1";
+      boxPath = "/u488514-sub1";
+    };
   };
 
   clan-net.services.openssh.enable = true;

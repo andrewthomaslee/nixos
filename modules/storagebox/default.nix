@@ -22,17 +22,23 @@ in {
       description = "Where to mount the storage";
       example = "/mnt/music";
     };
-    user = mkOption {
+    boxUser = mkOption {
       type = types.str;
       default = "u488514";
       description = "The Hetzner Storage Box User";
       example = "u515095";
     };
-    path = mkOption {
+    boxPath = mkOption {
       type = types.str;
       default = "";
       description = "The Hetzner Storage Box Path";
       example = "/storage/media";
+    };
+    concurrency = mkOption {
+      type = types.int;
+      default = 4;
+      description = "The number of concurrent checkers";
+      example = 10;
     };
   };
 
@@ -77,7 +83,7 @@ in {
           "config=/dev/null"
           "vfs_cache_mode=full"
           "cache_dir=/var/cache/rclone-storagebox-${cfg.user}"
-          "checkers=8"
+          "checkers=${toString cfg.concurrency}"
           "gid=${toString config.users.groups.storage-users.gid}"
           "umask=007"
           "allow_other"
