@@ -23,7 +23,6 @@ with lib; {
         enable = true;
         mountOnAccess = true;
         boxUser = "u488514-sub1";
-        boxPath = "/u488514-sub1";
       };
     };
     services = {

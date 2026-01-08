@@ -28,12 +28,6 @@ in {
       description = "The Hetzner Storage Box User";
       example = "u515095";
     };
-    boxPath = mkOption {
-      type = types.str;
-      default = "";
-      description = "The Hetzner Storage Box Path";
-      example = "/storage/media";
-    };
     concurrency = mkOption {
       type = types.int;
       default = 4;
@@ -48,7 +42,7 @@ in {
 
     # SSH keypair generator for Hetzner Storage Box
     # To add SSH keys to storagebox use the below command, this will ask for the password
-    # clan vars get [MACHINE] storagebox-ssh-[USER]/ssh-public-key | ssh -p23 [USER]@[USER].your-storagebox.de[PATH] install-ssh-key
+    # clan vars get [MACHINE] storagebox-ssh-[USER]/ssh-public-key | ssh -p23 [USER]@[USER].your-storagebox.de install-ssh-key
     clan.core.vars.generators."storagebox-ssh-${cfg.boxUser}" = {
       share = true;
       files.ssh-private-key = {};
@@ -89,7 +83,7 @@ in {
           "allow_other"
           "allow_non_empty"
           "links"
-          "sftp_host=${cfg.boxUser}.your-storagebox.de${cfg.boxPath}"
+          "sftp_host=${cfg.boxUser}.your-storagebox.de"
           "sftp_user=${cfg.boxUser}"
           "sftp_port=23"
           "sftp_key_file=${config.clan.core.vars.generators."storagebox-ssh-${cfg.boxUser}".files."ssh-private-key".path}"
