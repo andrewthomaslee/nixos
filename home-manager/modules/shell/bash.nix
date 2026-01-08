@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  osConfig,
   ...
 }: let
   cfg = config.clan-net.programs.bash;
@@ -22,6 +23,8 @@ in {
         nr = "nix run";
         nfs = "nix flake show";
         nixos-facter = "sudo nix run nixpkgs#nixos-facter -- -o facter.json";
+        nixos-rebuild-boot = "sudo nixos-rebuild boot --flake /home/netsa/nixos#${osConfig.networking.hostName}";
+        nixos-rebuild-switch = "sudo nixos-rebuild switch --flake /home/netsa/nixos#${osConfig.networking.hostName}";
       };
     };
   };
