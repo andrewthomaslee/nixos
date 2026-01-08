@@ -10,9 +10,9 @@
                 "interface": "enp1s0",
                 "mtu": 1500,
                 "IPv6": {
-                    "address": "2a01:4f9:4b:3a9b::2",
+                    "address": "2a01:4f8:1c1f:a8bf::2",
                     "prefixLength": 64,
-                    "subnet": "2a01:4f9:4b:3a9b::/64",
+                    "subnet": "2a01:4f8:1c1f:a8bf::/64",
                     "gateway": "fe80::1"
                 }
             },
