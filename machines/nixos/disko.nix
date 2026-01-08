@@ -29,11 +29,13 @@
                 mountOptions = ["umask=0077"];
               };
             };
-            zfs = {
+            nixos = {
               size = "100%";
               content = {
-                type = "zfs";
-                pool = "zroot";
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
+                mountOptions = ["noatime"];
               };
             };
           };
@@ -46,11 +48,13 @@
         content = {
           type = "gpt";
           partitions = {
-            zfs = {
+            storage = {
               size = "100%";
               content = {
-                type = "zfs";
-                pool = "zstorage";
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
+                mountOptions = ["noatime"];
               };
             };
           };
@@ -63,11 +67,13 @@
         content = {
           type = "gpt";
           partitions = {
-            zfs = {
+            arc = {
               size = "100%";
               content = {
-                type = "zfs";
-                pool = "zarc";
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
+                mountOptions = ["noatime"];
               };
             };
           };
@@ -80,114 +86,14 @@
         content = {
           type = "gpt";
           partitions = {
-            zfs = {
+            san = {
               size = "100%";
               content = {
-                type = "zfs";
-                pool = "zsan";
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
+                mountOptions = ["noatime"];
               };
-            };
-          };
-        };
-      };
-    };
-    zpool = {
-      zroot = {
-        type = "zpool";
-        rootFsOptions = {
-          compression = "lz4";
-          acltype = "posixacl";
-          xattr = "sa";
-          "com.sun:auto-snapshot" = "true";
-        };
-        datasets = {
-          "root" = {
-            type = "zfs_fs";
-            mountpoint = "/";
-            options = {
-              mountpoint = "legacy";
-              atime = "off";
-            };
-          };
-          "nix" = {
-            type = "zfs_fs";
-            mountpoint = "/nix";
-            options = {
-              mountpoint = "legacy";
-              atime = "off";
-            };
-          };
-          "home" = {
-            type = "zfs_fs";
-            mountpoint = "/home";
-            options = {
-              mountpoint = "legacy";
-              atime = "off";
-            };
-          };
-          "k3s" = {
-            type = "zfs_volume";
-            size = "150G";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/var/lib/rancher/k3s";
-              mountOptions = ["noatime"];
-            };
-            options.volblocksize = "4k";
-          };
-        };
-      };
-      zstorage = {
-        type = "zpool";
-        rootFsOptions = {
-          compression = "lz4";
-          acltype = "posixacl";
-          xattr = "sa";
-        };
-        datasets = {
-          "main" = {
-            type = "zfs_fs";
-            mountpoint = "/mnt/storage";
-            options = {
-              mountpoint = "legacy";
-              atime = "off";
-            };
-          };
-        };
-      };
-      zarc = {
-        type = "zpool";
-        rootFsOptions = {
-          compression = "lz4";
-          acltype = "posixacl";
-          xattr = "sa";
-        };
-        datasets = {
-          "main" = {
-            type = "zfs_fs";
-            mountpoint = "/mnt/arc";
-            options = {
-              mountpoint = "legacy";
-              atime = "off";
-            };
-          };
-        };
-      };
-      zsan = {
-        type = "zpool";
-        rootFsOptions = {
-          compression = "lz4";
-          acltype = "posixacl";
-          xattr = "sa";
-        };
-        datasets = {
-          "main" = {
-            type = "zfs_fs";
-            mountpoint = "/mnt/san";
-            options = {
-              mountpoint = "legacy";
-              atime = "off";
             };
           };
         };

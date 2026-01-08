@@ -72,7 +72,7 @@
     };
 
     virtualisation = {
-      docker.enable = false;
+      docker.enable = true;
       virt-manager.enable = true;
       virtualbox.enable = false;
     };
