@@ -26,7 +26,7 @@ in {
       type = types.str;
       default = "u488514";
       description = "The Hetzner Storage Box User";
-      example = "u515095";
+      example = "u515095-sub1";
     };
     concurrency = mkOption {
       type = types.int;
