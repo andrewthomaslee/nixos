@@ -65,20 +65,9 @@
           programs = {
             nixfmt.enable = true;
             nixfmt.package = nixpkgsFor.${system}.nixfmt-rfc-style;
-            prettier.enable = true;
+            prettier.enable = false;
             shellcheck.enable = false;
             shfmt.enable = false;
-          };
-          settings.formatter = {
-            prettier.includes = [
-              "*.md"
-              "*.yaml"
-              "*.yml"
-              "*.json"
-              "*.toml"
-            ];
-            # shellcheck.includes = ["*.sh"];
-            # shfmt.includes = ["*.sh"];
           };
         }
       );
@@ -121,9 +110,8 @@
       # allow using them from other flakes that import this one.
       packages = forAllSystems (
         system: with nixpkgsFor.${system}; {
-          inherit
-            hello-custom
-            ;
+          inherit hello-custom;
+          treefmt = treefmtEval.${system}.config.build.wrapper;
         }
       );
 

@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  flake-self,
   ...
 }:
 let
@@ -30,10 +31,8 @@ in
             ziglang.vscode-zig
             esbenp.prettier-vscode
             ecmel.vscode-html-css
-            catppuccin.catppuccin-vsc
             catppuccin.catppuccin-vsc-icons
             ms-toolsai.jupyter
-            kamadorueda.alejandra
             rooveterinaryinc.roo-cline
             irongeek.vscode-env
             hashicorp.terraform
@@ -47,14 +46,18 @@ in
     home.file = {
       ".config/VSCodium/User/settings.json".source = lib.mkDefault ./settings.json;
     };
-    home.packages = with pkgs; [
-      pyrefly
-      ruff
-      alejandra
-      nil
-      helm-ls
-      terraform-ls
-    ];
+    home.packages =
+      with pkgs;
+      [
+        pyrefly
+        ruff
+        nil
+        helm-ls
+        terraform-ls
+      ]
+      ++ [
+        flake-self.packages.${pkgs.stdenv.hostPlatform.system}.treefmt
+      ];
 
     programs.bash = {
       shellAliases = {

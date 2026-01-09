@@ -40,13 +40,6 @@
     "*": true
   },
   "sqltools.useNodeRuntime": true,
-  "[nix]": {
-    "editor.defaultFormatter": "kamadorueda.alejandra",
-    "editor.formatOnPaste": false,
-    "editor.formatOnSave": true,
-    "editor.formatOnType": false
-  },
-  "alejandra.program": "alejandra",
   "tailwind-fold.autoFold": false,
   "[python]": {
     "editor.formatOnSave": true,
@@ -67,15 +60,36 @@
     "vs-kubernetes.crd-code-completion": "enabled"
   },
   "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "[nix]": {
+    "editor.defaultFormatter": "treefmt",
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false
+  },
   "nix.enableLanguageServer": true,
   "nix.serverPath": "nil",
-  "nix.formatterPath": "alejandra",
+  "nix.formatterPath": [
+    "treefmt"
+  ],
   "nix.serverSettings": {
     "nil": {
       "formatting": {
-        "command": ["alejandra"]
+        "command": [
+          "treefmt"
+        ]
+      },
+      "nix": {
+        "maxMemoryMB": 4096,
+        "flake": {
+          "autoArchive": true,
+          "autoEvalInputs": true
+        }
       }
     }
   },
-  "roo-cline.allowedCommands": ["git log", "git diff", "git show"]
+  "roo-cline.allowedCommands": [
+    "git log",
+    "git diff",
+    "git show"
+  ]
 }
