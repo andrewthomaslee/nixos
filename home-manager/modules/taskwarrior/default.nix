@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.clan-net.programs.taskwarrior;
-in {
+in
+{
   options.clan-net.programs.taskwarrior.enable = mkEnableOption "takswarrior configuration";
 
   config = mkIf cfg.enable {

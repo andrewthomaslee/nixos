@@ -4,16 +4,18 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.clan-net.programs.firefox;
-in {
+in
+{
   options.clan-net.programs.firefox.enable = mkEnableOption "firefox browser";
 
   config = mkIf cfg.enable {
     # Browserpass
     programs.browserpass = {
       enable = true;
-      browsers = ["firefox"];
+      browsers = [ "firefox" ];
     };
 
     programs.firefox = {

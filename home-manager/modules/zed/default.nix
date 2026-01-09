@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.clan-net.programs.zed;
-in {
+in
+{
   options.clan-net.programs.zed = {
     enable = mkEnableOption "Zed editor configuration";
   };
@@ -19,7 +21,7 @@ in {
 
     programs.zed-editor = {
       enable = true;
-      extensions = ["nix"];
+      extensions = [ "nix" ];
       userSettings = {
         telemetry = {
           metrics = false;

@@ -1,7 +1,8 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   mkEnvGenerator = envs: rec {
-    files.envfile = {};
-    runtimeInputs = [pkgs.coreutils];
+    files.envfile = { };
+    runtimeInputs = [ pkgs.coreutils ];
     prompts = pkgs.lib.genAttrs envs (name: {
       persist = false;
     });

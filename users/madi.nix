@@ -2,7 +2,8 @@
   pkgs,
   clan-facts,
   ...
-}: {
+}:
+{
   users = {
     users.madi = {
       isNormalUser = true;
@@ -20,8 +21,8 @@
         "storage-users"
       ];
       shell = pkgs.bash;
-      openssh.authorizedKeys.keys = [clan-facts.ssh_public_key];
+      openssh.authorizedKeys.keys = [ clan-facts.ssh_public_key ];
     };
   };
-  nix.settings.allowed-users = ["madi"];
+  nix.settings.allowed-users = [ "madi" ];
 }

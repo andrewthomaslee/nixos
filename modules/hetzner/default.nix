@@ -3,10 +3,12 @@
   config,
   clan-facts,
   ...
-}: let
+}:
+let
   net = clan-facts.machines.${config.networking.hostName}.networking;
   cfg = config.clan-net.hetzner.cloud;
-in {
+in
+{
   options.clan-net.hetzner.cloud.enable = lib.mkEnableOption "Hetzner Cloud Settings";
 
   config = lib.mkIf cfg.enable {

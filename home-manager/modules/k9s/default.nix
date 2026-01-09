@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.clan-net.programs.k9s;
-in {
+in
+{
   options.clan-net.programs.k9s.enable = mkEnableOption "k9s kubernetes CLI";
 
   config = mkIf cfg.enable {

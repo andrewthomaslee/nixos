@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.clan-net.programs.nix;
-in {
+in
+{
   options.clan-net.programs.nix.enable = lib.mkEnableOption "programs";
 
   config = lib.mkIf cfg.enable {

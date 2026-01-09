@@ -3,9 +3,11 @@
   config,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.clan-net.defaults.bluetooth;
-in {
+in
+{
   options.clan-net.defaults.bluetooth = {
     enable = mkEnableOption "default bluetooth configuration";
   };

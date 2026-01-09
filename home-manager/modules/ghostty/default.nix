@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.clan-net.programs.ghostty;
-in {
+in
+{
   options.clan-net.programs.ghostty.enable = lib.mkEnableOption "ghostty";
 
   config = lib.mkIf cfg.enable {

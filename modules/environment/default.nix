@@ -3,9 +3,11 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.clan-net.defaults.environment;
-in {
+in
+{
   options.clan-net.defaults.environment = {
     enable = mkEnableOption "Environment defaults";
   };

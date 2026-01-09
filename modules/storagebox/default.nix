@@ -4,9 +4,11 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.clan-net.defaults.storagebox;
-in {
+in
+{
   options.clan-net.defaults.storagebox = {
     enable = mkEnableOption "storagebox access";
 
@@ -45,9 +47,9 @@ in {
     # clan vars get [MACHINE] storagebox-ssh-[USER]/ssh-public-key | ssh -p23 [USER]@[USER].your-storagebox.de install-ssh-key
     clan.core.vars.generators."storagebox-ssh-${cfg.boxUser}" = {
       share = true;
-      files.ssh-private-key = {};
+      files.ssh-private-key = { };
       files.ssh-public-key.secret = false;
-      runtimeInputs = with pkgs; [openssh];
+      runtimeInputs = with pkgs; [ openssh ];
       script = ''
         mkdir -p $out
         ssh-keygen -t ed25519 -f $out/ssh-private-key -N "" -C "${cfg.boxUser}-storagebox"
@@ -56,7 +58,7 @@ in {
     };
 
     # Add rclone to system packages for mount helper support
-    environment.systemPackages = [pkgs.rclone];
+    environment.systemPackages = [ pkgs.rclone ];
 
     # Hetzner Storage Box mount with rclone - using proper mount helper
     # Create cache directory for rclone
@@ -67,39 +69,40 @@ in {
     fileSystems."${cfg.mountPoint}" = {
       device = ":sftp:";
       fsType = "rclone";
-      options =
-        [
-          "rw"
-          "nofail"
-          "_netdev"
-          "x-systemd.mount-timeout=120s"
-          "args2env"
-          "config=/dev/null"
-          "vfs_cache_mode=full"
-          "cache_dir=/var/cache/rclone-storagebox-${cfg.boxUser}"
-          "checkers=${toString cfg.concurrency}"
-          "gid=${toString config.users.groups.storage-users.gid}"
-          "umask=007"
-          "allow_other"
-          "allow_non_empty"
-          "links"
-          "sftp_host=${cfg.boxUser}.your-storagebox.de"
-          "sftp_user=${cfg.boxUser}"
-          "sftp_port=23"
-          "sftp_key_file=${config.clan.core.vars.generators."storagebox-ssh-${cfg.boxUser}".files."ssh-private-key".path}"
-          "vfs_cache_max_size=5G"
-          "vfs_cache_max_age=10m"
-          "vfs_read_ahead=256M"
-          "buffer_size=500M"
-          "dir_cache_time=1m"
-          "log_level=INFO"
-          "log_systemd=true"
-        ]
-        ++ optionals cfg.mountOnAccess [
-          "noauto"
-          "x-systemd.automount"
-          "x-systemd.idle-timeout=600"
-        ];
+      options = [
+        "rw"
+        "nofail"
+        "_netdev"
+        "x-systemd.mount-timeout=120s"
+        "args2env"
+        "config=/dev/null"
+        "vfs_cache_mode=full"
+        "cache_dir=/var/cache/rclone-storagebox-${cfg.boxUser}"
+        "checkers=${toString cfg.concurrency}"
+        "gid=${toString config.users.groups.storage-users.gid}"
+        "umask=007"
+        "allow_other"
+        "allow_non_empty"
+        "links"
+        "sftp_host=${cfg.boxUser}.your-storagebox.de"
+        "sftp_user=${cfg.boxUser}"
+        "sftp_port=23"
+        "sftp_key_file=${
+          config.clan.core.vars.generators."storagebox-ssh-${cfg.boxUser}".files."ssh-private-key".path
+        }"
+        "vfs_cache_max_size=5G"
+        "vfs_cache_max_age=10m"
+        "vfs_read_ahead=256M"
+        "buffer_size=500M"
+        "dir_cache_time=1m"
+        "log_level=INFO"
+        "log_systemd=true"
+      ]
+      ++ optionals cfg.mountOnAccess [
+        "noauto"
+        "x-systemd.automount"
+        "x-systemd.idle-timeout=600"
+      ];
     };
   };
 }

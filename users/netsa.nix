@@ -3,9 +3,10 @@
   clan-facts,
   config,
   ...
-}: {
+}:
+{
   users = {
-    extraGroups.vboxusers.members = ["netsa"];
+    extraGroups.vboxusers.members = [ "netsa" ];
     defaultUserShell = pkgs.bash;
     users.netsa = {
       packages = with pkgs; [
@@ -27,8 +28,8 @@
         "storage-users"
       ];
       shell = pkgs.bash;
-      openssh.authorizedKeys.keys = [clan-facts.ssh_public_key];
+      openssh.authorizedKeys.keys = [ clan-facts.ssh_public_key ];
     };
   };
-  nix.settings.allowed-users = ["netsa"];
+  nix.settings.allowed-users = [ "netsa" ];
 }

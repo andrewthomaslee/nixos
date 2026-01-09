@@ -3,9 +3,11 @@
   lib,
   osConfig,
   ...
-}: let
+}:
+let
   cfg = config.clan-net.programs.bash;
-in {
+in
+{
   options.clan-net.programs.bash.enable = lib.mkEnableOption "bash";
 
   config = lib.mkIf cfg.enable {

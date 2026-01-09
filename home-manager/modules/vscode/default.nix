@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.clan-net.programs.vscode;
-in {
+in
+{
   options.clan-net.programs.vscode.enable = lib.mkEnableOption "vscode";
 
   config = lib.mkIf cfg.enable {

@@ -4,9 +4,11 @@
   lib,
   clan-facts,
   ...
-}: let
+}:
+let
   cfg = config.clan-net.services.tailscale;
-in {
+in
+{
   options.clan-net.services.tailscale = {
     enable = lib.mkEnableOption "tailscale";
     systray = lib.mkEnableOption "systray";
@@ -23,7 +25,7 @@ in {
     clan.core.vars.generators.tailscale = {
       share = true;
       prompts.auth_key.persist = true;
-      files.auth_key = {};
+      files.auth_key = { };
     };
 
     services.tailscale = {
@@ -41,16 +43,16 @@ in {
       ];
     };
     networking = {
-      networkmanager.unmanaged = ["tailscale0"];
+      networkmanager.unmanaged = [ "tailscale0" ];
       firewall = {
-        trustedInterfaces = ["tailscale0"];
+        trustedInterfaces = [ "tailscale0" ];
         checkReversePath = "loose";
       };
     };
     services.networkd-dispatcher = {
       enable = true;
       rules."50-tailscale" = {
-        onState = ["routable"];
+        onState = [ "routable" ];
         script = ''
           NETDEV=$(ip -o route get 8.8.8.8 | cut -f 5 -d " ")
           ${pkgs.ethtool}/bin/ethtool -K "$NETDEV" rx-udp-gro-forwarding on rx-gro-list off
@@ -61,9 +63,12 @@ in {
     systemd.user.services.tailscale-systray = lib.mkIf cfg.systray {
       enable = true;
       description = "Tailscale Systray GUI";
-      after = ["graphical-session.target" "tailscaled.service"];
-      wants = ["tailscaled.service"];
-      wantedBy = ["graphical-session.target"];
+      after = [
+        "graphical-session.target"
+        "tailscaled.service"
+      ];
+      wants = [ "tailscaled.service" ];
+      wantedBy = [ "graphical-session.target" ];
       serviceConfig = {
         Type = "simple";
         Restart = "on-failure";

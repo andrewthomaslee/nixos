@@ -4,9 +4,11 @@
   clan-facts,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.clan-net.services.networking;
-in {
+in
+{
   options.clan-net.services.networking.enable = mkEnableOption "networking";
 
   config = mkIf cfg.enable {

@@ -4,9 +4,11 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.clan-net.defaults.fonts;
-in {
+in
+{
   options.clan-net.defaults.fonts = {
     enable = mkEnableOption "Fonts defaults";
   };
@@ -42,7 +44,7 @@ in {
             "Berkeley Mono"
             "Inconsolata Nerd Font Mono"
           ];
-          emoji = ["Noto Emoji"];
+          emoji = [ "Noto Emoji" ];
         };
       };
     };

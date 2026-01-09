@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.clan-net.programs.python;
-in {
+in
+{
   options.clan-net.programs.python.enable = lib.mkEnableOption "python";
 
   config = lib.mkIf cfg.enable {

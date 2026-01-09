@@ -5,7 +5,8 @@
   flake-self,
   home-manager,
   ...
-}: {
+}:
+{
   imports = [
     home-manager.nixosModules.home-manager
   ];
@@ -14,7 +15,7 @@
   services.acpid.enable = true;
 
   # To build raspi images
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Enable networkmanager
   networking.networkmanager.enable = true;

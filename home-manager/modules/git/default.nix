@@ -4,9 +4,11 @@
   clan-facts,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.clan-net.defaults.git;
-in {
+in
+{
   options.clan-net.defaults.git.enable = mkEnableOption "git defaults";
 
   config = mkIf cfg.enable {

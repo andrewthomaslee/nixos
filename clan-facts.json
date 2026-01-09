@@ -1,137 +1,137 @@
 {
-    "meta": {
-        "name": "clan-net",
-        "domain": "clan-net"
-    },
-    "email": "andrewthomaslee.business@gmail.com",
-    "ssh_public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOb4q9LWJR54SzRkfmsA5KWA5/SDEG853oFC8TVilCW/ Clan-Net",
-    "machines": {
-        "helsinki-vps": {
-            "networking": {
-                "interface": "enp1s0",
-                "mtu": 1500,
-                "IPv4": {
-                    "address": "77.42.41.25",
-                    "prefixLength": 24,
-                    "gateway": "fe80::1"
-                },
-                "IPv6": {
-                    "address": "2a01:4f9:c013:2588::2",
-                    "prefixLength": 64,
-                    "subnet": "2a01:4f9:c013:2588::/64",
-                    "gateway": "fe80::1"
-                }
-            },
-            "disks": [
-                {
-                    "device": "/dev/disk/by-id/nvme-SAMSUNG_MZQLB960HAJR-00007_S437NA0N209177",
-                    "label": "main",
-                    "mountpoint": "/",
-                    "capacity": "320G",
-                    "format": "ext4"
-                }
-            ]
+  "meta": {
+    "name": "clan-net",
+    "domain": "clan-net"
+  },
+  "email": "andrewthomaslee.business@gmail.com",
+  "ssh_public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOb4q9LWJR54SzRkfmsA5KWA5/SDEG853oFC8TVilCW/ Clan-Net",
+  "machines": {
+    "helsinki-vps": {
+      "networking": {
+        "interface": "enp1s0",
+        "mtu": 1500,
+        "IPv4": {
+          "address": "77.42.41.25",
+          "prefixLength": 24,
+          "gateway": "fe80::1"
         },
-        "kamrui-P1-0": {
-            "networking": {
-                "interface": "enp4s0",
-                "mtu": 1500,
-                "IPv4": {
-                    "address": "192.168.1.251",
-                    "prefixLength": 24,
-                    "gateway": "192.168.1.254"
-                }
-            },
-            "disks": [
-                {
-                    "device": "/dev/disk/by-id/nvme",
-                    "label": "nvme0n1",
-                    "mountpoint": "/",
-                    "capacity": "512G",
-                    "format": "ext4"
-                }
-            ]
-        },
-        "nixos": {
-            "networking": {
-                "interface": "enp4s0",
-                "mtu": 1500,
-                "IPv4": {
-                    "address": "192.168.1.253",
-                    "prefixLength": 24,
-                    "gateway": "192.168.1.254"
-                }
-            },
-            "disks": [
-                {
-                    "device": "/dev/disk/by-id/nvme-WD_Blue_SN5100_500GB_25492N805944",
-                    "label": "nvme0n1",
-                    "mountpoint": "/",
-                    "capacity": "500G",
-                    "format": "ext4"
-                },
-                {
-                    "device": "/dev/disk/by-id/ata-ST2000DX001-1NS164_Z4Z5RFRN",
-                    "label": "arc",
-                    "mountpoint": "/mnt/arc",
-                    "capacity": "1.8T",
-                    "format": "ext4"
-                },
-                {
-                    "device": "/dev/disk/by-id/ata-SanDisk_SD8SBAT256G1122_161808400633",
-                    "label": "san",
-                    "mountpoint": "/mnt/san",
-                    "capacity": "256G",
-                    "format": "ext4"
-                },
-                {
-                    "device": "/dev/disk/by-id/ata-WDC_WDBNCE0010PNC_184898801017",
-                    "label": "storage",
-                    "mountpoint": "/mnt/storage",
-                    "capacity": "960G",
-                    "format": "ext4"
-                }
-            ]
-        },
-        "ghost": {
-            "networking": {
-                "interface": "wlp0s20f3",
-                "mtu": 1500,
-                "IPv4": {
-                    "address": "192.168.1.252",
-                    "prefixLength": 24,
-                    "gateway": "192.168.1.254"
-                }
-            },
-            "disks": [
-                {
-                    "device": "/dev/disk/by-id/nvme-eui.5cd2e475228a0100",
-                    "label": "nvme0n1",
-                    "mountpoint": "/var/lib/rancher/k3s",
-                    "capacity": "32G",
-                    "format": "ext4"
-                },
-                {
-                    "device": "/dev/disk/by-id/nvme-eui.5cd2e47911b0139e",
-                    "label": "nvme1n1",
-                    "mountpoint": "/",
-                    "capacity": "512G",
-                    "format": "ext4"
-                }
-            ]
+        "IPv6": {
+          "address": "2a01:4f9:c013:2588::2",
+          "prefixLength": 64,
+          "subnet": "2a01:4f9:c013:2588::/64",
+          "gateway": "fe80::1"
         }
-    },
-    "k3s": {
-        "cluster-cidr": {
-            "IPv4": "10.42.0.0/16",
-            "IPv6": "fd42::/56"
-        },
-        "service-cidr": {
-            "IPv4": "10.43.0.0/16",
-            "IPv6": "fd43::/112"
+      },
+      "disks": [
+        {
+          "device": "/dev/disk/by-id/nvme-SAMSUNG_MZQLB960HAJR-00007_S437NA0N209177",
+          "label": "main",
+          "mountpoint": "/",
+          "capacity": "320G",
+          "format": "ext4"
         }
+      ]
     },
-    "tailscale": {
-        "tailnet": "armadillo-frog.ts.net"
+    "kamrui-P1-0": {
+      "networking": {
+        "interface": "enp4s0",
+        "mtu": 1500,
+        "IPv4": {
+          "address": "192.168.1.251",
+          "prefixLength": 24,
+          "gateway": "192.168.1.254"
+        }
+      },
+      "disks": [
+        {
+          "device": "/dev/disk/by-id/nvme",
+          "label": "nvme0n1",
+          "mountpoint": "/",
+          "capacity": "512G",
+          "format": "ext4"
+        }
+      ]
+    },
+    "nixos": {
+      "networking": {
+        "interface": "enp4s0",
+        "mtu": 1500,
+        "IPv4": {
+          "address": "192.168.1.253",
+          "prefixLength": 24,
+          "gateway": "192.168.1.254"
+        }
+      },
+      "disks": [
+        {
+          "device": "/dev/disk/by-id/nvme-WD_Blue_SN5100_500GB_25492N805944",
+          "label": "nvme0n1",
+          "mountpoint": "/",
+          "capacity": "500G",
+          "format": "ext4"
+        },
+        {
+          "device": "/dev/disk/by-id/ata-ST2000DX001-1NS164_Z4Z5RFRN",
+          "label": "arc",
+          "mountpoint": "/mnt/arc",
+          "capacity": "1.8T",
+          "format": "ext4"
+        },
+        {
+          "device": "/dev/disk/by-id/ata-SanDisk_SD8SBAT256G1122_161808400633",
+          "label": "san",
+          "mountpoint": "/mnt/san",
+          "capacity": "256G",
+          "format": "ext4"
+        },
+        {
+          "device": "/dev/disk/by-id/ata-WDC_WDBNCE0010PNC_184898801017",
+          "label": "storage",
+          "mountpoint": "/mnt/storage",
+          "capacity": "960G",
+          "format": "ext4"
+        }
+      ]
+    },
+    "ghost": {
+      "networking": {
+        "interface": "wlp0s20f3",
+        "mtu": 1500,
+        "IPv4": {
+          "address": "192.168.1.252",
+          "prefixLength": 24,
+          "gateway": "192.168.1.254"
+        }
+      },
+      "disks": [
+        {
+          "device": "/dev/disk/by-id/nvme-eui.5cd2e475228a0100",
+          "label": "nvme0n1",
+          "mountpoint": "/var/lib/rancher/k3s",
+          "capacity": "32G",
+          "format": "ext4"
+        },
+        {
+          "device": "/dev/disk/by-id/nvme-eui.5cd2e47911b0139e",
+          "label": "nvme1n1",
+          "mountpoint": "/",
+          "capacity": "512G",
+          "format": "ext4"
+        }
+      ]
     }
+  },
+  "k3s": {
+    "cluster-cidr": {
+      "IPv4": "10.42.0.0/16",
+      "IPv6": "fd42::/56"
+    },
+    "service-cidr": {
+      "IPv4": "10.43.0.0/16",
+      "IPv6": "fd43::/112"
+    }
+  },
+  "tailscale": {
+    "tailnet": "armadillo-frog.ts.net"
+  }
 }

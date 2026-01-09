@@ -5,9 +5,11 @@
   clan-facts,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.clan-net.services.openssh;
-in {
+in
+{
   options.clan-net.services.openssh = {
     enable = mkEnableOption "OpenSSH server";
   };
@@ -27,9 +29,9 @@ in {
     networking.firewall = {
       enable = true;
       allowPing = true;
-      allowedTCPPorts = [22];
+      allowedTCPPorts = [ 22 ];
     };
 
-    users.users.root.openssh.authorizedKeys.keys = [clan-facts.ssh_public_key];
+    users.users.root.openssh.authorizedKeys.keys = [ clan-facts.ssh_public_key ];
   };
 }

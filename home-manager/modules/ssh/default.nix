@@ -3,10 +3,12 @@
   lib,
   clan-facts,
   ...
-}: let
+}:
+let
   cfg = config.clan-net.defaults.ssh;
   tailnet = clan-facts.tailscale.tailnet;
-in {
+in
+{
   options.clan-net.defaults.ssh.enable = lib.mkEnableOption "SSH configuration";
 
   config = lib.mkIf cfg.enable {

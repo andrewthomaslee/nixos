@@ -3,13 +3,15 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   cfg = config.clan-net.services.ksshaskpass;
-in {
+in
+{
   options.clan-net.services.ksshaskpass.enable = lib.mkEnableOption "KDE ksshaskpass";
 
   config = lib.mkIf cfg.enable {
-    home.packages = [pkgs.kdePackages.ksshaskpass];
+    home.packages = [ pkgs.kdePackages.ksshaskpass ];
     xdg.configFile."environment.d/ssh_askpass.conf".text = ''
       SSH_ASKPASS="/run/current-system/sw/bin/ksshaskpass"
     '';

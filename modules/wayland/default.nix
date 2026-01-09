@@ -4,9 +4,11 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.clan-net.services.wayland;
-in {
+in
+{
   options.clan-net.services.wayland = {
     enable = mkEnableOption "wayland configuration";
   };
@@ -26,7 +28,7 @@ in {
         "gtk"
       ];
       wlr.enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-gtk];
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
 
     environment.systemPackages = with pkgs; [
