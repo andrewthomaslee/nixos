@@ -89,9 +89,9 @@ in {
           "sftp_key_file=${config.clan.core.vars.generators."storagebox-ssh-${cfg.boxUser}".files."ssh-private-key".path}"
           "vfs_cache_max_size=5G"
           "vfs_cache_max_age=10m"
-          "vfs_read_ahead=M"
-          "buffer_size=256M"
-          "dir_cache_time=30s"
+          "vfs_read_ahead=256M"
+          "buffer_size=500M"
+          "dir_cache_time=1m"
           "log_level=INFO"
           "log_systemd=true"
         ]
