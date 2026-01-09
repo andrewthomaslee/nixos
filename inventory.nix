@@ -20,9 +20,10 @@
       };
     };
 
-    yggdrasil = {
-      module.name = "yggdrasil";
-      roles.default.tags = ["all"];
+    zerotier = {
+      module.name = "zerotier";
+      roles.peer.tags.all = {};
+      roles.controller.machines.helsinki-vps = {};
     };
 
     desktop = {

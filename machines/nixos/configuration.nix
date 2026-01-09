@@ -4,6 +4,8 @@
   ...
 }: {
   clan-net = {
+    services.motd.sshMotd = builtins.readFile ./sshMotd.sh;
+
     filesystems.ext4.enable = true;
   };
 

@@ -84,6 +84,8 @@
         enable = true;
         systray = true;
       };
+      networking.enable = true;
+      motd.enable = true;
     };
   };
 

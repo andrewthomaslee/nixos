@@ -28,6 +28,8 @@ with lib; {
     services = {
       openssh.enable = true;
       tailscale.enable = true;
+      networking.enable = true;
+      motd.enable = true;
     };
   };
 
