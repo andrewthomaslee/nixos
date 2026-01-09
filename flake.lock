@@ -358,14 +358,14 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1765915912,
-        "narHash": "sha256-6dE3kgYABAVtrAjGWnWZ3X4Aq7yJagxNEk6BSyIC3Yk=",
+        "lastModified": 1767723304,
+        "narHash": "sha256-S0aD+x8dUPHaNb5MdB41oeID/8eERB3FKKuuqlCqJkU=",
         "type": "tarball",
-        "url": "https://github.com/tailscale/tailscale/archive/refs/tags/v1.92.3.tar.gz"
+        "url": "https://github.com/tailscale/tailscale/archive/refs/tags/v1.92.5.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/tailscale/tailscale/archive/refs/tags/v1.92.3.tar.gz"
+        "url": "https://github.com/tailscale/tailscale/archive/refs/tags/v1.92.5.tar.gz"
       }
     },
     "treefmt-nix": {

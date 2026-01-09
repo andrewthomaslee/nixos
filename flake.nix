@@ -18,7 +18,7 @@
     };
 
     tailscale = {
-      url = "https://github.com/tailscale/tailscale/archive/refs/tags/v1.92.3.tar.gz";
+      url = "https://github.com/tailscale/tailscale/archive/refs/tags/v1.92.5.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
