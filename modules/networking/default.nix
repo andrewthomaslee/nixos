@@ -5,7 +5,7 @@
   ...
 }:
 with lib; let
-  cfg = config.clan-net.networking;
+  cfg = config.clan-net.services.networking;
 in {
   options.clan-net.services.networking.enable = mkEnableOption "networking";
 
