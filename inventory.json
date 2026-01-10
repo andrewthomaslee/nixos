@@ -2,6 +2,9 @@
   "machines": {
     "helsinki-vps": {
       "installedAt": 1767913260
+    },
+    "nixos": {
+      "installedAt": 1768016178
     }
   }
 }
