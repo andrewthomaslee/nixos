@@ -21,12 +21,6 @@
       };
     };
 
-    zerotier = {
-      module.name = "zerotier";
-      roles.peer.tags.all = { };
-      roles.controller.machines.helsinki-vps = { };
-    };
-
     desktop = {
       module.input = "self";
       module.name = "@andrewthomaslee/desktop";

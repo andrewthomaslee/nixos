@@ -7,7 +7,7 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   # Default to depolying to clan domain
-  clan.core.networking.targetHost = lib.mkDefault "root@${config.networking.hostName}.${config.clan.core.settings.domain}";
+  clan.core.networking.targetHost = lib.mkDefault "root@${config.networking.hostName}.${clan-facts.tailscale.tailnet}";
   clan.core.deployment.requireExplicitUpdate = lib.mkDefault true;
 
   nix.settings.trusted-substituters = [

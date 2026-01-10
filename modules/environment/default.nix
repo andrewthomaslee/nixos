@@ -16,7 +16,7 @@ in
     # System-wide environment variables to be set
     environment = {
       variables = {
-        EDITOR = "nvim";
+        EDITOR = "codium --wait";
         GOPATH = "/home/netsa/.go";
       };
     };
