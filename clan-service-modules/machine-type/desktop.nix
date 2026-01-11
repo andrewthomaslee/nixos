@@ -107,7 +107,6 @@
 
   boot = {
     # Use GRUB2 as EFI boot loader.
-    loader.grub.useOSProber = true;
     tmp.useTmpfs = false;
   };
 }
