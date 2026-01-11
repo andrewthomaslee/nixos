@@ -105,8 +105,6 @@
 
   services.logind.settings.Login.RuntimeDirectorySize = "20G";
 
-  boot = {
-    # Use GRUB2 as EFI boot loader.
-    tmp.useTmpfs = false;
-  };
+  boot.tmp.useTmpfs = false;
+
 }
