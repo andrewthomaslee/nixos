@@ -26,8 +26,8 @@ in {
         };
         service = {
           host = "127.0.0.1";
-          http_port = 6333;
-          grpc_port = 6334;
+          http_port = 9333;
+          grpc_port = 9334;
         };
         telemetry_disabled = true;
       };
