@@ -13,7 +13,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/mnt/microCenter";
-                mountOptions = [ "noatime" ];
+                mountOptions = ["noatime"];
               };
             };
           };

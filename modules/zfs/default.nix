@@ -3,11 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.clan-net.filesystems.zfs;
-in
-{
+in {
   options.clan-net.filesystems.zfs.enable = lib.mkEnableOption "ZFS support";
 
   config = lib.mkIf cfg.enable {
@@ -17,7 +15,7 @@ in
           secret = false;
         };
       };
-      runtimeInputs = with pkgs; [ coreutils ];
+      runtimeInputs = with pkgs; [coreutils];
       script = ''
         head -c4 /dev/urandom | od -A none -t x4 | tr -d ' \n' > $out/hostId
       '';
@@ -47,7 +45,7 @@ in
           efiSupport = true;
         };
       };
-      supportedFilesystems = [ "zfs" ];
+      supportedFilesystems = ["zfs"];
       zfs = {
         forceImportRoot = false;
         package = pkgs.zfs;

@@ -13,7 +13,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/mnt/EFAIN";
-                mountOptions = [ "noatime" ];
+                mountOptions = ["noatime"];
               };
             };
           };

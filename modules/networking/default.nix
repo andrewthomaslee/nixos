@@ -4,17 +4,18 @@
   clan-facts,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.clan-net.services.networking;
-in
-{
+in {
   options.clan-net.services.networking.enable = mkEnableOption "networking";
 
   config = mkIf cfg.enable {
     networking.interfaces.${clan-facts.machines.${config.networking.hostName}.networking.interface} = {
       useDHCP = true;
-      wakeOnLan.enable = true;
+      wakeOnLan = {
+        enable = true;
+        policy = ["phy" "unicast" "multicast" "broadcast" "arp" "magic"];
+      };
     };
   };
 }

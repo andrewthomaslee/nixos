@@ -9,16 +9,14 @@
   roles.desktop.description = "Desktop machine settings, including kde";
 
   # Common configuration for all macine types
-  perMachine.nixosModule =
-    { lib, ... }:
-    {
-      security.acme.acceptTerms = true;
-      security.acme.defaults.email = lib.mkDefault "andrewthomaslee.business@gmail.com";
-      clan.core.settings.state-version.enable = true;
-      hardware.enableRedistributableFirmware = true;
-      environment = {
-        enableAllTerminfo = true;
-        localBinInPath = true;
-      };
+  perMachine.nixosModule = {lib, ...}: {
+    security.acme.acceptTerms = true;
+    security.acme.defaults.email = lib.mkDefault "andrewthomaslee.business@gmail.com";
+    clan.core.settings.state-version.enable = true;
+    hardware.enableRedistributableFirmware = true;
+    environment = {
+      enableAllTerminfo = true;
+      localBinInPath = true;
     };
+  };
 }

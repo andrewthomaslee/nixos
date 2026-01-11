@@ -6,17 +6,15 @@
   nixpkgs,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.clan-net.defaults.nix;
-in
-{
+in {
   options.clan-net.defaults.nix = {
     enable = mkEnableOption "Nix defaults";
   };
 
   config = mkIf cfg.enable {
-    _module.args.clan-net-utils = import ../../utils { inherit pkgs; };
+    _module.args.clan-net-utils = import ../../utils {inherit pkgs;};
 
     # Generates a .prom file that can be scraped with prometheus to monitor the
     # current nixpkgs version
@@ -27,14 +25,13 @@ in
         # TYPE flake_input_last_modified gauge
         ${concatStringsSep "\n" (
           map (
-            i:
-            ''flake_input_last_modified{input="${i}",${
-              concatStringsSep "," (
-                mapAttrsToList (n: v: ''${n}="${v}"'') (
-                  filterAttrs (n: v: (builtins.typeOf v) == "string") flake-self.inputs."${i}"
+            i: ''flake_input_last_modified{input="${i}",${
+                concatStringsSep "," (
+                  mapAttrsToList (n: v: ''${n}="${v}"'') (
+                    filterAttrs (n: v: (builtins.typeOf v) == "string") flake-self.inputs."${i}"
+                  )
                 )
-              )
-            }} ${toString flake-self.inputs."${i}".lastModified or 0}''
+              }} ${toString flake-self.inputs."${i}".lastModified or 0}''
           ) (attrNames flake-self.inputs)
         )}
       '';
@@ -47,8 +44,8 @@ in
     # recommended) to remove the `nixos` channel for both users
     # and root e.g. `nix-channel --remove nixos`. `nix-channel
     # --list` should be empty for all users afterwards
-    nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
-    nixpkgs.overlays = [ flake-self.overlays.default ];
+    nix.nixPath = ["nixpkgs=flake:nixpkgs"];
+    nixpkgs.overlays = [flake-self.overlays.default];
 
     # Let 'nixos-version --json' know the Git revision of this flake.
     system.configurationRevision = nixpkgs.lib.mkIf (flake-self ? rev) flake-self.rev;
@@ -78,7 +75,7 @@ in
       settings = {
         auto-allocate-uids = true;
 
-        system-features = [ "uid-range" ];
+        system-features = ["uid-range"];
 
         experimental-features = [
           "nix-command"
@@ -87,7 +84,7 @@ in
           "cgroups"
         ];
 
-        trusted-users = [ "@wheel" ];
+        trusted-users = ["@wheel"];
 
         trusted-public-keys = [
           "nix-cache:4FILs79Adxn/798F8qk2PC1U8HaTlaPqptwNJrXNA1g="
@@ -114,7 +111,7 @@ in
         download-buffer-size = 524288000; # 500MB
 
         # Users allowed to run nix
-        allowed-users = [ "root" ];
+        allowed-users = ["root"];
       };
 
       # Clean up old generations after 30 days

@@ -4,11 +4,9 @@
   pkgs,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.clan-net.programs.tmux;
-in
-{
+in {
   options.clan-net.programs.tmux.enable = mkEnableOption "tmux terminal mutliplexer";
 
   config = mkIf cfg.enable {
@@ -36,7 +34,7 @@ in
       # Set the $TERM variable.
       terminal = "screen-256color";
 
-      plugins = with pkgs.tmuxPlugins; [ tmux-fzf ];
+      plugins = with pkgs.tmuxPlugins; [tmux-fzf];
 
       extraConfig = builtins.readFile ./tmux.conf;
     };

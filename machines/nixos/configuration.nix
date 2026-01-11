@@ -2,13 +2,11 @@
   config,
   flake-self,
   ...
-}:
-{
+}: {
   clan-net = {
     services = {
       motd.sshMotd = builtins.readFile ./sshMotd.sh;
       qdrant.basePath = "/mnt/storage/";
-
     };
 
     filesystems.ext4.enable = true;
@@ -17,7 +15,7 @@
   home-manager.users.madi = flake-self.homeConfigurations.desktop;
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     modesetting.enable = true;
     open = false;

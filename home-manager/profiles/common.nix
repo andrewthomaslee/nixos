@@ -4,8 +4,7 @@
   flake-self,
   ...
 }:
-with lib;
-{
+with lib; {
   config = {
     # Home-manager nixpkgs config
     nixpkgs = {
@@ -22,7 +21,7 @@ with lib;
     # Extra arguments to pass to modules
     _module.args = {
       flake-inputs = flake-self.inputs;
-      clan-net-utils = import ../../utils { inherit pkgs; };
+      clan-net-utils = import ../../utils {inherit pkgs;};
       clan-facts = builtins.fromJSON (builtins.readFile ./../../clan-facts.json);
     };
 

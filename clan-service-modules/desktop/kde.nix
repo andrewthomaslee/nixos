@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services = {
     desktopManager.plasma6.enable = true;
     displayManager.sddm.enable = true;
@@ -13,7 +12,7 @@
 
     xserver = {
       enable = true;
-      excludePackages = [ pkgs.xterm ]; # remove xterm
+      excludePackages = [pkgs.xterm]; # remove xterm
       xkb = {
         layout = "us";
         variant = "";

@@ -3,8 +3,7 @@
   lib,
   clan-facts,
   ...
-}:
-{
+}: {
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   # Default to depolying to clan domain

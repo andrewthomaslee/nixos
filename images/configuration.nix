@@ -5,9 +5,8 @@
   clan-facts,
   ...
 }:
-with lib;
-{
-  imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
+with lib; {
+  imports = [(modulesPath + "/profiles/qemu-guest.nix")];
 
   config = {
     # Filesystems
@@ -19,7 +18,7 @@ with lib;
 
     # Bootloader
     boot.growPartition = true;
-    boot.kernelParams = [ "console=ttyS0" ];
+    boot.kernelParams = ["console=ttyS0"];
     boot.loader.grub.device = "/dev/vda";
     boot.loader.timeout = 0;
 
@@ -43,7 +42,7 @@ with lib;
       permitRootLogin = "yes";
     };
 
-    users.users.root.openssh.authorizedKeys.keys = [ clan-facts.ssh_public_key ];
+    users.users.root.openssh.authorizedKeys.keys = [clan-facts.ssh_public_key];
 
     # Enable flakes
     nix.package = pkgs.nixVersions.stable;

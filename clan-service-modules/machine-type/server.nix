@@ -4,8 +4,7 @@
   config,
   ...
 }:
-with lib;
-{
+with lib; {
   # Limit log size for journal
   services.journald.extraConfig = "SystemMaxUse=5G";
 

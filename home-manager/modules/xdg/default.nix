@@ -3,11 +3,9 @@
   lib,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.clan-net.defaults.xdg;
-in
-{
+in {
   options.clan-net.defaults.xdg = {
     enable = mkEnableOption "xdg defaults";
   };
@@ -15,7 +13,7 @@ in
   config = mkIf cfg.enable {
     xdg = {
       enable = true;
-      configFile = { };
+      configFile = {};
     };
   };
 }

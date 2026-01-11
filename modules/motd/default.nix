@@ -3,11 +3,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.clan-net.services.motd;
-in
-{
+in {
   options.clan-net.services.motd = {
     enable = lib.mkEnableOption "Enable MOTD";
     sshMotd = lib.mkOption {
@@ -23,33 +21,31 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.bash.interactiveShellInit =
-      let
-        runtimeInputs = with pkgs; [
-          coreutils
-          gawk
-          procps
-          busybox
-        ];
-        sshMotd = pkgs.writeShellApplication {
-          name = "sshMotd";
-          inherit runtimeInputs;
-          text = cfg.sshMotd;
-        };
-        localMotd = pkgs.writeShellApplication {
-          name = "localMotd";
-          inherit runtimeInputs;
-          text = cfg.localMotd;
-        };
-      in
-      ''
-        if [ -n "$SSH_CONNECTION" ] && [ -z "$MOTD_DISPLAYED" ]; then
-          export MOTD_DISPLAYED=1
-          ${sshMotd}/bin/sshMotd
-        elif [ -z "$SSH_CONNECTION" ] && [ -z "$MOTD_DISPLAYED" ]; then
-          export MOTD_DISPLAYED=1
-          ${localMotd}/bin/localMotd
-        fi
-      '';
+    programs.bash.interactiveShellInit = let
+      runtimeInputs = with pkgs; [
+        coreutils
+        gawk
+        procps
+        busybox
+      ];
+      sshMotd = pkgs.writeShellApplication {
+        name = "sshMotd";
+        inherit runtimeInputs;
+        text = cfg.sshMotd;
+      };
+      localMotd = pkgs.writeShellApplication {
+        name = "localMotd";
+        inherit runtimeInputs;
+        text = cfg.localMotd;
+      };
+    in ''
+      if [ -n "$SSH_CONNECTION" ] && [ -z "$MOTD_DISPLAYED" ]; then
+        export MOTD_DISPLAYED=1
+        ${sshMotd}/bin/sshMotd
+      elif [ -z "$SSH_CONNECTION" ] && [ -z "$MOTD_DISPLAYED" ]; then
+        export MOTD_DISPLAYED=1
+        ${localMotd}/bin/localMotd
+      fi
+    '';
   };
 }

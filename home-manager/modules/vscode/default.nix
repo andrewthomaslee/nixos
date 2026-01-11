@@ -2,13 +2,10 @@
   config,
   lib,
   pkgs,
-  flake-self,
   ...
-}:
-let
+}: let
   cfg = config.clan-net.programs.vscode;
-in
-{
+in {
   options.clan-net.programs.vscode.enable = lib.mkEnableOption "vscode";
 
   config = lib.mkIf cfg.enable {
@@ -87,8 +84,7 @@ in
               "editor.formatOnSave" = true;
               "editor.defaultFormatter" = "charliermarsh.ruff";
             };
-            "yaml.schemaStore.url" =
-              "https://raw.githubusercontent.com/weaveworks/eksctl/main/pkg/apis/eksctl.io/v1alpha5/assets/schema.json";
+            "yaml.schemaStore.url" = "https://raw.githubusercontent.com/weaveworks/eksctl/main/pkg/apis/eksctl.io/v1alpha5/assets/schema.json";
             "[dockercompose]" = {
               "editor.insertSpaces" = true;
               "editor.tabSize" = 2;
@@ -116,7 +112,7 @@ in
             "nix.serverSettings" = {
               nil = {
                 formatting = {
-                  command = "alejandra";
+                  command = ["alejandra"];
                 };
                 nix = {
                   maxMemoryMB = 4096;
@@ -136,18 +132,16 @@ in
         };
       };
     };
-    home.packages =
-      with pkgs;
-      [
-        pyrefly
-        ruff
-        nil
-        helm-ls
-        terraform-ls
-        gemini-cli
-        kubectl
-        alejandra
-      ];
+    home.packages = with pkgs; [
+      pyrefly
+      ruff
+      nil
+      helm-ls
+      terraform-ls
+      gemini-cli
+      kubectl
+      alejandra
+    ];
 
     programs.bash = {
       shellAliases = {

@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-{
-  imports = [ ../common.nix ];
+{pkgs, ...}: {
+  imports = [../common.nix];
 
   config = {
     home.keyboard = {

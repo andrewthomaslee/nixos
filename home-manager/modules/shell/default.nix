@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.clan-net.defaults.shell;
-in
-{
+in {
   imports = [
     ./starship.nix
     ./bash.nix

@@ -8,7 +8,6 @@
     # Rolling Release of Nixpkgs from Clan.lol
     nixpkgs.follows = "clan-core/nixpkgs";
 
-
     # --- Flakes --- #
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -31,10 +30,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs =
-    { self, ... }@inputs:
-    with inputs;
-    let
+  outputs = {self, ...} @ inputs:
+    with inputs; let
       # System types to support.
       supportedSystems = [
         "x86_64-linux"
@@ -49,10 +46,10 @@
       # Nixpkgs instantiated for supported system types.
       nixpkgsFor = forAllSystems (
         system:
-        import nixpkgs {
-          inherit system;
-          overlays = [ self.overlays.default ];
-        }
+          import nixpkgs {
+            inherit system;
+            overlays = [self.overlays.default];
+          }
       );
 
       clan-facts = builtins.fromJSON (builtins.readFile ./clan-facts.json);
@@ -64,37 +61,39 @@
         # Technically, adding the inputs is redundant as they can be also
         # accessed with flake-self.inputs.X, but adding them individually
         # allows to only pass what is needed to each module.
-        specialArgs = {
-          flake-self = self;
-          inherit clan-facts;
-        }
-        // inputs;
+        specialArgs =
+          {
+            flake-self = self;
+            inherit clan-facts;
+          }
+          // inputs;
 
         # Register custom clan service modules
         modules."@andrewthomaslee/machine-type" = ./clan-service-modules/machine-type;
         modules."@andrewthomaslee/desktop" = ./clan-service-modules/desktop;
 
-        inventory = import ./inventory.nix { inherit self clan-facts; };
+        inventory = import ./inventory.nix {inherit self clan-facts;};
       };
-    in
-    {
+    in {
       devShells = forAllSystems (
-        system: with nixpkgsFor.${system}; {
-          default = pkgs.mkShell {
-            buildInputs = [pkgs.bash];
-            packages = [
-              clan-core.packages.${system}.clan-cli
-            ];
-          };
-        }
+        system:
+          with nixpkgsFor.${system}; {
+            default = pkgs.mkShell {
+              buildInputs = [pkgs.bash];
+              packages = [
+                clan-core.packages.${system}.clan-cli
+              ];
+            };
+          }
       );
 
       # Custom packages added via the overlay are selectively exposed here, to
       # allow using them from other flakes that import this one.
       packages = forAllSystems (
-        system: with nixpkgsFor.${system}; {
-          inherit hello-custom;
-        }
+        system:
+          with nixpkgsFor.${system}; {
+            inherit hello-custom;
+          }
       );
 
       # Expose overlay to flake outputs, to allow using it from other flakes.
@@ -104,7 +103,6 @@
 
       # Use alejandra for 'nix fmt'
       formatter = forAllSystems (system: nixpkgsFor.${system}.alejandra);
-
 
       # Each subdirectory in ./templates/<template-name> is a
       # template, which can be used for new proects with:
@@ -138,22 +136,21 @@
       # home-manager profile
       homeConfigurations = builtins.listToAttrs (
         map
-          (name: {
-            inherit name;
-            value =
-              { ... }:
-              {
-                imports = [
-                  (./home-manager/profiles + "/${name}")
-                ]
-                ++ (builtins.attrValues self.homeManagerModules);
-              };
-          })
-          (
-            builtins.attrNames (
-              nixpkgs.lib.filterAttrs (n: v: v == "directory") (builtins.readDir ./home-manager/profiles)
-            )
+        (name: {
+          inherit name;
+          value = {...}: {
+            imports =
+              [
+                (./home-manager/profiles + "/${name}")
+              ]
+              ++ (builtins.attrValues self.homeManagerModules);
+          };
+        })
+        (
+          builtins.attrNames (
+            nixpkgs.lib.filterAttrs (n: v: v == "directory") (builtins.readDir ./home-manager/profiles)
           )
+        )
       );
 
       # Each subdirectory in ./home-manager/modules/<module-name> is a

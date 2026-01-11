@@ -5,8 +5,7 @@
   flake-self,
   home-manager,
   ...
-}:
-{
+}: {
   imports = [
     home-manager.nixosModules.home-manager
   ];
@@ -15,7 +14,7 @@
   services.acpid.enable = true;
 
   # To build raspi images
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   # Enable networkmanager
   networking.networkmanager.enable = true;
@@ -74,8 +73,7 @@
 
     virtualisation = {
       docker.enable = true;
-      virt-manager.enable = true;
-      virtualbox.enable = false;
+      virtualbox.enable = true;
     };
 
     services = {
@@ -87,6 +85,7 @@
       };
       networking.enable = true;
       motd.enable = true;
+      qdrant.enable = true;
     };
   };
 
@@ -106,5 +105,4 @@
   services.logind.settings.Login.RuntimeDirectorySize = "20G";
 
   boot.tmp.useTmpfs = false;
-
 }

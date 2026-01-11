@@ -3,12 +3,10 @@
   config,
   clan-facts,
   ...
-}:
-let
+}: let
   net = clan-facts.machines.${config.networking.hostName}.networking;
   cfg = config.clan-net.hetzner.cloud;
-in
-{
+in {
   options.clan-net.hetzner.cloud.enable = lib.mkEnableOption "Hetzner Cloud Settings";
 
   config = lib.mkIf cfg.enable {
@@ -20,7 +18,10 @@ in
       # Public Interface
       interfaces.${net.interface} = {
         useDHCP = true;
-        wakeOnLan.enable = true;
+        wakeOnLan = {
+          enable = true;
+          policy = ["phy" "unicast" "multicast" "broadcast" "arp" "magic"];
+        };
         ipv6.addresses = [
           {
             inherit (net.IPv6) address prefixLength;

@@ -22,7 +22,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [ "umask=0077" ];
+                mountOptions = ["umask=0077"];
               };
             };
             # Root partition for NixOS
@@ -32,7 +32,7 @@
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/";
-                mountOptions = [ "noatime" ];
+                mountOptions = ["noatime"];
               };
             };
           };
@@ -53,7 +53,7 @@
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/var/lib/rancher/k3s";
-                mountOptions = [ "noatime" ];
+                mountOptions = ["noatime"];
               };
             };
           };

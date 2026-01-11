@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.clan-net.programs.starship;
-in
-{
+in {
   options.clan-net.programs.starship.enable = lib.mkEnableOption "starship";
 
   config = lib.mkIf cfg.enable {
@@ -17,7 +15,7 @@ in
         gcloud.disabled = true;
         kubernetes = {
           disabled = false;
-          detect_env_vars = [ "KUBECONFIG" ];
+          detect_env_vars = ["KUBECONFIG"];
         };
         git_branch.style = "242";
         directory.style = "bold blue";

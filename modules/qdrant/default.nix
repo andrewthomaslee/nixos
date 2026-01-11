@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.clan-net.services.qdrant;
-in
-{
+in {
   options.clan-net.services.qdrant = {
     enable = lib.mkEnableOption "qdrant";
     basePath = lib.mkOption {

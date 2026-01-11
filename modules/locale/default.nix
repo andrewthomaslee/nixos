@@ -3,11 +3,9 @@
   lib,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.clan-net.defaults.locale;
-in
-{
+in {
   options.clan-net.defaults.locale = {
     enable = mkEnableOption "Locale defaults";
   };

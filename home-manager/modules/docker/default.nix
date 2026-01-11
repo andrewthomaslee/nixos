@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.clan-net.programs.docker;
-in
-{
+in {
   options.clan-net.programs.docker.enable = lib.mkEnableOption "docker";
 
   config = lib.mkIf cfg.enable {
@@ -22,13 +20,13 @@ in
             name = "Bash";
             attach = true;
             command = "docker exec -it {{ .Container.ID }} bash";
-            serviceNames = [ ];
+            serviceNames = [];
           }
           {
             name = "Shell";
             attach = true;
             command = "docker exec -it {{ .Container.ID }} sh";
-            serviceNames = [ ];
+            serviceNames = [];
           }
         ];
       };
