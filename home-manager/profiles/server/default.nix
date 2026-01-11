@@ -13,6 +13,9 @@
 
       programs = {
         tmux.enable = true;
+        bash.enable = true;
+        starship.enable = true;
+        nix.enable = true;
       };
     };
   };

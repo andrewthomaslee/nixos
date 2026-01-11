@@ -5,7 +5,11 @@
 }:
 {
   clan-net = {
-    services.motd.sshMotd = builtins.readFile ./sshMotd.sh;
+    services = {
+      motd.sshMotd = builtins.readFile ./sshMotd.sh;
+      qdrant.basePath = "/mnt/storage/";
+
+    };
 
     filesystems.ext4.enable = true;
   };

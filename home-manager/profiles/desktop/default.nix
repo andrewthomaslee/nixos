@@ -10,14 +10,14 @@
     clan-net = {
       defaults = {
         xdg.enable = true;
-        ssh.enable = false;
+        ssh.enable = true;
         shell.enable = true;
         git.enable = true;
       };
 
       programs = {
-        k9s.enable = false;
-        zed.enable = false;
+        k9s.enable = true;
+        zed.enable = true;
         firefox.enable = true;
         tmux.enable = true;
         vscode.enable = true;
@@ -25,6 +25,9 @@
         go.enable = true;
         python.enable = true;
         ghostty.enable = true;
+        nix.enable = true;
+        bash.enable = true;
+        starship.enable = true;
       };
 
       services = {
@@ -42,22 +45,8 @@
       prismlauncher # minecraft launcher
       tor
       kalker # CLI Calculator
+      zen-browser
+      moscripts
     ];
-
-    services = {
-      # Applets, shown in tray
-
-      # Networking
-      network-manager-applet.enable = true;
-
-      # Bluetooth
-      blueman-applet.enable = true;
-
-      # Pulseaudio
-      pasystray.enable = true;
-
-      # Battery Warning
-      cbatticon.enable = true;
-    };
   };
 }

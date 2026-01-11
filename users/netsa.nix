@@ -1,7 +1,6 @@
 {
   pkgs,
   clan-facts,
-  config,
   ...
 }:
 {

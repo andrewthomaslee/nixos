@@ -20,6 +20,7 @@ in
       # Public Interface
       interfaces.${net.interface} = {
         useDHCP = true;
+        wakeOnLan.enable = true;
         ipv6.addresses = [
           {
             inherit (net.IPv6) address prefixLength;
