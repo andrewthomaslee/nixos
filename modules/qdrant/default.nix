@@ -20,11 +20,9 @@ in {
       enable = true;
       settings = {
         storage = {
-          storage_path = "${cfg.basePath}qdrant/storage";
-          snapshots_path = "${cfg.basePath}qdrant/snapshots";
-        };
-        hsnw_index = {
-          on_disk = true;
+          hsnw_index = {
+            on_disk = true;
+          };
         };
         service = {
           host = "127.0.0.1";
@@ -33,6 +31,10 @@ in {
         };
         telemetry_disabled = true;
       };
+    };
+    systemd.services.qdrant.serviceConfig = {
+      # Mounts your external drive folder to the internal state directory
+      BindPaths = ["${cfg.basePath}qdrant:/var/lib/qdrant"];
     };
   };
 }
