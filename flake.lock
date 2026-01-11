@@ -276,10 +276,6 @@
           "nixpkgs"
         ],
         "tailscale": "tailscale",
-        "treefmt-nix": [
-          "clan-core",
-          "treefmt-nix"
-        ],
         "zen-browser": "zen-browser"
       }
     },

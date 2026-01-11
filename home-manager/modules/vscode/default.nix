@@ -20,6 +20,7 @@ in
       profiles = {
         default = {
           extensions = with pkgs.vscode-extensions; [
+            kamadorueda.alejandra
             jnoortheen.nix-ide
             supermaven.supermaven
             bradlc.vscode-tailwindcss
@@ -103,25 +104,19 @@ in
             };
             "terminal.integrated.enableMultiLinePasteWarning" = "never";
             "[nix]" = {
+              "editor.defaultFormatter" = "kamadorueda.alejandra";
               "editor.formatOnPaste" = false;
               "editor.formatOnSave" = true;
               "editor.formatOnType" = false;
             };
+            "alejandra.program" = "alejandra";
             "nix.enableLanguageServer" = true;
             "nix.serverPath" = "nil";
-            "nix.formatterPath" = [
-              "treefmt"
-              "--stdin"
-              "{file}"
-            ];
+            "nix.formatterPath" = "alejandra";
             "nix.serverSettings" = {
               nil = {
                 formatting = {
-                  command = [
-                    "treefmt"
-                    "--stdin"
-                    "{file}"
-                  ];
+                  command = "alejandra";
                 };
                 nix = {
                   maxMemoryMB = 4096;
@@ -151,9 +146,7 @@ in
         terraform-ls
         gemini-cli
         kubectl
-      ]
-      ++ [
-        flake-self.packages.${pkgs.stdenv.hostPlatform.system}.treefmt
+        alejandra
       ];
 
     programs.bash = {

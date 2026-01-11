@@ -54,9 +54,21 @@ in
       rules."50-tailscale" = {
         onState = [ "routable" ];
         script = ''
-          NETDEV=$(ip -o route get 8.8.8.8 | cut -f 5 -d " ")
+          #!${pkgs.runtimeShell}
+          NETDEV=$(${pkgs.iproute2}/bin/ip -o route get 8.8.8.8 | cut -f 5 -d " ")
           ${pkgs.ethtool}/bin/ethtool -K "$NETDEV" rx-udp-gro-forwarding on rx-gro-list off
         '';
+      };
+    };
+
+    systemd.services.tailscaled-autoconnect = {
+      serviceConfig = {
+        Restart = "on-failure";
+        RestartSec = "5s";
+        StartLimitIntervalSec = 0;
+      };
+      unitConfig = {
+        StartLimitIntervalSec = 0; # Unlimited retries
       };
     };
 

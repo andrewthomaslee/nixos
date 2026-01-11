@@ -8,8 +8,6 @@
     # Rolling Release of Nixpkgs from Clan.lol
     nixpkgs.follows = "clan-core/nixpkgs";
 
-    # Formatter
-    treefmt-nix.follows = "clan-core/treefmt-nix";
 
     # --- Flakes --- #
     home-manager = {
@@ -57,21 +55,6 @@
         }
       );
 
-      # treefmt configuration
-      treefmtEval = forAllSystems (
-        system:
-        treefmt-nix.lib.evalModule nixpkgsFor.${system} {
-          projectRootFile = "flake.nix";
-          programs = {
-            nixfmt.enable = true;
-            nixfmt.package = nixpkgsFor.${system}.nixfmt-rfc-style;
-            prettier.enable = false;
-            shellcheck.enable = false;
-            shfmt.enable = false;
-          };
-        }
-      );
-
       clan-facts = builtins.fromJSON (builtins.readFile ./clan-facts.json);
       clan = clan-core.lib.clan {
         # this needs to point at the repository root
@@ -98,9 +81,9 @@
       devShells = forAllSystems (
         system: with nixpkgsFor.${system}; {
           default = pkgs.mkShell {
+            buildInputs = [pkgs.bash];
             packages = [
               clan-core.packages.${system}.clan-cli
-              treefmtEval.${system}.config.build.wrapper
             ];
           };
         }
@@ -111,7 +94,6 @@
       packages = forAllSystems (
         system: with nixpkgsFor.${system}; {
           inherit hello-custom;
-          treefmt = treefmtEval.${system}.config.build.wrapper;
         }
       );
 
@@ -120,13 +102,9 @@
       # it can use the sources pinned in flake.lock
       overlays.default = final: prev: (import ./overlays inputs self clan-net-utils) final prev;
 
-      # Use treefmt for 'nix fmt'
-      formatter = forAllSystems (system: treefmtEval.${system}.config.build.wrapper);
+      # Use alejandra for 'nix fmt'
+      formatter = forAllSystems (system: nixpkgsFor.${system}.alejandra);
 
-      # Expose treefmt check for CI
-      checks = forAllSystems (system: {
-        formatting = treefmtEval.${system}.config.build.check self;
-      });
 
       # Each subdirectory in ./templates/<template-name> is a
       # template, which can be used for new proects with:
