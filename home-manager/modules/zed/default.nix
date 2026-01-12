@@ -15,11 +15,17 @@ in {
     # Add nixd (Nix language server) for better Nix support
     home.packages = with pkgs; [
       nixd
+      alejandra
     ];
 
     programs.zed-editor = {
       enable = true;
+      installRemoteServer = true;
       extensions = ["nix"];
+      extraPackages = with pkgs; [
+        nixd
+        alejandra
+      ];
       userSettings = {
         telemetry = {
           metrics = false;
@@ -38,6 +44,17 @@ in {
         language_overrides = {
           nix = {
             language_server_id = "nixd";
+          };
+        };
+        languages = {
+          nix = {
+            tab_size = 2;
+            formatter.external = {
+              command = "alejandra";
+              args = ["{buffer_path}"];
+            };
+            format_on_save = "on";
+            language_servers = ["nixd"];
           };
         };
       };

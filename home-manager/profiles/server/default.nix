@@ -15,6 +15,7 @@
         bash.enable = true;
         starship.enable = true;
         nix.enable = true;
+        zed.enable = true;
       };
     };
   };
