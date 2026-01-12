@@ -25,7 +25,7 @@ with lib; let
       nginx-language-server
       sqls
     ]
-    ++ (with tree-sitter-grammars; [
+    ++ (with pkgs.tree-sitter-grammars; [
       tree-sitter-dockerfile
       tree-sitter-nix
       tree-sitter-python
@@ -40,7 +40,6 @@ with lib; let
       tree-sitter-yaml
       tree-sitter-sql
       tree-sitter-toml
-      tree-sitter-nginx
     ]);
 in {
   options.clan-net.programs.zed = {
@@ -70,7 +69,6 @@ in {
         "docker-compose"
         "sql"
         "toml"
-        "nginx"
       ];
       extraPackages = packages;
       userSettings = {
