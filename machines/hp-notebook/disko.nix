@@ -1,35 +1,45 @@
+# ---
+# schema = "single-disk"
+# [placeholders]
+# mainDisk = "/dev/disk/by-id/mmc-TY2964_0x5aebfa8a" 
+# ---
+# This file was automatically generated!
+# CHANGING this configuration requires wiping and reinstalling the machine
 {
+
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.grub.enable = true;
   disko.devices = {
     disk = {
       main = {
+        name = "main-edf12d4fc0244694be3be21771ca6f14";
+        device = "/dev/disk/by-id/mmc-TY2964_0x5aebfa8a";
         type = "disk";
-        device = "/dev/mmcblk0";
         content = {
           type = "gpt";
           partitions = {
-            boot = {
+            "boot" = {
               size = "1M";
-              type = "EF02";
+              type = "EF02"; # for grub MBR
               priority = 1;
             };
             ESP = {
-              size = "1G";
               type = "EF00";
-              priority = 2;
+              size = "500M";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = ["umask=0077"];
+                mountOptions = [ "umask=0077" ];
               };
             };
-            nixos = {
+            root = {
               size = "100%";
               content = {
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/";
-                mountOptions = ["noatime"];
               };
             };
           };
