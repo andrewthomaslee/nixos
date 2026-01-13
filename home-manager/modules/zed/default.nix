@@ -47,7 +47,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = packages;
     programs.zed-editor = {
       enable = true;
       installRemoteServer = true;
