@@ -5,6 +5,9 @@
     },
     "nixos": {
       "installedAt": 1768016178
+    },
+    "hp-notebook": {
+      "installedAt": 1768282176
     }
   }
 }
