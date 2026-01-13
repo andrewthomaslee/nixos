@@ -2,6 +2,8 @@
   lib,
   pkgs,
   config,
+  flake-self,
+  home-manager,
   ...
 }:
 with lib; {
@@ -13,6 +15,8 @@ with lib; {
     neovim
     vim
   ];
+
+  home-manager.users.netsa = flake-self.homeConfigurations.server;
 
   clan-net = {
     defaults = {

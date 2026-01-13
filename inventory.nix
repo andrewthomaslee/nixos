@@ -7,6 +7,7 @@
   machines = {
     nixos.tags = ["desktop"];
     ghost.tags = ["desktop"];
+    hp-notebook.tags = ["desktop"];
 
     kamrui-P1-0.tags = ["server"];
     helsinki-vps.tags = ["server"];
@@ -49,6 +50,7 @@
     user-madi = {
       module.name = "users";
       roles.default.machines.nixos = {};
+      roles.default.machines.hp-notebook = {};
       roles.default.settings = {
         user = "madi";
         share = true;

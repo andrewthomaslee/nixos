@@ -50,6 +50,7 @@
 
   # TODO parametrize the username
   home-manager.users.netsa = flake-self.homeConfigurations.desktop;
+  home-manager.users.madi = flake-self.homeConfigurations.madi;
 
   # Hardware accelleration
   hardware.graphics = {
@@ -85,7 +86,6 @@
       };
       networking.enable = true;
       motd.enable = true;
-      qdrant.enable = true;
     };
   };
 
