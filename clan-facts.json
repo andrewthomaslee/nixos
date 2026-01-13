@@ -44,10 +44,10 @@
       },
       "disks": [
         {
-          "device": "/dev/disk/by-id/nvme",
+          "device": "/dev/disk/by-id/nvme-G932E1Q_1T_YALT002964T",
           "label": "nvme0n1",
           "mountpoint": "/",
-          "capacity": "512G",
+          "capacity": "1T",
           "format": "ext4"
         }
       ]
