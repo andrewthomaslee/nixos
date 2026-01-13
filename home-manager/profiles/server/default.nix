@@ -16,6 +16,8 @@
         starship.enable = true;
         nix.enable = true;
         zed.enable = true;
+        go.enable = true;
+        python.enable = true;
       };
     };
   };

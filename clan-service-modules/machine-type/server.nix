@@ -33,6 +33,10 @@ with lib; {
       networking.enable = true;
       motd.enable = true;
     };
+
+    virtualisation = {
+      docker.enable = true;
+    };
   };
 
   # Backup Postgres, if it is running
