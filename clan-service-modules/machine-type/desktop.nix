@@ -6,15 +6,8 @@
   home-manager,
   ...
 }: {
-  imports = [
-    home-manager.nixosModules.home-manager
-  ];
-
   services.fwupd.enable = true;
   services.acpid.enable = true;
-
-  # To build raspi images
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   # Enable networkmanager
   networking.networkmanager.enable = true;
@@ -24,33 +17,6 @@
     NetworkManager-wait-online.enable = lib.mkForce false;
     systemd-networkd-wait-online.enable = lib.mkForce false;
   };
-
-  # DON'T set useGlobalPackages! It's not necessary in newer
-  # home-manager versions and does not work with configs using
-  # nixpkgs.config`
-  home-manager.useUserPackages = true;
-
-  # Backup files before overwriting them with home-manager
-  home-manager.backupFileExtension = "hm-backup";
-
-  # Pass all flake inputs to home-manager modules aswell so we can use them
-  # there.
-  # home-manager.extraSpecialArgs = flake-self.inputs;
-  home-manager.extraSpecialArgs = {
-    inherit flake-self;
-
-    # Pass system configuration (top-level "config") to home-manager modules,
-    # so we can access it's values for conditional statements. Writing is NOT possible!
-    system-config = config;
-  };
-
-  nixpkgs.overlays = [
-    flake-self.overlays.default
-  ];
-
-  # TODO parametrize the username
-  home-manager.users.netsa = flake-self.homeConfigurations.desktop;
-  home-manager.users.madi = flake-self.homeConfigurations.madi;
 
   # Hardware accelleration
   hardware.graphics = {
@@ -102,7 +68,7 @@
     wget
   ];
 
-  services.logind.settings.Login.RuntimeDirectorySize = "20G";
+  services.logind.settings.Login.RuntimeDirectorySize = "10G";
 
   boot.tmp.useTmpfs = false;
 }

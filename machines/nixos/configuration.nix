@@ -13,6 +13,8 @@
     filesystems.ext4.enable = true;
   };
 
+  home-manager.users.netsa = flake-self.homeConfigurations.desktop;
+
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
@@ -27,4 +29,6 @@
     "nvidiafb"
     "nvidia_drm"
   ];
+  # To build raspi images
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 }

@@ -16,8 +16,6 @@ with lib; {
     vim
   ];
 
-  home-manager.users.netsa = flake-self.homeConfigurations.server;
-
   clan-net = {
     defaults = {
       environment.enable = true;

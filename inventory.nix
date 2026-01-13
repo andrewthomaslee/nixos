@@ -5,12 +5,13 @@
   inherit (clan-facts) meta;
 
   machines = {
-    nixos.tags = ["desktop"];
-    ghost.tags = ["desktop"];
-    hp-notebook.tags = ["desktop"];
+    hp-notebook.tags = ["desktop" "madi"];
 
-    kamrui-P1-0.tags = ["server"];
-    helsinki-vps.tags = ["server"];
+    nixos.tags = ["desktop" "netsa"];
+    ghost.tags = ["desktop" "netsa"];
+
+    kamrui-P1-0.tags = ["server" "netsa"];
+    helsinki-vps.tags = ["server" "netsa"];
   };
 
   instances = {
@@ -39,7 +40,7 @@
 
     user-netsa = {
       module.name = "users";
-      roles.default.tags.all = {};
+      roles.default.tags.netsa = {};
       roles.default.settings = {
         user = "netsa";
         share = true;
@@ -49,8 +50,7 @@
 
     user-madi = {
       module.name = "users";
-      roles.default.machines.nixos = {};
-      roles.default.machines.hp-notebook = {};
+      roles.default.tags.madi = {};
       roles.default.settings = {
         user = "madi";
         share = true;
@@ -60,7 +60,7 @@
 
     user-robot = {
       module.name = "users";
-      roles.default.tags = ["server"];
+      roles.default.tags.server = {};
       roles.default.settings = {
         user = "robot";
         share = true;
