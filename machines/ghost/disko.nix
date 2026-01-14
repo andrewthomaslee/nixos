@@ -1,23 +1,22 @@
 {
   disko.devices = {
     disk = {
-      # --- Main 512GB Drive (nvme1n1) ---
-      nvme0n1 = {
+      nvme1n1 = {
         name = "main";
-        device = "/dev/nvme1n1";
+        device = "/dev/disk/by-id/nvme-eui.5cd2e47911b0139e";
         type = "disk";
         content = {
           type = "gpt";
           partitions = {
             "boot" = {
-              size = "10M";
+              size = "1M";
               type = "EF02";
               priority = 1;
             };
-            # EFI System Partition (ESP)
             ESP = {
-              type = "EF00"; # GPT type for an EFI partition
+              type = "EF00";
               size = "1G";
+              priority = 2;
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -25,9 +24,8 @@
                 mountOptions = ["umask=0077"];
               };
             };
-            # Root partition for NixOS
-            root = {
-              size = "100%"; # Use the rest of the drive
+            nixos = {
+              size = "100%";
               content = {
                 type = "filesystem";
                 format = "ext4";
@@ -38,11 +36,9 @@
           };
         };
       };
-
-      # --- Swap 32GB Drive (nvme0n1) ---
-      nvme1n1 = {
+      nvme0n1 = {
         name = "swap";
-        device = "/dev/nvme0n1";
+        device = "/dev/disk/by-id/nvme-eui.5cd2e475228a0100";
         type = "disk";
         content = {
           type = "gpt";
