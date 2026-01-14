@@ -1,16 +1,22 @@
 {
   lib,
   config,
-  clan-facts,
   ...
-}:
-with lib; let
-  cfg = config.clan-net.services.networking;
-in {
-  options.clan-net.services.networking.enable = mkEnableOption "networking";
+}: let
+  cfg = config.clan-net.services.networking.ethernet;
 
-  config = mkIf cfg.enable {
-    networking.interfaces.${clan-facts.machines.${config.networking.hostName}.networking.interface} = {
+  controllers = config.facter.report.hardware.network_controller;
+  ethDevice =
+    lib.findFirst
+    (dev: dev.model == "Ethernet controller")
+    (builtins.head controllers)
+    controllers;
+  interfaceName = builtins.head ethDevice.unix_device_names;
+in {
+  options.clan-net.services.networking.ethernet.enable = lib.mkEnableOption "networking ethernet";
+
+  config = lib.mkIf cfg.enable {
+    networking.interfaces.${interfaceName} = {
       useDHCP = true;
       wakeOnLan = {
         enable = true;

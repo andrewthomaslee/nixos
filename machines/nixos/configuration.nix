@@ -4,15 +4,20 @@
   ...
 }: {
   clan-net = {
+    filesystems.ext4.enable = true;
+
     services = {
       motd.sshMotd = builtins.readFile ./sshMotd.sh;
-      qdrant.enable = true;
-      qdrant.basePath = "/mnt/storage/";
+      networking.ethernet.enable = true;
     };
 
-    filesystems.ext4.enable = true;
+    virtualisation = {
+      docker.enable = true;
+      virtualbox.enable = true;
+    };
   };
 
+  # User Profiles
   home-manager.users.netsa = flake-self.homeConfigurations.desktop;
 
   # Load nvidia driver for Xorg and Wayland

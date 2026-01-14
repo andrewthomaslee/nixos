@@ -3,5 +3,7 @@
     filesystems.ext4.enable = true;
     hetzner.cloud.enable = true;
   };
-  home-manager.users.netsa = flake-self.homeConfigurations.desktop;
+
+  # User Profiles
+  home-manager.users.netsa = flake-self.homeConfigurations.server;
 }

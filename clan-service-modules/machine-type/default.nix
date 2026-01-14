@@ -10,31 +10,55 @@
 
   # Common configuration for all macine types
   perMachine.nixosModule = {
+    pkgs,
     lib,
     config,
     flake-self,
     home-manager,
     ...
   }: {
+    # Home manager
     imports = [
       home-manager.nixosModules.home-manager
     ];
-    home-manager.useUserPackages = true;
-    home-manager.backupFileExtension = "hm-backup";
-    home-manager.extraSpecialArgs = {
-      inherit flake-self;
-      system-config = config;
+    home-manager = {
+      useUserPackages = true;
+      backupFileExtension = "hm-backup";
+      extraSpecialArgs = {
+        inherit flake-self;
+        system-config = config;
+      };
     };
+
+    # pkgs overlay from flake
     nixpkgs.overlays = [
       flake-self.overlays.default
     ];
-    security.acme.acceptTerms = true;
-    security.acme.defaults.email = lib.mkDefault "andrewthomaslee.business@gmail.com";
+
+    # acme
+    security.acme = {
+      acceptTerms = true;
+      defaults.email = lib.mkDefault "andrewthomaslee.business@gmail.com";
+    };
+
+    # Clan
     clan.core.settings.state-version.enable = true;
+
+    # Hardware
     hardware.enableRedistributableFirmware = true;
+
+    # Networking
+    networking.networkmanager.enable = true;
+
+    # System Environment
     environment = {
       enableAllTerminfo = true;
       localBinInPath = true;
+      systemPackages = with pkgs; [
+        git
+        neovim
+        vim
+      ];
     };
   };
 }

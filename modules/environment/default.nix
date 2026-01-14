@@ -12,11 +12,8 @@ in {
 
   config = mkIf cfg.enable {
     # System-wide environment variables to be set
-    environment = {
-      variables = {
-        EDITOR = "codium --wait";
-        GOPATH = "/home/netsa/.go";
-      };
+    environment.variables = {
+      EDITOR = "nvim";
     };
   };
 }

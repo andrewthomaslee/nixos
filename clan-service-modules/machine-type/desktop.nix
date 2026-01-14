@@ -1,16 +1,10 @@
 {
-  config,
   pkgs,
   lib,
-  flake-self,
-  home-manager,
   ...
 }: {
   services.fwupd.enable = true;
   services.acpid.enable = true;
-
-  # Enable networkmanager
-  networking.networkmanager.enable = true;
 
   # Often hangs
   systemd.services = {
@@ -38,11 +32,6 @@
       sound.enable = true;
     };
 
-    virtualisation = {
-      docker.enable = true;
-      virtualbox.enable = true;
-    };
-
     services = {
       wayland.enable = true;
       openssh.enable = true;
@@ -50,20 +39,12 @@
         enable = true;
         systray = true;
       };
-      networking.enable = true;
       motd.enable = true;
     };
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-
   environment.systemPackages = with pkgs; [
     firefox
-    git
-    neovim
-    vim
-    ripgrep
     usbutils
     wget
   ];

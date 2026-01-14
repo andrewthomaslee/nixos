@@ -1,20 +1,6 @@
-{
-  lib,
-  pkgs,
-  config,
-  flake-self,
-  home-manager,
-  ...
-}:
-with lib; {
+{config, ...}: {
   # Limit log size for journal
   services.journald.extraConfig = "SystemMaxUse=5G";
-
-  environment.systemPackages = with pkgs; [
-    git
-    neovim
-    vim
-  ];
 
   clan-net = {
     defaults = {
@@ -30,7 +16,7 @@ with lib; {
     services = {
       openssh.enable = true;
       tailscale.enable = true;
-      networking.enable = true;
+      networking.ethernet.enable = true;
       motd.enable = true;
     };
 

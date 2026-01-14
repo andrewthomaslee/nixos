@@ -9,11 +9,12 @@ in {
   options.clan-net.programs.go.enable = mkEnableOption "go compiler";
 
   config = mkIf cfg.enable {
-    programs = {
-      go = {
-        enable = true;
-        env.GOPATH = "/home/netsa/.go";
-      };
+    home.sessionVariables = {
+      GOPATH = "/home/${config.home.username}/.go";
+    };
+    programs.go = {
+      enable = true;
+      env.GOPATH = "/home/${config.home.username}/.go";
     };
   };
 }

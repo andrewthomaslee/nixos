@@ -34,8 +34,8 @@
     kdePackages.filelight # disk usage analyzer
     kdePackages.krfb # Krfb Desktop Sharing (VNC)
     kdePackages.kalk # Calculator
-    # Apps
 
+    # Apps
     hardinfo2 # System information and benchmarks for Linux systems
     haruna # Open source video player built with Qt/QML and libmpv
     xclip # Tool to access the X clipboard from a console application
