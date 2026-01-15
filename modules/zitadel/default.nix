@@ -18,7 +18,6 @@ in {
   config = lib.mkIf cfg.enable {
     clan.core.vars.generators.zitadel = {
       files = {
-        postgres_password = {owner = "postgres";};
         admin_password = {owner = config.services.zitadel.user;};
         master_key = {owner = config.services.zitadel.user;};
         admin_steps = {owner = config.services.zitadel.user;};
@@ -34,10 +33,6 @@ in {
         generate_secret() {
           ( set +o pipefail ; tr -dc A-Za-z0-9 </dev/urandom | head -c 32 )
         }
-
-        # Generate postgres_password
-        POSTGRES_PASSWORD="$(generate_secret)"
-        echo -n "$POSTGRES_PASSWORD" > $out/postgres_password
 
         # Generate admin_password
         ADMIN_PASSWORD="$(generate_secret)"
@@ -68,48 +63,20 @@ in {
         cat > $out/settings <<EOF
         Database:
           postgres:
-            Database: zitadel
             User:
               Username: zitadel
-              Password: $POSTGRES_PASSWORD
+              Password: $ADMIN_PASSWORD
               SSL:
                 Mode: disable
             Admin:
-              Username: zitadel
-              Password: $POSTGRES_PASSWORD
-              ExistingDatabase: zitadel
+              Username: postgres
               SSL:
                 Mode: disable
-        EOF
+                EOF
       '';
     };
     # Enable the PostgreSQL backup module
-    clan.core.postgresql = {
-      enable = true;
-      users.zitadel.name = "zitadel";
-      databases.zitadel = {
-        name = "zitadel";
-        service = "zitadel";
-        create = {
-          enable = true;
-          options = {
-            ENCODING = "UTF8";
-            LC_COLLATE = "C";
-            LC_CTYPE = "C";
-            OWNER = "zitadel";
-            TEMPLATE = "template0";
-          };
-        };
-        restore.stopOnRestore = [
-          "zitadel.service"
-        ];
-      };
-    };
-    systemd.services.postgresql = {
-      serviceConfig.ExecStartPost = lib.mkAfter [
-        "${config.services.postgresql.package}/bin/psql -c \"ALTER USER zitadel WITH PASSWORD '$(${pkgs.coreutils}/bin/cat ${config.clan.core.vars.generators.zitadel.files.postgres_password.path})';\""
-      ];
-    };
+    clan.core.postgresql.enable = true;
 
     services.zitadel = {
       enable = true;
