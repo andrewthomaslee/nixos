@@ -20,5 +20,6 @@ in {
       recommendedGzipSettings = true;
       enableReload = true;
     };
+    networking.firewall.allowedTCPPorts = [80 443];
   };
 }
