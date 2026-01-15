@@ -29,6 +29,11 @@
       url = "github:andrewthomaslee/moscripts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    blogAndrewleeFun = {
+      url = "github:andrewthomaslee/blog.andrewlee.fun?submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {self, ...} @ inputs:
     with inputs; let

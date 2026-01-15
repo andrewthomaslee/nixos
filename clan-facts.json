@@ -133,5 +133,11 @@
   },
   "tailscale": {
     "tailnet": "armadillo-frog.ts.net"
+  },
+  "cloudflare": {
+    "domains": [
+      "andrewlee.cloud",
+      "andrewlee.fun"
+    ]
   }
 }
