@@ -6,10 +6,13 @@
   ...
 }: let
   cfg = config.clan-net.services.zitadel;
-  domain = "andrewlee.cloud";
 in {
   options.clan-net.services.zitadel = {
     enable = lib.mkEnableOption "zitadel";
+    domain = lib.mkOption {
+      type = lib.types.str;
+      default = "andrewlee.cloud";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -120,7 +123,7 @@ in {
       settings = {
         Port = 39995;
         ExternalPort = 443;
-        ExternalDomain = "auth.${domain}";
+        ExternalDomain = "auth.${cfg.domain}";
         Database = {
           postgres = {
             Host = "127.0.0.1";
@@ -134,9 +137,9 @@ in {
         };
       };
     };
-    services.nginx.virtualHosts."auth.${domain}" = {
+    services.nginx.virtualHosts."auth.${cfg.domain}" = {
       forceSSL = true;
-      useACMEHost = domain;
+      useACMEHost = cfg.domain;
       locations."/" = {
         proxyPass = "http://127.0.0.1:39995";
         proxyWebsockets = true;

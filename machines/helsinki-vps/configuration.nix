@@ -8,6 +8,7 @@
         enable = true;
         blogAndrewleeFun.enable = true;
       };
+      zitadel.enable = true;
     };
   };
 
