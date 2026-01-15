@@ -4,9 +4,8 @@
     hetzner.cloud.enable = true;
 
     services = {
-      acme.cloudflare.enable = true;
-      nginx.enable = true;
       hugo = {
+        enable = true;
         blogAndrewleeFun.enable = true;
       };
     };
