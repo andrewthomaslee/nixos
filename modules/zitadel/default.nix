@@ -18,11 +18,11 @@ in {
   config = lib.mkIf cfg.enable {
     clan.core.vars.generators.zitadel = {
       files = {
-        postgres_password = {};
-        admin_password = {};
-        master_key = {};
-        admin_steps = {};
-        settings = {};
+        postgres_password = {owner = "postgres";};
+        admin_password = {owner = config.services.zitadel.user;};
+        master_key = {owner = config.services.zitadel.user;};
+        admin_steps = {owner = config.services.zitadel.user;};
+        settings = {owner = config.services.zitadel.user;};
       };
       runtimeInputs = with pkgs; [
         coreutils
@@ -106,7 +106,7 @@ in {
       };
     };
     systemd.services.postgresql = {
-      serviceConfig.ExecStartPost = [
+      serviceConfig.ExecStartPost = lib.mkAfter [
         "${config.services.postgresql.package}/bin/psql -c \"ALTER USER zitadel WITH PASSWORD '$(${pkgs.coreutils}/bin/cat ${config.clan.core.vars.generators.zitadel.files.postgres_password.path})';\""
       ];
     };
