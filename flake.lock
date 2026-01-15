@@ -1,10 +1,31 @@
 {
   "nodes": {
+    "blogAndrewleeFun": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765429364,
+        "narHash": "sha256-apGcONyklR0sen6IBncLMDTv5b8QY51T7T243jkaPB8=",
+        "owner": "andrewthomaslee",
+        "repo": "blog.andrewlee.fun",
+        "rev": "3e2864c67ace199f0baff5e95b8b5a76ca7e02fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andrewthomaslee",
+        "repo": "blog.andrewlee.fun",
+        "type": "github"
+      }
+    },
     "clan-core": {
       "inputs": {
         "data-mesher": "data-mesher",
         "disko": "disko",
-        "flake-parts": "flake-parts",
+        "flake-parts": "flake-parts_2",
         "nix-darwin": "nix-darwin",
         "nix-select": "nix-select",
         "nixos-facter-modules": "nixos-facter-modules",
@@ -90,6 +111,27 @@
       }
     },
     "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "blogAndrewleeFun",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1763759067,
+        "narHash": "sha256-LlLt2Jo/gMNYAwOgdRQBrsRoOz7BPRkzvNaI/fzXi2Q=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "2cccadc7357c0ba201788ae99c4dfa90728ef5e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
           "clan-core",
@@ -268,6 +310,7 @@
     },
     "root": {
       "inputs": {
+        "blogAndrewleeFun": "blogAndrewleeFun",
         "clan-core": "clan-core",
         "home-manager": "home-manager",
         "moscripts": "moscripts",
