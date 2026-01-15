@@ -8,17 +8,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1765429364,
-        "narHash": "sha256-apGcONyklR0sen6IBncLMDTv5b8QY51T7T243jkaPB8=",
-        "owner": "andrewthomaslee",
-        "repo": "blog.andrewlee.fun",
-        "rev": "3e2864c67ace199f0baff5e95b8b5a76ca7e02fb",
-        "type": "github"
+        "lastModified": 1768445600,
+        "narHash": "sha256-YJgeu0FnzW8I3Jxbb/3d9XT6/3M3pqLfG1Xjo1D9cV0=",
+        "ref": "refs/heads/main",
+        "rev": "1a925fd40bc80c11416850cd2d97d52116a5b6b2",
+        "revCount": 34,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/andrewthomaslee/blog.andrewlee.fun.git"
       },
       "original": {
-        "owner": "andrewthomaslee",
-        "repo": "blog.andrewlee.fun",
-        "type": "github"
+        "type": "git",
+        "url": "https://github.com/andrewthomaslee/blog.andrewlee.fun.git"
       }
     },
     "clan-core": {

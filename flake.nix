@@ -31,7 +31,7 @@
     };
 
     blogAndrewleeFun = {
-      url = "github:andrewthomaslee/blog.andrewlee.fun?submodules=1";
+      url = "git+https://github.com/andrewthomaslee/blog.andrewlee.fun.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
