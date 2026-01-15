@@ -107,7 +107,7 @@ in {
     };
     systemd.services.postgresql = {
       serviceConfig.ExecStartPost = [
-        "${config.security.sudo.package}/bin/sudo -u postgres ${config.services.postgresql.package}/bin/psql -c \"ALTER USER zitadel WITH PASSWORD '$(${pkgs.coreutils}/bin/cat ${config.clan.core.vars.generators.zitadel.files.postgres_password.path} )';\""
+        "${config.security.sudo.package}/bin/sudo -u postgres ${config.services.postgresql.package}/bin/psql -c \"ALTER USER zitadel WITH PASSWORD '$(${pkgs.coreutils}/bin/cat ${config.clan.core.vars.generators.zitadel.files.postgres_password.path})';\""
       ];
     };
 
