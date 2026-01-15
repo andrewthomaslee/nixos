@@ -72,7 +72,7 @@ in {
               Username: postgres
               SSL:
                 Mode: disable
-                EOF
+        EOF
       '';
     };
     # Enable the PostgreSQL backup module
