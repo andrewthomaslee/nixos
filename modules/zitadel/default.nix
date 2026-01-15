@@ -32,7 +32,7 @@ in {
 
         # Function to generate a random 32-character secret
         generate_secret() {
-          tr -dc A-Za-z0-9 </dev/urandom | head -c 32
+          ( set +o pipefail ; tr -dc A-Za-z0-9 </dev/urandom | head -c 32 )
         }
 
         # Generate postgres_password
