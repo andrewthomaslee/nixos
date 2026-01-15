@@ -75,8 +75,9 @@ in {
         EOF
       '';
     };
-    # Enable the PostgreSQL backup module
-    clan.core.postgresql.enable = true;
+
+    # Enable the PostgreSQL module
+    clan-net.services.postgres.enable = true;
 
     services.zitadel = {
       enable = true;
