@@ -21,6 +21,7 @@ in {
         directory.style = "bold blue";
         directory.truncate_to_repo = true;
         directory.truncation_length = 10;
+        direnv.disabled = false;
         python.disabled = false;
         ruby.disabled = true;
         hostname.ssh_only = false;
