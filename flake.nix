@@ -8,9 +8,6 @@
     # Rolling Release of Nixpkgs from Clan.lol
     nixpkgs.follows = "clan-core/nixpkgs";
 
-    # Enable submodules for templates
-    self.submodules = true;
-
     # --- Flakes --- #
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -38,7 +35,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hello-world = {
+    uv2nix-template = {
       url = "git+https://github.com/andrewthomaslee/uv2nix.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -120,15 +117,22 @@
       # Each subdirectory in ./templates/<template-name> is a
       # template, which can be used for new proects with:
       # `nix flake init`
-      templates = builtins.listToAttrs (
-        map (name: {
-          inherit name;
-          value = {
-            path = ./templates + "/${name}";
-            description = (import (./templates + "/${name}/flake.nix")).description;
+      templates =
+        builtins.listToAttrs (
+          map (name: {
+            inherit name;
+            value = {
+              path = ./templates + "/${name}";
+              description = (import (./templates + "/${name}/flake.nix")).description;
+            };
+          }) (builtins.attrNames (builtins.readDir ./templates))
+        )
+        // {
+          uv2nix = {
+            path = uv2nix-template;
+            description = "Hello world application using uv2nix";
           };
-        }) (builtins.attrNames (builtins.readDir ./templates))
-      );
+        };
 
       # Output all modules in ./modules/<module-name> to flake. Modules should be in
       # individual subdirectories and contain a default.nix file.

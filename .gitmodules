@@ -1,3 +1,0 @@
-[submodule "templates/uv2nix"]
-	path = templates/uv2nix
-	url = https://github.com/andrewthomaslee/uv2nix.git

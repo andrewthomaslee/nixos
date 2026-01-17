@@ -1,11 +1,11 @@
 {
   config,
   flake-self,
-  hello-world,
+  uv2nix-template,
   ...
 }: {
   imports = [
-    hello-world.nixosModules.default
+    uv2nix-template.nixosModules.default
   ];
 
   clan-net = {
