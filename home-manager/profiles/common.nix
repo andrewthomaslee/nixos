@@ -39,6 +39,7 @@ with lib; {
         vulnix
         fastfetch
         busybox
+        lazyjournal
       ];
 
       # This value determines the Home Manager release that your
