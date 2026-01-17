@@ -8,6 +8,7 @@
     # Rolling Release of Nixpkgs from Clan.lol
     nixpkgs.follows = "clan-core/nixpkgs";
 
+    # Enable submodules for templates
     self.submodules = true;
 
     # --- Flakes --- #
