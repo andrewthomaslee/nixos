@@ -34,6 +34,11 @@
       url = "git+https://github.com/andrewthomaslee/blog.andrewlee.fun.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hello-world = {
+      url = "git+https://github.com/andrewthomaslee/uv2nix.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {self, ...} @ inputs:
     with inputs; let

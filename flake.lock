@@ -153,6 +153,51 @@
         "type": "github"
       }
     },
+    "flake-parts_3": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "hello-world",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1768135262,
+        "narHash": "sha256-PVvu7OqHBGWN16zSi6tEmPwwHQ4rLPU9Plvs8/1TUBY=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "80daad04eddbbf5a4d883996a73f3f542fa437ac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "hello-world": {
+      "inputs": {
+        "flake-parts": "flake-parts_3",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "pyproject-build-systems": "pyproject-build-systems",
+        "pyproject-nix": "pyproject-nix",
+        "uv2nix": "uv2nix"
+      },
+      "locked": {
+        "lastModified": 1768611511,
+        "narHash": "sha256-Ob+hCDKMgeBPOyN6OiYFjEi0KBnBG3ftUPRoAlagU4k=",
+        "ref": "refs/heads/main",
+        "rev": "8e6c3340bb9d6df0340c1bee20c32b4c1ab0b752",
+        "revCount": 7,
+        "type": "git",
+        "url": "https://github.com/andrewthomaslee/uv2nix.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/andrewthomaslee/uv2nix.git"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -178,10 +223,10 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "pyproject-build-systems": "pyproject-build-systems",
-        "pyproject-nix": "pyproject-nix",
+        "pyproject-build-systems": "pyproject-build-systems_2",
+        "pyproject-nix": "pyproject-nix_2",
         "systems": "systems_2",
-        "uv2nix": "uv2nix"
+        "uv2nix": "uv2nix_2"
       },
       "locked": {
         "lastModified": 1756669228,
@@ -262,6 +307,35 @@
     "pyproject-build-systems": {
       "inputs": {
         "nixpkgs": [
+          "hello-world",
+          "nixpkgs"
+        ],
+        "pyproject-nix": [
+          "hello-world",
+          "pyproject-nix"
+        ],
+        "uv2nix": [
+          "hello-world",
+          "uv2nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1763662255,
+        "narHash": "sha256-4bocaOyLa3AfiS8KrWjZQYu+IAta05u3gYZzZ6zXbT0=",
+        "owner": "pyproject-nix",
+        "repo": "build-system-pkgs",
+        "rev": "042904167604c681a090c07eb6967b4dd4dae88c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "build-system-pkgs",
+        "type": "github"
+      }
+    },
+    "pyproject-build-systems_2": {
+      "inputs": {
+        "nixpkgs": [
           "moscripts",
           "nixpkgs"
         ],
@@ -291,6 +365,27 @@
     "pyproject-nix": {
       "inputs": {
         "nixpkgs": [
+          "hello-world",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764134915,
+        "narHash": "sha256-xaKvtPx6YAnA3HQVp5LwyYG1MaN4LLehpQI8xEdBvBY=",
+        "owner": "pyproject-nix",
+        "repo": "pyproject.nix",
+        "rev": "2c8df1383b32e5443c921f61224b198a2282a657",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "pyproject.nix",
+        "type": "github"
+      }
+    },
+    "pyproject-nix_2": {
+      "inputs": {
+        "nixpkgs": [
           "moscripts",
           "nixpkgs"
         ]
@@ -313,6 +408,7 @@
       "inputs": {
         "blogAndrewleeFun": "blogAndrewleeFun",
         "clan-core": "clan-core",
+        "hello-world": "hello-world",
         "home-manager": "home-manager",
         "moscripts": "moscripts",
         "nixpkgs": [
@@ -430,6 +526,31 @@
       }
     },
     "uv2nix": {
+      "inputs": {
+        "nixpkgs": [
+          "hello-world",
+          "nixpkgs"
+        ],
+        "pyproject-nix": [
+          "hello-world",
+          "pyproject-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1768526251,
+        "narHash": "sha256-uT0ICn7tknFtdOP7zhkgOkusq38EcttqUCS5Ho7nIvc=",
+        "owner": "pyproject-nix",
+        "repo": "uv2nix",
+        "rev": "1b8f4d4c874f909de24639142c1141c84119b0f0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "uv2nix",
+        "type": "github"
+      }
+    },
+    "uv2nix_2": {
       "inputs": {
         "nixpkgs": [
           "moscripts",

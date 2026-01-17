@@ -1,8 +1,13 @@
 {
   config,
   flake-self,
+  hello-world,
   ...
 }: {
+  imports = [
+    hello-world.nixosModules.default
+  ];
+
   clan-net = {
     filesystems.ext4.enable = true;
 
