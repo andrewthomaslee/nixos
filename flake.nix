@@ -8,6 +8,8 @@
     # Rolling Release of Nixpkgs from Clan.lol
     nixpkgs.follows = "clan-core/nixpkgs";
 
+    self.submodules = true;
+
     # --- Flakes --- #
     home-manager = {
       url = "github:nix-community/home-manager";
