@@ -5,6 +5,7 @@
 }: let
   cfg = config.clan-net.services.networking.ethernet;
 
+  # TODO: `error: attribute 'facter' missing`
   controllers = config.facter.report.hardware.network_controller;
   ethDevice =
     lib.findFirst

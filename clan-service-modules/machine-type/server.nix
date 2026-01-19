@@ -16,7 +16,6 @@
     services = {
       openssh.enable = true;
       tailscale.enable = true;
-      networking.ethernet.enable = true;
       motd.enable = true;
     };
 

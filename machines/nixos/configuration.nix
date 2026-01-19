@@ -13,7 +13,6 @@
 
     services = {
       motd.sshMotd = builtins.readFile ./sshMotd.sh;
-      networking.ethernet.enable = true;
       netbird.enable = true;
     };
 
