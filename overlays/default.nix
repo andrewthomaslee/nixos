@@ -12,6 +12,15 @@ in
     moscripts = inputs.moscripts.packages.${super.stdenv.hostPlatform.system}.default;
     clan-cli = inputs.clan-core.packages.${super.stdenv.hostPlatform.system}.clan-cli;
 
+    # Netbird
+    netbird = inputs.nixpkgs-unstable.legacyPackages.${super.stdenv.hostPlatform.system}.netbird;
+    netbird-ui = inputs.nixpkgs-unstable.legacyPackages.${super.stdenv.hostPlatform.system}.netbird-ui;
+    netbird-relay = inputs.nixpkgs-unstable.legacyPackages.${super.stdenv.hostPlatform.system}.netbird-relay;
+    netbird-upload = inputs.nixpkgs-unstable.legacyPackages.${super.stdenv.hostPlatform.system}.netbird-upload;
+    netbird-signal = inputs.nixpkgs-unstable.legacyPackages.${super.stdenv.hostPlatform.system}.netbird-signal;
+    netbird-dashboard = inputs.nixpkgs-unstable.legacyPackages.${super.stdenv.hostPlatform.system}.netbird-dashboard;
+    netbird-management = inputs.nixpkgs-unstable.legacyPackages.${super.stdenv.hostPlatform.system}.netbird-management;
+
     # Example package, used only for tests
     hello-custom = super.callPackage ../packages/hello-custom {};
   }
