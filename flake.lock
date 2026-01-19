@@ -538,11 +538,11 @@
         "uv2nix": "uv2nix_2"
       },
       "locked": {
-        "lastModified": 1768855436,
-        "narHash": "sha256-/ez0YD41f2X+Ko1ilIPpjziCb31mET9u6VHQGpg4g6E=",
+        "lastModified": 1768858011,
+        "narHash": "sha256-WVZhoNWZpvAMb3keuenOQ08A2yxs1CDDZd5G7xUynTQ=",
         "ref": "refs/heads/main",
-        "rev": "95cffb0c0e928aae95339e3292ac3c7415f374ac",
-        "revCount": 18,
+        "rev": "5867d9c3fdcdd864386ea5b9c8a3c0d68175070d",
+        "revCount": 19,
         "type": "git",
         "url": "https://github.com/andrewthomaslee/uv2nix.git"
       },
