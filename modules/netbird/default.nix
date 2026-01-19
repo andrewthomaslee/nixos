@@ -16,13 +16,16 @@ in {
       files.setup_key = {};
     };
 
-    services.netbird.clients.clan-net = {
-      port = 51820;
-      name = "netbird";
-      interface = "clan-net";
-      login = {
-        enable = true;
-        setupKeyFile = config.clan.core.vars.generators.netbird.files.setup_key.path;
+    services.netbird = {
+      enable = true;
+      clients.clan-net = {
+        port = 51820;
+        name = "netbird";
+        interface = "clan-net";
+        login = {
+          enable = true;
+          setupKeyFile = config.clan.core.vars.generators.netbird.files.setup_key.path;
+        };
       };
     };
 
