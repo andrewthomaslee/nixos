@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    uv2nix-template.nixosModules.default
+    uv2nix-template.nixosModules.oci
   ];
 
   clan-net = {
