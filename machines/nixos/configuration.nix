@@ -1,13 +1,8 @@
 {
   config,
   flake-self,
-  uv2nix-template,
   ...
 }: {
-  imports = [
-    uv2nix-template.nixosModules.oci
-  ];
-
   clan-net = {
     filesystems.ext4.enable = true;
 

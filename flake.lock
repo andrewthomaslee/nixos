@@ -35,11 +35,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1768835300,
-        "narHash": "sha256-7qOR7/7bJHn6w6RW33GHOjRlqENZJ1r4+Qf+h2Gp9So=",
-        "rev": "80dd18df638a00075a242ab13ebc2a9f62c62d6f",
+        "lastModified": 1768908168,
+        "narHash": "sha256-rWDCwFFkvP56WLuOvZucZGi5OFmbNxwLZphKz6EDSe0=",
+        "rev": "913acb13512b266d5aebd967ec39dcac038d2341",
         "type": "tarball",
-        "url": "https://git.clan.lol/api/v1/repos/clan/clan-core/archive/80dd18df638a00075a242ab13ebc2a9f62c62d6f.tar.gz"
+        "url": "https://git.clan.lol/api/v1/repos/clan/clan-core/archive/913acb13512b266d5aebd967ec39dcac038d2341.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -180,11 +180,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768836546,
-        "narHash": "sha256-nJZkTamcXXMW+SMYiGFB6lB8l0aJw0xjssfN8xYd/Fs=",
+        "lastModified": 1768912518,
+        "narHash": "sha256-FJlof1jnbLIT5RbKxef/NV6RzcOj1GoMzXE4FcBFg5Y=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b56c5ad14fcf8b5bc887463552483bf000ca562a",
+        "rev": "9c5f8aceb6ef620e881f50fe65cb4a2c6b1e8527",
         "type": "github"
       },
       "original": {
@@ -404,11 +404,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768709255,
-        "narHash": "sha256-aigyBfxI20FRtqajVMYXHtj5gHXENY2gLAXEhfJ8/WM=",
+        "lastModified": 1768863606,
+        "narHash": "sha256-1IHAeS8WtBiEo5XiyJBHOXMzECD6aaIOJmpQKzRRl64=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "5e8fae80726b66e9fec023d21cd3b3e638597aa9",
+        "rev": "c7067be8db2c09ab1884de67ef6c4f693973f4a2",
         "type": "github"
       },
       "original": {
@@ -538,11 +538,11 @@
         "uv2nix": "uv2nix_2"
       },
       "locked": {
-        "lastModified": 1768858859,
-        "narHash": "sha256-OZ3OEqqAkfqBdjBM+MGNnY4oNenxbJhE1WLA5yniPbw=",
+        "lastModified": 1768878210,
+        "narHash": "sha256-nZGI1MtAvGSgrQUBDeyrSx4XN6PO+tmDvUmheLTPUCk=",
         "ref": "refs/heads/main",
-        "rev": "897f5633dbce46b98dd3ebcc09ce2749831fadfc",
-        "revCount": 20,
+        "rev": "61fd43457adbb88af9fe533860def72ef61ce3d1",
+        "revCount": 24,
         "type": "git",
         "url": "https://github.com/andrewthomaslee/uv2nix.git"
       },
