@@ -8,7 +8,7 @@
   net = clan-facts.machines.${config.networking.hostName}.networking;
   k3s = clan-facts.k3s;
 in {
-  config = lib.mkIf cfg.manager.enable {
+  config = lib.mkIf cfg.manager {
     environment.etc = {
       "rancher/k3s/registries.yaml".text = ''
         mirrors:
