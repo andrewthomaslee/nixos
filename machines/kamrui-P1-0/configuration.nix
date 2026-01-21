@@ -3,7 +3,6 @@
     filesystems.ext4.enable = true;
 
     services = {
-      qdrant.enable = true;
       netbird.enable = true;
       k3s = {
         enable = true;
