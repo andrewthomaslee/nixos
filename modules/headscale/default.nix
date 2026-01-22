@@ -106,6 +106,11 @@ in {
           client_secret = {};
           client_id.secret = false;
         };
+        runtimeInputs = [pkgs.coreutils];
+        script = ''
+          mkdir -p $out
+          cp $prompts/* $out/
+        '';
       };
 
       services.headscale = {
