@@ -96,9 +96,21 @@ in {
     lib.mkIf cfg.enable {
       clan.core.vars.generators."vpn.${base_domain}" = {
         share = true;
-        prompts.client_secret.persist = true;
-        prompts.client_secret.description = "Client secret for Google OIDC";
-        files.client_secret = {};
+        prompts = {
+          client_secret = {
+            persist = true;
+            description = "Client secret for OIDC";
+            display.group = "vpn.${base_domain}";
+          };
+          client_id = {
+            description = "Client ID for OIDC";
+            display.group = "vpn.${base_domain}";
+          };
+        };
+        files = {
+          client_secret = {};
+          client_id.secret = false;
+        };
       };
 
       services.headscale = {
@@ -114,8 +126,9 @@ in {
             search_domains = ["${base_domain}.internal"];
           };
           oidc = {
-            inherit (cfg) issuer client_id allowed_domains allowed_users;
+            inherit (cfg) issuer allowed_domains allowed_users;
             client_secret_path = config.clan.core.vars.generators."vpn.${base_domain}".files.client_secret.path;
+            client_id = config.clan.core.vars.generators."vpn.${base_domain}".files.client_id.value;
           };
         };
       };
