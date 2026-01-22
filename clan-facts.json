@@ -137,7 +137,8 @@
   "cloudflare": {
     "domains": [
       "andrewlee.cloud",
-      "andrewlee.fun"
+      "andrewlee.fun",
+      "netsam.dev"
     ]
   }
 }
