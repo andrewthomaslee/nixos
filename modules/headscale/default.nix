@@ -103,7 +103,10 @@ in {
           };
         };
         files = {
-          client_secret = {};
+          client_secret = {
+            owner = config.services.headscale.user;
+            group = config.services.headscale.group;
+          };
           client_id.secret = false;
         };
         runtimeInputs = [pkgs.coreutils];
