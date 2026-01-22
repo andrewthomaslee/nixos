@@ -11,7 +11,6 @@
       headscale = {
         enable = true;
         base_domain = "netsam.dev";
-        server_url = "vpn.netsam.dev";
         adminUser = "andrewthomaslee@netsam.com";
         allowed_domains = ["netsam.com"];
       };
