@@ -10,7 +10,12 @@ in {
   options.clan-net.services.tailscale = {
     enable = lib.mkEnableOption "tailscale";
     systray = lib.mkEnableOption "systray";
-    exitNode = lib.mkEnableOption "exit node";
+    baseURL = lib.mkOption {
+      type = lib.types.str;
+      default = "https://controlplane.tailscale.com";
+      description = "Tailscale base URL";
+      example = "https://headscale.my-domain.com";
+    };
     tag = lib.mkOption {
       type = lib.types.str;
       default = "clan-net";
@@ -32,8 +37,11 @@ in {
       openFirewall = true;
       permitCertUid = clan-facts.email;
       authKeyFile = config.clan.core.vars.generators.tailscale.files.auth_key.path;
-      authKeyParameters.ephemeral = false;
-      authKeyParameters.preauthorized = true;
+      authKeyParameters = {
+        ephemeral = false;
+        preauthorized = true;
+        inherit (cfg) baseURL;
+      };
       useRoutingFeatures = "server";
       extraUpFlags = [
         "--advertise-exit-node"

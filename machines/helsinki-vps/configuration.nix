@@ -1,4 +1,9 @@
-{flake-self, ...}: {
+{
+  config,
+  flake-self,
+  clan-facts,
+  ...
+}: {
   clan-net = {
     filesystems.ext4.enable = true;
     hetzner.cloud.enable = true;
@@ -7,12 +12,6 @@
       hugo = {
         enable = true;
         blogAndrewleeFun.enable = true;
-      };
-      headscale = {
-        enable = true;
-        base_domain = "netsam.dev";
-        adminUser = "andrewthomaslee@netsam.com";
-        allowed_domains = ["netsam.com"];
       };
     };
   };
