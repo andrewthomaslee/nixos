@@ -15,6 +15,22 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    clan.core.vars.generators.minecraft = {
+      prompts = {
+        seed = {
+          description = "world seed";
+          display.group = "minecraft";
+        };
+      };
+      files = {
+        seed.secret = false;
+      };
+      runtimeInputs = [pkgs.coreutils];
+      script = ''
+        mkdir -p $out
+        cp $prompts/* $out/
+      '';
+    };
     # Minecraft
     services.minecraft-server = {
       package = pkgs.minecraft-server;
@@ -23,6 +39,7 @@ in {
       declarative = true;
       openFirewall = true;
       serverProperties = {
+        level-seed = config.clan.core.vars.generators.minecraft.files.seed.value;
         gamemode = "survival";
         difficulty = "hard";
         simulation-distance = "12";

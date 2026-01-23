@@ -58,6 +58,7 @@
         git
         neovim
         vim
+        busybox
       ];
     };
   };

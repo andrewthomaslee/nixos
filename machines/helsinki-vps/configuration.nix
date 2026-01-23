@@ -13,7 +13,6 @@
         enable = true;
         blogAndrewleeFun.enable = true;
       };
-      minecraft.enable = true;
     };
   };
 
