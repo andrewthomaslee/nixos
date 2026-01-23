@@ -4,11 +4,7 @@
 
     services = {
       netbird.enable = true;
-      k3s = {
-        enable = true;
-        manager = true;
-        init = true;
-      };
+      minecraft.enable = true;
     };
   };
 
