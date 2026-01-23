@@ -47,6 +47,7 @@
       zen-browser
       moscripts
       lazyssh
+      discordo
     ];
   };
 }
