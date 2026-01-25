@@ -42,7 +42,7 @@
       asciinema
       obsidian
       prismlauncher # minecraft launcher
-      tor
+      tor-browser
       kalker # CLI Calculator
       zen-browser
       moscripts
