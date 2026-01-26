@@ -1,11 +1,9 @@
 {
   config,
   lib,
-  clan-facts,
   ...
 }: let
   cfg = config.clan-net.defaults.ssh;
-  tailnet = clan-facts.tailscale.tailnet;
 in {
   options.clan-net.defaults.ssh.enable = lib.mkEnableOption "SSH configuration";
 
@@ -15,8 +13,8 @@ in {
       enableDefaultConfig = false;
       matchBlocks = {
         "nixos" = {
-          hostname = "nixos.${tailnet}";
-          user = "netsa";
+          hostname = "nixos";
+          user = "root";
           port = 22;
           addKeysToAgent = "yes";
           extraOptions = {
@@ -24,8 +22,8 @@ in {
           };
         };
         "ghost" = {
-          hostname = "ghost.${tailnet}";
-          user = "netsa";
+          hostname = "ghost";
+          user = "root";
           port = 22;
           addKeysToAgent = "yes";
           extraOptions = {
@@ -33,7 +31,7 @@ in {
           };
         };
         "kamrui-P1-0" = {
-          hostname = "kamrui-P1-0.${tailnet}";
+          hostname = "kamrui-P1-0";
           user = "root";
           port = 22;
           addKeysToAgent = "yes";
@@ -42,7 +40,7 @@ in {
           };
         };
         "helsinki-vps" = {
-          hostname = "helsinki-vps.${tailnet}";
+          hostname = "helsinki-vps";
           user = "root";
           port = 22;
           addKeysToAgent = "yes";
