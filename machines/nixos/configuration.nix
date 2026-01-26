@@ -8,7 +8,6 @@
 
     services = {
       motd.sshMotd = builtins.readFile ./sshMotd.sh;
-      netbird.enable = true;
     };
 
     virtualisation = {

@@ -3,36 +3,47 @@
   lib,
   ...
 }: let
-  cfg = config.clan-net.services.netbird;
+  cfg = config.clan-net.networking.netbird;
 in {
-  options.clan-net.services.netbird = {
+  options.clan-net.networking.netbird = {
     enable = lib.mkEnableOption "netbird";
+    ui.enable = lib.mkEnableOption "netbird ui";
   };
 
   config = lib.mkIf cfg.enable {
     clan.core.vars.generators.netbird = {
       share = true;
-      prompts.setup_key.persist = true;
-      files.setup_key = {};
+      prompts.clan-net-setup_key.persist = true;
+      files.clan-net-setup_key = {};
     };
 
     services.netbird = {
       enable = true;
       clients.clan-net = {
+        ui.enable = cfg.ui.enable;
         port = 51820;
-        name = "netbird";
-        interface = "clan-net";
         login = {
           enable = true;
-          setupKeyFile = config.clan.core.vars.generators.netbird.files.setup_key.path;
+          setupKeyFile = config.clan.core.vars.generators.netbird.files.clan-net-setup_key.path;
         };
       };
     };
 
+    systemd.services.netbird-clan-net-login = {
+      serviceConfig = {
+        Restart = "on-failure";
+        RestartSec = "5s";
+        StartLimitIntervalSec = 0;
+      };
+      unitConfig = {
+        StartLimitIntervalSec = 0; # Unlimited retries
+      };
+    };
+
     networking = {
-      networkmanager.unmanaged = ["clan-net"];
+      networkmanager.unmanaged = ["nb-clan-net"];
       firewall = {
-        trustedInterfaces = ["clan-net"];
+        trustedInterfaces = ["nb-clan-net"];
         checkReversePath = "loose";
       };
     };

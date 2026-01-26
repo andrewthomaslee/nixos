@@ -3,7 +3,6 @@
     filesystems.ext4.enable = true;
 
     services = {
-      netbird.enable = true;
       minecraft = {
         enable = true;
         jvmOpts = "-Xms4G -Xmx8G -XX:+UseG1GC -XX:ParallelGCThreads=8 -XX:+DisableExplicitGC";

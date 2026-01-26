@@ -34,11 +34,9 @@ with lib; {
         jq
         yq
         rsync
-        tree
         httpie
         vulnix
         fastfetch
-        busybox
         lazyjournal
       ];
 

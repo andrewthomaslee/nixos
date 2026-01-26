@@ -15,12 +15,15 @@
     };
     services = {
       openssh.enable = true;
-      tailscale.enable = true;
       motd.enable = true;
     };
 
     virtualisation = {
       docker.enable = true;
+    };
+
+    networking = {
+      netbird.enable = true;
     };
   };
 

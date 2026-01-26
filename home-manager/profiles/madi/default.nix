@@ -10,13 +10,10 @@
       defaults = {
         xdg.enable = true;
         ssh.enable = true;
-        shell.enable = true;
-        git.enable = true;
       };
 
       programs = {
         firefox.enable = true;
-        nix.enable = true;
         bash.enable = true;
         starship.enable = true;
       };
@@ -28,10 +25,6 @@
       imagemagick
       spotify
       obsidian
-      prismlauncher # minecraft launcher
-      tor
-      kalker # CLI Calculator
-      zen-browser
     ];
   };
 }

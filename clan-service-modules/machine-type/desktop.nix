@@ -35,18 +35,20 @@
     services = {
       wayland.enable = true;
       openssh.enable = true;
-      tailscale = {
-        enable = true;
-        systray = true;
-      };
       motd.enable = true;
+    };
+
+    networking = {
+      netbird = {
+        enable = true;
+        ui.enable = true;
+      };
     };
   };
 
   environment.systemPackages = with pkgs; [
     firefox
     usbutils
-    wget
   ];
 
   services.logind.settings.Login.RuntimeDirectorySize = "10G";

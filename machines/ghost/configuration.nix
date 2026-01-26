@@ -3,8 +3,6 @@
     filesystems.ext4.enable = true;
 
     virtualisation.docker.enable = true;
-
-    services.netbird.enable = true;
   };
 
   # User Profiles
