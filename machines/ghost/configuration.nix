@@ -3,6 +3,13 @@
     filesystems.ext4.enable = true;
 
     virtualisation.docker.enable = true;
+
+    # networking = {
+    #   netbird.industrial-host = {
+    #     enable = true;
+    #     port = 51821;
+    #   };
+    # };
   };
 
   # User Profiles

@@ -7,7 +7,6 @@
     fwupd.enable = true;
     acpid.enable = true;
     journald.extraConfig = "SystemMaxUse=8G";
-    netbird.useRoutingFeatures = lib.mkDefault "client";
   };
 
   # Often hangs
@@ -44,9 +43,12 @@
 
     networking = {
       netbird = {
+        enable = true;
+        role = "client";
         clan-net = {
           enable = true;
           ui.enable = true;
+          port = 51820;
         };
       };
     };

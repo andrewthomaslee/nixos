@@ -1,12 +1,7 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   # Limit log size for journal
   services = {
     journald.extraConfig = "SystemMaxUse=10G";
-    netbird.useRoutingFeatures = lib.mkDefault "server";
   };
 
   clan-net = {
@@ -31,7 +26,16 @@
 
     networking = {
       netbird = {
-        clan-net = {enable = true;};
+        enable = true;
+        role = "server";
+        clan-net = {
+          enable = true;
+          port = 51820;
+        };
+        # industrial-host = {
+        #   enable = true;
+        #   port = 51821;
+        # };
       };
     };
   };
