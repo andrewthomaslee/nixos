@@ -5,9 +5,9 @@
   clan-facts,
   ...
 }: let
-  cfg = config.clan-net.services.tailscale;
+  cfg = config.clan-net.networking.tailscale;
 in {
-  options.clan-net.services.tailscale = {
+  options.clan-net.networking.tailscale = {
     enable = lib.mkEnableOption "tailscale";
     systray = lib.mkEnableOption "systray";
     baseURL = lib.mkOption {
