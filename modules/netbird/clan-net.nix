@@ -36,5 +36,10 @@ in {
     };
 
     networking.firewall.trustedInterfaces = [name];
+
+    systemd.services."netbird-${name}" = {
+      after = ["network-online.target"];
+      wants = ["network-online.target"];
+    };
   };
 }
