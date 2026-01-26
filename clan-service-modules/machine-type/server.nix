@@ -30,7 +30,9 @@
     };
 
     networking = {
-      netbird.enable = true;
+      netbird = {
+        clan-net = {enable = true;};
+      };
     };
   };
 

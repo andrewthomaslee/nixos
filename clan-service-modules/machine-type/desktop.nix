@@ -44,8 +44,10 @@
 
     networking = {
       netbird = {
-        enable = true;
-        ui.enable = true;
+        clan-net = {
+          enable = true;
+          ui.enable = true;
+        };
       };
     };
   };
