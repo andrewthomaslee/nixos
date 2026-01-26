@@ -3,8 +3,12 @@
   lib,
   ...
 }: {
-  services.fwupd.enable = true;
-  services.acpid.enable = true;
+  services = {
+    fwupd.enable = true;
+    acpid.enable = true;
+    journald.extraConfig = "SystemMaxUse=8G";
+    netbird.useRoutingFeatures = lib.mkDefault "client";
+  };
 
   # Often hangs
   systemd.services = {

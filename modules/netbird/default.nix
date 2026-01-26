@@ -22,6 +22,7 @@ in {
       clients.clan-net = {
         ui.enable = cfg.ui.enable;
         port = 51820;
+        interface = "clan-net";
         login = {
           enable = true;
           setupKeyFile = config.clan.core.vars.generators.netbird.files.clan-net-setup_key.path;
@@ -41,9 +42,9 @@ in {
     };
 
     networking = {
-      networkmanager.unmanaged = ["nb-clan-net"];
+      networkmanager.unmanaged = ["clan-net"];
       firewall = {
-        trustedInterfaces = ["nb-clan-net"];
+        trustedInterfaces = ["clan-net"];
         checkReversePath = "loose";
       };
     };

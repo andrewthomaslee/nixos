@@ -1,6 +1,13 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   # Limit log size for journal
-  services.journald.extraConfig = "SystemMaxUse=5G";
+  services = {
+    journald.extraConfig = "SystemMaxUse=10G";
+    netbird.useRoutingFeatures = lib.mkDefault "server";
+  };
 
   clan-net = {
     defaults = {
