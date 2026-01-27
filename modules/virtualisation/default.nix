@@ -14,7 +14,23 @@ in {
   config = mkMerge [
     (mkIf cfg.docker.enable {
       users.users.netsa.extraGroups = ["docker"];
-      virtualisation.docker.enable = true;
+      virtualisation = {
+        oci-containers.backend = "docker";
+        docker = {
+          enable = true;
+          logDriver = "json-file";
+          daemon.settings = {
+            fixed-cidr-v6 = "fd00::/80";
+            ipv6 = true;
+            live-restore = true;
+          };
+          autoPrune.enable = true;
+        };
+      };
+
+      environment.systemPackages = with pkgs; [
+        docker-vackup
+      ];
     })
 
     (mkIf cfg.virtualbox.enable {
