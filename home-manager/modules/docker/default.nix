@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.clan-net.programs.docker;
@@ -34,5 +35,8 @@ in {
     home.sessionVariables = {
       COMPOSE_BAKE = "true";
     };
+    home.packages = with pkgs; [
+      ducker # Terminal app for managing docker containers, inspired by K9s
+    ];
   };
 }
