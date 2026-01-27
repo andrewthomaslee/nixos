@@ -32,7 +32,7 @@
         }
       ]
     },
-    "kamrui-P1-0": {
+    "kamrui-p1": {
       "networking": {
         "interface": "eno1",
         "mtu": 1500,

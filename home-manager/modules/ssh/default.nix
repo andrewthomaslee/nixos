@@ -30,8 +30,8 @@ in {
             "PreferredAuthentications" = "publickey";
           };
         };
-        "kamrui-P1-0" = {
-          hostname = "kamrui-P1-0";
+        "kamrui-p1" = {
+          hostname = "kamrui-p1";
           user = "root";
           port = 22;
           addKeysToAgent = "yes";

@@ -10,7 +10,7 @@
     nixos.tags = ["desktop" "netsa"];
     ghost.tags = ["desktop" "netsa"];
 
-    kamrui-P1-0.tags = ["server" "netsa"];
+    kamrui-p1.tags = ["server" "netsa"];
     helsinki-vps.tags = ["server" "netsa"];
   };
 
