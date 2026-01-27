@@ -27,6 +27,8 @@ in {
         nixos-rebuild-switch = "sudo nixos-rebuild switch --flake /home/netsa/nixos#${osConfig.networking.hostName}";
         # misc
         speedtest = "nix run nixpkgs#speedtest-cli";
+        # hacky backups
+        mc-backup = "rsync -av --delete kamrui-p1:/var/lib/minecraft/world/ /mnt/storagebox/BACKUPS/minecraft/kamrui-p1/world/";
       };
     };
   };
