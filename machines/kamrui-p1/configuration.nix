@@ -20,6 +20,7 @@
 
   # User Profiles
   home-manager.users.netsa = flake-self.homeConfigurations.server;
+  home-manager.users.root = flake-self.homeConfigurations.server;
 
   # Enable GPU acceleration
   hardware.graphics = {

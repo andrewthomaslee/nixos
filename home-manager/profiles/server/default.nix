@@ -18,6 +18,7 @@
         zed.enable = true;
         go.enable = true;
         python.enable = true;
+        docker.enable = true;
       };
     };
   };

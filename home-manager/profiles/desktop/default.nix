@@ -27,6 +27,7 @@
         nix.enable = true;
         bash.enable = true;
         starship.enable = true;
+        docker.enable = true;
       };
 
       services = {
