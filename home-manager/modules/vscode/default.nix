@@ -8,7 +8,7 @@
 in {
   options.clan-net.programs.vscode.enable = lib.mkEnableOption "vscode";
 
-  config = lib.mkIf (cfg.enable && config.home.user != "root") {
+  config = lib.mkIf (cfg.enable && config.home.username != "root") {
     # VSCode
     programs.vscode = {
       enable = true;
