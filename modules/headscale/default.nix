@@ -68,9 +68,7 @@ in {
         # Auto-approvers section for routes
         autoApprovers = {
           routes = {
-            "0.0.0.0/0" = [cfg.adminUser];
             "10.0.0.0/8" = [cfg.adminUser];
-            "192.168.0.0/16" = [cfg.adminUser];
           };
 
           exitNode = [cfg.adminUser];
