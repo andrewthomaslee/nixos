@@ -23,13 +23,6 @@
     virtualisation = {
       docker.enable = true;
     };
-
-    networking = {
-      netbird = {
-        enable = true;
-        name = "clan-net";
-      };
-    };
   };
 
   # Backup Postgres, if it is running

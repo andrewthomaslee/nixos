@@ -40,13 +40,6 @@
       openssh.enable = true;
       motd.enable = true;
     };
-
-    networking = {
-      netbird = {
-        enable = true;
-        name = "clan-net";
-      };
-    };
   };
 
   environment.systemPackages = with pkgs; [
