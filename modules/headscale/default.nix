@@ -142,9 +142,9 @@ in {
         settings = {
           policy.path = aclFile;
           log.format = "json";
-          server_url = "https://${base_domain}:443";
+          server_url = "https://headscale.${base_domain}:443";
           dns = {
-            inherit (cfg) base_domain;
+            base_domain = "ts.${base_domain}";
             nameservers.global = ["8.8.8.8"];
           };
           oidc = {
@@ -188,7 +188,7 @@ in {
       };
 
       # nginx reverse proxy for headscale
-      services.nginx.virtualHosts.${base_domain} = {
+      services.nginx.virtualHosts."headscale.${base_domain}" = {
         forceSSL = true;
         enableACME = true;
         locations."/" = {

@@ -20,7 +20,7 @@
           ipv4 = clan-facts.machines.${config.networking.hostName}.networking.IPv4.address;
           ipv6 = clan-facts.machines.${config.networking.hostName}.networking.IPv6.address;
         };
-        base_domain = "vpn.andrewlee.cloud";
+        base_domain = "andrewlee.cloud";
         adminUser = "netsa";
         adminEmail = clan-facts.email;
         allowed_users = [
