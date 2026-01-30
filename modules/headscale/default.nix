@@ -108,7 +108,7 @@ in {
     aclFile = pkgs.writeText "acl-policy.hujson" aclHuJson;
   in
     lib.mkIf cfg.enable {
-      clan.core.vars.generators.${base_domain} = {
+      clan.core.vars.generators."headscale.${base_domain}" = {
         share = true;
         prompts = {
           client_secret = {
@@ -149,8 +149,8 @@ in {
           };
           oidc = {
             inherit (cfg) issuer allowed_domains allowed_users;
-            client_secret_path = config.clan.core.vars.generators.${base_domain}.files.client_secret.path;
-            client_id = config.clan.core.vars.generators.${base_domain}.files.client_id.value;
+            client_secret_path = config.clan.core.vars.generators."headscale.${base_domain}".files.client_secret.path;
+            client_id = config.clan.core.vars.generators."headscale.${base_domain}".files.client_id.value;
           };
           derp.server = {
             inherit (cfg.derp) enabled ipv4 ipv6;
