@@ -128,6 +128,7 @@ in {
               "git diff"
               "git show"
             ];
+            "terminal.integrated.initialHint" = false;
           };
         };
       };
