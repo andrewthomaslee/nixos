@@ -154,6 +154,8 @@ in {
           };
           derp.server = {
             inherit (cfg.derp) enabled ipv4 ipv6;
+            stun_listen_addr = "0.0.0.0:3478";
+            automatically_add_embedded_derp_region = true;
           };
         };
       };
