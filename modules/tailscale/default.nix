@@ -16,17 +16,16 @@ in {
       description = "Tailscale base URL";
       example = "https://headscale.my-domain.com";
     };
-    tag = lib.mkOption {
-      type = lib.types.str;
-      default = "clan-net";
-      description = "Tailscale tag";
-      example = "my-tailscale-tag";
+    tags = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = ["tag:clan-net"];
+      description = "Tailscale tags";
+      example = ["tag:clan-net" "tag:my-tailscale-tag"];
     };
   };
 
   config = lib.mkIf cfg.enable {
     clan.core.vars.generators.tailscale = {
-      share = true;
       prompts.auth_key.persist = true;
       files.auth_key = {};
     };
@@ -45,7 +44,7 @@ in {
       useRoutingFeatures = "server";
       extraUpFlags = [
         "--advertise-exit-node"
-        "--advertise-tags=tag:${cfg.tag}"
+        "--advertise-tags=${lib.concatStringsSep "," cfg.tags}"
       ];
     };
     networking = {

@@ -59,6 +59,7 @@
         neovim
         vim
         busybox
+        tailscale
       ];
     };
   };
