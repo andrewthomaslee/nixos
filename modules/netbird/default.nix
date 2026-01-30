@@ -43,6 +43,6 @@ in {
     };
 
     networking.firewall.trustedInterfaces = [cfg.name];
-    users.users.netsa.extraGroups = ["netbird-${cfg.name}"];
+    users.extraGroups."netbird-${cfg.name}".members = ["netsa"];
   };
 }
