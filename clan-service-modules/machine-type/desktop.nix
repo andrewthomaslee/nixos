@@ -44,12 +44,7 @@
     networking = {
       netbird = {
         enable = true;
-        role = "client";
-        clan-net = {
-          enable = true;
-          ui.enable = true;
-          port = 51820;
-        };
+        name = "clan-net";
       };
     };
   };

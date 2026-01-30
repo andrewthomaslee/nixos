@@ -27,15 +27,7 @@
     networking = {
       netbird = {
         enable = true;
-        role = "server";
-        clan-net = {
-          enable = true;
-          port = 51820;
-        };
-        # industrial-host = {
-        #   enable = true;
-        #   port = 51821;
-        # };
+        name = "clan-net";
       };
     };
   };
