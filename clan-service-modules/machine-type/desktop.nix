@@ -40,6 +40,11 @@
       openssh.enable = true;
       motd.enable = true;
     };
+
+    networking.tailscale = {
+      enable = true;
+      systray = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [

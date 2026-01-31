@@ -20,6 +20,8 @@
       motd.enable = true;
     };
 
+    networking.tailscale.enable = true;
+
     virtualisation = {
       docker.enable = true;
     };
