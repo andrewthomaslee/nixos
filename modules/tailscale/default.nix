@@ -26,6 +26,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     clan.core.vars.generators.tailscale = {
+      share = true;
       prompts.auth_key.persist = true;
       files.auth_key = {};
     };
