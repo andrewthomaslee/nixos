@@ -37,9 +37,8 @@
 
     # Install these packages for my user
     home.packages = with pkgs; [
-      mpv
-      imagemagick
-      spotify
+      usbutils
+      wireguard-tools
       asciinema
       obsidian
       prismlauncher # minecraft launcher
@@ -48,6 +47,11 @@
       zen-browser
       moscripts
       lazyssh
+      lazyjournal
+      jq
+      yq
+      rsync
+      httpie
     ];
   };
 }

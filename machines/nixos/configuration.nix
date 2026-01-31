@@ -1,8 +1,4 @@
-{
-  config,
-  flake-self,
-  ...
-}: {
+{config, ...}: {
   clan-net = {
     filesystems.ext4.enable = true;
 
@@ -11,14 +7,9 @@
     };
 
     virtualisation = {
-      docker.enable = true;
       virtualbox.enable = true;
     };
   };
-
-  # User Profiles
-  home-manager.users.netsa = flake-self.homeConfigurations.desktop;
-  home-manager.users.root = flake-self.homeConfigurations.desktop;
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];

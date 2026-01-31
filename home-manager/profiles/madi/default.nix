@@ -7,24 +7,14 @@
     };
 
     clan-net = {
-      defaults = {
-        xdg.enable = true;
-        ssh.enable = true;
-      };
+      defaults.xdg.enable = true;
 
-      programs = {
-        firefox.enable = true;
-        bash.enable = true;
-        starship.enable = true;
-      };
+      programs.firefox.enable = true;
     };
 
     # Install these packages for my user
     home.packages = with pkgs; [
-      mpv
-      imagemagick
       spotify
-      obsidian
     ];
   };
 }

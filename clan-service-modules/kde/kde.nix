@@ -4,12 +4,6 @@
     displayManager.sddm.enable = true;
     displayManager.sddm.wayland.enable = true;
 
-    xrdp = {
-      defaultWindowManager = "startplasma-x11";
-      enable = true;
-      openFirewall = true;
-    };
-
     xserver = {
       enable = true;
       excludePackages = [pkgs.xterm]; # remove xterm

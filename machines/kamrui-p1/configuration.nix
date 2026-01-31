@@ -1,4 +1,4 @@
-{flake-self, ...}: {
+{...}: {
   clan-net = {
     filesystems.ext4.enable = true;
 
@@ -18,9 +18,9 @@
     };
   };
 
-  # User Profiles
-  home-manager.users.netsa = flake-self.homeConfigurations.server;
-  home-manager.users.root = flake-self.homeConfigurations.server;
+  services.tailscale.extraUpFlags = [
+    "--advertise-routes=192.168.1.0/24"
+  ];
 
   # Enable GPU acceleration
   hardware.graphics = {

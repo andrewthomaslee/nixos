@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; let
@@ -13,7 +14,7 @@ in {
   config = mkIf cfg.enable {
     # System-wide environment variables to be set
     environment.variables = {
-      EDITOR = "nvim";
+      EDITOR = "${pkgs.neovim}/bin/nvim";
     };
   };
 }

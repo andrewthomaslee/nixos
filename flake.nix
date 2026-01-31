@@ -79,7 +79,7 @@
 
         # Register custom clan service modules
         modules."@andrewthomaslee/machine-type" = ./clan-service-modules/machine-type;
-        modules."@andrewthomaslee/desktop" = ./clan-service-modules/desktop;
+        modules."@andrewthomaslee/kde" = ./clan-service-modules/kde;
 
         inventory = import ./inventory.nix {inherit self clan-facts;};
       };

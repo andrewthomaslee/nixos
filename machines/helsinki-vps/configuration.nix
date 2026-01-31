@@ -1,6 +1,5 @@
 {
   config,
-  flake-self,
   clan-facts,
   ...
 }: {
@@ -96,8 +95,4 @@
       };
     };
   };
-
-  # User Profiles
-  home-manager.users.netsa = flake-self.homeConfigurations.server;
-  home-manager.users.root = flake-self.homeConfigurations.server;
 }

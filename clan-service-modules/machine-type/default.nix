@@ -7,6 +7,8 @@
   roles.server.description = "Server machine settings, no GUI";
   roles.desktop.perInstance.nixosModule = ./desktop.nix;
   roles.desktop.description = "Desktop machine settings, including kde";
+  roles.devMachine.perInstance.nixosModule = ./devMachine.nix;
+  roles.devMachine.description = "Development machine settings ie ( Andrew's work stations )";
 
   # Common configuration for all macine types
   perMachine.nixosModule = {

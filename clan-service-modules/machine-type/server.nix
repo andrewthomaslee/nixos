@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  flake-self,
+  ...
+}: {
   # Limit log size for journal
   services = {
     journald.extraConfig = "SystemMaxUse=10G";
@@ -34,4 +38,8 @@
     location = "/var/backup/postgresql";
     backupAll = true;
   };
+
+  # User Profiles
+  home-manager.users.netsa = flake-self.homeConfigurations.server;
+  home-manager.users.root = flake-self.homeConfigurations.server;
 }

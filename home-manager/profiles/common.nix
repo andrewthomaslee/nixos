@@ -31,13 +31,10 @@ with lib; {
     home = {
       # Install these packages for my user
       packages = with pkgs; [
-        jq
-        yq
+        mpv
+        imagemagick
         rsync
-        httpie
-        vulnix
         fastfetch
-        lazyjournal
       ];
 
       # This value determines the Home Manager release that your

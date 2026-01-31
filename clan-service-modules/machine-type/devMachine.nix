@@ -1,12 +1,12 @@
 {
-  pkgs,
   lib,
+  flake-self,
   ...
 }: {
   services = {
     fwupd.enable = true;
     acpid.enable = true;
-    journald.extraConfig = "SystemMaxUse=1G";
+    journald.extraConfig = "SystemMaxUse=8G";
   };
 
   # Often hangs
@@ -24,6 +24,11 @@
   clan-net = {
     defaults = {
       bluetooth.enable = true;
+      environment.enable = true;
+      storagebox = {
+        enable = true;
+        mountOnAccess = true;
+      };
       fonts.enable = true;
       locale.enable = true;
       nix.enable = true;
@@ -32,6 +37,7 @@
 
     services = {
       wayland.enable = true;
+      openssh.enable = true;
       motd.enable = true;
     };
 
@@ -39,12 +45,19 @@
       enable = true;
       systray = true;
     };
+
+    virtualisation.docker.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    firefox
-    usbutils
-  ];
+  # User Profiles
+  home-manager.users.netsa = flake-self.homeConfigurations.netsa;
+  home-manager.users.root = flake-self.homeConfigurations.netsa;
+
+  services.logind.settings.Login.RuntimeDirectorySize = "10G";
 
   boot.tmp.useTmpfs = false;
+
+  services.tailscale.extraUpFlags = [
+    "--accept-routes"
+  ];
 }

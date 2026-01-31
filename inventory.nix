@@ -5,10 +5,10 @@
   inherit (clan-facts) meta;
 
   machines = {
-    hp-notebook.tags = ["desktop" "madi"];
+    hp-notebook.tags = ["kde" "desktop" "madi"];
 
-    nixos.tags = ["desktop" "netsa"];
-    ghost.tags = ["desktop" "netsa"];
+    nixos.tags = ["kde" "devMachine" "netsa"];
+    ghost.tags = ["kde" "devMachine" "netsa"];
 
     kamrui-p1.tags = ["server" "netsa"];
     helsinki-vps.tags = ["server" "netsa"];
@@ -22,10 +22,10 @@
       };
     };
 
-    desktop = {
+    kde = {
       module.input = "self";
-      module.name = "@andrewthomaslee/desktop";
-      roles.kde.tags.desktop = {};
+      module.name = "@andrewthomaslee/kde";
+      roles.kde.tags.kde = {};
     };
 
     user-root = {
@@ -73,6 +73,7 @@
       module.name = "@andrewthomaslee/machine-type";
       roles.desktop.tags.desktop = {};
       roles.server.tags.server = {};
+      roles.devMachine.tags.devMachine = {};
     };
 
     importer = {
