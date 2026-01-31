@@ -57,7 +57,7 @@
 
   boot.tmp.useTmpfs = false;
 
-  services.tailscale.extraUpFlags = [
+  services.tailscale.extraSetFlags = [
     "--accept-routes"
   ];
 }

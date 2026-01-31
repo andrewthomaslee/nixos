@@ -31,7 +31,12 @@ in {
       files.auth_key = {};
     };
 
-    services.tailscale = {
+    services.tailscale = let
+      flags = [
+        "--advertise-exit-node"
+        "--advertise-tags=${lib.concatStringsSep "," cfg.tags}"
+      ];
+    in {
       enable = true;
       package = pkgs.tailscale;
       openFirewall = true;
@@ -43,10 +48,8 @@ in {
         inherit (cfg) baseURL;
       };
       useRoutingFeatures = "server";
-      extraUpFlags = [
-        "--advertise-exit-node"
-        "--advertise-tags=${lib.concatStringsSep "," cfg.tags}"
-      ];
+      extraUpFlags = flags;
+      extraSetFlags = flags;
     };
     networking = {
       networkmanager.unmanaged = ["tailscale0"];
