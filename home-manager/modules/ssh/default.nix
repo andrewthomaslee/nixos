@@ -8,56 +8,51 @@ in {
   options.clan-net.defaults.ssh.enable = lib.mkEnableOption "SSH configuration";
 
   config = lib.mkIf cfg.enable {
-    programs.ssh = {
+    programs.ssh = let
+      extraOptions = {
+        "PreferredAuthentications" = "publickey";
+        "StrictHostKeyChecking" = "no";
+        "UserKnownHostsFile" = "/dev/null";
+      };
+      addKeysToAgent = "yes";
+
+      machines = names:
+        lib.genAttrs names (name: {
+          hostname = name;
+          user = "root";
+          port = 22;
+          inherit extraOptions addKeysToAgent;
+        });
+    in {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks = {
-        "nixos" = {
-          hostname = "nixos";
-          user = "root";
-          port = 22;
-          addKeysToAgent = "yes";
-          extraOptions = {
-            "PreferredAuthentications" = "publickey";
+      matchBlocks =
+        {
+          helsinki-box = {
+            hostname = "u488514.your-storagebox.de";
+            user = "u488514";
+            port = 23;
+            inherit extraOptions addKeysToAgent;
           };
-        };
-        "ghost" = {
-          hostname = "ghost";
-          user = "root";
-          port = 22;
-          addKeysToAgent = "yes";
-          extraOptions = {
-            "PreferredAuthentications" = "publickey";
-          };
-        };
-        "kamrui-p1" = {
-          hostname = "kamrui-p1";
-          user = "root";
-          port = 22;
-          addKeysToAgent = "yes";
-          extraOptions = {
-            "PreferredAuthentications" = "publickey";
-          };
-        };
-        "helsinki-vps" = {
-          hostname = "helsinki-vps";
-          user = "root";
-          port = 22;
-          addKeysToAgent = "yes";
-          extraOptions = {
-            "PreferredAuthentications" = "publickey";
-          };
-        };
-        "helsinki-box" = {
-          hostname = "u488514.your-storagebox.de";
-          user = "u488514";
-          port = 23;
-          addKeysToAgent = "yes";
-          extraOptions = {
-            "PreferredAuthentications" = "publickey";
-          };
-        };
-      };
+        }
+        // machines [
+          "nixos"
+          "ghost"
+          "kamrui-p1"
+          "helsinki-vps"
+          "mng-0-dev"
+          "mng-2-dev"
+          "mng-1-dev"
+          "wrk-0-dev"
+          "wrk-1-dev"
+          "wrk-2-dev"
+          "mng-0-prod"
+          "mng-1-prod"
+          "mng-2-prod"
+          "wrk-0-prod"
+          "wrk-1-prod"
+          "wrk-2-prod"
+        ];
     };
   };
 }
