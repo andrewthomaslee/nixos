@@ -18,7 +18,7 @@ in {
       serviceConfig = {
         User = "playit";
         Group = "playit";
-        Type = "notify";
+        Type = "simple";
         ExecStart = "${pkgs.playit}/bin/playit -s";
         Restart = "always";
         RuntimeDirectory = "playit";
