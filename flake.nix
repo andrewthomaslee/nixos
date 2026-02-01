@@ -41,6 +41,11 @@
       url = "git+https://github.com/andrewthomaslee/uv2nix.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    playit = {
+      url = "https://github.com/playit-cloud/playit-agent/releases/download/v0.17.1/playit-linux-amd64";
+      flake = false;
+    };
   };
   outputs = {self, ...} @ inputs:
     with inputs; let
@@ -99,9 +104,14 @@
       # Custom packages added via the overlay are selectively exposed here, to
       # allow using them from other flakes that import this one.
       packages = forAllSystems (
-        system:
-          with nixpkgsFor.${system}; {
-            inherit hello-custom;
+        system: let
+          pkgs = nixpkgsFor.${system};
+        in
+          {
+            inherit (pkgs) hello-custom;
+          }
+          // nixpkgs.lib.optionalAttrs (system == "x86_64-linux") {
+            inherit (pkgs) playit;
           }
       );
 

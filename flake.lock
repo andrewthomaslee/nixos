@@ -280,6 +280,18 @@
         "type": "github"
       }
     },
+    "playit": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-49hL7HnmbWKETKn0RbGOTXM7d2XBiPaw2kwoC3lQ6TE=",
+        "type": "file",
+        "url": "https://github.com/playit-cloud/playit-agent/releases/download/v0.17.1/playit-linux-amd64"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/playit-cloud/playit-agent/releases/download/v0.17.1/playit-linux-amd64"
+      }
+    },
     "pyproject-build-systems": {
       "inputs": {
         "nixpkgs": [
@@ -391,6 +403,7 @@
           "nixpkgs"
         ],
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "playit": "playit",
         "tailscale": "tailscale",
         "uv2nix-template": "uv2nix-template",
         "zen-browser": "zen-browser"

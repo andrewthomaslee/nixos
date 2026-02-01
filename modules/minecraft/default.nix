@@ -68,5 +68,8 @@ in {
         };
       inherit (cfg) jvmOpts whitelist;
     };
+
+    # playit.gg proxy
+    environment.systemPackages = [pkgs.playit];
   };
 }

@@ -26,4 +26,6 @@ in
 
     # Example package, used only for tests
     hello-custom = super.callPackage ../packages/hello-custom {};
+
+    playit = super.callPackage ../packages/playit {inherit inputs;};
   }
