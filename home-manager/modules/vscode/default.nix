@@ -129,6 +129,7 @@ in {
               "git show"
             ];
             "terminal.integrated.initialHint" = false;
+            "roo-cline.debug" = false;
           };
         };
       };
