@@ -56,8 +56,4 @@
   services.logind.settings.Login.RuntimeDirectorySize = "10G";
 
   boot.tmp.useTmpfs = false;
-
-  services.tailscale.extraSetFlags = [
-    "--accept-routes"
-  ];
 }
