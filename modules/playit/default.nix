@@ -22,6 +22,8 @@ in {
         ExecStart = "${pkgs.playit}/bin/playit -s";
         Restart = "always";
         RuntimeDirectory = "playit";
+        StateDirectory = "playit";
+        WorkingDirectory = "/var/lib/playit";
         # hardening options
         NoNewPrivileges = true;
         ProtectHome = true;
