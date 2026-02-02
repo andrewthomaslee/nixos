@@ -14,6 +14,7 @@
           GrimpTheImp = "df7a653a-e6d3-4287-84db-e06fb989bb58";
           sapphyy = "7ef1c05d-86b9-49fc-a3cf-ed1918818e2f";
           juwee = "d3dbf932-48dc-4102-b70d-5fbcf3eb1012";
+          shinybronzor = "5417dbdb-dbd6-4d15-88e0-3bbd73bd7652";
         };
       };
     };
