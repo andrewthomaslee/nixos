@@ -34,6 +34,12 @@ in {
             port = 23;
             inherit extraOptions addKeysToAgent;
           };
+          storagebox-dev = {
+            hostname = "u540833.your-storagebox.de";
+            user = "u540833";
+            port = 23;
+            inherit extraOptions addKeysToAgent;
+          };
         }
         // machines [
           "nixos"
