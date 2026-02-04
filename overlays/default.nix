@@ -7,7 +7,6 @@ inputs: flake-self: clan-net-utils: let
   inherit flake-self;
 in
   self: super: {
-    tailscale = inputs.tailscale.packages.${super.stdenv.hostPlatform.system}.tailscale;
     zen-browser = inputs.zen-browser.packages.${super.stdenv.hostPlatform.system}.default;
     moscripts = inputs.moscripts.packages.${super.stdenv.hostPlatform.system}.default;
     clan-cli = inputs.clan-core.packages.${super.stdenv.hostPlatform.system}.clan-cli;
