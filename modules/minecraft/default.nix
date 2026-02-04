@@ -185,6 +185,10 @@ in {
                 url = "https://cdn.modrinth.com/data/DPkbo3dg/versions/NwRksTCY/dragondropselytra-1.21.11-3.5.jar";
                 sha512 = "45126bc7a9091416c8349e347ad9155db9d96c50a54dbdeec8c765f07e95e4cd994694ba1c5897cd5f970c67fc7fb53190dede4cb89c9218a233753f9a329c82";
               };
+              Collective = fetchurl {
+                url = "https://cdn.modrinth.com/data/e0M1UDsY/versions/T8rv7kwo/collective-1.21.11-8.13.jar";
+                sha512 = "af145a48ac89346c7b1ffa8c44400a91a9908e4d1df0f6f1a603ff045b1fd82d9aa041aea27a682c196b266c0daf84cb5b7b8d83b07ee53e2bc1a5c210d19a1b";
+              };
               Armored-Elytra = fetchurl {
                 url = "https://cdn.modrinth.com/data/AuFCCYMx/versions/mKCSekSL/armored-elytra-1.12.0.jar";
                 sha512 = "aca0712908aa99a20e440c87737fddfbc38cfede7d71bbdb5b7e27f47f606cbd0094725fd8cde1f93037adfa65c8234ffc982295f959d827ad9b7fce474ba931";
