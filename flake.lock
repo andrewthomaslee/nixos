@@ -300,7 +300,7 @@
         "url": "https://cdn.modrinth.com/data/aTaCgKLW/versions/tgYliGAU/silk-all-1.11.5.jar"
       }
     },
-    "StorageDrawers": {
+    "Storage-Drawers": {
       "flake": false,
       "locked": {
         "narHash": "sha256-4l8eQ7udYHWwAa6asaEWRMcelHCLWd7W9ZnUrZDFz+4=",
@@ -360,7 +360,7 @@
         "url": "https://cdn.modrinth.com/data/6YplFU9p/versions/b0x3rZY5/unlimited-enchantments-1.1.1%2B1.21.X.jar"
       }
     },
-    "VeinMiner": {
+    "Vein-Miner": {
       "flake": false,
       "locked": {
         "narHash": "sha256-YBN4p4xdC7KjPEJMIVerkE2VQXEQzCMTb5jCx8LU5r0=",
@@ -372,7 +372,7 @@
         "url": "https://cdn.modrinth.com/data/OhduvhIc/versions/SMDUhqTN/veinminer-fabric-2.5.2.jar"
       }
     },
-    "VienMiner-Enchantment": {
+    "Vien-Miner-Enchantment": {
       "flake": false,
       "locked": {
         "narHash": "sha256-z0ZzgBOweY3/m4dO70xpBtd2RUSI9ihvq9YHfXG/oNU=",
@@ -841,13 +841,13 @@
         "Polymer": "Polymer",
         "Puzzles-Lib": "Puzzles-Lib",
         "Silk": "Silk",
-        "StorageDrawers": "StorageDrawers",
+        "Storage-Drawers": "Storage-Drawers",
         "Travelers-Backpack": "Travelers-Backpack",
         "Universal-Enchants": "Universal-Enchants",
         "Universal-Shops": "Universal-Shops",
         "Unlimited-Enchantments": "Unlimited-Enchantments",
-        "VeinMiner": "VeinMiner",
-        "VienMiner-Enchantment": "VienMiner-Enchantment",
+        "Vein-Miner": "Vein-Miner",
+        "Vien-Miner-Enchantment": "Vien-Miner-Enchantment",
         "blogAndrewleeFun": "blogAndrewleeFun",
         "clan-core": "clan-core",
         "home-manager": "home-manager",

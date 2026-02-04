@@ -47,7 +47,7 @@
       flake = false;
     };
 
-    # Minecraft Server
+    # Modded Minecraft Server
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,7 +58,7 @@
       url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar";
       flake = false;
     };
-    StorageDrawers = {
+    Storage-Drawers = {
       url = "https://cdn.modrinth.com/data/guitPqEi/versions/Q9r8LMQL/StorageDrawers-fabric-1.21.11-20.0.0.jar";
       flake = false;
     };
@@ -103,11 +103,11 @@
       url = "https://cdn.modrinth.com/data/ohNO6lps/versions/uXrWPsCu/ForgeConfigAPIPort-v21.11.1-mc1.21.11-Fabric.jar";
       flake = false;
     };
-    VeinMiner = {
+    Vein-Miner = {
       url = "https://cdn.modrinth.com/data/OhduvhIc/versions/SMDUhqTN/veinminer-fabric-2.5.2.jar";
       flake = false;
     };
-    VienMiner-Enchantment = {
+    Vien-Miner-Enchantment = {
       url = "https://cdn.modrinth.com/data/4sP0LXxp/versions/h5oKcjvq/veinminer-enchant-2.3.0.jar";
       flake = false;
     };
