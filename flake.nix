@@ -46,6 +46,11 @@
       url = "https://github.com/playit-cloud/playit-agent/releases/download/v0.17.1/playit-linux-amd64";
       flake = false;
     };
+
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {self, ...} @ inputs:
     with inputs; let
@@ -62,7 +67,10 @@
         system:
           import nixpkgs {
             inherit system;
-            overlays = [self.overlays.default];
+            overlays = [
+              self.overlays.default
+              nix-minecraft.overlay
+            ];
           }
       );
 

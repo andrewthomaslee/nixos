@@ -17,11 +17,13 @@
     config,
     flake-self,
     home-manager,
+    nix-minecraft,
     ...
   }: {
     # Home manager
     imports = [
       home-manager.nixosModules.home-manager
+      nix-minecraft.nixosModules.minecraft-servers
     ];
     home-manager = {
       useUserPackages = true;
@@ -35,6 +37,7 @@
     # pkgs overlay from flake
     nixpkgs.overlays = [
       flake-self.overlays.default
+      nix-minecraft.overlay
     ];
 
     # acme
