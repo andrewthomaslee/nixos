@@ -47,9 +47,141 @@
       flake = false;
     };
 
+    # Minecraft Server
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # Fabric Mods
+    # ------ Client+Server mods ------#
+    Fabric-API = {
+      url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar";
+      flake = false;
+    };
+    StorageDrawers = {
+      url = "https://cdn.modrinth.com/data/guitPqEi/versions/Q9r8LMQL/StorageDrawers-fabric-1.21.11-20.0.0.jar";
+      flake = false;
+    };
+    Travelers-Backpack = {
+      url = "https://cdn.modrinth.com/data/rlloIFEV/versions/jDSDEMgY/travelersbackpack-fabric-1.21.11-10.11.5.jar";
+      flake = false;
+    };
+    # ------ Server-side mods ------#
+    Lithium = {
+      url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/gl30uZvp/lithium-fabric-0.21.2%2Bmc1.21.11.jar";
+      flake = false;
+    };
+    Cardinal-Components-API = {
+      url = "https://cdn.modrinth.com/data/K01OU20C/versions/tEsBSUgb/cardinal-components-api-7.3.0.jar";
+      flake = false;
+    };
+    Cloth-Config-API = {
+      url = "https://cdn.modrinth.com/data/9s6osm5g/versions/xuX40TN5/cloth-config-21.11.153-fabric.jar";
+      flake = false;
+    };
+    JEI = {
+      url = "https://cdn.modrinth.com/data/u6dRKJwZ/versions/N7YozqFm/jei-1.21.11-fabric-27.4.0.15.jar";
+      flake = false;
+    };
+    FerriteCore = {
+      url = "https://cdn.modrinth.com/data/uXXizFIs/versions/Ii0gP3D8/ferritecore-8.2.0-fabric.jar";
+      flake = false;
+    };
+    Jade = {
+      url = "https://cdn.modrinth.com/data/nvQzSEkH/versions/HKUAgY3D/Jade-1.21.11-Fabric-21.1.1.jar";
+      flake = false;
+    };
+    AppleSkin = {
+      url = "https://cdn.modrinth.com/data/EsAfCjCV/versions/59ti1rvg/appleskin-fabric-mc1.21.11-3.0.8.jar";
+      flake = false;
+    };
+    Open-Parties-and-Claims = {
+      url = "https://cdn.modrinth.com/data/gF3BGWvG/versions/xE2Whg8K/open-parties-and-claims-fabric-1.21.11-0.25.8.jar";
+      flake = false;
+    };
+    Fabric-Config-API-Port = {
+      url = "https://cdn.modrinth.com/data/ohNO6lps/versions/uXrWPsCu/ForgeConfigAPIPort-v21.11.1-mc1.21.11-Fabric.jar";
+      flake = false;
+    };
+    VeinMiner = {
+      url = "https://cdn.modrinth.com/data/OhduvhIc/versions/SMDUhqTN/veinminer-fabric-2.5.2.jar";
+      flake = false;
+    };
+    VienMiner-Enchantment = {
+      url = "https://cdn.modrinth.com/data/4sP0LXxp/versions/h5oKcjvq/veinminer-enchant-2.3.0.jar";
+      flake = false;
+    };
+    Silk = {
+      url = "https://cdn.modrinth.com/data/aTaCgKLW/versions/tgYliGAU/silk-all-1.11.5.jar";
+      flake = false;
+    };
+    Kotlin = {
+      url = "https://cdn.modrinth.com/data/Ha28R6CL/versions/N6D3uiZF/fabric-language-kotlin-1.13.8%2Bkotlin.2.3.0.jar";
+      flake = false;
+    };
+    Clumps = {
+      url = "https://cdn.modrinth.com/data/Wnxd13zP/versions/OgBE8Rz4/Clumps-fabric-1.21.11-29.0.0.1.jar";
+      flake = false;
+    };
+    Distant-Horizons = {
+      url = "https://cdn.modrinth.com/data/uCdwusMi/versions/GT3Bm3GN/DistantHorizons-2.4.5-b-1.21.11-fabric-neoforge.jar";
+      flake = false;
+    };
+    Concurrent-Chunk-Management-Engine = {
+      url = "https://cdn.modrinth.com/data/VSNURh3q/versions/olrVZpJd/c2me-fabric-mc1.21.11-0.3.6.0.0.jar";
+      flake = false;
+    };
+    Universal-Shops = {
+      url = "https://cdn.modrinth.com/data/cnIatHrN/versions/M6PTvMlM/universal_shops-1.13.0%2B1.21.11.jar";
+      flake = false;
+    };
+    Polymer = {
+      url = "https://cdn.modrinth.com/data/xGdtZczs/versions/wugBT1fU/polymer-bundled-0.15.2%2B1.21.11.jar";
+      flake = false;
+    };
+    Essential-Commands = {
+      url = "https://cdn.modrinth.com/data/6VdDUivB/versions/3s9XXmZa/essential_commands-0.38.6-mc1.21.11.jar";
+      flake = false;
+    };
+    Elytra-Trims = {
+      url = "https://cdn.modrinth.com/data/XpzGz7KD/versions/Nzd1iQCn/elytratrims-fabric-4.6.2%2B1.21.11.jar";
+      flake = false;
+    };
+    Dragon-Drops-Elytra = {
+      url = "https://cdn.modrinth.com/data/DPkbo3dg/versions/NwRksTCY/dragondropselytra-1.21.11-3.5.jar";
+      flake = false;
+    };
+    Collective = {
+      url = "https://cdn.modrinth.com/data/e0M1UDsY/versions/T8rv7kwo/collective-1.21.11-8.13.jar";
+      flake = false;
+    };
+    Armored-Elytra = {
+      url = "https://cdn.modrinth.com/data/AuFCCYMx/versions/mKCSekSL/armored-elytra-1.12.0.jar";
+      flake = false;
+    };
+    Bow-Infinity-Fix = {
+      url = "https://cdn.modrinth.com/data/BFENfScW/versions/besCdt3U/BowInfinityFix-1.21.9-fabric-3.1.2.jar";
+      flake = false;
+    };
+    Universal-Enchants = {
+      url = "https://cdn.modrinth.com/data/DT56YDir/versions/MuPwsQLB/UniversalEnchants-v21.11.2-mc1.21.11-Fabric.jar";
+      flake = false;
+    };
+    Puzzles-Lib = {
+      url = "https://cdn.modrinth.com/data/QAGBst4M/versions/7L1WGsjw/PuzzlesLib-v21.11.6-mc1.21.11-Fabric.jar";
+      flake = false;
+    };
+    Grind-Enchantments = {
+      url = "https://cdn.modrinth.com/data/WC4UgDcZ/versions/XX0LqtxX/grind-enchantments-4.1.0%2B1.21.11-pre2.jar";
+      flake = false;
+    };
+    Unlimited-Enchantments = {
+      url = "https://cdn.modrinth.com/data/6YplFU9p/versions/b0x3rZY5/unlimited-enchantments-1.1.1%2B1.21.X.jar";
+      flake = false;
+    };
+    Inventory-Sorting = {
+      url = "https://cdn.modrinth.com/data/5ibSyLAz/versions/Dq4h9aTH/inventorysorter-fabric-2.1.4%2Bmc1.21.11.jar";
+      flake = false;
     };
   };
   outputs = {self, ...} @ inputs:

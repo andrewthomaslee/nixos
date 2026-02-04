@@ -1,5 +1,389 @@
 {
   "nodes": {
+    "AppleSkin": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-1jGOhIi0vRbgm93Gp2dki008bautSv3AED3RlxVTJYs=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/EsAfCjCV/versions/59ti1rvg/appleskin-fabric-mc1.21.11-3.0.8.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/EsAfCjCV/versions/59ti1rvg/appleskin-fabric-mc1.21.11-3.0.8.jar"
+      }
+    },
+    "Armored-Elytra": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-ehV5DMLFCsjTW1i3SEM34fr4jxP5hzfvToGWFbva59Q=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/AuFCCYMx/versions/mKCSekSL/armored-elytra-1.12.0.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/AuFCCYMx/versions/mKCSekSL/armored-elytra-1.12.0.jar"
+      }
+    },
+    "Bow-Infinity-Fix": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-C9JStoA3VXAdYCmwMPxEIaLrj5aOA+V9IKnxrUs7pAY=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/BFENfScW/versions/besCdt3U/BowInfinityFix-1.21.9-fabric-3.1.2.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/BFENfScW/versions/besCdt3U/BowInfinityFix-1.21.9-fabric-3.1.2.jar"
+      }
+    },
+    "Cardinal-Components-API": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-oUWC7QQ43LgK7qr/XjzCB2t0SYaj4Fg7iRckbdAFASE=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/K01OU20C/versions/tEsBSUgb/cardinal-components-api-7.3.0.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/K01OU20C/versions/tEsBSUgb/cardinal-components-api-7.3.0.jar"
+      }
+    },
+    "Cloth-Config-API": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-QPwACPGRG9AYA+ioH8igOM9SfoqZ+kzEUtpnqyml/wQ=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/9s6osm5g/versions/xuX40TN5/cloth-config-21.11.153-fabric.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/9s6osm5g/versions/xuX40TN5/cloth-config-21.11.153-fabric.jar"
+      }
+    },
+    "Clumps": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-C0VrWroCXz97/GHnCU6apzWL+tiVx8pHU0sqBqFHEqw=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/Wnxd13zP/versions/OgBE8Rz4/Clumps-fabric-1.21.11-29.0.0.1.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/Wnxd13zP/versions/OgBE8Rz4/Clumps-fabric-1.21.11-29.0.0.1.jar"
+      }
+    },
+    "Collective": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-HkaiLiHdvYikkC4rgUWmJ4ExkRalK9956296GH/qwUA=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/e0M1UDsY/versions/T8rv7kwo/collective-1.21.11-8.13.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/e0M1UDsY/versions/T8rv7kwo/collective-1.21.11-8.13.jar"
+      }
+    },
+    "Concurrent-Chunk-Management-Engine": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-JsExKgXAlIeILHLXuruqsbt4ewqU2zOweKJIXnbfEYw=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/VSNURh3q/versions/olrVZpJd/c2me-fabric-mc1.21.11-0.3.6.0.0.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/VSNURh3q/versions/olrVZpJd/c2me-fabric-mc1.21.11-0.3.6.0.0.jar"
+      }
+    },
+    "Distant-Horizons": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-uZWrx9Jsa8/gathzVpCZwhG/ySOF5sBP57wn7MdYx38=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/uCdwusMi/versions/GT3Bm3GN/DistantHorizons-2.4.5-b-1.21.11-fabric-neoforge.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/uCdwusMi/versions/GT3Bm3GN/DistantHorizons-2.4.5-b-1.21.11-fabric-neoforge.jar"
+      }
+    },
+    "Dragon-Drops-Elytra": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-pwpAKl6G9HljtafbjvQbuS9KFniqej0dXrpqSPeSbbo=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/DPkbo3dg/versions/NwRksTCY/dragondropselytra-1.21.11-3.5.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/DPkbo3dg/versions/NwRksTCY/dragondropselytra-1.21.11-3.5.jar"
+      }
+    },
+    "Elytra-Trims": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-L4xNmCOOlCLDUdOuO29GgL5zTwS5C+dwjInugP//t9s=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/XpzGz7KD/versions/Nzd1iQCn/elytratrims-fabric-4.6.2%2B1.21.11.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/XpzGz7KD/versions/Nzd1iQCn/elytratrims-fabric-4.6.2%2B1.21.11.jar"
+      }
+    },
+    "Essential-Commands": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-lwXbcCQ/1kxReS7vNMUIhinphbcQKoN4W20Po0glnqk=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/6VdDUivB/versions/3s9XXmZa/essential_commands-0.38.6-mc1.21.11.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/6VdDUivB/versions/3s9XXmZa/essential_commands-0.38.6-mc1.21.11.jar"
+      }
+    },
+    "Fabric-API": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-HosOeLNUcbaLe/WiZ/w+kYyw3IS/vzkqFsJL+uvENfs=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar"
+      }
+    },
+    "Fabric-Config-API-Port": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-fUaDDUYew3lehvIKxyIweYIpwfAH4z9Ri85zj5vqsRY=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/ohNO6lps/versions/uXrWPsCu/ForgeConfigAPIPort-v21.11.1-mc1.21.11-Fabric.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/ohNO6lps/versions/uXrWPsCu/ForgeConfigAPIPort-v21.11.1-mc1.21.11-Fabric.jar"
+      }
+    },
+    "FerriteCore": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-PhcRMHiexROOH1KAzB7ezib3yHJ00xYrQG7oab+TJ14=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/uXXizFIs/versions/Ii0gP3D8/ferritecore-8.2.0-fabric.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/uXXizFIs/versions/Ii0gP3D8/ferritecore-8.2.0-fabric.jar"
+      }
+    },
+    "Grind-Enchantments": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-DgE1wvUkAFBIZLK9w+2L5fOyJrPQdmkQCVTAdZ7uAKs=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/WC4UgDcZ/versions/XX0LqtxX/grind-enchantments-4.1.0%2B1.21.11-pre2.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/WC4UgDcZ/versions/XX0LqtxX/grind-enchantments-4.1.0%2B1.21.11-pre2.jar"
+      }
+    },
+    "Inventory-Sorting": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-2ysJdV11PYEESWfKSUDizOjcBeevs16bxSADCRRfpx4=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/5ibSyLAz/versions/Dq4h9aTH/inventorysorter-fabric-2.1.4%2Bmc1.21.11.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/5ibSyLAz/versions/Dq4h9aTH/inventorysorter-fabric-2.1.4%2Bmc1.21.11.jar"
+      }
+    },
+    "JEI": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-4OGbQlVLMQR5rQRv/+AaGJ5D3K+wBzNXpxOi706QrKA=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/N7YozqFm/jei-1.21.11-fabric-27.4.0.15.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/N7YozqFm/jei-1.21.11-fabric-27.4.0.15.jar"
+      }
+    },
+    "Jade": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-Vj8ggWa2PODzS8jLjv0iwvpgsR7XPYaqOyFIO/oKrCg=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/nvQzSEkH/versions/HKUAgY3D/Jade-1.21.11-Fabric-21.1.1.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/nvQzSEkH/versions/HKUAgY3D/Jade-1.21.11-Fabric-21.1.1.jar"
+      }
+    },
+    "Kotlin": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-GgEFU3X1EU1IGvYr2eY4YZlxU5AkDV8CSQQTrVb5FhU=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/Ha28R6CL/versions/N6D3uiZF/fabric-language-kotlin-1.13.8%2Bkotlin.2.3.0.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/Ha28R6CL/versions/N6D3uiZF/fabric-language-kotlin-1.13.8%2Bkotlin.2.3.0.jar"
+      }
+    },
+    "Lithium": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-d5PPuc07k/eS/EbrDUgQ3wnsnQKOWApCdY5V8IL77mo=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/gvQqBUqZ/versions/gl30uZvp/lithium-fabric-0.21.2%2Bmc1.21.11.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/gvQqBUqZ/versions/gl30uZvp/lithium-fabric-0.21.2%2Bmc1.21.11.jar"
+      }
+    },
+    "Open-Parties-and-Claims": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-KCbF8ReniHOv6HuMQAEv8kmu62Srgt+kE9R1VNWw5NY=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/gF3BGWvG/versions/xE2Whg8K/open-parties-and-claims-fabric-1.21.11-0.25.8.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/gF3BGWvG/versions/xE2Whg8K/open-parties-and-claims-fabric-1.21.11-0.25.8.jar"
+      }
+    },
+    "Polymer": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-GBEhq0zvNRS0BMd4e5MbxiZm2Qn5Vvxfwk6PFsn9B8w=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/xGdtZczs/versions/wugBT1fU/polymer-bundled-0.15.2%2B1.21.11.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/xGdtZczs/versions/wugBT1fU/polymer-bundled-0.15.2%2B1.21.11.jar"
+      }
+    },
+    "Puzzles-Lib": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-PBKDLfzt7Y3l8vR1pax5onW8z9o4vBMd/+kwXvJbuck=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/QAGBst4M/versions/7L1WGsjw/PuzzlesLib-v21.11.6-mc1.21.11-Fabric.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/QAGBst4M/versions/7L1WGsjw/PuzzlesLib-v21.11.6-mc1.21.11-Fabric.jar"
+      }
+    },
+    "Silk": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-WW+6POyAPAsD0lsSEZRMMbhrAu9f99fymIaucfyMgFw=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/aTaCgKLW/versions/tgYliGAU/silk-all-1.11.5.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/aTaCgKLW/versions/tgYliGAU/silk-all-1.11.5.jar"
+      }
+    },
+    "StorageDrawers": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-4l8eQ7udYHWwAa6asaEWRMcelHCLWd7W9ZnUrZDFz+4=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/guitPqEi/versions/Q9r8LMQL/StorageDrawers-fabric-1.21.11-20.0.0.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/guitPqEi/versions/Q9r8LMQL/StorageDrawers-fabric-1.21.11-20.0.0.jar"
+      }
+    },
+    "Travelers-Backpack": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-SVnCrwXYQGlgb1u/Xprp9Gdi6aIAkEPva7/elkFzb7E=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/rlloIFEV/versions/jDSDEMgY/travelersbackpack-fabric-1.21.11-10.11.5.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/rlloIFEV/versions/jDSDEMgY/travelersbackpack-fabric-1.21.11-10.11.5.jar"
+      }
+    },
+    "Universal-Enchants": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-QdQwRz75vAhgq64YnN4knIH6nuy6FnCpi0QjomkNZeI=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/DT56YDir/versions/MuPwsQLB/UniversalEnchants-v21.11.2-mc1.21.11-Fabric.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/DT56YDir/versions/MuPwsQLB/UniversalEnchants-v21.11.2-mc1.21.11-Fabric.jar"
+      }
+    },
+    "Universal-Shops": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-nmQijybODbhYeM5S5OWjkmZGA8D6aXwVqktSoDwI1mk=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/cnIatHrN/versions/M6PTvMlM/universal_shops-1.13.0%2B1.21.11.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/cnIatHrN/versions/M6PTvMlM/universal_shops-1.13.0%2B1.21.11.jar"
+      }
+    },
+    "Unlimited-Enchantments": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-WqqpX1F7LO13OrrLazhhOmkmR9WupRm6kZaqbOk2PhI=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/6YplFU9p/versions/b0x3rZY5/unlimited-enchantments-1.1.1%2B1.21.X.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/6YplFU9p/versions/b0x3rZY5/unlimited-enchantments-1.1.1%2B1.21.X.jar"
+      }
+    },
+    "VeinMiner": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-YBN4p4xdC7KjPEJMIVerkE2VQXEQzCMTb5jCx8LU5r0=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/OhduvhIc/versions/SMDUhqTN/veinminer-fabric-2.5.2.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/OhduvhIc/versions/SMDUhqTN/veinminer-fabric-2.5.2.jar"
+      }
+    },
+    "VienMiner-Enchantment": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-z0ZzgBOweY3/m4dO70xpBtd2RUSI9ihvq9YHfXG/oNU=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/4sP0LXxp/versions/h5oKcjvq/veinminer-enchant-2.3.0.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/4sP0LXxp/versions/h5oKcjvq/veinminer-enchant-2.3.0.jar"
+      }
+    },
     "blogAndrewleeFun": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -432,6 +816,38 @@
     },
     "root": {
       "inputs": {
+        "AppleSkin": "AppleSkin",
+        "Armored-Elytra": "Armored-Elytra",
+        "Bow-Infinity-Fix": "Bow-Infinity-Fix",
+        "Cardinal-Components-API": "Cardinal-Components-API",
+        "Cloth-Config-API": "Cloth-Config-API",
+        "Clumps": "Clumps",
+        "Collective": "Collective",
+        "Concurrent-Chunk-Management-Engine": "Concurrent-Chunk-Management-Engine",
+        "Distant-Horizons": "Distant-Horizons",
+        "Dragon-Drops-Elytra": "Dragon-Drops-Elytra",
+        "Elytra-Trims": "Elytra-Trims",
+        "Essential-Commands": "Essential-Commands",
+        "Fabric-API": "Fabric-API",
+        "Fabric-Config-API-Port": "Fabric-Config-API-Port",
+        "FerriteCore": "FerriteCore",
+        "Grind-Enchantments": "Grind-Enchantments",
+        "Inventory-Sorting": "Inventory-Sorting",
+        "JEI": "JEI",
+        "Jade": "Jade",
+        "Kotlin": "Kotlin",
+        "Lithium": "Lithium",
+        "Open-Parties-and-Claims": "Open-Parties-and-Claims",
+        "Polymer": "Polymer",
+        "Puzzles-Lib": "Puzzles-Lib",
+        "Silk": "Silk",
+        "StorageDrawers": "StorageDrawers",
+        "Travelers-Backpack": "Travelers-Backpack",
+        "Universal-Enchants": "Universal-Enchants",
+        "Universal-Shops": "Universal-Shops",
+        "Unlimited-Enchantments": "Unlimited-Enchantments",
+        "VeinMiner": "VeinMiner",
+        "VienMiner-Enchantment": "VienMiner-Enchantment",
         "blogAndrewleeFun": "blogAndrewleeFun",
         "clan-core": "clan-core",
         "home-manager": "home-manager",
