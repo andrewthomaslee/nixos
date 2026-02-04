@@ -54,8 +54,8 @@ in {
         cp $prompts/* $out/
       '';
     };
-    # systemd patch
-    services.minecraft-servers.servers.fabric.serviceConfig = {
+    # Minecraft Server Patch
+    systemd.services.minecraft-server-fabric.serviceConfig = {
       Type = "forking";
       RestartSec = "10s";
     };
