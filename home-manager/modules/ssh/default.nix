@@ -45,6 +45,7 @@ in {
           "nixos"
           "ghost"
           "kamrui-p1"
+          "inuc-0"
           "helsinki-vps"
           "mng-0-dev"
           "mng-2-dev"
