@@ -13,7 +13,7 @@
   Open-Parties-and-Claims,
   Fabric-Config-API-Port,
   Vein-Miner,
-  Vien-Miner-Enchantment,
+  Vein-Miner-Enchantment,
   Silk,
   Kotlin,
   Clumps,
@@ -78,7 +78,7 @@
                 Open-Parties-and-Claims
                 Fabric-Config-API-Port
                 Vein-Miner
-                Vien-Miner-Enchantment
+                Vein-Miner-Enchantment
                 Silk
                 Kotlin
                 Clumps

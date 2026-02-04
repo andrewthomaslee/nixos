@@ -372,7 +372,7 @@
         "url": "https://cdn.modrinth.com/data/OhduvhIc/versions/SMDUhqTN/veinminer-fabric-2.5.2.jar"
       }
     },
-    "Vien-Miner-Enchantment": {
+    "Vein-Miner-Enchantment": {
       "flake": false,
       "locked": {
         "narHash": "sha256-z0ZzgBOweY3/m4dO70xpBtd2RUSI9ihvq9YHfXG/oNU=",
@@ -847,7 +847,7 @@
         "Universal-Shops": "Universal-Shops",
         "Unlimited-Enchantments": "Unlimited-Enchantments",
         "Vein-Miner": "Vein-Miner",
-        "Vien-Miner-Enchantment": "Vien-Miner-Enchantment",
+        "Vein-Miner-Enchantment": "Vein-Miner-Enchantment",
         "blogAndrewleeFun": "blogAndrewleeFun",
         "clan-core": "clan-core",
         "home-manager": "home-manager",

@@ -107,7 +107,7 @@
       url = "https://cdn.modrinth.com/data/OhduvhIc/versions/SMDUhqTN/veinminer-fabric-2.5.2.jar";
       flake = false;
     };
-    Vien-Miner-Enchantment = {
+    Vein-Miner-Enchantment = {
       url = "https://cdn.modrinth.com/data/4sP0LXxp/versions/h5oKcjvq/veinminer-enchant-2.3.0.jar";
       flake = false;
     };
