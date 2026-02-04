@@ -10,10 +10,10 @@ in {
     enable = lib.mkEnableOption "Minecraft";
     jvmOpts = lib.mkOption {
       type = lib.types.str;
-      default = "-Xms4G -Xmx16G -XX:+UseG1GC -XX:ParallelGCThreads=12 -XX:+DisableExplicitGC";
+      default = "-Xms8G -Xmx8G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
       description = "JVM Options";
       example = lib.literalExpression ''
-        "-Xms4G -Xmx16G -XX:+UseG1GC -XX:ParallelGCThreads=12 -XX:+DisableExplicitGC"
+        "-Xms4G -Xmx4G -XX:+UseG1GC -XX:ParallelGCThreads=4 -XX:+DisableExplicitGC"
       '';
     };
     whitelist = lib.mkOption {
@@ -50,7 +50,7 @@ in {
     services.minecraft-server = {
       enable = true;
       eula = true;
-      package = pkgs.minecraft-server;
+      package = pkgs.papermc.override {jre = pkgs.jdk21_headless;};
       declarative = true;
       openFirewall = true;
       serverProperties =

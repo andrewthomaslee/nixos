@@ -6,7 +6,6 @@
       playit.enable = true;
       minecraft = {
         enable = true;
-        jvmOpts = "-Xms2G -Xmx8G -XX:+UseG1GC -XX:ParallelGCThreads=8 -XX:+DisableExplicitGC";
         whitelist = {
           netsammateo = "06c0f83a-7ffe-466c-be19-b3c247b1438c";
           scorch3000 = "1380ccf2-aef4-4cb3-8d18-cf3642dac80c";
