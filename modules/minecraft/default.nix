@@ -70,7 +70,7 @@ in {
         enable = true;
 
         # Specify the custom minecraft server package
-        package = pkgs.fabricServers.fabric-1_21_1.override {
+        package = pkgs.fabricServers.fabric-1_21_10.override {
           loaderVersion = "0.18.4";
         }; # Specific fabric loader version
 
