@@ -3,38 +3,6 @@
   config,
   lib,
   nix-minecraft,
-  Fabric-API,
-  Storage-Drawers,
-  Travelers-Backpack,
-  Lithium,
-  Cardinal-Components-API,
-  Cloth-Config-API,
-  JEI,
-  FerriteCore,
-  Jade,
-  AppleSkin,
-  Open-Parties-and-Claims,
-  Fabric-Config-API-Port,
-  Vein-Miner,
-  Vien-Miner-Enchantment,
-  Silk,
-  Kotlin,
-  Clumps,
-  Distant-Horizons,
-  Concurrent-Chunk-Management-Engine,
-  Universal-Shops,
-  Polymer,
-  Essential-Commands,
-  Elytra-Trims,
-  Dragon-Drops-Elytra,
-  Collective,
-  Armored-Elytra,
-  Bow-Infinity-Fix,
-  Universal-Enchants,
-  Puzzles-Lib,
-  Grind-Enchantments,
-  Unlimited-Enchantments,
-  Inventory-Sorting,
   ...
 }: let
   cfg = config.clan-net.services.minecraft;
@@ -58,7 +26,6 @@ in {
     };
     whitelist = lib.mkOption {
       type = lib.types.attrsOf lib.types.str;
-      default = {};
       description = "Whitelisted players";
       example = lib.literalExpression ''
         {
@@ -66,6 +33,74 @@ in {
           sapphyy = "7ef1c05d-86b9-49fc-a3cf-ed1918818e2f";
         }
       '';
+      default = {};
+    };
+    serverProperties = lib.mkOption {
+      type = lib.types.attrs;
+      description = "Server properties";
+      example = lib.literalExpression ''
+        {
+          gamemode = "survival";
+          difficulty = "normal";
+          simulation-distance = "16";
+          motd = "❄️ NixOS Minecraft ⛏️";
+        }
+      '';
+      default = {
+        gamemode = "survival";
+        difficulty = "hard";
+        simulation-distance = "12";
+        motd = "❄️ NixOS Modded Minecraft ⛏️";
+        force-gamemode = true;
+      };
+    };
+    symlinks = lib.mkOption {
+      type = lib.types.attrsOf lib.types.package;
+      description = "Symlinks to mods";
+      example = lib.literalExpression ''
+        {
+          mods = pkgs.linkFarmFromDrvs "mods" (
+            builtins.attrValues {
+              Fabric-API = pkgs.fetchurl {
+                url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar";
+                sha512 = "c20c017e23d6d2774690d0dd774cec84c16bfac5461da2d9345a1cd95eee495b1954333c421e3d1c66186284d24a433f6b0cced8021f62e0bfa617d2384d0471";
+              };
+              Travelers-Backpack = fetchurl {
+                url = "https://cdn.modrinth.com/data/rlloIFEV/versions/jDSDEMgY/travelersbackpack-fabric-1.21.11-10.11.5.jar";
+                sha512 = "06ce904071582935bfb206fd071fcd20e968edb72a151ab677c6763b85497c19327ff5d24575ceaec510a517fb14f05bda660cfdf06cea3f5d6b9ff28fd9a903";
+              };
+            }
+          );
+        }
+      '';
+      default = {
+        mods = pkgs.linkFarmFromDrvs "mods" (
+          builtins.attrValues {
+            Fabric-API = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar";
+              sha512 = "c20c017e23d6d2774690d0dd774cec84c16bfac5461da2d9345a1cd95eee495b1954333c421e3d1c66186284d24a433f6b0cced8021f62e0bfa617d2384d0471";
+            };
+          }
+        );
+      };
+    };
+    fabric = {
+      serverVersion = lib.mkOption {
+        type = lib.types.str;
+        default = "1_21_11";
+        description = "Fabric server version";
+        example = lib.literalExpression ''
+          "1_21_1"
+        '';
+      };
+      loaderVersion = lib.mkOption {
+        type = lib.types.str;
+        default = "0.18.4";
+        description = "Fabric loader version";
+        example = lib.literalExpression ''
+          "0.16.2"
+        '';
+      };
     };
   };
 
@@ -97,31 +132,20 @@ in {
         enable = true;
 
         # Specify the custom minecraft server package
-        package = pkgs.fabricServers.fabric-1_21_11.override {
-          loaderVersion = "0.18.4";
+        package = pkgs.fabricServers."fabric-${cfg.fabric.serverVersion}".override {
+          inherit (cfg.fabric) loaderVersion;
         }; # Specific fabric loader version
 
         serverProperties =
           {
             level-seed = config.clan.core.vars.generators.minecraft.files.seed.value;
-            gamemode = "survival";
-            difficulty = "hard";
-            simulation-distance = "12";
-            motd = "❄️ NixOS Minecraft ⛏️";
-            force-gamemode = true;
           }
           // lib.optionalAttrs (cfg.whitelist != {}) {
             white-list = true;
             enforce-whitelist = true;
-          };
-        inherit (cfg) jvmOpts whitelist;
-
-        symlinks = with pkgs; {
-          mods = linkFarmFromDrvs "mods" (
-            builtins.attrValues {
-            }
-          );
-        };
+          }
+          // cfg.serverProperties;
+        inherit (cfg) jvmOpts whitelist symlinks;
       };
     };
   };
