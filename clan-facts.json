@@ -52,6 +52,26 @@
         }
       ]
     },
+    "inuc-0": {
+      "networking": {
+        "interface": "eno1",
+        "mtu": 1500,
+        "IPv4": {
+          "address": "192.168.1.251",
+          "prefixLength": 24,
+          "gateway": "192.168.1.254"
+        }
+      },
+      "disks": [
+        {
+          "device": "/dev/disk/by-id/ata-SanDisk_SD8SBAT256G1122_161808400633",
+          "label": "san",
+          "mountpoint": "/",
+          "capacity": "256G",
+          "format": "ext4"
+        }
+      ]
+    },
     "nixos": {
       "networking": {
         "interface": "enp3s0",
@@ -75,13 +95,6 @@
           "label": "arc",
           "mountpoint": "/mnt/arc",
           "capacity": "1.8T",
-          "format": "ext4"
-        },
-        {
-          "device": "/dev/disk/by-id/ata-SanDisk_SD8SBAT256G1122_161808400633",
-          "label": "san",
-          "mountpoint": "/mnt/san",
-          "capacity": "256G",
           "format": "ext4"
         },
         {

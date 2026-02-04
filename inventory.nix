@@ -11,6 +11,7 @@
     ghost.tags = ["kde" "devMachine" "netsa"];
 
     kamrui-p1.tags = ["server" "netsa"];
+    inuc-0.tags = ["server" "netsa"];
     helsinki-vps.tags = ["server" "netsa"];
   };
 
