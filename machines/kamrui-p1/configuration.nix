@@ -53,6 +53,7 @@
           sapphyy = "7ef1c05d-86b9-49fc-a3cf-ed1918818e2f";
           juwee = "d3dbf932-48dc-4102-b70d-5fbcf3eb1012";
           shinybronzor = "5417dbdb-dbd6-4d15-88e0-3bbd73bd7652";
+          ColumboPlays = "1fb72d5e-ef87-419b-b76d-6ff278315931";
         };
         symlinks = {
           mods = pkgs.linkFarm "mods" (
