@@ -1,5 +1,17 @@
 {
   "nodes": {
+    "Anvil-Restoration": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-7hhjggaKF/xSN3+fuPj5xUlgGH6sgctOwCj8AetXIBM=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/bd8nwTGy/versions/xGzeyADa/anvilrestoration-1.21.11-2.5.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/bd8nwTGy/versions/xGzeyADa/anvilrestoration-1.21.11-2.5.jar"
+      }
+    },
     "AppleSkin": {
       "flake": false,
       "locked": {
@@ -22,6 +34,18 @@
       "original": {
         "type": "file",
         "url": "https://cdn.modrinth.com/data/AuFCCYMx/versions/mKCSekSL/armored-elytra-1.12.0.jar"
+      }
+    },
+    "Bigger-Sponge-Absorption-Radius": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-xGXPSqFZFDY5cHDf/28hyKjyIAlPUAzj2+P/vXmDXr8=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/3PLAyBxz/versions/KzkF169B/biggerspongeabsorptionradius-1.21.11-3.7.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/3PLAyBxz/versions/KzkF169B/biggerspongeabsorptionradius-1.21.11-3.7.jar"
       }
     },
     "Bow-Infinity-Fix": {
@@ -144,6 +168,18 @@
         "url": "https://cdn.modrinth.com/data/6VdDUivB/versions/3s9XXmZa/essential_commands-0.38.6-mc1.21.11.jar"
       }
     },
+    "Extended-Bone-Meal": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-6kCCdoP6AifKyqRy95bifaix3hDyjniDOYj2gfPRiCE=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/bHkCoxMs/versions/Z4hgjtLH/extendedbonemeal-1.21.11-3.6.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/bHkCoxMs/versions/Z4hgjtLH/extendedbonemeal-1.21.11-3.6.jar"
+      }
+    },
     "Fabric-API": {
       "flake": false,
       "locked": {
@@ -154,18 +190,6 @@
       "original": {
         "type": "file",
         "url": "https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar"
-      }
-    },
-    "Fabric-Config-API-Port": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-fUaDDUYew3lehvIKxyIweYIpwfAH4z9Ri85zj5vqsRY=",
-        "type": "file",
-        "url": "https://cdn.modrinth.com/data/ohNO6lps/versions/uXrWPsCu/ForgeConfigAPIPort-v21.11.1-mc1.21.11-Fabric.jar"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://cdn.modrinth.com/data/ohNO6lps/versions/uXrWPsCu/ForgeConfigAPIPort-v21.11.1-mc1.21.11-Fabric.jar"
       }
     },
     "FerriteCore": {
@@ -180,6 +204,30 @@
         "url": "https://cdn.modrinth.com/data/uXXizFIs/versions/Ii0gP3D8/ferritecore-8.2.0-fabric.jar"
       }
     },
+    "Fixed-Anvil-Repair-Cost": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-+XBfC1SwaBjR9OeufjreTeaLYTZUyitlVMWj//QvHE4=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/jmLyNFBG/versions/uCZEtWWi/fixedanvilrepaircost-1.21.11-3.5.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/jmLyNFBG/versions/uCZEtWWi/fixedanvilrepaircost-1.21.11-3.5.jar"
+      }
+    },
+    "Forge-Config-API-Port": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-fUaDDUYew3lehvIKxyIweYIpwfAH4z9Ri85zj5vqsRY=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/ohNO6lps/versions/uXrWPsCu/ForgeConfigAPIPort-v21.11.1-mc1.21.11-Fabric.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/ohNO6lps/versions/uXrWPsCu/ForgeConfigAPIPort-v21.11.1-mc1.21.11-Fabric.jar"
+      }
+    },
     "Grind-Enchantments": {
       "flake": false,
       "locked": {
@@ -192,6 +240,18 @@
         "url": "https://cdn.modrinth.com/data/WC4UgDcZ/versions/XX0LqtxX/grind-enchantments-4.1.0%2B1.21.11-pre2.jar"
       }
     },
+    "Infinite-Trading": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-fFvzjyFMOTc7zoLmdkR7qTA1mHOx8gfQJ/ru90JtuVI=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/U3eoZT3o/versions/QmTnAQac/infinitetrading-1.21.11-4.6.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/U3eoZT3o/versions/QmTnAQac/infinitetrading-1.21.11-4.6.jar"
+      }
+    },
     "Inventory-Sorting": {
       "flake": false,
       "locked": {
@@ -202,6 +262,18 @@
       "original": {
         "type": "file",
         "url": "https://cdn.modrinth.com/data/5ibSyLAz/versions/Dq4h9aTH/inventorysorter-fabric-2.1.4%2Bmc1.21.11.jar"
+      }
+    },
+    "Inventory-Totem": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-OwOAGbtNXv/PYvXvGAwnJ7KfFhKYCDvwaJMGv36FmWQ=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/yQj7xqEM/versions/IzZmDI2F/inventorytotem-1.21.11-3.4.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/yQj7xqEM/versions/IzZmDI2F/inventorytotem-1.21.11-3.4.jar"
       }
     },
     "JEI": {
@@ -226,6 +298,18 @@
       "original": {
         "type": "file",
         "url": "https://cdn.modrinth.com/data/nvQzSEkH/versions/HKUAgY3D/Jade-1.21.11-Fabric-21.1.1.jar"
+      }
+    },
+    "Just-Player-Heads": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-iOGDOsyGYJo5pEe4JjNk8oT0el4UIAW0KTCS0UzjBws=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/YdVBZMNR/versions/AlFsC8XK/justplayerheads-1.21.11-4.3.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/YdVBZMNR/versions/AlFsC8XK/justplayerheads-1.21.11-4.3.jar"
       }
     },
     "Kotlin": {
@@ -264,6 +348,18 @@
         "url": "https://cdn.modrinth.com/data/gF3BGWvG/versions/xE2Whg8K/open-parties-and-claims-fabric-1.21.11-0.25.8.jar"
       }
     },
+    "Player-Roles": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-tNV+OA6ckx3+4eEPp9SANEqjNDSDoPm4roM9i99DLDU=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/Rt1mrUHm/versions/2PHCrWcd/player-roles-1.8.1.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/Rt1mrUHm/versions/2PHCrWcd/player-roles-1.8.1.jar"
+      }
+    },
     "Polymer": {
       "flake": false,
       "locked": {
@@ -286,6 +382,42 @@
       "original": {
         "type": "file",
         "url": "https://cdn.modrinth.com/data/QAGBst4M/versions/7L1WGsjw/PuzzlesLib-v21.11.6-mc1.21.11-Fabric.jar"
+      }
+    },
+    "Random-Bone-Meal-Flowers": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-p+WdIu9qD77MGR8IF4vh03GrDyruYwYVyQAMYNh9IVY=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/17enPZMC/versions/xncSYvvy/randombonemealflowers-1.21.11-4.7.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/17enPZMC/versions/xncSYvvy/randombonemealflowers-1.21.11-4.7.jar"
+      }
+    },
+    "Recast": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-2iKWSjEmfVlY0wt+Jwf/JWKrVz1BOzE0pLy0t6pV6Mg=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/8TWzoOby/versions/sad63YT1/recast-1.21.11-3.7.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/8TWzoOby/versions/sad63YT1/recast-1.21.11-3.7.jar"
+      }
+    },
+    "Respawning-Shulkers": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-OoFeUiu777guzRlGB/+x0ZUQqcZxN3IXow7eQaFAU3Y=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/gHCmhGUV/versions/UxqGoIcn/respawningshulkers-1.21.11-4.2.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/gHCmhGUV/versions/UxqGoIcn/respawningshulkers-1.21.11-4.2.jar"
       }
     },
     "Silk": {
@@ -312,6 +444,18 @@
         "url": "https://cdn.modrinth.com/data/guitPqEi/versions/Q9r8LMQL/StorageDrawers-fabric-1.21.11-20.0.0.jar"
       }
     },
+    "TNT-Breaks-Bedrock": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-e9Fa4FtiFvQiSGA73NID36OYTI6QpWPi6MBXWkf6S2M=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/eU2O6Xp1/versions/hwq9f9Cd/tntbreaksbedrock-1.21.11-3.6.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/eU2O6Xp1/versions/hwq9f9Cd/tntbreaksbedrock-1.21.11-3.6.jar"
+      }
+    },
     "Travelers-Backpack": {
       "flake": false,
       "locked": {
@@ -322,6 +466,18 @@
       "original": {
         "type": "file",
         "url": "https://cdn.modrinth.com/data/rlloIFEV/versions/jDSDEMgY/travelersbackpack-fabric-1.21.11-10.11.5.jar"
+      }
+    },
+    "Tree-Harvester": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-a4IFSHHthv8zAXwmnNXo/smf7Z0PtNlCzgstbmEQh5I=",
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/abooMhox/versions/8mfyGsIg/treeharvester-1.21.11-9.3.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.modrinth.com/data/abooMhox/versions/8mfyGsIg/treeharvester-1.21.11-9.3.jar"
       }
     },
     "Universal-Enchants": {
@@ -346,18 +502,6 @@
       "original": {
         "type": "file",
         "url": "https://cdn.modrinth.com/data/cnIatHrN/versions/M6PTvMlM/universal_shops-1.13.0%2B1.21.11.jar"
-      }
-    },
-    "Unlimited-Enchantments": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-WqqpX1F7LO13OrrLazhhOmkmR9WupRm6kZaqbOk2PhI=",
-        "type": "file",
-        "url": "https://cdn.modrinth.com/data/6YplFU9p/versions/b0x3rZY5/unlimited-enchantments-1.1.1%2B1.21.X.jar"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://cdn.modrinth.com/data/6YplFU9p/versions/b0x3rZY5/unlimited-enchantments-1.1.1%2B1.21.X.jar"
       }
     },
     "Vein-Miner": {
@@ -800,8 +944,10 @@
     },
     "root": {
       "inputs": {
+        "Anvil-Restoration": "Anvil-Restoration",
         "AppleSkin": "AppleSkin",
         "Armored-Elytra": "Armored-Elytra",
+        "Bigger-Sponge-Absorption-Radius": "Bigger-Sponge-Absorption-Radius",
         "Bow-Infinity-Fix": "Bow-Infinity-Fix",
         "Cardinal-Components-API": "Cardinal-Components-API",
         "Cloth-Config-API": "Cloth-Config-API",
@@ -812,24 +958,34 @@
         "Dragon-Drops-Elytra": "Dragon-Drops-Elytra",
         "Elytra-Trims": "Elytra-Trims",
         "Essential-Commands": "Essential-Commands",
+        "Extended-Bone-Meal": "Extended-Bone-Meal",
         "Fabric-API": "Fabric-API",
-        "Fabric-Config-API-Port": "Fabric-Config-API-Port",
         "FerriteCore": "FerriteCore",
+        "Fixed-Anvil-Repair-Cost": "Fixed-Anvil-Repair-Cost",
+        "Forge-Config-API-Port": "Forge-Config-API-Port",
         "Grind-Enchantments": "Grind-Enchantments",
+        "Infinite-Trading": "Infinite-Trading",
         "Inventory-Sorting": "Inventory-Sorting",
+        "Inventory-Totem": "Inventory-Totem",
         "JEI": "JEI",
         "Jade": "Jade",
+        "Just-Player-Heads": "Just-Player-Heads",
         "Kotlin": "Kotlin",
         "Lithium": "Lithium",
         "Open-Parties-and-Claims": "Open-Parties-and-Claims",
+        "Player-Roles": "Player-Roles",
         "Polymer": "Polymer",
         "Puzzles-Lib": "Puzzles-Lib",
+        "Random-Bone-Meal-Flowers": "Random-Bone-Meal-Flowers",
+        "Recast": "Recast",
+        "Respawning-Shulkers": "Respawning-Shulkers",
         "Silk": "Silk",
         "Storage-Drawers": "Storage-Drawers",
+        "TNT-Breaks-Bedrock": "TNT-Breaks-Bedrock",
         "Travelers-Backpack": "Travelers-Backpack",
+        "Tree-Harvester": "Tree-Harvester",
         "Universal-Enchants": "Universal-Enchants",
         "Universal-Shops": "Universal-Shops",
-        "Unlimited-Enchantments": "Unlimited-Enchantments",
         "Vein-Miner": "Vein-Miner",
         "Vein-Miner-Enchantment": "Vein-Miner-Enchantment",
         "blogAndrewleeFun": "blogAndrewleeFun",

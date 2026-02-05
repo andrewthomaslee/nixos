@@ -54,6 +54,21 @@ in {
         force-gamemode = true;
       };
     };
+    operators = lib.mkOption {
+      type = lib.types.attrs;
+      description = "Operators";
+      example = lib.literalExpression ''
+        {
+          username1 = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+          username2 = {
+            uuid = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy";
+            level = 3;
+            bypassesPlayerLimit = true;
+          };
+        }
+      '';
+      default = {};
+    };
     symlinks = lib.mkOption {
       type = lib.types.attrsOf lib.types.package;
       description = "Symlinks to mods";
@@ -83,6 +98,11 @@ in {
           }
         );
       };
+    };
+    files = lib.mkOption {
+      type = lib.types.attrs;
+      description = "Files to copy to server data directory";
+      default = {};
     };
     fabric = {
       serverVersion = lib.mkOption {
@@ -145,7 +165,7 @@ in {
             enforce-whitelist = true;
           }
           // cfg.serverProperties;
-        inherit (cfg) jvmOpts whitelist symlinks;
+        inherit (cfg) jvmOpts whitelist symlinks operators files;
       };
     };
   };
