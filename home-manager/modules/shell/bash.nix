@@ -50,7 +50,7 @@ in {
             return 1
           fi
 
-          nixos-rebuild "$method" --flake /home/netsa/nixos#"$host" --target-host root@"$host"
+          nixos-rebuild "$method" --flake /home/netsa/nixos#"$host" --target-host root@"$host" --build-host root@localhost
         }
       '';
     };
