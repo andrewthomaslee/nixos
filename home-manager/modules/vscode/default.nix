@@ -130,6 +130,7 @@ in {
             ];
             "terminal.integrated.initialHint" = false;
             "roo-cline.debug" = false;
+            "roo-cline.deniedCommands" = [];
           };
         };
       };
