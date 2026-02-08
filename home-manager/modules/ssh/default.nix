@@ -12,7 +12,7 @@ in {
       extraOptions = {
         "PreferredAuthentications" = "publickey";
         "StrictHostKeyChecking" = "no";
-        # "UserKnownHostsFile" = "/dev/null";
+        "UserKnownHostsFile" = "/dev/null";
       };
       addKeysToAgent = "yes";
 
