@@ -34,7 +34,7 @@ in {
             port = 23;
             inherit extraOptions addKeysToAgent;
           };
-          storagebox-dev = {
+          industrial-host-box = {
             hostname = "u540833.your-storagebox.de";
             user = "u540833";
             port = 23;
@@ -53,12 +53,14 @@ in {
           "wrk-0-dev"
           "wrk-1-dev"
           "wrk-2-dev"
+          "proxy-dev"
           "mng-0-prod"
           "mng-1-prod"
           "mng-2-prod"
           "wrk-0-prod"
           "wrk-1-prod"
           "wrk-2-prod"
+          "proxy-prod"
         ];
     };
   };
