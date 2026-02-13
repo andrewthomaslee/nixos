@@ -54,6 +54,7 @@ in {
           "wrk-1-dev"
           "wrk-2-dev"
           "proxy-dev"
+          "docker-dev"
           "mng-0-prod"
           "mng-1-prod"
           "mng-2-prod"
@@ -61,6 +62,7 @@ in {
           "wrk-1-prod"
           "wrk-2-prod"
           "proxy-prod"
+          "docker-prod"
         ];
     };
   };
