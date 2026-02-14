@@ -33,6 +33,8 @@ in {
         # misc
         speedtest = "nix run nixpkgs#speedtest-cli";
         modrinth-prefetch = "nix run github:Infinidoge/nix-minecraft#nix-modrinth-prefetch -- $@";
+        # backups
+        fabric-backup = "rsync -av --progress --delete kamrui-p1:/srv/minecraft/fabric/world/ /mnt/storagebox/BACKUPS/minecraft/fabric/world/";
       };
       bashrcExtra = ''
         # nixos remote rebuild

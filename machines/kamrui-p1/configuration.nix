@@ -44,6 +44,7 @@
   Tree-Harvester,
   Extended-Bone-Meal,
   Random-Bone-Meal-Flowers,
+  Villager-Pickup,
   ...
 }: {
   clan-net = {
@@ -130,6 +131,7 @@
                 Tree-Harvester # https://modrinth.com/mod/tree-harvester
                 Extended-Bone-Meal # https://modrinth.com/mod/extended-bone-meal
                 Random-Bone-Meal-Flowers # https://modrinth.com/mod/random-bone-meal-flowers
+                Villager-Pickup # https://modrinth.com/mod/villager-pickup
                 ;
             }
           );

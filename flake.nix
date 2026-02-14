@@ -271,6 +271,11 @@
       url = "https://cdn.modrinth.com/data/Rt1mrUHm/versions/2PHCrWcd/player-roles-1.8.1.jar";
       flake = false;
     };
+    Villager-Pickup = {
+      # https://modrinth.com/mod/villager-pickup
+      url = "https://cdn.modrinth.com/data/EL95Q1AM/versions/bf8Q2X39/villagerpickup-fabric-1.21.11-1.3.jar";
+      flake = false;
+    };
   };
   outputs = {self, ...} @ inputs:
     with inputs; let
