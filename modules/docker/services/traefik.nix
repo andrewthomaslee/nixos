@@ -17,7 +17,6 @@ in {
     '';
 
     virtualisation.oci-containers.containers.traefik = let
-      trustedIPs = ["127.0.0.1/8" "192.168.1.0/24"];
       # traefik certs
       cloudflare-ca = config.clan.core.vars.generators.traefik-andrewlee-fun.files."cloudflare-ca.pem".path;
       keyFile = config.clan.core.vars.generators.traefik-andrewlee-fun.files."${domain}.key".path;
@@ -117,6 +116,17 @@ in {
         "traefik.http.routers.dashboard.service" = "api@internal";
         "traefik.http.routers.dashboard.tls" = "true";
         "traefik.http.routers.dashboard.tls.options" = "cloudflare-mtls@file";
+      };
+    };
+
+    virtualisation.oci-containers.containers.whoami = {
+      serviceName = "whoami";
+      image = "traefik/whoami";
+      networks = ["proxy"];
+      labels = {
+        "traefik.enable" = "true";
+        "traefik.http.routers.whoami.rule" = "Host(`whoami.${domain}`) || Host(`whoami.localhost`)";
+        "traefik.http.routers.whoami.entrypoints" = "websecure,web";
       };
     };
 
