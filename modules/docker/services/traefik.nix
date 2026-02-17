@@ -129,7 +129,7 @@ in {
       serviceConfig = {
         Type = "simple";
         RemainAfterExit = true;
-        ExecStart = "${pkgs.tailscale}/bin/tailscale funnel --proxy-protocol=2 tcp://127.0.0.1:443";
+        ExecStart = "${pkgs.tailscale}/bin/tailscale funnel --proxy-protocol=2 --tcp=443 tcp://127.0.0.1:443";
       };
     };
   };
