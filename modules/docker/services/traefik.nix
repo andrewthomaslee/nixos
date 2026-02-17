@@ -116,5 +116,13 @@ in {
         "traefik.http.routers.dashboard.tls.options" = "cloudflare-mtls@file";
       };
     };
+
+    virtualisation.oci-containers.containers.cloudflared = {
+      serviceName = "cloudflared";
+      image = "cloudflare/cloudflared:latest";
+      environmentFiles = [config.clan.core.vars.generators.cloudflared-andrewlee-fun.files.envfile.path];
+      extraOptions = ["tunnel" "run"];
+      networks = ["proxy"];
+    };
   };
 }

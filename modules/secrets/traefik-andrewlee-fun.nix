@@ -5,7 +5,7 @@
   clan-net-utils,
   ...
 }: let
-  inherit (clan-net-utils) mkPasswordHashGenerator;
+  inherit (clan-net-utils) mkPasswordHashGenerator mkEnvGenerator;
   cfg = config.clan-net.secrets.traefik.andrewlee-fun;
   domain = "andrewlee.fun";
 
@@ -22,6 +22,8 @@ in {
       # middleware password and hash
       middleware-andrewlee-fun-admin = mkPasswordHashGenerator "admin";
       middleware-andrewlee-fun-user = mkPasswordHashGenerator "user";
+      # cloudflared tunnel
+      cloudflared-andrewlee-fun = mkEnvGenerator ["TUNNEL_TOKEN"];
       # wildcard tls cert from cloudflare
       traefik-andrewlee-fun = {
         share = true;
