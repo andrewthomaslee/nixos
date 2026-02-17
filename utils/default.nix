@@ -16,4 +16,31 @@
       EOT
     '';
   };
+
+  # Generates a YAML file from a nix attribute set
+  writeYamlFile = name: config:
+    with pkgs;
+      stdenv.mkDerivation {
+        name = name;
+        buildInputs = [json2yaml]; # Use a tool for conversion
+        src = writeText "${name}.json" (builtins.toJSON config); # Start with JSON string
+        buildCommand = ''
+          json2yaml "$src" > "$out"
+        '';
+      };
+
+  # Generates a password and hash for clan.core.vars.generators
+  mkPasswordHashGenerator = name: {
+    share = true;
+    files = {
+      password.deploy = false;
+      hash.secret = false;
+    };
+    runtimeInputs = with pkgs; [apacheHttpd openssl];
+    script = ''
+      mkdir -p $out/
+      echo "$(openssl rand -hex 64)" > $out/password
+      htpasswd -cBb $out/hash ${name} "$(cat $out/password)"
+    '';
+  };
 }

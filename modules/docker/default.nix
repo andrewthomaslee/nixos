@@ -1,0 +1,32 @@
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.clan-net.docker;
+in {
+  imports = [./services];
+
+  options.clan-net.docker.enable = lib.mkEnableOption "Docker Containers";
+
+  config = lib.mkIf cfg.enable {
+    virtualisation = {
+      oci-containers.backend = "docker";
+      docker = {
+        enable = true;
+        logDriver = "json-file";
+        daemon.settings = {
+          fixed-cidr-v6 = "fd00::/80";
+          ipv6 = true;
+          live-restore = true;
+        };
+        autoPrune.enable = true;
+      };
+    };
+
+    environment.systemPackages = with pkgs; [
+      docker-vackup
+    ];
+  };
+}

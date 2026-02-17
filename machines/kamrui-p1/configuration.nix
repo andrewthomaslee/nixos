@@ -50,6 +50,13 @@
   clan-net = {
     filesystems.ext4.enable = true;
 
+    docker.services = {
+      dockhand.enable = true;
+      traefik.enable = true;
+    };
+
+    secrets.traefik.andrewlee-fun.enable = true;
+
     services = {
       playit.enable = true;
       minecraft = {

@@ -26,7 +26,7 @@
 
     networking.tailscale.enable = true;
 
-    virtualisation.docker.enable = true;
+    docker.enable = true;
   };
 
   # Backup Postgres, if it is running
