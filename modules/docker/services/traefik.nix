@@ -112,8 +112,6 @@ in {
         "traefik.http.routers.dashboard.rule" = "Host(`docker.${domain}`)";
         "traefik.http.routers.dashboard.entrypoints" = "websecure";
         "traefik.http.routers.dashboard.service" = "api@internal";
-        "traefik.http.routers.dashboard.tls" = "true";
-        "traefik.http.routers.dashboard.tls.options" = "cloudflare-mtls@file";
       };
     };
 
