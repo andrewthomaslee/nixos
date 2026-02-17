@@ -123,6 +123,7 @@ in {
       serviceName = "whoami";
       image = "traefik/whoami";
       networks = ["proxy"];
+      pull = "always";
       labels = {
         "traefik.enable" = "true";
         "traefik.http.routers.whoami.rule" = "Host(`whoami.${domain}`) || Host(`whoami.localhost`)";
