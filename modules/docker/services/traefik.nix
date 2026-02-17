@@ -105,8 +105,8 @@ in {
         "${keyFile}:${keyFile}:ro"
       ];
       ports = [
-        "80:80"
-        "443:443"
+        "8888:80"
+        "8443:443"
         "8080:8080"
       ];
       networks = ["proxy"];
@@ -139,7 +139,7 @@ in {
       serviceConfig = {
         Type = "simple";
         RemainAfterExit = true;
-        ExecStart = "${pkgs.tailscale}/bin/tailscale funnel --tcp=443 tcp://127.0.0.1:443";
+        ExecStart = "${pkgs.tailscale}/bin/tailscale funnel --tcp=443 tcp://127.0.0.1:8443";
       };
     };
   };
