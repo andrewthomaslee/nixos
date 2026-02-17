@@ -67,8 +67,6 @@ in {
           };
         };
 
-        certificatesResolvers.ts.tailscale = {};
-
         providers = {
           docker = {
             exposedByDefault = false;

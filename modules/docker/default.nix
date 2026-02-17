@@ -19,7 +19,6 @@ in {
         daemon.settings = {
           fixed-cidr-v6 = "fd00::/80";
           ipv6 = true;
-          live-restore = true;
         };
         autoPrune.enable = true;
       };
