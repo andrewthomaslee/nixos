@@ -105,8 +105,8 @@ in {
         "${keyFile}:${keyFile}:ro"
       ];
       ports = [
-        "8888:80"
-        "8443:443"
+        "80:80"
+        "443:443"
         "8080:8080"
       ];
       networks = ["proxy"];
@@ -128,18 +128,6 @@ in {
       labels = {
         "traefik.enable" = "true";
         "traefik.http.routers.whoami.rule" = "Host(`whoami.${domain}`) || Host(`whoami.localhost`)";
-        "traefik.http.routers.whoami.entrypoints" = "websecure,web";
-      };
-    };
-
-    systemd.services.tailscale-funnel = {
-      description = "tailscale funnel";
-      after = ["network.target"];
-      wantedBy = ["multi-user.target"];
-      serviceConfig = {
-        Type = "simple";
-        RemainAfterExit = true;
-        ExecStart = "${pkgs.tailscale}/bin/tailscale funnel --tcp=443 tcp://127.0.0.1:8443";
       };
     };
   };
