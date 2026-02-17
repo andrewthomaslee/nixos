@@ -65,6 +65,7 @@
         vim
         busybox
         tailscale
+        httpie
       ];
     };
   };

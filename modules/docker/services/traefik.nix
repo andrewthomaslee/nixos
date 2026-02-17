@@ -60,10 +60,10 @@ in {
 
         entryPoints = {
           traefik.address = ":8080";
-          web.address = ":80";
           websecure = {
+            asdefault = true;
             address = ":443";
-            http.tls = {};
+            http.tls.options = "cloudflare-mtls@file";
           };
         };
 
@@ -105,7 +105,6 @@ in {
         "${keyFile}:${keyFile}:ro"
       ];
       ports = [
-        "80:80"
         "443:443"
         "8080:8080"
       ];
@@ -113,10 +112,7 @@ in {
       labels = {
         "traefik.enable" = "true";
         "traefik.http.routers.dashboard.rule" = "Host(`docker.${domain}`)";
-        "traefik.http.routers.dashboard.entrypoints" = "websecure";
         "traefik.http.routers.dashboard.service" = "api@internal";
-        "traefik.http.routers.dashboard.tls" = "true";
-        "traefik.http.routers.dashboard.tls.options" = "cloudflare-mtls@file";
       };
     };
 
@@ -127,7 +123,8 @@ in {
       pull = "always";
       labels = {
         "traefik.enable" = "true";
-        "traefik.http.routers.whoami.rule" = "Host(`whoami.${domain}`) || Host(`whoami.localhost`)";
+        "traefik.http.routers.whoami.rule" = "Host(`whoami.${domain}`)";
+        "traefik.http.services.whoami.loadbalancer.server.port" = "80";
       };
     };
   };
