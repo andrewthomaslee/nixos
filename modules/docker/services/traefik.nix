@@ -87,6 +87,7 @@ in {
     in {
       serviceName = "traefik";
       image = "traefik:v3.6.8";
+      pull = "always";
       extraOptions = [
         "--health-cmd=traefik healthcheck --ping"
         "--health-interval=30s"
