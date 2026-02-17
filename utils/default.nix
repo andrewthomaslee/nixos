@@ -12,7 +12,7 @@
     script = ''
       mkdir -p $out
       cat <<EOT >> $out/envfile
-      ${builtins.concatStringsSep "\n" (map (e: "${e}=\"$(cat $prompts/${e})\"") envs)}
+      ${builtins.concatStringsSep "\n" (map (e: "${e}=$(cat $prompts/${e})") envs)}
       EOT
     '';
   };
