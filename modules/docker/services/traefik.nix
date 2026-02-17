@@ -17,6 +17,7 @@ in {
     '';
 
     virtualisation.oci-containers.containers.traefik = let
+      trustedIPs = ["127.0.0.1/8" "192.168.1.0/24"];
       # traefik certs
       cloudflare-ca = config.clan.core.vars.generators.traefik-andrewlee-fun.files."cloudflare-ca.pem".path;
       keyFile = config.clan.core.vars.generators.traefik-andrewlee-fun.files."${domain}.key".path;
@@ -63,9 +64,13 @@ in {
           web.address = ":80";
           websecure = {
             address = ":443";
+            proxyProtocol = {inherit trustedIPs;};
+            forwardedHeaders = {inherit trustedIPs;};
             http.tls = {};
           };
         };
+
+        certificatesResolvers.ts.tailscale = {};
 
         providers = {
           docker = {
@@ -112,15 +117,17 @@ in {
         "traefik.http.routers.dashboard.rule" = "Host(`docker.${domain}`)";
         "traefik.http.routers.dashboard.entrypoints" = "websecure";
         "traefik.http.routers.dashboard.service" = "api@internal";
+        "traefik.http.routers.dashboard.tls" = "true";
+        "traefik.http.routers.dashboard.tls.options" = "cloudflare-mtls@file";
       };
     };
 
-    virtualisation.oci-containers.containers.cloudflared = {
-      serviceName = "cloudflared";
-      image = "cloudflare/cloudflared:latest";
-      environmentFiles = [config.clan.core.vars.generators.cloudflared-andrewlee-fun.files.envfile.path];
-      cmd = ["tunnel" "run"];
-      networks = ["proxy"];
+    systemd.services.tailscale-funnel = {
+      serviceConfig = {
+        Type = "simple";
+        RemainAfterExit = true;
+        ExecStart = "${pkgs.tailscale}/bin/tailscale funnel --proxy-protocol=2 --https=443 https://127.0.0.1:443";
+      };
     };
   };
 }

@@ -23,6 +23,8 @@ in {
         "traefik.enable" = "true";
         "traefik.http.routers.dockhand.rule" = "Host(`dockhand.${domain}`)";
         "traefik.http.routers.dockhand.entrypoints" = "websecure";
+        "traefik.http.routers.dockhand.tls" = "true";
+        "traefik.http.routers.dockhand.tls.options" = "cloudflare-mtls@file";
         "traefik.http.services.dockhand.loadbalancer.server.port" = "3000";
       };
     };
