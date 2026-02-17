@@ -121,7 +121,7 @@ in {
       serviceName = "cloudflared";
       image = "cloudflare/cloudflared:latest";
       environmentFiles = [config.clan.core.vars.generators.cloudflared-andrewlee-fun.files.envfile.path];
-      extraOptions = ["tunnel" "run"];
+      cmd = ["tunnel" "run"];
       networks = ["proxy"];
     };
   };
