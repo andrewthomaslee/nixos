@@ -48,7 +48,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # ----------------------------------- Fabric Mods ----------------------------------- #
-    # ------ Client+Server mods ------#
+    # ------ ‼️ Required mods ‼️ ------#
     Fabric-API = {
       # https://modrinth.com/mod/fabric-api
       url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar";
@@ -59,12 +59,30 @@
       url = "https://cdn.modrinth.com/data/guitPqEi/versions/Q9r8LMQL/StorageDrawers-fabric-1.21.11-20.0.0.jar";
       flake = false;
     };
+    Forge-Config-API-Port = {
+      # Storage-Drawers Dependency
+      # https://modrinth.com/mod/forge-config-api-port
+      url = "https://cdn.modrinth.com/data/ohNO6lps/versions/uXrWPsCu/ForgeConfigAPIPort-v21.11.1-mc1.21.11-Fabric.jar";
+      flake = false;
+    };
     Travelers-Backpack = {
       # https://modrinth.com/mod/travelersbackpack
       url = "https://cdn.modrinth.com/data/rlloIFEV/versions/jDSDEMgY/travelersbackpack-fabric-1.21.11-10.11.5.jar";
       flake = false;
     };
-    # ------ Optional Client-side mods ------#
+    Cardinal-Components-API = {
+      # Travelers-Backpack Dependency
+      # https://modrinth.com/mod/cardinal-components-api
+      url = "https://cdn.modrinth.com/data/K01OU20C/versions/tEsBSUgb/cardinal-components-api-7.3.0.jar";
+      flake = false;
+    };
+    Cloth-Config-API = {
+      # Travelers-Backpack Dependency
+      # https://modrinth.com/mod/cloth-config
+      url = "https://cdn.modrinth.com/data/9s6osm5g/versions/xuX40TN5/cloth-config-21.11.153-fabric.jar";
+      flake = false;
+    };
+    # ------ ❓ Optional Client-side mods ❓ (recommended) -------- #
     JEI = {
       # https://modrinth.com/mod/jei
       url = "https://cdn.modrinth.com/data/u6dRKJwZ/versions/N7YozqFm/jei-1.21.11-fabric-27.4.0.15.jar";
@@ -81,16 +99,7 @@
       url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/gl30uZvp/lithium-fabric-0.21.2%2Bmc1.21.11.jar";
       flake = false;
     };
-    Cardinal-Components-API = {
-      # https://modrinth.com/mod/cardinal-components-api
-      url = "https://cdn.modrinth.com/data/K01OU20C/versions/tEsBSUgb/cardinal-components-api-7.3.0.jar";
-      flake = false;
-    };
-    Cloth-Config-API = {
-      # https://modrinth.com/mod/cloth-config
-      url = "https://cdn.modrinth.com/data/9s6osm5g/versions/xuX40TN5/cloth-config-21.11.153-fabric.jar";
-      flake = false;
-    };
+
     FerriteCore = {
       # https://modrinth.com/mod/ferrite-core
       url = "https://cdn.modrinth.com/data/uXXizFIs/versions/Ii0gP3D8/ferritecore-8.2.0-fabric.jar";
@@ -106,11 +115,7 @@
       url = "https://cdn.modrinth.com/data/EsAfCjCV/versions/59ti1rvg/appleskin-fabric-mc1.21.11-3.0.8.jar";
       flake = false;
     };
-    Forge-Config-API-Port = {
-      # https://modrinth.com/mod/forge-config-api-port
-      url = "https://cdn.modrinth.com/data/ohNO6lps/versions/uXrWPsCu/ForgeConfigAPIPort-v21.11.1-mc1.21.11-Fabric.jar";
-      flake = false;
-    };
+
     Vein-Miner = {
       # https://modrinth.com/datapack/veinminer
       url = "https://cdn.modrinth.com/data/OhduvhIc/versions/SMDUhqTN/veinminer-fabric-2.5.2.jar";
