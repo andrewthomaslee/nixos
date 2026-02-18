@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  clan-facts,
   ...
 }: let
   cfg = config.clan-net.defaults.ssh;
@@ -16,13 +17,26 @@ in {
       };
       addKeysToAgent = "yes";
 
-      machines = names:
+      tailscale = names:
         lib.genAttrs names (name: {
           hostname = name;
           user = "root";
           port = 22;
           inherit extraOptions addKeysToAgent;
         });
+
+      local = names:
+        builtins.listToAttrs (map
+          (name: {
+            name = "${name}.local";
+            value = {
+              hostname = clan-facts.machines.${name}.networking.IPv4.address;
+              user = "root";
+              port = 22;
+              inherit extraOptions addKeysToAgent;
+            };
+          })
+          names);
     in {
       enable = true;
       enableDefaultConfig = false;
@@ -41,11 +55,11 @@ in {
             inherit extraOptions addKeysToAgent;
           };
         }
-        // machines [
+        // (tailscale [
           "nixos"
           "ghost"
           "kamrui-p1"
-          "inuc-0"
+          "inuc"
           "helsinki-vps"
           "mng-0-dev"
           "mng-2-dev"
@@ -63,7 +77,14 @@ in {
           "wrk-2-prod"
           "proxy-prod"
           "docker-prod"
-        ];
+        ])
+        // (local [
+          "nixos"
+          "ghost"
+          "kamrui-p1"
+          "inuc"
+          "helsinki-vps"
+        ]);
     };
   };
 }

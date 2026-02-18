@@ -52,7 +52,7 @@
         }
       ]
     },
-    "inuc-0": {
+    "inuc": {
       "networking": {
         "interface": "eno1",
         "mtu": 1500,
