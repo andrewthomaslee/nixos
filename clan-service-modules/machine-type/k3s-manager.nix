@@ -19,12 +19,12 @@
       motd.enable = true;
     };
 
-    networking.tailscale.enable = false;
+    networking.tailscale.enable = true;
 
     docker.enable = true;
 
     kubernetes.k3s = {
-      enable = true;
+      enable = false;
       manager.enable = true;
       services = {
         traefik.enable = true;
