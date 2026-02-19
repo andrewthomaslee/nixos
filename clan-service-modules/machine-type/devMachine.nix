@@ -6,7 +6,6 @@
   services = {
     fwupd.enable = true;
     acpid.enable = true;
-    journald.extraConfig = "SystemMaxUse=8G";
   };
 
   # Often hangs
@@ -50,8 +49,8 @@
   };
 
   # User Profiles
-  home-manager.users.netsa = flake-self.homeConfigurations.netsa;
-  home-manager.users.root = flake-self.homeConfigurations.netsa;
+  home-manager.users.netsa = flake-self.homeConfigurations.devMachine;
+  home-manager.users.root = flake-self.homeConfigurations.devMachine;
 
   services.logind.settings.Login.RuntimeDirectorySize = "10G";
 

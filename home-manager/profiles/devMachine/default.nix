@@ -17,7 +17,6 @@
       programs = {
         k9s.enable = true;
         zed.enable = true;
-        firefox.enable = true;
         tmux.enable = true;
         vscode.enable = true;
         taskwarrior.enable = true;

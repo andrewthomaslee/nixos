@@ -43,4 +43,18 @@
       htpasswd -cBb $out/hash ${name} "$(cat $out/password)"
     '';
   };
+
+  # move a file to the k3s server manifests directory
+  moveToManifests = name: path: {
+    "sops2manifests-${name}" = {
+      description = "move secrets to /var/lib/rancher/k3s/server/manifests/";
+      wantedBy = ["multi-user.target"];
+      after = ["k3s.service"];
+      serviceConfig = {
+        Type = "oneshot";
+        User = "root";
+        ExecStart = "${pkgs.rsync}/bin/rsync -a ${path} /var/lib/rancher/k3s/server/manifests/";
+      };
+    };
+  };
 }

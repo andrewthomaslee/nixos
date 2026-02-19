@@ -155,6 +155,7 @@
     }
   },
   "k3s": {
+    "domain": "andrewlee.cloud",
     "cluster-cidr": {
       "IPv4": "10.42.0.0/16",
       "IPv6": "fd42::/56"
@@ -173,5 +174,26 @@
       "andrewlee.fun",
       "netsam.dev"
     ]
+  },
+  "networking": {
+    "tailscale": {
+      "tailnet": "armadillo-frog.ts.net",
+      "IPv4": {
+        "nixos": "100.80.251.10",
+        "ghost": "100.108.67.117",
+        "helsinki-vps": "",
+        "inuc": "100.86.152.18",
+        "kamrui-p1": "100.123.233.96",
+        "hp-notebook": ""
+      },
+      "IPv6": {
+        "nixos": "fd7a:115c:a1e0::ff34:fb0a",
+        "ghost": "fd7a:115c:a1e0::d234:4375",
+        "helsinki-vps": "",
+        "inuc": "fd7a:115c:a1e0::a34:9812",
+        "kamrui-p1": "fd7a:115c:a1e0::ad34:e961",
+        "hp-notebook": ""
+      }
+    }
   }
 }

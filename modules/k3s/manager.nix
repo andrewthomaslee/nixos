@@ -1,32 +1,35 @@
 {
   config,
-  lib,
+  pkgs,
   clan-facts,
+  clan-net-utils,
+  lib,
   ...
 }: let
-  cfg = config.clan-net.services.k3s;
-  net = clan-facts.machines.${config.networking.hostName}.networking;
-  k3s = clan-facts.k3s;
+  inherit (clan-net-utils) mkPasswordHashGenerator;
+  cfg = config.clan-net.kubernetes.k3s.manager;
+  kube = clan-facts.k3s;
 in {
-  config = lib.mkIf cfg.manager {
-    environment.etc = {
-      "rancher/k3s/registries.yaml".text = ''
-        mirrors:
-          "*":
-      '';
+  options.clan-net.kubernetes.k3s.manager.enable = lib.mkEnableOption "Control plane node";
+
+  config = lib.mkIf cfg.enable {
+    # generate password and hash for k3s admin middleware and other services
+    clan.core.vars.generators.password-and-hash = mkPasswordHashGenerator "admin";
+    # kubeconfig
+    environment.variables = {
+      KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
+      EDITOR = "${pkgs.neovim}/bin/nvim";
     };
 
-    # K3s
+    # k3s
     services.k3s = {
       role = "server";
-      disable = ["traefik"];
       nodeLabel = ["role=manager"];
+      disable = ["servicelb"];
       extraFlags = [
         "--embedded-registry"
-        "--cluster-cidr=${k3s.cluster-cidr.IPv4}"
-        "--service-cidr=${k3s.service-cidr.IPv4}"
-        "--flannel-backend=wireguard-native"
-        "--flannel-iface=${net.interface}"
+        "--cluster-cidr=${kube.cluster-cidr.IPv4},${kube.cluster-cidr.IPv6}"
+        "--service-cidr=${kube.service-cidr.IPv4},${kube.service-cidr.IPv6}"
       ];
     };
   };

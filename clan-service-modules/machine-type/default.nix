@@ -9,6 +9,10 @@
   roles.desktop.description = "Desktop machine settings, including kde";
   roles.devMachine.perInstance.nixosModule = ./devMachine.nix;
   roles.devMachine.description = "Development machine settings ie ( Andrew's work stations )";
+  roles.k3s-manager.perInstance.nixosModule = ./k3s-manager.nix;
+  roles.k3s-manager.description = "K3s manager node";
+  roles.k3s-worker.perInstance.nixosModule = ./k3s-worker.nix;
+  roles.k3s-worker.description = "K3s worker node";
 
   # Common configuration for all macine types
   perMachine.nixosModule = {
@@ -45,6 +49,9 @@
       acceptTerms = true;
       defaults.email = lib.mkDefault "andrewthomaslee.business@gmail.com";
     };
+
+    # Limit log size for journal
+    services.journald.extraConfig = lib.mkDefault "SystemMaxUse=10G";
 
     # Clan
     clan.core.settings.state-version.enable = true;

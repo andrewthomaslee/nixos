@@ -20,8 +20,6 @@
     };
 
     networking.tailscale.enable = true;
-
-    docker.enable = true;
   };
 
   # Backup Postgres, if it is running
@@ -33,6 +31,6 @@
   };
 
   # User Profiles
-  home-manager.users.netsa = flake-self.homeConfigurations.server;
-  home-manager.users.root = flake-self.homeConfigurations.server;
+  home-manager.users.netsa = flake-self.homeConfigurations.k3s-worker;
+  home-manager.users.root = flake-self.homeConfigurations.k3s-worker;
 }

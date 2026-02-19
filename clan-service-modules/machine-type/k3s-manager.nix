@@ -33,6 +33,6 @@
   };
 
   # User Profiles
-  home-manager.users.netsa = flake-self.homeConfigurations.server;
-  home-manager.users.root = flake-self.homeConfigurations.server;
+  home-manager.users.netsa = flake-self.homeConfigurations.k3s-manager;
+  home-manager.users.root = flake-self.homeConfigurations.k3s-manager;
 }

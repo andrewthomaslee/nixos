@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  flake-self,
   ...
 }: {
   services = {
@@ -45,6 +46,10 @@
     firefox
     usbutils
   ];
+
+  # User Profiles
+  home-manager.users.netsa = flake-self.homeConfigurations.desktop;
+  home-manager.users.root = flake-self.homeConfigurations.desktop;
 
   boot.tmp.useTmpfs = false;
 }

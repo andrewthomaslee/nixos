@@ -31,8 +31,6 @@ with lib; {
     home = {
       # Install these packages for my user
       packages = with pkgs; [
-        mpv
-        imagemagick
         rsync
         fastfetch
       ];

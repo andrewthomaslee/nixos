@@ -10,8 +10,8 @@
     nixos.tags = ["kde" "devMachine" "netsa"];
     ghost.tags = ["kde" "devMachine" "netsa"];
 
-    kamrui-p1.tags = ["server" "netsa"];
-    inuc.tags = ["server" "netsa"];
+    kamrui-p1.tags = ["k3s-manager" "netsa"];
+    inuc.tags = ["k3s-worker" "netsa"];
     helsinki-vps.tags = ["server" "netsa"];
   };
 
@@ -75,6 +75,8 @@
       roles.desktop.tags.desktop = {};
       roles.server.tags.server = {};
       roles.devMachine.tags.devMachine = {};
+      roles.k3s-manager.tags.k3s-manager = {};
+      roles.k3s-worker.tags.k3s-worker = {};
     };
 
     importer = {
