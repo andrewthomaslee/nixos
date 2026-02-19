@@ -20,6 +20,16 @@
     };
 
     networking.tailscale.enable = true;
+
+    kubernetes.k3s = {
+      enable = true;
+      worker.enable = true;
+      services = {
+        traefik.enable = true;
+        # longhorn.enable = true;
+        # argocd.enable = true;
+      };
+    };
   };
 
   # Backup Postgres, if it is running
