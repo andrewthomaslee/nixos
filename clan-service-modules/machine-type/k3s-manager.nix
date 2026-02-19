@@ -24,7 +24,7 @@
     docker.enable = true;
 
     kubernetes.k3s = {
-      enable = false;
+      enable = true;
       manager.enable = true;
       services = {
         traefik.enable = true;
