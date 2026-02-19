@@ -52,6 +52,7 @@ in {
       nodeIP = "${privateIPv4},${privateIPv6}";
       extraFlags = [
         "--node-external-ip=${privateIPv4},${privateIPv6}"
+        # "--flannel-iface=tailscale0"
         "--vpn-auth-file=${config.clan.core.vars.generators.k3s.files.vpn-auth-file.path}"
       ];
     };

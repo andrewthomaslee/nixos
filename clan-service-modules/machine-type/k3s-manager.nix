@@ -19,7 +19,7 @@
       motd.enable = true;
     };
 
-    networking.tailscale.enable = true;
+    networking.tailscale.enable = false;
 
     docker.enable = true;
 
