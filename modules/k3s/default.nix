@@ -56,6 +56,10 @@ in {
       ];
     };
 
+    systemd.services.k3s.path = [
+      pkgs.tailscale
+    ];
+
     boot.kernel.sysctl = {
       # enable ip forwarding
       "net.ipv6.conf.all.forwarding" = 1;
