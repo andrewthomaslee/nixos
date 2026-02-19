@@ -1,6 +1,7 @@
 {
   pkgs,
   clan-facts,
+  flake-self,
   ...
 }: {
   users = {
@@ -9,7 +10,6 @@
       home = "/home/madi";
       description = "madi";
       extraGroups = [
-        "docker"
         "wheel"
         "networkmanager"
         "audio"
@@ -24,4 +24,5 @@
     };
   };
   nix.settings.allowed-users = ["madi"];
+  home-manager.users.madi = flake-self.homeConfigurations.desktop;
 }
