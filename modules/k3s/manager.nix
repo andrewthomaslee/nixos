@@ -27,7 +27,6 @@ in {
       nodeLabel = ["role=manager"];
       disable = ["servicelb"];
       extraFlags = [
-        "--embedded-registry"
         "--cluster-cidr=${kube.cluster-cidr.IPv4},${kube.cluster-cidr.IPv6}"
         "--service-cidr=${kube.service-cidr.IPv4},${kube.service-cidr.IPv6}"
       ];
