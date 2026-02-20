@@ -1,10 +1,8 @@
 {
-  lib,
   pkgs,
   flake-self,
   ...
-}:
-with lib; {
+}: {
   config = {
     # Home-manager nixpkgs config
     nixpkgs = {
@@ -29,12 +27,6 @@ with lib; {
     manual.manpages.enable = true;
 
     home = {
-      # Install these packages for my user
-      packages = with pkgs; [
-        rsync
-        fastfetch
-      ];
-
       # This value determines the Home Manager release that your
       # configuration is compatible with. This helps avoid breakage
       # when a new Home Manager release introduces backwards

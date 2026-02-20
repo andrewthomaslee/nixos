@@ -6,32 +6,6 @@
   "email": "andrewthomaslee.business@gmail.com",
   "ssh_public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOb4q9LWJR54SzRkfmsA5KWA5/SDEG853oFC8TVilCW/ Clan-Net",
   "machines": {
-    "helsinki-vps": {
-      "networking": {
-        "interface": "enp1s0",
-        "mtu": 1500,
-        "IPv4": {
-          "address": "77.42.41.25",
-          "prefixLength": 24,
-          "gateway": "fe80::1"
-        },
-        "IPv6": {
-          "address": "2a01:4f9:c013:2588::2",
-          "prefixLength": 64,
-          "subnet": "2a01:4f9:c013:2588::/64",
-          "gateway": "fe80::1"
-        }
-      },
-      "disks": [
-        {
-          "device": "/dev/disk/by-id/nvme-SAMSUNG_MZQLB960HAJR-00007_S437NA0N209177",
-          "label": "main",
-          "mountpoint": "/",
-          "capacity": "320G",
-          "format": "ext4"
-        }
-      ]
-    },
     "kamrui-p1": {
       "networking": {
         "interface": "eno1",
@@ -165,23 +139,24 @@
       "IPv6": "fd43::/112"
     }
   },
-  "tailscale": {
-    "tailnet": "armadillo-frog.ts.net"
-  },
-  "cloudflare": {
-    "domains": [
-      "andrewlee.cloud",
-      "andrewlee.fun",
-      "netsam.dev"
-    ]
+  "docker": {
+    "domain": "andrewlee.fun"
   },
   "networking": {
+    "public": {
+      "IPv4": {
+        "nixos": "192.168.1.253",
+        "ghost": "192.168.1.252",
+        "inuc": "192.168.1.249",
+        "kamrui-p1": "192.168.1.251",
+        "hp-notebook": "192.168.1.250"
+      }
+    },
     "tailscale": {
       "tailnet": "armadillo-frog.ts.net",
       "IPv4": {
         "nixos": "100.80.251.10",
         "ghost": "100.108.67.117",
-        "helsinki-vps": "",
         "inuc": "100.86.152.18",
         "kamrui-p1": "100.64.251.54",
         "hp-notebook": ""
@@ -189,7 +164,6 @@
       "IPv6": {
         "nixos": "fd7a:115c:a1e0::ff34:fb0a",
         "ghost": "fd7a:115c:a1e0::d234:4375",
-        "helsinki-vps": "",
         "inuc": "fd7a:115c:a1e0::a34:9812",
         "kamrui-p1": "fd7a:115c:a1e0::7334:fb36",
         "hp-notebook": ""

@@ -13,10 +13,22 @@
   domain = clan-facts.k3s.domain;
   cidr = clan-facts.k3s.cluster-cidr;
   trustedIPs = [managerIPv4 cidr.IPv4 cidr.IPv6];
+  extraConfig = ''
+    import cloudflare_mtls
+    reverse_proxy ${managerIPv4}:30080
+  '';
 in {
   options.clan-net.kubernetes.k3s.services.traefik.enable = lib.mkEnableOption "traefik";
 
   config = lib.mkIf cfg.enable {
+    # caddy reverse proxy for traefik
+    clan-net.services.caddy.enable = lib.mkDefault true;
+    services.caddy.virtualHosts = lib.optionalAttrs (hostName == "kamrui-p1") {
+      "${domain}, *.${domain}" = {
+        inherit extraConfig;
+      };
+    };
+
     # k3s auto deploy config map for rancher traefik ingress
     services.k3s = {
       manifests = lib.optionalAttrs (hostName == "kamrui-p1") {
@@ -30,6 +42,8 @@ in {
           spec = {
             valuesContent = lib.generators.toYAML {} {
               service.type = "NodePort";
+              deployment.kind = "Deployment";
+              nodeSelector.role = "manager";
 
               ports = {
                 web = {
@@ -71,6 +85,50 @@ in {
               metrics.prometheus.enabled = true;
 
               extraObjects = [
+                # --- admin middleware --- #
+                {
+                  apiVersion = "v1";
+                  kind = "Secret";
+                  metadata = {
+                    name = "middleware-admin-secret";
+                    namespace = "kube-system";
+                  };
+                  type = "Opaque";
+                  stringData.users = ''
+                    ${lib.trim config.clan.core.vars.generators.middleware-admin.files.hash.value}
+                  '';
+                }
+                {
+                  apiVersion = "traefik.io/v1alpha1";
+                  kind = "Middleware";
+                  metadata = {
+                    name = "middleware-admin";
+                    namespace = "kube-system";
+                  };
+                  spec.basicAuth.secret = "middleware-admin-secret";
+                }
+                # --- user middleware --- #
+                {
+                  apiVersion = "v1";
+                  kind = "Secret";
+                  metadata = {
+                    name = "middleware-user-secret";
+                    namespace = "kube-system";
+                  };
+                  type = "Opaque";
+                  stringData.users = ''
+                    ${lib.trim config.clan.core.vars.generators.middleware-user.files.hash.value}
+                  '';
+                }
+                {
+                  apiVersion = "traefik.io/v1alpha1";
+                  kind = "Middleware";
+                  metadata = {
+                    name = "middleware-user";
+                    namespace = "kube-system";
+                  };
+                  spec.basicAuth.secret = "middleware-user-secret";
+                }
                 # --- whoami example deployment for testing --- #
                 {
                   apiVersion = "v1";

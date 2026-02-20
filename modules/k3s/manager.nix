@@ -2,19 +2,15 @@
   config,
   pkgs,
   clan-facts,
-  clan-net-utils,
   lib,
   ...
 }: let
-  inherit (clan-net-utils) mkPasswordHashGenerator;
   cfg = config.clan-net.kubernetes.k3s.manager;
   kube = clan-facts.k3s;
 in {
   options.clan-net.kubernetes.k3s.manager.enable = lib.mkEnableOption "Control plane node";
 
   config = lib.mkIf cfg.enable {
-    # generate password and hash for k3s admin middleware and other services
-    clan.core.vars.generators.password-and-hash = mkPasswordHashGenerator "admin";
     # kubeconfig
     environment.variables = {
       KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";

@@ -16,19 +16,19 @@ in {
       description = "Tailscale base URL";
       example = "https://headscale.my-domain.com";
     };
-    tags = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
-      default = ["tag:clan-net"];
-      description = "Tailscale tags";
-      example = ["tag:clan-net" "tag:my-tailscale-tag"];
-    };
   };
 
   config = lib.mkIf cfg.enable {
     clan.core.vars.generators.tailscale = {
       share = true;
-      prompts.auth_key.persist = true;
+      prompts.auth_key = {};
       files.auth_key = {};
+      files.vpn-auth-file = {};
+      script = ''
+        mkdir -p $out
+        cp $prompts/auth_key $out/auth_key
+        echo "name=tailscale,joinKey=$(cat $prompts/auth_key)" > $out/vpn-auth-file
+      '';
     };
 
     services.tailscale = {
@@ -43,12 +43,8 @@ in {
         inherit (cfg) baseURL;
       };
       useRoutingFeatures = "server";
-      extraUpFlags = [
-        "--advertise-exit-node"
-        "--advertise-tags=${lib.concatStringsSep "," cfg.tags}"
-      ];
       extraSetFlags = [
-        "--accept-routes"
+        "--advertise-exit-node"
       ];
     };
     networking = {

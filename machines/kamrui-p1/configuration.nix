@@ -49,15 +49,36 @@
 }: {
   clan-net = {
     filesystems.ext4.enable = true;
+    secrets.enable = true;
 
-    docker.services = {
-      dockhand.enable = true;
-      traefik.enable = true;
+    # docker host
+    docker = {
+      enable = true;
+      services = {
+        dockhand.enable = true;
+        traefik.enable = true;
+        tsdproxy.enable = true;
+      };
     };
 
-    secrets.traefik.andrewlee-fun.enable = true;
+    # kubernetes host
+    kubernetes.k3s = {
+      enable = true;
+      manager.enable = true;
+      services = {
+        traefik.enable = true;
+        # longhorn.enable = true;
+        # argocd.enable = true;
+      };
+    };
 
     services = {
+      # static website hosting
+      hugo = {
+        enable = true;
+        blogAndrewleeFun.enable = true;
+      };
+      # -------- ⛏️ minecraft server 🪓 -------- #
       playit.enable = true;
       minecraft = {
         enable = true;
@@ -91,23 +112,26 @@
             })
             {
               inherit
-                # --- ✅ Required Client + Server --- #
+                # --- ‼️ Required Client + Server ‼️ --- #
                 Fabric-API # https://modrinth.com/mod/fabric-api
                 Travelers-Backpack # https://modrinth.com/mod/travelersbackpack
                 Storage-Drawers # https://modrinth.com/mod/storagedrawers
+                Cardinal-Components-API # https://modrinth.com/mod/cardinal-components-api
+                Cloth-Config-API # https://modrinth.com/mod/cloth-config
+                Forge-Config-API-Port # https://modrinth.com/mod/forge-config-api-port
+
                 # --- ☑️ Optional Client ( Some functionality is disabled if not present ) --- #
                 Open-Parties-and-Claims # https://modrinth.com/mod/open-parties-and-claims
                 JEI # https://modrinth.com/mod/jei
                 Armored-Elytra # https://modrinth.com/datapack/elytra-armor
                 Elytra-Trims # https://modrinth.com/mod/elytra-trims
+                Lithium # https://modrinth.com/mod/lithium
+                Inventory-Sorting # https://modrinth.com/mod/inventory-sorting
+
                 # --- ✔️ Optional --- #
                 Jade # https://modrinth.com/mod/jade
-                Lithium # https://modrinth.com/mod/lithium
-                Cardinal-Components-API # https://modrinth.com/mod/cardinal-components-api
-                Cloth-Config-API # https://modrinth.com/mod/cloth-config
                 FerriteCore # https://modrinth.com/mod/ferrite-core
                 AppleSkin # https://modrinth.com/mod/appleskin
-                Forge-Config-API-Port # https://modrinth.com/mod/forge-config-api-port
                 Vein-Miner # https://modrinth.com/datapack/veinminer
                 Vein-Miner-Enchantment # https://modrinth.com/datapack/veinminer-enchantment
                 Silk # https://modrinth.com/mod/silk
@@ -124,7 +148,6 @@
                 Universal-Enchants # https://modrinth.com/mod/universal-enchants
                 Puzzles-Lib # https://modrinth.com/mod/puzzles-lib
                 Grind-Enchantments # https://modrinth.com/mod/grind-enchantments
-                Inventory-Sorting # https://modrinth.com/mod/inventory-sorting
                 Player-Roles # https://modrinth.com/mod/player-roles
                 Just-Player-Heads # https://modrinth.com/mod/just-player-heads
                 Infinite-Trading # https://modrinth.com/mod/infinite-trading
@@ -194,15 +217,20 @@
     };
   };
 
-  services.tailscale.extraUpFlags = [
-    "--advertise-routes=192.168.1.0/24"
-  ];
-
   # Enable GPU acceleration
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       rocmPackages.clr.icd
     ];
+  };
+
+  home-manager.users.netsa = {
+    clan-net.programs = {
+      k9s.enable = true;
+      go.enable = true;
+      python.enable = true;
+      docker.enable = true;
+    };
   };
 }

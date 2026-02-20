@@ -1,8 +1,4 @@
-{
-  config,
-  flake-self,
-  ...
-}: {
+{flake-self, ...}: {
   clan-net = {
     defaults = {
       environment.enable = true;
@@ -20,16 +16,6 @@
     };
 
     networking.tailscale.enable = true;
-
-    docker.enable = true;
-  };
-
-  # Backup Postgres, if it is running
-  services.postgresqlBackup = {
-    enable = config.services.postgresql.enable;
-    startAt = "*-*-* 01:15:00";
-    location = "/var/backup/postgresql";
-    backupAll = true;
   };
 
   # User Profiles

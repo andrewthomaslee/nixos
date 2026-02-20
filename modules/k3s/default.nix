@@ -21,12 +21,10 @@ in {
   options.clan-net.kubernetes.k3s.enable = lib.mkEnableOption "k3s";
 
   config = lib.mkIf cfg.enable {
-    clan.core.vars.generators.k3s = {
+    clan.core.vars.generators.k3s = lib.optionalAttrs (hostName != "kamrui-p1") {
       share = true;
       prompts.token.persist = true;
-      prompts.vpn-auth-file.persist = true;
       files.token = {};
-      files.vpn-auth-file = {};
     };
 
     # private-registry
@@ -41,6 +39,7 @@ in {
     services.k3s = {
       enable = true;
       package = pkgs.k3s_1_35;
+      nodeLabel = ["host=${hostName}"];
       tokenFile =
         if hostName == "kamrui-p1"
         then null
@@ -52,8 +51,7 @@ in {
       nodeIP = "${privateIPv4},${privateIPv6}";
       extraFlags = [
         "--node-external-ip=${privateIPv4},${privateIPv6}"
-        # "--flannel-iface=tailscale0"
-        "--vpn-auth-file=${config.clan.core.vars.generators.k3s.files.vpn-auth-file.path}"
+        "--vpn-auth-file=${config.clan.core.vars.generators.tailscale.files.vpn-auth-file.path}"
       ];
     };
 

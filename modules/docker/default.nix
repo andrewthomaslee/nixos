@@ -16,10 +16,6 @@ in {
       docker = {
         enable = true;
         logDriver = "json-file";
-        listenOptions = [
-          "/run/docker.sock"
-          "0.0.0.0:2375"
-        ];
         daemon.settings = {
           fixed-cidr-v6 = "fd00::/80";
           ipv6 = true;

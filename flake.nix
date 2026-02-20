@@ -48,7 +48,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # ----------------------------------- Fabric Mods ----------------------------------- #
-    # ------ ‼️ Required mods ‼️ ------#
+
+    # ------ ⚠️‼️ Required mods ‼️⚠️ ------#
     Fabric-API = {
       # https://modrinth.com/mod/fabric-api
       url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar";
@@ -82,7 +83,8 @@
       url = "https://cdn.modrinth.com/data/9s6osm5g/versions/xuX40TN5/cloth-config-21.11.153-fabric.jar";
       flake = false;
     };
-    # ------ ❓ Optional Client-side mods ❓ (recommended) -------- #
+
+    # ------ ✅❓ Optional Client-side mods (recommended) ❓✅  -------- #
     JEI = {
       # https://modrinth.com/mod/jei
       url = "https://cdn.modrinth.com/data/u6dRKJwZ/versions/N7YozqFm/jei-1.21.11-fabric-27.4.0.15.jar";
@@ -93,13 +95,28 @@
       url = "https://cdn.modrinth.com/data/gF3BGWvG/versions/xE2Whg8K/open-parties-and-claims-fabric-1.21.11-0.25.8.jar";
       flake = false;
     };
-    # ------ Server-side mods ------#
+    Elytra-Trims = {
+      # https://modrinth.com/mod/elytra-trims
+      url = "https://cdn.modrinth.com/data/XpzGz7KD/versions/Nzd1iQCn/elytratrims-fabric-4.6.2%2B1.21.11.jar";
+      flake = false;
+    };
+    Armored-Elytra = {
+      # https://modrinth.com/datapack/elytra-armor
+      url = "https://cdn.modrinth.com/data/AuFCCYMx/versions/mKCSekSL/armored-elytra-1.12.0.jar";
+      flake = false;
+    };
     Lithium = {
       # https://modrinth.com/mod/lithium
       url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/gl30uZvp/lithium-fabric-0.21.2%2Bmc1.21.11.jar";
       flake = false;
     };
+    Inventory-Sorting = {
+      # https://modrinth.com/mod/inventory-sorting
+      url = "https://cdn.modrinth.com/data/5ibSyLAz/versions/Dq4h9aTH/inventorysorter-fabric-2.1.4%2Bmc1.21.11.jar";
+      flake = false;
+    };
 
+    # ------ ☑️ Server-side mods ☑️ ------#
     FerriteCore = {
       # https://modrinth.com/mod/ferrite-core
       url = "https://cdn.modrinth.com/data/uXXizFIs/versions/Ii0gP3D8/ferritecore-8.2.0-fabric.jar";
@@ -115,7 +132,6 @@
       url = "https://cdn.modrinth.com/data/EsAfCjCV/versions/59ti1rvg/appleskin-fabric-mc1.21.11-3.0.8.jar";
       flake = false;
     };
-
     Vein-Miner = {
       # https://modrinth.com/datapack/veinminer
       url = "https://cdn.modrinth.com/data/OhduvhIc/versions/SMDUhqTN/veinminer-fabric-2.5.2.jar";
@@ -164,11 +180,6 @@
     Essential-Commands = {
       # https://modrinth.com/mod/essential-commands
       url = "https://cdn.modrinth.com/data/6VdDUivB/versions/3s9XXmZa/essential_commands-0.38.6-mc1.21.11.jar";
-      flake = false;
-    };
-    Elytra-Trims = {
-      # https://modrinth.com/mod/elytra-trims
-      url = "https://cdn.modrinth.com/data/XpzGz7KD/versions/Nzd1iQCn/elytratrims-fabric-4.6.2%2B1.21.11.jar";
       flake = false;
     };
     Dragon-Drops-Elytra = {
@@ -241,11 +252,6 @@
       url = "https://cdn.modrinth.com/data/17enPZMC/versions/xncSYvvy/randombonemealflowers-1.21.11-4.7.jar";
       flake = false;
     };
-    Armored-Elytra = {
-      # https://modrinth.com/datapack/elytra-armor
-      url = "https://cdn.modrinth.com/data/AuFCCYMx/versions/mKCSekSL/armored-elytra-1.12.0.jar";
-      flake = false;
-    };
     Bow-Infinity-Fix = {
       # https://modrinth.com/mod/bow-infinity-fix
       url = "https://cdn.modrinth.com/data/BFENfScW/versions/besCdt3U/BowInfinityFix-1.21.9-fabric-3.1.2.jar";
@@ -264,11 +270,6 @@
     Grind-Enchantments = {
       # https://modrinth.com/mod/grind-enchantments
       url = "https://cdn.modrinth.com/data/WC4UgDcZ/versions/XX0LqtxX/grind-enchantments-4.1.0%2B1.21.11-pre2.jar";
-      flake = false;
-    };
-    Inventory-Sorting = {
-      # https://modrinth.com/mod/inventory-sorting
-      url = "https://cdn.modrinth.com/data/5ibSyLAz/versions/Dq4h9aTH/inventorysorter-fabric-2.1.4%2Bmc1.21.11.jar";
       flake = false;
     };
     Player-Roles = {

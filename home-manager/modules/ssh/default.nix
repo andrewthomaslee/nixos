@@ -30,7 +30,7 @@ in {
           (name: {
             name = "${name}.local";
             value = {
-              hostname = clan-facts.machines.${name}.networking.IPv4.address;
+              hostname = clan-facts.networking.public.IPv4.${name};
               user = "root";
               port = 22;
               inherit extraOptions addKeysToAgent;
@@ -60,7 +60,6 @@ in {
           "ghost"
           "kamrui-p1"
           "inuc"
-          "helsinki-vps"
           "mng-0-dev"
           "mng-2-dev"
           "mng-1-dev"
@@ -83,7 +82,6 @@ in {
           "ghost"
           "kamrui-p1"
           "inuc"
-          "helsinki-vps"
         ]);
     };
   };

@@ -1,10 +1,11 @@
 {
   config,
   lib,
+  clan-facts,
   ...
 }: let
   cfg = config.clan-net.docker.services.dockhand;
-  domain = "andrewlee.fun";
+  domain = clan-facts.docker.domain;
 in {
   options.clan-net.docker.services.dockhand.enable = lib.mkEnableOption "dockhand";
 
@@ -19,6 +20,9 @@ in {
       ];
       networks = ["proxy"];
       labels = {
+        "tsdproxy.enable" = "true";
+        "tsdproxy.name" = "dockhand-${builtins.replaceStrings ["."] ["-"] domain}";
+        "tsdproxy.container_port" = "3000";
         "traefik.enable" = "true";
         "traefik.http.routers.dockhand.rule" = "Host(`dockhand.${domain}`)";
         "traefik.http.services.dockhand.loadbalancer.server.port" = "3000";
