@@ -39,6 +39,7 @@ in {
       useRoutingFeatures = "server";
       extraUpFlags = [
         "--advertise-exit-node"
+        "--advertise-tags=tag:clan-net"
       ];
     };
     networking = {
