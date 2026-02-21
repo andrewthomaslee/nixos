@@ -27,6 +27,7 @@
                 to 127.0.0.1:30080
                 transport http {
                   proxy_protocol v2
+                }
               }
             '';
           };
