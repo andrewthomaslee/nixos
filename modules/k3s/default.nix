@@ -52,7 +52,6 @@ in {
       extraFlags = [
         "--node-external-ip=${privateIPv4}"
         "--flannel-iface=tailscale0"
-        "--flannel-backend=vxlan"
       ];
     };
 
