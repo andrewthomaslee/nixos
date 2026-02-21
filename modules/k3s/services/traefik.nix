@@ -18,8 +18,7 @@
   k3sDomains = domains:
     builtins.listToAttrs (map (
         name: {
-          inherit name;
-          serverAliases = ["*.${name}"];
+          name = "${name}, *${name}";
           value = {
             extraConfig = ''
               import cloudflare_mtls
