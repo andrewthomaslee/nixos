@@ -13,7 +13,7 @@ in {
     home.packages = with pkgs; [
       kubefetch
       kubernetes-helm
-      k3s_1_35
+      kubectl
       kompose
     ];
     home.sessionVariables = {
