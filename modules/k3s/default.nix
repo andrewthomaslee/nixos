@@ -10,7 +10,6 @@
   manager = clan-facts.k3s.manager;
   net = clan-facts.networking.tailscale;
   privateIPv4 = net.IPv4.${hostName};
-  privateIPv6 = net.IPv6.${hostName};
   managerIPv4 = net.IPv4.${manager};
 in {
   imports = [
@@ -49,9 +48,9 @@ in {
         if hostName == manager
         then ""
         else "https://${managerIPv4}:6443";
-      nodeIP = "${privateIPv4},${privateIPv6}";
+      nodeIP = "${privateIPv4}";
       extraFlags = [
-        "--node-external-ip=${privateIPv4},${privateIPv6}"
+        "--node-external-ip=${privateIPv4}"
         "--flannel-iface=tailscale0"
         "--flannel-backend=vxlan"
       ];

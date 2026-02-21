@@ -167,13 +167,6 @@
         "inuc": "100.69.125.32",
         "kamrui-p1": "100.104.250.56",
         "hp-notebook": ""
-      },
-      "IPv6": {
-        "nixos": "fd7a:115c:a1e0::ff34:fb0a",
-        "ghost": "fd7a:115c:a1e0::d234:4375",
-        "inuc": "fd7a:115c:a1e0::7234:7d20",
-        "kamrui-p1": "fd7a:115c:a1e0::b034:fa38",
-        "hp-notebook": ""
       }
     }
   }

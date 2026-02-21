@@ -15,7 +15,7 @@
   publicIPv4 = net.public.IPv4.${ingressHost};
   domain = builtins.head clan-facts.k3s.domains;
   cidr = clan-facts.k3s.cluster-cidr;
-  trustedIPs = [tailscaleIPv4 publicIPv4 cidr.IPv4 cidr.IPv6 "127.0.0.1/8"];
+  trustedIPs = [tailscaleIPv4 publicIPv4 cidr.IPv4 "127.0.0.1/8"];
   k3sDomains = domains:
     builtins.listToAttrs (map (
         name: {
