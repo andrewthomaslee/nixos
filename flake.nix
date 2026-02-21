@@ -37,6 +37,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    kubefetch = {
+      url = "github:andrewthomaslee/kubefetch";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.inputs.systems.follows = "clan-core/systems";
+    };
+
     playit = {
       url = "https://github.com/playit-cloud/playit-agent/releases/download/v0.17.1/playit-linux-amd64";
       flake = false;

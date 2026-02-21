@@ -31,4 +31,7 @@ in
 
     # https://playit.gg
     playit = super.callPackage ../packages/playit {inherit inputs;};
+
+    # fix for kubefetch
+    kubefetch = inputs.kubefetch.packages.${super.stdenv.hostPlatform.system}.default;
   }

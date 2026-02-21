@@ -713,6 +713,27 @@
         "type": "github"
       }
     },
+    "flake-utils": {
+      "inputs": {
+        "systems": [
+          "clan-core",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -730,6 +751,27 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "kubefetch": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769772878,
+        "narHash": "sha256-qFa07e8pE9lGSKlqc7v7co9cBLVETFg4pIn4GhkF7S8=",
+        "owner": "andrewthomaslee",
+        "repo": "kubefetch",
+        "rev": "2565ff15cd42a7c81ef8c2c4348206e2f79b72e7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andrewthomaslee",
+        "repo": "kubefetch",
         "type": "github"
       }
     },
@@ -1004,6 +1046,7 @@
         "blogAndrewleeFun": "blogAndrewleeFun",
         "clan-core": "clan-core",
         "home-manager": "home-manager",
+        "kubefetch": "kubefetch",
         "moscripts": "moscripts",
         "nix-minecraft": "nix-minecraft",
         "nixpkgs": [

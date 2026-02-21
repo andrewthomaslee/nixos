@@ -13,8 +13,7 @@ in {
     home.packages = with pkgs; [
       kubefetch
       kubernetes-helm
-      kubectl
-      argocd
+      k3s_1_35
       kompose
     ];
     home.sessionVariables = {
