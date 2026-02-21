@@ -6,7 +6,10 @@
     kubernetes.k3s = {
       enable = true;
       worker.enable = true;
-      services.longhorn.enable = true;
+      services = {
+        traefik.enable = true;
+        longhorn.enable = true;
+      };
     };
   };
 

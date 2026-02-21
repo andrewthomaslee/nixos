@@ -80,7 +80,7 @@ in {
       services = {
         traefik.enable = true;
         longhorn.enable = true;
-        # argocd.enable = true;
+        argo-cd.enable = true;
       };
     };
 

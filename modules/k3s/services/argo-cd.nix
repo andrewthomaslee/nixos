@@ -24,7 +24,7 @@ in {
           namespaceOverride = "kube-system";
           global.domain = "argocd.${domain}";
           configs = {
-            secret.argocdServerAdminPassword = "${lib.removePrefix "admin:" config.clan.core.vars.generators.password-and-hash.files.hash.value}";
+            secret.argocdServerAdminPassword = "${lib.trim (lib.removePrefix "admin:" config.clan.core.vars.generators.middleware-admin.files.hash.value)}";
             params."server.insecure" = "true";
           };
           extraObjects = [
