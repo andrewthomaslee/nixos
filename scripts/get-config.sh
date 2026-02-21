@@ -9,6 +9,6 @@ sed -i "s/: default/: k3s/g" "$KUBECONFIG"
 
 # Set the correct server address
 kubectl --kubeconfig="$KUBECONFIG" config set-cluster k3s --server="https://$REMOTE:6443"
-chmod 400 "$KUBECONFIG"
+chmod 660 "$KUBECONFIG"
 
 echo "✅ Done!"
