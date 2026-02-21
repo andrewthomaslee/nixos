@@ -336,6 +336,12 @@
               packages = [
                 clan-core.packages.${system}.clan-cli
               ];
+              shellHook = ''
+                export REPO_ROOT=$(git rev-parse --show-toplevel)
+                export CLAN_DIR=$REPO_ROOT
+                mkdir -p "$REPO_ROOT"/.secrets
+                export KUBECONFIG="$REPO_ROOT"/.secrets/k3s.yaml
+              '';
             };
           }
       );
@@ -425,6 +431,46 @@
           inherit name;
           value = import (./home-manager/modules + "/${name}");
         }) (builtins.attrNames (builtins.readDir ./home-manager/modules))
+      );
+
+      # Create apps for use by `nix run .#<app-name>`
+      apps = forAllSystems (
+        system:
+          with nixpkgsFor.${system}; {
+            tmp-pod = {
+              type = "app";
+              meta.description = "Run a temporary pod on a node | Usage: tmp-pod [-n <namespace>] [-i <image>] [-h <host/node>]";
+              program =
+                (writeShellApplication {
+                  name = "tmp-pod";
+                  runtimeInputs = [k3s];
+                  text = builtins.readFile ./scripts/tmp-pod.sh;
+                })
+                + "/bin/tmp-pod";
+            };
+            get-config = {
+              type = "app";
+              meta.description = "Fetch kubeconfig from rke2.yaml";
+              program =
+                (writeShellApplication {
+                  name = "get-config";
+                  runtimeInputs = [rsync];
+                  text = builtins.readFile ./scripts/get-config.sh;
+                })
+                + "/bin/get-config";
+            };
+            get-token = {
+              type = "app";
+              meta.description = "Fetch join token";
+              program =
+                (writeShellApplication {
+                  name = "get-token";
+                  runtimeInputs = [rsync];
+                  text = builtins.readFile ./scripts/get-token.sh;
+                })
+                + "/bin/get-token";
+            };
+          }
       );
     };
 }
