@@ -31,7 +31,7 @@ in {
         # nixos-rebuild tests
         nixos-current-system = "readlink -f /nix/var/nix/profiles/system && readlink -f /run/current-system";
         # misc
-        speedtest = "nix run nixpkgs#speedtest-cli";
+        speedtest = "NIXPKGS_ALLOW_UNFREE=1 nix run --impure nixpkgs#ookla-speedtest";
         modrinth-prefetch = "nix run github:Infinidoge/nix-minecraft#nix-modrinth-prefetch -- $@";
         # backups
         fabric-backup = "rsync -av --progress --delete kamrui-p1:/srv/minecraft/fabric/world/ /mnt/storagebox/BACKUPS/minecraft/fabric/world/";
