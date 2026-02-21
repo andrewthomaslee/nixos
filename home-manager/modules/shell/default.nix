@@ -19,6 +19,7 @@ in {
       zoxide.enable = true;
       fzf.enable = true;
       yazi.enable = true;
+      yazi.shellWrapperName = "y";
     };
   };
 }
