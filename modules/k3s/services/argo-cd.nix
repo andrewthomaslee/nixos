@@ -6,13 +6,14 @@
 }: let
   cfg = config.clan-net.kubernetes.k3s.services.argo-cd;
   hostName = config.networking.hostName;
-  domain = clan-facts.k3s.domain;
+  domain = builtins.head clan-facts.k3s.domains;
+  manager = clan-facts.k3s.manager;
 in {
   options.clan-net.kubernetes.k3s.services.argo-cd.enable = lib.mkEnableOption "argo-cd";
 
   config = lib.mkIf cfg.enable {
     # k3s
-    services.k3s.autoDeployCharts = lib.optionalAttrs (hostName == "kamrui-p1") {
+    services.k3s.autoDeployCharts = lib.optionalAttrs (hostName == manager) {
       argo-cd = {
         name = "argo-cd";
         repo = "https://argoproj.github.io/argo-helm";

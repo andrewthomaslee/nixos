@@ -46,7 +46,19 @@
   Random-Bone-Meal-Flowers,
   Villager-Pickup,
   ...
-}: {
+}: let
+  userPrograms = {
+    clan-net.programs = {
+      k9s.enable = true;
+      go.enable = true;
+      python.enable = true;
+      docker.enable = true;
+    };
+  };
+in {
+  home-manager.users.root = userPrograms;
+  home-manager.users.netsa = userPrograms;
+
   clan-net = {
     filesystems.ext4.enable = true;
     secrets.enable = true;
@@ -76,16 +88,19 @@
       # static website hosting
       hugo = {
         enable = true;
-        blogAndrewleeFun.enable = true;
+        blogAndrewleeFun.enable = true; # https://andrewlee.fun
       };
-      # -------- ⛏️ minecraft server 🪓 -------- #
+
+      # -------- ⛏️ minecraft server 🏡 -------- #
       playit.enable = true;
       minecraft = {
         enable = true;
+        # --- Fabric Versions --- #
         fabric = {
           serverVersion = "1_21_11";
           loaderVersion = "0.18.4";
         };
+        # --- Allowed Players --- #
         whitelist = {
           netsammateo = "06c0f83a-7ffe-466c-be19-b3c247b1438c";
           scorch3000 = "1380ccf2-aef4-4cb3-8d18-cf3642dac80c";
@@ -96,6 +111,7 @@
           shinybronzor = "5417dbdb-dbd6-4d15-88e0-3bbd73bd7652";
           ColumboPlays = "1fb72d5e-ef87-419b-b76d-6ff278315931";
         };
+        # --- Server Admins --- #
         operators = {
           netsammateo = {
             uuid = "06c0f83a-7ffe-466c-be19-b3c247b1438c";
@@ -103,6 +119,7 @@
             bypassesPlayerLimit = true;
           };
         };
+        # --- Mods --- #
         symlinks = {
           mods = pkgs.linkFarm "mods" (
             pkgs.lib.mapAttrsToList
@@ -166,6 +183,7 @@
             }
           );
         };
+        # --- Server Config Files --- #
         files = {
           "config/roles.json".value = {
             owner = {
@@ -223,14 +241,5 @@
     extraPackages = with pkgs; [
       rocmPackages.clr.icd
     ];
-  };
-
-  home-manager.users.netsa = {
-    clan-net.programs = {
-      k9s.enable = true;
-      go.enable = true;
-      python.enable = true;
-      docker.enable = true;
-    };
   };
 }

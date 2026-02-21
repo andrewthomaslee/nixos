@@ -7,10 +7,11 @@
 }: let
   cfg = config.clan-net.kubernetes.k3s;
   hostName = config.networking.hostName;
+  manager = clan-facts.k3s.manager;
   net = clan-facts.networking.tailscale;
   privateIPv4 = net.IPv4.${hostName};
   privateIPv6 = net.IPv6.${hostName};
-  managerIPv4 = net.IPv4.kamrui-p1;
+  managerIPv4 = net.IPv4.${manager};
 in {
   imports = [
     ./services
@@ -21,7 +22,7 @@ in {
   options.clan-net.kubernetes.k3s.enable = lib.mkEnableOption "k3s";
 
   config = lib.mkIf cfg.enable {
-    clan.core.vars.generators.k3s = lib.optionalAttrs (hostName != "kamrui-p1") {
+    clan.core.vars.generators.k3s = lib.optionalAttrs (hostName != manager) {
       share = true;
       prompts.token.persist = true;
       files.token = {};
@@ -41,11 +42,11 @@ in {
       package = pkgs.k3s_1_35;
       nodeLabel = ["host=${hostName}"];
       tokenFile =
-        if hostName == "kamrui-p1"
+        if hostName == manager
         then null
         else config.clan.core.vars.generators.k3s.files.token.path;
       serverAddr =
-        if hostName == "kamrui-p1"
+        if hostName == manager
         then ""
         else "https://${managerIPv4}:6443";
       nodeIP = "${privateIPv4},${privateIPv6}";

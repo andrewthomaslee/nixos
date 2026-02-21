@@ -14,7 +14,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     services.caddy.virtualHosts = {
-      "${domain}, *.${domain}" = {
+      "*.${domain}" = {
         extraConfig = ''
           import cloudflare_mtls
           reverse_proxy localhost:8008

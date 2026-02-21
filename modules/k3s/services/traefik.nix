@@ -8,30 +8,48 @@
   inherit (clan-net-utils) writeYamlFile;
   cfg = config.clan-net.kubernetes.k3s.services.traefik;
   hostName = config.networking.hostName;
-  net = clan-facts.networking.tailscale;
-  managerIPv4 = net.IPv4.kamrui-p1;
-  domain = clan-facts.k3s.domain;
+  net = clan-facts.networking;
+  manager = clan-facts.k3s.manager;
+  managerTailscaleIPv4 = net.tailscale.IPv4.${manager};
+  managerPublicIPv4 = net.public.IPv4.${manager};
+  domain = builtins.head clan-facts.k3s.domains;
   cidr = clan-facts.k3s.cluster-cidr;
-  trustedIPs = [managerIPv4 cidr.IPv4 cidr.IPv6];
-  extraConfig = ''
-    import cloudflare_mtls
-    reverse_proxy ${managerIPv4}:30080
-  '';
+  trustedIPs = [managerTailscaleIPv4 managerPublicIPv4 cidr.IPv4 cidr.IPv6 "127.0.0.1/8"];
+  k3sDomains = domains:
+    builtins.listToAttrs (map (
+        name: {
+          inherit name;
+          serverAliases = ["*.${name}"];
+          value = {
+            extraConfig = ''
+              import cloudflare_mtls
+              reverse_proxy {
+                to 127.0.0.1:30080
+                transport http {
+                  proxy_protocol v2
+              }
+            '';
+          };
+        }
+      )
+      domains);
 in {
   options.clan-net.kubernetes.k3s.services.traefik.enable = lib.mkEnableOption "traefik";
 
   config = lib.mkIf cfg.enable {
     # caddy reverse proxy for traefik
-    clan-net.services.caddy.enable = lib.mkDefault true;
-    services.caddy.virtualHosts = lib.optionalAttrs (hostName == "kamrui-p1") {
-      "${domain}, *.${domain}" = {
-        inherit extraConfig;
-      };
+    clan-net.services.caddy.enable =
+      if hostName == manager
+      then lib.mkDefault true
+      else lib.mkDefault false;
+    services.caddy = lib.optionalAttrs (hostName == manager) {
+      virtualHosts =
+        lib.mkMerge [(k3sDomains clan-facts.k3s.domains)];
     };
 
     # k3s auto deploy config map for rancher traefik ingress
     services.k3s = {
-      manifests = lib.optionalAttrs (hostName == "kamrui-p1") {
+      manifests = lib.optionalAttrs (hostName == manager) {
         traefik-config.source = writeYamlFile "traefik-config.yaml" {
           apiVersion = "helm.cattle.io/v1";
           kind = "HelmChartConfig";

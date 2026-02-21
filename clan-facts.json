@@ -129,7 +129,12 @@
     }
   },
   "k3s": {
-    "domain": "andrewlee.cloud",
+    "manager": "kamrui-p1",
+    "domains": [
+      "andrewlee.cloud",
+      "frfropen.ai",
+      "ai-providers.net"
+    ],
     "cluster-cidr": {
       "IPv4": "10.42.0.0/16",
       "IPv6": "fd42::/56"

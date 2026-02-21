@@ -72,7 +72,9 @@ in {
             load /etc/certs
             client_auth {
               mode require_and_verify
-              trusted_ca_cert_file ${cloudflare-ca}
+              trust_pool {
+                pem_file ${cloudflare-ca}
+              }
             }
             protocols tls1.3
             curves x25519 secp256r1 secp384r1
