@@ -52,13 +52,10 @@ in {
       nodeIP = "${privateIPv4},${privateIPv6}";
       extraFlags = [
         "--node-external-ip=${privateIPv4},${privateIPv6}"
-        "--vpn-auth-file=${config.clan.core.vars.generators.tailscale.files.vpn-auth-file.path}"
+        "--flannel-iface=tailscale0"
+        "--flannel-backend=vxlan"
       ];
     };
-
-    systemd.services.k3s.path = [
-      pkgs.tailscale
-    ];
 
     boot.kernel.sysctl = {
       # enable ip forwarding
@@ -67,7 +64,7 @@ in {
     };
 
     networking = let
-      interfaces = ["flannel+" "cali+" "tunl+" "vxlan.calico" "vxlan-v6.calico" "wireguard.cali" "wg-v6.calico" "cilium" "cilium*" "cni*" "lxc+" "lxc*"];
+      interfaces = ["tailscale0" "flannel+" "cali+" "tunl+" "vxlan.calico" "vxlan-v6.calico" "wireguard.cali" "wg-v6.calico" "cilium" "cilium*" "cni*" "lxc+" "lxc*"];
     in {
       networkmanager.unmanaged = interfaces;
       firewall = {

@@ -9,6 +9,11 @@
   inherit (clan-net-utils) writeYamlFile;
   cfg = config.clan-net.docker.services.traefik;
   domain = clan-facts.docker.domain;
+  net = clan-facts.networking;
+  ingressHost = clan-facts.docker.ingress;
+  tailscaleIPv4 = net.tailscale.IPv4.${ingressHost};
+  publicIPv4 = net.public.IPv4.${ingressHost};
+  trustedIPs = [tailscaleIPv4 publicIPv4 "127.0.0.1/8"];
 in {
   options.clan-net.docker.services.traefik.enable = lib.mkEnableOption "traefik";
 
@@ -17,7 +22,12 @@ in {
       "*.${domain}" = {
         extraConfig = ''
           import cloudflare_mtls
-          reverse_proxy localhost:8008
+          reverse_proxy {
+            to 127.0.0.1:8008
+            transport http {
+              proxy_protocol v2
+            }
+          }
         '';
       };
     };
@@ -50,8 +60,10 @@ in {
         entryPoints = {
           traefik.address = ":8080";
           web = {
-            asdefault = true;
+            asDefault = true;
             address = ":80";
+            proxyProtocol = {inherit trustedIPs;};
+            forwardedHeaders = {inherit trustedIPs;};
           };
         };
 

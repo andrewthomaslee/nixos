@@ -10,11 +10,12 @@
   hostName = config.networking.hostName;
   net = clan-facts.networking;
   manager = clan-facts.k3s.manager;
-  managerTailscaleIPv4 = net.tailscale.IPv4.${manager};
-  managerPublicIPv4 = net.public.IPv4.${manager};
+  ingressHost = clan-facts.k3s.ingress;
+  tailscaleIPv4 = net.tailscale.IPv4.${ingressHost};
+  publicIPv4 = net.public.IPv4.${ingressHost};
   domain = builtins.head clan-facts.k3s.domains;
   cidr = clan-facts.k3s.cluster-cidr;
-  trustedIPs = [managerTailscaleIPv4 managerPublicIPv4 cidr.IPv4 cidr.IPv6 "127.0.0.1/8"];
+  trustedIPs = [tailscaleIPv4 publicIPv4 cidr.IPv4 cidr.IPv6 "127.0.0.1/8"];
   k3sDomains = domains:
     builtins.listToAttrs (map (
         name: {
@@ -39,10 +40,10 @@ in {
   config = lib.mkIf cfg.enable {
     # caddy reverse proxy for traefik
     clan-net.services.caddy.enable =
-      if hostName == manager
+      if hostName == ingressHost
       then lib.mkDefault true
       else lib.mkDefault false;
-    services.caddy = lib.optionalAttrs (hostName == manager) {
+    services.caddy = lib.optionalAttrs (hostName == ingressHost) {
       virtualHosts =
         lib.mkMerge [(k3sDomains clan-facts.k3s.domains)];
     };
@@ -61,7 +62,7 @@ in {
             valuesContent = lib.generators.toYAML {} {
               service.type = "NodePort";
               deployment.kind = "Deployment";
-              nodeSelector.role = "manager";
+              nodeSelector.host = ingressHost;
 
               ports = {
                 web = {
@@ -69,6 +70,7 @@ in {
                   containerPort = 8000;
                   nodePort = 30080;
                   hostPort = null;
+                  asDefault = true;
                   proxyProtocol = {inherit trustedIPs;};
                   forwardedHeaders = {inherit trustedIPs;};
                 };

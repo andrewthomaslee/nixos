@@ -23,12 +23,6 @@ in {
       share = true;
       prompts.auth_key = {};
       files.auth_key = {};
-      files.vpn-auth-file = {};
-      script = ''
-        mkdir -p $out
-        cp $prompts/auth_key $out/auth_key
-        echo "name=tailscale,joinKey=$(cat $prompts/auth_key)" > $out/vpn-auth-file
-      '';
     };
 
     services.tailscale = {

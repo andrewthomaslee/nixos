@@ -75,11 +75,11 @@ in {
 
     # kubernetes host
     kubernetes.k3s = {
-      enable = true;
+      enable = false;
       manager.enable = true;
       services = {
         traefik.enable = true;
-        # longhorn.enable = true;
+        longhorn.enable = true;
         # argocd.enable = true;
       };
     };
