@@ -38,7 +38,7 @@ in {
 
     # k3s
     services.k3s = {
-      enable = true;
+      enable = cfg.enable;
       package = pkgs.k3s_1_35;
       nodeLabel = ["host=${hostName}"];
       tokenFile =
