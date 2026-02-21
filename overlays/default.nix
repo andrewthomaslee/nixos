@@ -23,8 +23,12 @@ in
     # k3s
     k3s_1_35 = inputs.nixpkgs-unstable.legacyPackages.${super.stdenv.hostPlatform.system}.k3s_1_35;
 
+    # tailscale
+    tailscale = inputs.nixpkgs-unstable.legacyPackages.${super.stdenv.hostPlatform.system}.tailscale;
+
     # Example package, used only for tests
     hello-custom = super.callPackage ../packages/hello-custom {};
 
+    # https://playit.gg
     playit = super.callPackage ../packages/playit {inherit inputs;};
   }
