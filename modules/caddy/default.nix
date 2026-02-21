@@ -72,7 +72,7 @@ in {
             load /etc/certs
             client_auth {
               mode require_and_verify
-              trust_pool {
+              trust_pool file {
                 pem_file ${cloudflare-ca}
               }
             }
