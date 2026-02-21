@@ -4,7 +4,7 @@
 
     # kubernetes host
     kubernetes.k3s = {
-      enable = false;
+      enable = true;
       worker.enable = true;
       services.longhorn.enable = true;
     };
