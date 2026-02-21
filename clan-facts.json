@@ -164,15 +164,15 @@
       "IPv4": {
         "nixos": "100.80.251.10",
         "ghost": "100.108.67.117",
-        "inuc": "100.86.152.18",
-        "kamrui-p1": "100.64.251.54",
+        "inuc": "100.69.125.32",
+        "kamrui-p1": "100.104.250.56",
         "hp-notebook": ""
       },
       "IPv6": {
         "nixos": "fd7a:115c:a1e0::ff34:fb0a",
         "ghost": "fd7a:115c:a1e0::d234:4375",
-        "inuc": "fd7a:115c:a1e0::a34:9812",
-        "kamrui-p1": "fd7a:115c:a1e0::7334:fb36",
+        "inuc": "fd7a:115c:a1e0::7234:7d20",
+        "kamrui-p1": "fd7a:115c:a1e0::b034:fa38",
         "hp-notebook": ""
       }
     }
