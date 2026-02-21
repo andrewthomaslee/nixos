@@ -205,11 +205,6 @@ in {
                     namespace = "whoami";
                   };
                   spec = {
-                    ipFamilyPolicy = "PreferDualStack";
-                    ipFamilies = [
-                      "IPv4"
-                      "IPv6"
-                    ];
                     selector.app = "whoami";
                     ports = [
                       {
