@@ -37,7 +37,7 @@ in {
         inherit (cfg) baseURL;
       };
       useRoutingFeatures = "server";
-      extraSetFlags = [
+      extraUpFlags = [
         "--advertise-exit-node"
       ];
     };
