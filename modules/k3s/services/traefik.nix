@@ -18,7 +18,7 @@
   k3sDomains = domains:
     builtins.listToAttrs (map (
         name: {
-          name = "${name}, *${name}";
+          name = "${name}, *.${name}";
           value = {
             extraConfig = ''
               import cloudflare_mtls
