@@ -84,5 +84,9 @@ in {
       '';
     };
     networking.firewall.allowedTCPPorts = [443];
+
+    environment.systemPackages = with pkgs; [
+      goaccess
+    ];
   };
 }
