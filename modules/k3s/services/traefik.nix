@@ -82,7 +82,7 @@ in {
                 dashboard = {
                   enabled = true;
                   entryPoints = ["web"];
-                  matchRule = "Host(`kube.${domain}`)";
+                  matchRule = "Host(`traefik.${domain}`)";
                 };
               };
               ingressClass.enabled = true;
@@ -219,34 +219,40 @@ in {
                   };
                 }
                 {
-                  apiVersion = "networking.k8s.io/v1";
-                  kind = "Ingress";
+                  apiVersion = "gateway.networking.k8s.io/v1";
+                  kind = "HTTPRoute";
                   metadata = {
                     name = "whoami";
                     namespace = "whoami";
-                    annotations."traefik.ingress.kubernetes.io/router.entrypoints" = "web";
                   };
                   spec = {
-                    ingressClassName = "traefik";
+                    parentRefs = [
+                      {
+                        name = "traefik-gateway";
+                        sectionName = "web";
+                        namespace = "kube-system";
+                      }
+                    ];
+                    hostnames = [
+                      "whoami.${domain}"
+                      "whoami.localhost"
+                    ];
                     rules = [
                       {
-                        host = "whoami-kube.${domain}";
-                        http = {
-                          paths = [
-                            {
-                              path = "/whoami";
-                              pathType = "Prefix";
-                              backend = {
-                                service = {
-                                  name = "whoami";
-                                  port = {
-                                    number = 80;
-                                  };
-                                };
-                              };
-                            }
-                          ];
-                        };
+                        matches = [
+                          {
+                            path = {
+                              type = "PathPrefix";
+                              value = "/";
+                            };
+                          }
+                        ];
+                        backendRefs = [
+                          {
+                            name = "whoami";
+                            port = 80;
+                          }
+                        ];
                       }
                     ];
                   };

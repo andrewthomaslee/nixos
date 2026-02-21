@@ -93,7 +93,7 @@ in {
       networks = ["proxy"];
       labels = {
         "traefik.enable" = "true";
-        "traefik.http.routers.dashboard.rule" = "Host(`docker.${domain}`)";
+        "traefik.http.routers.dashboard.rule" = "Host(`traefik.${domain}`)";
         "traefik.http.routers.dashboard.service" = "api@internal";
       };
     };
@@ -105,7 +105,7 @@ in {
       pull = "always";
       labels = {
         "traefik.enable" = "true";
-        "traefik.http.routers.whoami.rule" = "Host(`whoami-docker.${domain}`)";
+        "traefik.http.routers.whoami.rule" = "Host(`whoami.${domain}`)";
         "traefik.http.services.whoami.loadbalancer.server.port" = "80";
       };
     };
