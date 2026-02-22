@@ -36,9 +36,9 @@ printf "%-18s: ${BOLD}${GREEN}%s${RESET}\n" "/boot" "$disk_boot_usage"
 disk_root_usage=$(df -h / | awk 'NR==2 {print $5 " of " $2}')
 printf "%-18s: ${BOLD}${GREEN}%s${RESET}\n" "/" "$disk_root_usage"
 
-# Disk Usage /mnt/storage
-disk_storage_usage=$(df -h /mnt/storage | awk 'NR==2 {print $5 " of " $2}')
-printf "%-18s: ${BOLD}${GREEN}%s${RESET}\n" "/" "$disk_storage_usage"
+# Disk Usage /mnt/san
+disk_san_usage=$(df -h /mnt/san | awk 'NR==2 {print $5 " of " $2}')
+printf "%-18s: ${BOLD}${GREEN}%s${RESET}\n" "/" "$disk_san_usage"
 
 
 # Disk Usage /mnt/arc
