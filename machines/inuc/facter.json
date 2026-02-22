@@ -24,7 +24,7 @@
     "bluetooth": [
       {
         "index": 23,
-        "attached_to": 28,
+        "attached_to": 27,
         "class_list": [
           "usb",
           "bluetooth"
@@ -108,7 +108,7 @@
       },
       {
         "index": 26,
-        "attached_to": 28,
+        "attached_to": 27,
         "class_list": [
           "usb",
           "bluetooth"
@@ -613,7 +613,7 @@
         "fpu_exception": false,
         "cpuid_level": 24,
         "write_protect": false,
-        "tlb_size": 32582,
+        "tlb_size": 32765,
         "clflush_size": 64,
         "cache_alignment": 64,
         "address_sizes": {
@@ -670,11 +670,11 @@
         "model": "TONPHA USB 2.0 Classic",
         "sysfs_id": "/class/block/sdb",
         "sysfs_bus_id": "2:0:0:0",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:15.0/usb1/1-4/1-4:1.0/host2/target2:0:0/2:0:0:0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:15.0/usb1/1-1/1-1:1.0/host2/target2:0:0/2:0:0:0",
         "unix_device_names": [
           "/dev/disk/by-id/usb-TONPHA_USB_2.0_Classic_52312-0:0",
-          "/dev/disk/by-path/pci-0000:00:15.0-usb-0:4:1.0-scsi-0:0:0:0",
-          "/dev/disk/by-path/pci-0000:00:15.0-usbv2-0:4:1.0-scsi-0:0:0:0",
+          "/dev/disk/by-path/pci-0000:00:15.0-usb-0:1:1.0-scsi-0:0:0:0",
+          "/dev/disk/by-path/pci-0000:00:15.0-usbv2-0:1:1.0-scsi-0:0:0:0",
           "/dev/sdb"
         ],
         "unix_device_name2": "/dev/sg1",
@@ -743,27 +743,27 @@
         },
         "vendor": {
           "hex": "0000",
-          "name": "SanDisk",
+          "name": "WDC",
           "value": 0
         },
         "device": {
           "hex": "0000",
-          "name": "SD8SBAT2",
+          "name": "WDBNCE0010PN",
           "value": 0
         },
         "revision": {
           "hex": "0000",
-          "name": "3000",
+          "name": "90WD",
           "value": 0
         },
-        "serial": "161808400633",
-        "model": "SanDisk SD8SBAT2",
+        "serial": "184898801017",
+        "model": "WDC WDBNCE0010PN",
         "sysfs_id": "/class/block/sda",
         "sysfs_bus_id": "0:0:0:0",
         "sysfs_device_link": "/devices/pci0000:00/0000:00:12.0/ata1/host0/target0:0:0/0:0:0:0",
         "unix_device_names": [
-          "/dev/disk/by-id/ata-SanDisk_SD8SBAT256G1122_161808400633",
-          "/dev/disk/by-id/wwn-0x5001b444a4b73280",
+          "/dev/disk/by-id/ata-WDC_WDBNCE0010PNC_184898801017",
+          "/dev/disk/by-id/wwn-0x5001b448b9cda9b8",
           "/dev/disk/by-path/pci-0000:00:12.0-ata-1",
           "/dev/disk/by-path/pci-0000:00:12.0-ata-1.0",
           "/dev/sda"
@@ -771,7 +771,7 @@
         "resources": [
           {
             "type": "disk_geo",
-            "cylinders": 31130,
+            "cylinders": 121601,
             "heads": 255,
             "sectors": 63,
             "size": "0x0",
@@ -780,7 +780,7 @@
           {
             "type": "size",
             "unit": "sectors",
-            "value_1": 500118192,
+            "value_1": 1953525168,
             "value_2": 512
           }
         ],
@@ -883,7 +883,7 @@
     ],
     "hub": [
       {
-        "index": 28,
+        "index": 27,
         "attached_to": 17,
         "class_list": [
           "usb",
@@ -970,7 +970,7 @@
         "module_alias": "usb:v1D6Bp0002d0618dc09dsc00dp01ic09isc00ip00in00"
       },
       {
-        "index": 30,
+        "index": 31,
         "attached_to": 17,
         "class_list": [
           "usb",
@@ -1049,8 +1049,8 @@
     ],
     "keyboard": [
       {
-        "index": 25,
-        "attached_to": 28,
+        "index": 28,
+        "attached_to": 27,
         "class_list": [
           "keyboard",
           "usb"
@@ -1080,23 +1080,24 @@
           "value": 1133
         },
         "device": {
-          "hex": "c349",
-          "name": "LogiG MKeyboard",
-          "value": 49993
+          "hex": "c336",
+          "name": "Gaming Keyboard G213",
+          "value": 49974
         },
         "revision": {
           "hex": "0000",
-          "name": "66.00",
+          "name": "9.00",
           "value": 0
         },
-        "model": "Logitech LogiG MKeyboard",
-        "sysfs_id": "/devices/pci0000:00/0000:00:15.0/usb1/1-2/1-2:1.0",
-        "sysfs_bus_id": "1-2:1.0",
+        "serial": "1381386C3137",
+        "model": "Logitech Gaming Keyboard G213",
+        "sysfs_id": "/devices/pci0000:00/0000:00:15.0/usb1/1-4/1-4:1.0",
+        "sysfs_bus_id": "1-4:1.0",
         "unix_device_names": [
-          "/dev/input/by-id/usb-Logitech_LogiG_MKeyboard-event-kbd",
-          "/dev/input/by-path/pci-0000:00:15.0-usb-0:2:1.0-event-kbd",
-          "/dev/input/by-path/pci-0000:00:15.0-usbv2-0:2:1.0-event-kbd",
-          "/dev/input/event0"
+          "/dev/input/by-id/usb-Logitech_Gaming_Keyboard_G213_1381386C3137-event-kbd",
+          "/dev/input/by-path/pci-0000:00:15.0-usb-0:4:1.0-event-kbd",
+          "/dev/input/by-path/pci-0000:00:15.0-usbv2-0:4:1.0-event-kbd",
+          "/dev/input/event2"
         ],
         "resources": [
           {
@@ -1148,7 +1149,7 @@
           "xkb_rules": "xfree86",
           "xkb_model": "pc104"
         },
-        "module_alias": "usb:v046DpC349d6600dc00dsc00dp00ic03isc01ip01in00"
+        "module_alias": "usb:v046DpC336d0900dc00dsc00dp00ic03isc01ip01in00"
       }
     ],
     "memory": [
@@ -1172,7 +1173,7 @@
         "resources": [
           {
             "type": "phys_mem",
-            "range": 8053063680
+            "range": 16106127360
           }
         ]
       }
@@ -1395,6 +1396,117 @@
         }
       }
     ],
+    "mouse": [
+      {
+        "index": 25,
+        "attached_to": 27,
+        "class_list": [
+          "mouse",
+          "usb"
+        ],
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "base_class": {
+          "hex": "0105",
+          "name": "Mouse",
+          "value": 261
+        },
+        "sub_class": {
+          "hex": "0003",
+          "name": "USB Mouse",
+          "value": 3
+        },
+        "vendor": {
+          "hex": "046d",
+          "name": "Logitech Inc.",
+          "value": 1133
+        },
+        "device": {
+          "hex": "c084",
+          "name": "G203 Prodigy Gaming Mouse",
+          "value": 49284
+        },
+        "revision": {
+          "hex": "0000",
+          "name": "7.03",
+          "value": 0
+        },
+        "serial": "0B9038593732",
+        "compat_vendor": "Unknown",
+        "compat_device": "Generic USB Mouse",
+        "model": "Logitech G203 Prodigy Gaming Mouse",
+        "sysfs_id": "/devices/pci0000:00/0000:00:15.0/usb1/1-3/1-3:1.0",
+        "sysfs_bus_id": "1-3:1.0",
+        "unix_device_names": [
+          "/dev/input/mice"
+        ],
+        "unix_device_name2": "/dev/input/mouse0",
+        "resources": [
+          {
+            "type": "baud",
+            "speed": 12000000,
+            "bits": 0,
+            "stop_bits": 0,
+            "parity": 0,
+            "handshake": 0
+          }
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_protocol": 0,
+          "interface_class": {
+            "hex": "0003",
+            "name": "hid",
+            "value": 3
+          },
+          "interface_subclass": {
+            "hex": "0001",
+            "name": "audio",
+            "value": 1
+          },
+          "interface_protocol": 2,
+          "interface_number": 0,
+          "interface_alternate_setting": 0
+        },
+        "hotplug": "usb",
+        "driver": "usbhid",
+        "driver_module": "usbhid",
+        "drivers": [
+          "usbhid"
+        ],
+        "driver_modules": [
+          "usbhid"
+        ],
+        "driver_info": {
+          "type": "mouse",
+          "db_entry_0": [
+            "explorerps/2",
+            "exps2"
+          ],
+          "xf86": "explorerps/2",
+          "gpm": "exps2",
+          "buttons": -1,
+          "wheels": -1
+        },
+        "module_alias": "usb:v046DpC084d0703dc00dsc00dp00ic03isc01ip02in00"
+      }
+    ],
     "network_controller": [
       {
         "index": 9,
@@ -1542,7 +1654,7 @@
         "resources": [
           {
             "type": "hwaddr",
-            "address": 49
+            "address": 101
           },
           {
             "type": "phwaddr",
@@ -1653,70 +1765,7 @@
     ],
     "network_interface": [
       {
-        "index": 31,
-        "attached_to": 12,
-        "class_list": [
-          "network_interface"
-        ],
-        "base_class": {
-          "hex": "0107",
-          "name": "Network Interface",
-          "value": 263
-        },
-        "sub_class": {
-          "hex": "000a",
-          "name": "WLAN",
-          "value": 10
-        },
-        "model": "WLAN network interface",
-        "sysfs_id": "/class/net/wlan0",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:0c.0",
-        "unix_device_names": [
-          "wlan0"
-        ],
-        "resources": [
-          {
-            "type": "hwaddr",
-            "address": 49
-          },
-          {
-            "type": "phwaddr",
-            "address": 98
-          }
-        ],
-        "driver": "iwlwifi",
-        "driver_module": "iwlwifi",
-        "drivers": [
-          "iwlwifi"
-        ],
-        "driver_modules": [
-          "iwlwifi"
-        ]
-      },
-      {
         "index": 32,
-        "attached_to": 0,
-        "class_list": [
-          "network_interface"
-        ],
-        "base_class": {
-          "hex": "0107",
-          "name": "Network Interface",
-          "value": 263
-        },
-        "sub_class": {
-          "hex": "0000",
-          "name": "Loopback",
-          "value": 0
-        },
-        "model": "Loopback network interface",
-        "sysfs_id": "/class/net/lo",
-        "unix_device_names": [
-          "lo"
-        ]
-      },
-      {
-        "index": 33,
         "attached_to": 9,
         "class_list": [
           "network_interface"
@@ -1754,6 +1803,69 @@
         ],
         "driver_modules": [
           "r8169"
+        ]
+      },
+      {
+        "index": 33,
+        "attached_to": 12,
+        "class_list": [
+          "network_interface"
+        ],
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "sub_class": {
+          "hex": "000a",
+          "name": "WLAN",
+          "value": 10
+        },
+        "model": "WLAN network interface",
+        "sysfs_id": "/class/net/wlan0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:0c.0",
+        "unix_device_names": [
+          "wlan0"
+        ],
+        "resources": [
+          {
+            "type": "hwaddr",
+            "address": 101
+          },
+          {
+            "type": "phwaddr",
+            "address": 98
+          }
+        ],
+        "driver": "iwlwifi",
+        "driver_module": "iwlwifi",
+        "drivers": [
+          "iwlwifi"
+        ],
+        "driver_modules": [
+          "iwlwifi"
+        ]
+      },
+      {
+        "index": 34,
+        "attached_to": 0,
+        "class_list": [
+          "network_interface"
+        ],
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Loopback",
+          "value": 0
+        },
+        "model": "Loopback network interface",
+        "sysfs_id": "/class/net/lo",
+        "unix_device_names": [
+          "lo"
         ]
       }
     ],
@@ -2213,7 +2325,7 @@
     "usb": [
       {
         "index": 24,
-        "attached_to": 28,
+        "attached_to": 27,
         "class_list": [
           "usb",
           "unknown"
@@ -2243,18 +2355,25 @@
           "value": 1133
         },
         "device": {
-          "hex": "c349",
-          "name": "LogiG MKeyboard",
-          "value": 49993
+          "hex": "c336",
+          "name": "Gaming Keyboard G213",
+          "value": 49974
         },
         "revision": {
           "hex": "0000",
-          "name": "66.00",
+          "name": "9.00",
           "value": 0
         },
-        "model": "Logitech LogiG MKeyboard",
-        "sysfs_id": "/devices/pci0000:00/0000:00:15.0/usb1/1-2/1-2:1.2",
-        "sysfs_bus_id": "1-2:1.2",
+        "serial": "1381386C3137",
+        "model": "Logitech Gaming Keyboard G213",
+        "sysfs_id": "/devices/pci0000:00/0000:00:15.0/usb1/1-4/1-4:1.1",
+        "sysfs_bus_id": "1-4:1.1",
+        "unix_device_names": [
+          "/dev/input/by-id/usb-Logitech_Gaming_Keyboard_G213_1381386C3137-if01-event-kbd",
+          "/dev/input/by-path/pci-0000:00:15.0-usb-0:4:1.1-event-kbd",
+          "/dev/input/by-path/pci-0000:00:15.0-usbv2-0:4:1.1-event-kbd",
+          "/dev/input/event3"
+        ],
         "resources": [
           {
             "type": "baud",
@@ -2288,7 +2407,7 @@
             "value": 0
           },
           "interface_protocol": 0,
-          "interface_number": 2,
+          "interface_number": 1,
           "interface_alternate_setting": 0
         },
         "hotplug": "usb",
@@ -2300,11 +2419,11 @@
         "driver_modules": [
           "usbhid"
         ],
-        "module_alias": "usb:v046DpC349d6600dc00dsc00dp00ic03isc00ip00in02"
+        "module_alias": "usb:v046DpC336d0900dc00dsc00dp00ic03isc00ip00in01"
       },
       {
-        "index": 27,
-        "attached_to": 28,
+        "index": 29,
+        "attached_to": 27,
         "class_list": [
           "usb",
           "unknown"
@@ -2334,22 +2453,23 @@
           "value": 1133
         },
         "device": {
-          "hex": "c349",
-          "name": "LogiG MKeyboard",
-          "value": 49993
+          "hex": "c084",
+          "name": "G203 Prodigy Gaming Mouse",
+          "value": 49284
         },
         "revision": {
           "hex": "0000",
-          "name": "66.00",
+          "name": "7.03",
           "value": 0
         },
-        "model": "Logitech LogiG MKeyboard",
-        "sysfs_id": "/devices/pci0000:00/0000:00:15.0/usb1/1-2/1-2:1.1",
-        "sysfs_bus_id": "1-2:1.1",
+        "serial": "0B9038593732",
+        "model": "Logitech G203 Prodigy Gaming Mouse",
+        "sysfs_id": "/devices/pci0000:00/0000:00:15.0/usb1/1-3/1-3:1.1",
+        "sysfs_bus_id": "1-3:1.1",
         "unix_device_names": [
-          "/dev/input/by-id/usb-Logitech_LogiG_MKeyboard-event-if01",
-          "/dev/input/by-path/pci-0000:00:15.0-usb-0:2:1.1-event",
-          "/dev/input/by-path/pci-0000:00:15.0-usbv2-0:2:1.1-event",
+          "/dev/input/by-id/usb-Logitech_G203_Prodigy_Gaming_Mouse_0B9038593732-if01-event-kbd",
+          "/dev/input/by-path/pci-0000:00:15.0-usb-0:3:1.1-event-kbd",
+          "/dev/input/by-path/pci-0000:00:15.0-usbv2-0:3:1.1-event-kbd",
           "/dev/input/event1"
         ],
         "resources": [
@@ -2397,7 +2517,7 @@
         "driver_modules": [
           "usbhid"
         ],
-        "module_alias": "usb:v046DpC349d6600dc00dsc00dp00ic03isc00ip00in01"
+        "module_alias": "usb:v046DpC084d0703dc00dsc00dp00ic03isc00ip00in01"
       }
     ],
     "usb_controller": [
@@ -2680,7 +2800,7 @@
         "handle": 25,
         "array_handle": 24,
         "start_address": "0x0",
-        "end_address": "0x200000000",
+        "end_address": "0x400000000",
         "part_width": 2
       }
     ],
@@ -2689,13 +2809,13 @@
         "handle": 26,
         "location": "SODIMM1",
         "bank_location": "Channel A Slot 0",
-        "manufacturer": "Samsung",
-        "part_number": "M471A5244CB0-CWE",
+        "manufacturer": "Micron_Technolog",
+        "part_number": "8ATF1G64HZ-3G2R1",
         "array_handle": 24,
         "error_handle": 65534,
         "width": 64,
         "ecc_bits": 0,
-        "size": 4194304,
+        "size": 8388608,
         "form_factor": {
           "hex": "000d",
           "name": "SODIMM",
@@ -2716,13 +2836,13 @@
         "handle": 28,
         "location": "SODIMM2",
         "bank_location": "Channel B Slot 0",
-        "manufacturer": "SK_Hynix",
-        "part_number": "HMA851S6DJR6N-XN",
+        "manufacturer": "Micron_Technolog",
+        "part_number": "8ATF1G64HZ-3G2R1",
         "array_handle": 24,
         "error_handle": 65534,
         "width": 64,
         "ecc_bits": 0,
-        "size": 4194304,
+        "size": 8388608,
         "form_factor": {
           "hex": "000d",
           "name": "SODIMM",
@@ -2746,7 +2866,7 @@
         "memory_device_handle": 26,
         "array_map_handle": 25,
         "start_address": "0x0",
-        "end_address": "0x100000000",
+        "end_address": "0x200000000",
         "row_position": 255,
         "interleave_position": 1,
         "interleave_depth": 2
@@ -2755,8 +2875,8 @@
         "handle": 29,
         "memory_device_handle": 28,
         "array_map_handle": 25,
-        "start_address": "0x100000000",
-        "end_address": "0x200000000",
+        "start_address": "0x200000000",
+        "end_address": "0x400000000",
         "row_position": 255,
         "interleave_position": 2,
         "interleave_depth": 2
