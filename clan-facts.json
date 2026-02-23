@@ -130,7 +130,6 @@
   },
   "k3s": {
     "manager": "kamrui-p1",
-    "ingress": "kamrui-p1",
     "domains": [
       "andrewlee.cloud",
       "frfropen.ai",
@@ -146,7 +145,6 @@
     }
   },
   "docker": {
-    "ingress": "kamrui-p1",
     "domain": "andrewlee.fun"
   },
   "networking": {

@@ -8,14 +8,10 @@
   inherit (clan-net-utils) writeYamlFile;
   cfg = config.clan-net.kubernetes.k3s.services.traefik;
   hostName = config.networking.hostName;
-  net = clan-facts.networking;
   manager = clan-facts.k3s.manager;
-  ingressHost = clan-facts.k3s.ingress;
-  tailscaleIPv4 = net.tailscale.IPv4.${ingressHost};
-  publicIPv4 = net.public.IPv4.${ingressHost};
   domain = builtins.head clan-facts.k3s.domains;
   cidr = clan-facts.k3s.cluster-cidr;
-  trustedIPs = [tailscaleIPv4 publicIPv4 cidr.IPv4 "127.0.0.1/8"];
+  trustedIPs = [cidr.IPv4 "127.0.0.1/8"];
   k3sDomains = domains:
     builtins.listToAttrs (map (
         name: {
@@ -37,19 +33,17 @@
 in {
   options.clan-net.kubernetes.k3s.services.traefik.enable = lib.mkEnableOption "traefik";
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf config.clan-net.kubernetes.k3s.enable {
     # caddy reverse proxy for traefik
-    clan-net.services.caddy.enable =
-      if hostName == ingressHost
-      then lib.mkDefault true
-      else lib.mkDefault false;
-    services.caddy = lib.optionalAttrs (hostName == ingressHost) {
+    clan-net.services.caddy.enable = lib.mkDefault cfg.enable;
+    services.caddy = lib.optionalAttrs cfg.enable {
       virtualHosts =
         lib.mkMerge [(k3sDomains clan-facts.k3s.domains)];
     };
 
     # k3s auto deploy config map for rancher traefik ingress
     services.k3s = {
+      nodeLabel = lib.optionals cfg.enable ["ingressNode=true"];
       manifests = lib.optionalAttrs (hostName == manager) {
         traefik-config.source = writeYamlFile "traefik-config.yaml" {
           apiVersion = "helm.cattle.io/v1";
@@ -61,8 +55,8 @@ in {
           spec = {
             valuesContent = lib.generators.toYAML {} {
               service.type = "NodePort";
-              deployment.kind = "Deployment";
-              nodeSelector.host = ingressHost;
+              deployment.kind = "DaemonSet";
+              nodeSelector.ingressNode = "true";
 
               ports = {
                 web = {

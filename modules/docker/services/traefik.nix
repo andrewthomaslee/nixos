@@ -9,15 +9,13 @@
   inherit (clan-net-utils) writeYamlFile;
   cfg = config.clan-net.docker.services.traefik;
   domain = clan-facts.docker.domain;
-  net = clan-facts.networking;
-  ingressHost = clan-facts.docker.ingress;
-  tailscaleIPv4 = net.tailscale.IPv4.${ingressHost};
-  publicIPv4 = net.public.IPv4.${ingressHost};
-  trustedIPs = [tailscaleIPv4 publicIPv4 "127.0.0.1/8"];
+  trustedIPs = ["127.0.0.1/8"];
 in {
   options.clan-net.docker.services.traefik.enable = lib.mkEnableOption "traefik";
 
   config = lib.mkIf cfg.enable {
+    # caddy reverse proxy for traefik
+    clan-net.services.caddy.enable = lib.mkDefault true;
     services.caddy.virtualHosts = {
       "*.${domain}" = {
         extraConfig = ''
