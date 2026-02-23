@@ -30,7 +30,7 @@ in {
     };
     concurrency = mkOption {
       type = types.int;
-      default = 4;
+      default = 3;
       description = "The number of concurrent checkers";
       example = 10;
     };
