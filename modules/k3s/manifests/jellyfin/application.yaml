@@ -37,6 +37,7 @@ spec:
           - name: host-media-storage
             mountPath: /media
             readOnly: false
+            mountPropagation: HostToContainer
           - name: render-device
             mountPath: /dev/dri
         ingress:
