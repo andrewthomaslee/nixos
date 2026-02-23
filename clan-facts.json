@@ -132,6 +132,7 @@
     "manager": "kamrui-p1",
     "domains": [
       "andrewlee.cloud",
+      "andrewlee.fun",
       "frfropen.ai",
       "ai-providers.net"
     ],
@@ -143,9 +144,6 @@
       "IPv4": "10.43.0.0/16",
       "IPv6": "fd43::/112"
     }
-  },
-  "docker": {
-    "domain": "andrewlee.fun"
   },
   "networking": {
     "public": {

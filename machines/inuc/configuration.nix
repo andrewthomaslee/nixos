@@ -11,6 +11,14 @@
         longhorn.enable = true;
       };
     };
+
+    services = {
+      # static website hosting
+      hugo = {
+        enable = true;
+        blogAndrewleeFun.enable = true; # https://andrewlee.fun
+      };
+    };
   };
 
   hardware.graphics = {

@@ -63,34 +63,17 @@ in {
     filesystems.ext4.enable = true;
     secrets.enable = true;
 
-    # docker host
-    docker = {
-      enable = true;
-      services = {
-        dockhand.enable = true;
-        traefik.enable = true;
-        tsdproxy.enable = true;
-      };
-    };
-
     # kubernetes host
     kubernetes.k3s = {
       enable = true;
       manager.enable = true;
       services = {
-        traefik.enable = true;
         longhorn.enable = true;
         argo-cd.enable = true;
       };
     };
 
     services = {
-      # static website hosting
-      hugo = {
-        enable = true;
-        blogAndrewleeFun.enable = true; # https://andrewlee.fun
-      };
-
       # -------- ⛏️ minecraft server 🏡 -------- #
       playit.enable = true;
       minecraft = {
