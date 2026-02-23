@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: jellyfin
   namespace: kube-system
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
@@ -11,8 +13,58 @@ spec:
     targetRevision: 2.7.0
     helm:
       releaseName: jellyfin
-      valueFiles:
-        - values.yaml
+      values: |
+        replicaCount: 1
+        image:
+          pullPolicy: IfNotPresent
+        persistence:
+          media:
+            enabled: false
+          config:
+            enabled: true
+            size: 5Gi
+            storageClass: local-path
+        extraVolumes:
+          - name: host-media-storage
+            hostPath:
+              path: /mnt/storagebox/Media
+              type: Directory
+          - name: render-device
+            hostPath:
+              path: /dev/dri
+              type: Directory
+        extraVolumeMounts:
+          - name: host-media-storage
+            mountPath: /media
+            readOnly: false
+          - name: render-device
+            mountPath: /dev/dri
+        ingress:
+          enabled: true
+          className: traefik
+          hosts:
+            - host: jellyfin.andrewlee.cloud
+              paths:
+                - path: /
+                  pathType: Prefix
+        resources:
+          limits:
+            cpu: 4000m
+            memory: 8Gi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        nodeSelector:
+          host: kamrui-p1
+        podSecurityContext:
+          supplementalGroups: [107, 44, 303, 982]
   destination:
     server: "https://kubernetes.default.svc"
     namespace: jellyfin
+  
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
