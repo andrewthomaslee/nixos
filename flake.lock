@@ -548,11 +548,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771340250,
-        "narHash": "sha256-zzfLQ2hzU1+/P6BDV/cDz8gEEplYg0Psn0avzVnCXNI=",
+        "lastModified": 1771866277,
+        "narHash": "sha256-UjDsCOjycPXL72HapR0NH0Z0Z2EfPOTaNCMmWN75Cjo=",
         "ref": "refs/heads/main",
-        "rev": "dd6e0342dad551b87e940965635674454b0c5194",
-        "revCount": 38,
+        "rev": "ebce08ca8543e7b1de44282f084702de4772ec2a",
+        "revCount": 47,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/andrewthomaslee/blog.andrewlee.fun.git"
