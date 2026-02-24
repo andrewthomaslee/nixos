@@ -68,7 +68,6 @@ in {
       enable = true;
       manager.enable = true;
       services = {
-        longhorn.enable = true;
         argo-cd.enable = true;
       };
     };

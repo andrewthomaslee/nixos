@@ -8,7 +8,6 @@
       worker.enable = true;
       services = {
         traefik.enable = true;
-        longhorn.enable = true;
       };
     };
 
