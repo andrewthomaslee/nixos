@@ -14,31 +14,21 @@ spec:
     helm:
       releaseName: jellyfin
       values: |
-        replicaCount: 1
-        image:
-          pullPolicy: IfNotPresent
         persistence:
           media:
-            enabled: false
+            enabled: true
+            type: hostPath
+            hostPath: /mnt/storagebox/Media
           config:
             enabled: true
             size: 5Gi
             storageClass: local-path
         extraVolumes:
-          - name: host-media-storage
-            hostPath:
-              path: /mnt/storagebox/Media
-              type: Directory
-          - name: render-device
+          - name: dri
             hostPath:
               path: /dev/dri
-              type: Directory
         extraVolumeMounts:
-          - name: host-media-storage
-            mountPath: /media
-            readOnly: false
-            mountPropagation: HostToContainer
-          - name: render-device
+          - name: dri
             mountPath: /dev/dri
         ingress:
           enabled: true
@@ -54,11 +44,11 @@ spec:
             memory: 8Gi
           requests:
             cpu: 100m
-            memory: 256Mi
+            memory: 128Mi
         nodeSelector:
           host: kamrui-p1
-        podSecurityContext:
-          supplementalGroups: [107, 44, 303, 982]
+        securityContext:
+          privileged: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: jellyfin
