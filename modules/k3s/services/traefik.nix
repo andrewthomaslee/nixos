@@ -68,6 +68,7 @@ in {
                   proxyProtocol = {inherit trustedIPs;};
                   forwardedHeaders = {inherit trustedIPs;};
                 };
+                websecure = {};
               };
               api = {
                 dashboard = true;
