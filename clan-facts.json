@@ -147,6 +147,13 @@
   },
   "networking": {
     "public": {
+      "interface" : {
+        "nixos": "enp3s0",
+        "ghost": "wlp0s20f3",
+        "inuc": "eno1",
+        "kamrui-p1": "eno1",
+        "hp-notebook": "wlp0s20f3"
+      },
       "IPv4": {
         "nixos": "192.168.1.253",
         "ghost": "192.168.1.252",

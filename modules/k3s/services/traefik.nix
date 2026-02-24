@@ -8,10 +8,10 @@
   inherit (clan-net-utils) writeYamlFile;
   cfg = config.clan-net.kubernetes.k3s.services.traefik;
   hostName = config.networking.hostName;
-  manager = clan-facts.k3s.manager;
-  domain = builtins.head clan-facts.k3s.domains;
-  cidr = clan-facts.k3s.cluster-cidr;
-  trustedIPs = [cidr.IPv4 "127.0.0.1/8"];
+  k3s = clan-facts.k3s;
+  manager = k3s.manager;
+  domain = builtins.head k3s.domains;
+  trustedIPs = [k3s.cluster-cidr.IPv4 "127.0.0.1/8" "192.168.1.0/24"];
   k3sDomains = domains:
     builtins.listToAttrs (map (
         name: {

@@ -8,7 +8,8 @@
   cfg = config.clan-net.kubernetes.k3s;
   hostName = config.networking.hostName;
   manager = clan-facts.k3s.manager;
-  net = clan-facts.networking.tailscale;
+  net = clan-facts.networking.public;
+  iface = net.interface.${hostName};
   privateIPv4 = net.IPv4.${hostName};
   managerIPv4 = net.IPv4.${manager};
 in {
@@ -51,7 +52,7 @@ in {
       nodeIP = "${privateIPv4}";
       extraFlags = [
         "--node-external-ip=${privateIPv4}"
-        "--flannel-iface=tailscale0"
+        "--flannel-iface=${iface}"
       ];
     };
 
@@ -66,6 +67,7 @@ in {
     in {
       networkmanager.unmanaged = interfaces;
       firewall = {
+        enable = lib.mkForce false;
         trustedInterfaces = interfaces;
         allowPing = true; # Covers Port 8/0 ICMP
         allowedTCPPorts = [
