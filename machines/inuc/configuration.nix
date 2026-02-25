@@ -17,6 +17,8 @@
         enable = true;
         blogAndrewleeFun.enable = true; # https://andrewlee.fun
       };
+
+      jellyfin.ingress.enable = true;
     };
   };
 

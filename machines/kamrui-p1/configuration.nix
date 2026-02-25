@@ -73,6 +73,9 @@ in {
     };
 
     services = {
+      # 🪼 jellyfin media server
+      jellyfin.enable = true;
+
       # -------- ⛏️ minecraft server 🏡 -------- #
       playit.enable = true;
       minecraft = {
