@@ -25,6 +25,11 @@ in {
       '';
     };
 
+    systemd.services.jellyfin.serviceConfig = lib.optionalAttrs cfg.enable {
+      BindPaths = ["/mnt/storagebox/Media"];
+      RequiresMountsFor = "/mnt/storagebox/Media";
+    };
+
     services.jellyfin = lib.optionalAttrs cfg.enable {
       enable = true;
       openFirewall = true;
