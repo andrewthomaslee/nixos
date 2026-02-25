@@ -52,7 +52,6 @@
       k9s.enable = true;
       go.enable = true;
       python.enable = true;
-      docker.enable = true;
     };
   };
 in {
@@ -62,6 +61,13 @@ in {
   clan-net = {
     filesystems.ext4.enable = true;
     secrets.enable = true;
+
+    defaults = {
+      storagebox = {
+        mountOnAccess = false;
+        concurrency = 4;
+      };
+    };
 
     # kubernetes host
     kubernetes.k3s = {

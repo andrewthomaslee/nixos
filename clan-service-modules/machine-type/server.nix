@@ -6,7 +6,7 @@
       nix.enable = true;
       storagebox = {
         enable = true;
-        mountOnAccess = false;
+        mountOnAccess = true;
         boxUser = "u488514-sub1";
       };
     };
