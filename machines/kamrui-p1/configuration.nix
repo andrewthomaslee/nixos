@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   Fabric-API,
   Storage-Drawers,
   Travelers-Backpack,
@@ -64,7 +65,7 @@ in {
 
     defaults = {
       storagebox = {
-        mountOnAccess = false;
+        mountOnAccess = lib.mkForce false;
         concurrency = 4;
       };
     };
