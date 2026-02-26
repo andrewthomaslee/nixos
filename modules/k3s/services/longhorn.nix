@@ -8,7 +8,6 @@
   cfg = config.clan-net.kubernetes.k3s.services.longhorn;
   hostName = config.networking.hostName;
   domain = builtins.head clan-facts.k3s.domains;
-  manager = clan-facts.k3s.manager;
 in {
   options.clan-net.kubernetes.k3s.services.longhorn.enable = lib.mkEnableOption "longhorn";
 
@@ -30,7 +29,7 @@ in {
     # k3s
     services.k3s = {
       nodeLabel = ["storage=longhorn"];
-      autoDeployCharts = lib.optionalAttrs (hostName == manager) {
+      autoDeployCharts = lib.optionalAttrs config.clan-net.kubernetes.k3s.manager.enable {
         longhorn = {
           name = "longhorn";
           version = "v1.11.0";

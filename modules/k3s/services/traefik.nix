@@ -7,9 +7,7 @@
 }: let
   inherit (clan-net-utils) writeYamlFile;
   cfg = config.clan-net.kubernetes.k3s.services.traefik;
-  hostName = config.networking.hostName;
   k3s = clan-facts.k3s;
-  manager = k3s.manager;
   domain = builtins.head k3s.domains;
   trustedIPs = [k3s.cluster-cidr.IPv4 "127.0.0.1/8" "192.168.1.0/24"];
   k3sDomains = domains:
@@ -44,7 +42,7 @@ in {
     # k3s auto deploy config map for rancher traefik ingress
     services.k3s = {
       nodeLabel = lib.optionals cfg.enable ["ingressNode=true"];
-      manifests = lib.optionalAttrs (hostName == manager) {
+      manifests = lib.optionalAttrs config.clan-net.kubernetes.k3s.manager.enable {
         traefik-config.source = writeYamlFile "traefik-config.yaml" {
           apiVersion = "helm.cattle.io/v1";
           kind = "HelmChartConfig";

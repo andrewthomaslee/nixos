@@ -36,6 +36,8 @@ in {
         off = "shutdown -h now";
         # backups
         fabric-backup = "rsync -av --progress --delete kamrui-p1:/srv/minecraft/fabric/world/ /mnt/storagebox/BACKUPS/minecraft/fabric/world/";
+        # k3s
+        k3s-wipe = "systemctl stop k3s.service && rm -fr /var/lib/rancher/ && rm -fr /etc/rancher/ && k3s-killall.sh";
       };
       bashrcExtra = ''
         # nixos remote rebuild

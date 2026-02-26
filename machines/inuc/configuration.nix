@@ -6,6 +6,7 @@
     kubernetes.k3s = {
       enable = true;
       worker.enable = true;
+      config.cilium.enable = true;
       services = {
         traefik.enable = true;
       };

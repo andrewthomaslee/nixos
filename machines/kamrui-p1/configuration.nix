@@ -73,10 +73,9 @@ in {
     # kubernetes host
     kubernetes.k3s = {
       enable = true;
+      clusterInit = true;
       manager.enable = true;
-      services = {
-        argo-cd.enable = true;
-      };
+      config.cilium.enable = true;
     };
 
     services = {

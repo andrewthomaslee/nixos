@@ -22,6 +22,7 @@ in {
       role = "server";
       nodeLabel = ["role=manager"];
       disable = ["servicelb"];
+      clusterInit = config.clan-net.kubernetes.k3s.clusterInit;
       extraFlags = [
         "--cluster-cidr=${kube.cluster-cidr.IPv4}"
         "--service-cidr=${kube.service-cidr.IPv4}"

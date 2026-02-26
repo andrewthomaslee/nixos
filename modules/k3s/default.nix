@@ -7,11 +7,10 @@
 }: let
   cfg = config.clan-net.kubernetes.k3s;
   hostName = config.networking.hostName;
-  manager = clan-facts.k3s.manager;
+  init = clan-facts.k3s.init;
   net = clan-facts.networking.public;
-  iface = net.interface.${hostName};
   privateIPv4 = net.IPv4.${hostName};
-  managerIPv4 = net.IPv4.${manager};
+  initIPv4 = net.IPv4.${init};
 in {
   imports = [
     ./services
@@ -19,10 +18,13 @@ in {
     ./manager.nix
   ];
 
-  options.clan-net.kubernetes.k3s.enable = lib.mkEnableOption "k3s";
+  options.clan-net.kubernetes.k3s = {
+    enable = lib.mkEnableOption "k3s";
+    clusterInit = lib.mkEnableOption "Initialize cluster";
+  };
 
   config = lib.mkIf cfg.enable {
-    clan.core.vars.generators.k3s = lib.optionalAttrs (hostName != manager) {
+    clan.core.vars.generators.k3s = lib.optionalAttrs (!cfg.clusterInit) {
       share = true;
       prompts.token.persist = true;
       files.token = {};
@@ -38,21 +40,20 @@ in {
 
     # k3s
     services.k3s = {
-      enable = cfg.enable;
+      enable = true;
       package = pkgs.k3s_1_35;
       nodeLabel = ["host=${hostName}"];
       tokenFile =
-        if hostName == manager
+        if cfg.clusterInit
         then null
         else config.clan.core.vars.generators.k3s.files.token.path;
       serverAddr =
-        if hostName == manager
+        if cfg.clusterInit
         then ""
-        else "https://${managerIPv4}:6443";
-      nodeIP = "${privateIPv4}";
+        else "https://${initIPv4}:6443";
+      nodeIP = privateIPv4;
       extraFlags = [
         "--node-external-ip=${privateIPv4}"
-        "--flannel-iface=${iface}"
       ];
     };
 
@@ -63,7 +64,7 @@ in {
     };
 
     networking = let
-      interfaces = ["tailscale0" "flannel+" "cali+" "tunl+" "vxlan.calico" "vxlan-v6.calico" "wireguard.cali" "wg-v6.calico" "cilium" "cilium*" "cni*" "lxc+" "lxc*"];
+      interfaces = ["tailscale0" "flannel+" "cali+" "tunl+" "vxlan.calico" "vxlan-v6.calico" "wireguard.cali" "wg-v6.calico" "cilium" "cilium*" "cilium+" "cil+" "cil*" "cni*" "lxc+" "lxc*"];
     in {
       networkmanager.unmanaged = interfaces;
       firewall = {

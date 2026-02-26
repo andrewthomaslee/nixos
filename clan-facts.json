@@ -129,7 +129,7 @@
     }
   },
   "k3s": {
-    "manager": "kamrui-p1",
+    "init": "kamrui-p1",
     "domains": [
       "andrewlee.cloud",
       "andrewlee.fun",
