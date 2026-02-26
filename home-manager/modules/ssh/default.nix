@@ -2,6 +2,7 @@
   config,
   lib,
   clan-facts,
+  osConfig,
   ...
 }: let
   cfg = config.clan-net.defaults.ssh;
@@ -47,6 +48,13 @@ in {
             user = "u488514";
             port = 23;
             inherit extraOptions addKeysToAgent;
+          };
+          helsinki-box-sub1 = lib.optionalAttrs (osConfig.clan-net.defaults.storagebox.boxUser == "u488514-sub1") {
+            hostname = "u488514-sub1.your-storagebox.de";
+            user = "u488514-sub1";
+            port = 23;
+            inherit extraOptions addKeysToAgent;
+            identityFile = osConfig.clan.core.vars.generators."storagebox-ssh-u488514-sub1".files."ssh-private-key".path;
           };
           industrial-host-box = {
             hostname = "u540833.your-storagebox.de";
