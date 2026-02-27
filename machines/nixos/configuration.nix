@@ -10,7 +10,12 @@
       virtualbox.enable = true;
     };
   };
-
+  jovian.steam = {
+    enable = true;
+    autoStart = true;
+    user = "netsa";
+    desktopSession = "plasma";
+  };
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {

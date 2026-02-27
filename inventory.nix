@@ -19,6 +19,7 @@
       module.input = "self";
       module.name = "@andrewthomaslee/kde";
       roles.kde.tags.kde = {};
+      roles.kde.extraModules = [self.inputs.jovian.nixosModules.default];
     };
 
     user-root = {
