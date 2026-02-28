@@ -1,8 +1,7 @@
 {
   disko.devices = let
     nvme0n1 = "/dev/disk/by-id/nvme-WD_Blue_SN5100_500GB_25492N805944";
-    arc = "/dev/disk/by-id/ata-ST2000DX001-1NS164_Z4Z5RFRN";
-    san = "/dev/disk/by-id/ata-SanDisk_SD8SBAT256G1122_161808400633";
+    bazzite = "/dev/disk/by-id/ata-Samsung_SSD_860_EVO_500GB_S5B2NR0N426114V";
   in {
     disk = {
       nvme0n1 = {
@@ -40,9 +39,9 @@
           };
         };
       };
-      san = {
+      bazzite = {
         name = "san";
-        device = san;
+        device = bazzite;
         type = "disk";
         content = {
           type = "gpt";
@@ -51,30 +50,8 @@
               size = "100%";
               content = {
                 type = "filesystem";
-                format = "ext4";
-                mountpoint = "/mnt/san";
-                mountOptions = [
-                  "noatime"
-                  "nofail"
-                ];
-              };
-            };
-          };
-        };
-      };
-      arc = {
-        name = "arc";
-        device = arc;
-        type = "disk";
-        content = {
-          type = "gpt";
-          partitions = {
-            arc = {
-              size = "100%";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/mnt/arc";
+                format = "btrfs";
+                mountpoint = "/mnt/bazzite";
                 mountOptions = [
                   "noatime"
                   "nofail"
