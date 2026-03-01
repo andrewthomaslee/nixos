@@ -34,6 +34,7 @@ in {
         speedtest = "NIXPKGS_ALLOW_UNFREE=1 nix run --impure nixpkgs#ookla-speedtest";
         modrinth-prefetch = "nix run github:Infinidoge/nix-minecraft#nix-modrinth-prefetch -- $@";
         off = "shutdown -h now";
+        virt-host-validate = "nix shell nixpkgs#libvirt";
         # backups
         fabric-backup = "rsync -av --progress --delete kamrui-p1:/srv/minecraft/fabric/world/ /mnt/storagebox/BACKUPS/minecraft/fabric/world/";
         # k3s
