@@ -72,7 +72,7 @@ in {
 
     # kubernetes host
     kubernetes.k3s = {
-      enable = true;
+      enable = false;
       clusterInit = true;
       manager.enable = true;
       config.cilium.enable = true;

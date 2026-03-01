@@ -5,129 +5,6 @@
   },
   "email": "andrewthomaslee.business@gmail.com",
   "ssh_public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOb4q9LWJR54SzRkfmsA5KWA5/SDEG853oFC8TVilCW/ Clan-Net",
-  "machines": {
-    "kamrui-p1": {
-      "networking": {
-        "interface": "eno1",
-        "mtu": 1500,
-        "IPv4": {
-          "address": "192.168.1.251",
-          "prefixLength": 24,
-          "gateway": "192.168.1.254"
-        }
-      },
-      "disks": [
-        {
-          "device": "/dev/disk/by-id/nvme-G932E1Q_1T_YALT002964T",
-          "label": "nvme0n1",
-          "mountpoint": "/",
-          "capacity": "1T",
-          "format": "ext4"
-        }
-      ]
-    },
-    "inuc": {
-      "networking": {
-        "interface": "eno1",
-        "mtu": 1500,
-        "IPv4": {
-          "address": "192.168.1.249",
-          "prefixLength": 24,
-          "gateway": "192.168.1.254"
-        }
-      },
-      "disks": [
-        {
-          "device": "/dev/disk/by-id/ata-SanDisk_SD8SBAT256G1122_161808400633",
-          "label": "san",
-          "mountpoint": "/",
-          "capacity": "256G",
-          "format": "ext4"
-        }
-      ]
-    },
-    "nixos": {
-      "networking": {
-        "interface": "enp3s0",
-        "mtu": 1500,
-        "IPv4": {
-          "address": "192.168.1.253",
-          "prefixLength": 24,
-          "gateway": "192.168.1.254"
-        }
-      },
-      "disks": [
-        {
-          "device": "/dev/disk/by-id/nvme-WD_Blue_SN5100_500GB_25492N805944",
-          "label": "nvme0n1",
-          "mountpoint": "/",
-          "capacity": "500G",
-          "format": "ext4"
-        },
-        {
-          "device": "/dev/disk/by-id/ata-ST2000DX001-1NS164_Z4Z5RFRN",
-          "label": "arc",
-          "mountpoint": "/mnt/arc",
-          "capacity": "1.8T",
-          "format": "ext4"
-        },
-        {
-          "device": "/dev/disk/by-id/ata-WDC_WDBNCE0010PNC_184898801017",
-          "label": "storage",
-          "mountpoint": "/mnt/storage",
-          "capacity": "960G",
-          "format": "ext4"
-        }
-      ]
-    },
-    "ghost": {
-      "networking": {
-        "interface": "wlp0s20f3",
-        "mtu": 1500,
-        "IPv4": {
-          "address": "192.168.1.252",
-          "prefixLength": 24,
-          "gateway": "192.168.1.254"
-        }
-      },
-      "disks": [
-        {
-          "device": "/dev/disk/by-id/nvme-eui.5cd2e475228a0100",
-          "label": "nvme0n1",
-          "mountpoint": "/var/lib/rancher/k3s",
-          "capacity": "32G",
-          "format": "ext4"
-        },
-        {
-          "device": "/dev/disk/by-id/nvme-eui.5cd2e47911b0139e",
-          "label": "nvme1n1",
-          "mountpoint": "/",
-          "capacity": "512G",
-          "format": "ext4"
-        }
-      ]
-    },
-    "hp-notebook": {
-      "networking": {
-        "interface": "wlp0s20f3",
-        "mtu": 1500,
-        "IPv4": {
-          "address": "192.168.1.250",
-          "prefixLength": 24,
-          "gateway": "192.168.1.254"
-        }
-      },
-      "disks": [
-        {
-          "device": "/dev/disk/by-id/mmc-TY2964_0x5aebfa8a",
-          "label": "mmc-TY",
-          "mountpoint": "/",
-          "capacity": "64G",
-          "format": "ext4"
-        }
-      ]
-    }
-  },
   "k3s": {
     "init": "kamrui-p1",
     "domains": [
@@ -147,17 +24,19 @@
   },
   "networking": {
     "public": {
-      "interface" : {
+      "interface": {
         "nixos": "enp3s0",
         "ghost": "wlp0s20f3",
-        "inuc": "eno1",
+        "inuc-celeron": "eno1",
+        "inuc-i5": "eno1",
         "kamrui-p1": "eno1",
         "hp-notebook": "wlp0s20f3"
       },
       "IPv4": {
         "nixos": "192.168.1.253",
         "ghost": "192.168.1.252",
-        "inuc": "192.168.1.249",
+        "inuc-celeron": "192.168.1.249",
+        "inuc-i5": "192.168.1.248",
         "kamrui-p1": "192.168.1.251",
         "hp-notebook": "192.168.1.250"
       }
@@ -167,7 +46,8 @@
       "IPv4": {
         "nixos": "100.80.251.10",
         "ghost": "100.108.67.117",
-        "inuc": "100.96.117.104",
+        "inuc-celeron": "100.96.117.104",
+        "inuc-i5": "",
         "kamrui-p1": "100.104.250.56",
         "hp-notebook": ""
       }

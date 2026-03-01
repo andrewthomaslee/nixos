@@ -4,9 +4,9 @@
 
     # kubernetes host
     kubernetes.k3s = {
-      enable = true;
-      worker.enable = true;
-      config.cilium.enable = true;
+      enable = false;
+      manager.enable = true;
+      config.cilium.enable = true; # TODO: make traefik ingress option
       services = {
         traefik.enable = true;
       };
@@ -16,10 +16,10 @@
       # static website hosting
       hugo = {
         enable = true;
-        blogAndrewleeFun.enable = true; # https://andrewlee.fun
+        blogAndrewleeFun.enable = true; # https://blog.andrewlee.fun
       };
 
-      jellyfin.ingress.enable = true;
+      jellyfin.ingress.enable = true; # TODO: make this genric Caddy ingress
     };
   };
 

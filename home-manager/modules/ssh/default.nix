@@ -67,7 +67,8 @@ in {
           "nixos"
           "ghost"
           "kamrui-p1"
-          "inuc"
+          "inuc-celeron"
+          "inuc-i5"
           "mng-0-dev"
           "mng-2-dev"
           "mng-1-dev"
@@ -89,7 +90,8 @@ in {
           "nixos"
           "ghost"
           "kamrui-p1"
-          "inuc"
+          "inuc-celeron"
+          "inuc-i5"
         ]);
     };
   };
