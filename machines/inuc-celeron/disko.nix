@@ -1,11 +1,11 @@
 {
   disko.devices = let
-    WDC_SSD = "/dev/disk/by-id/ata-WDC_WDBNCE0010PNC_184898801017";
+    SSD = "/dev/disk/by-id/ata-SanDisk_SD8SBAT256G1122_161808400633";
   in {
     disk = {
       main = {
         type = "disk";
-        device = WDC_SSD;
+        device = SSD;
         content = {
           type = "gpt";
           partitions = {
