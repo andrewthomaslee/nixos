@@ -1,6 +1,6 @@
 {
   disko.devices = let
-    SSD = "/dev/sda";
+    SSD = "/dev/disk/by-id/ata-WDC_WDBNCE0010PNC_184898801017";
   in {
     disk = {
       main = {
