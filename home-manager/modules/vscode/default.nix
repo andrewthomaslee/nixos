@@ -144,6 +144,8 @@ in {
       gemini-cli
       kubectl
       alejandra
+      devpod
+      devcontainer
     ];
 
     programs.bash = {
