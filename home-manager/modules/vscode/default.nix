@@ -36,15 +36,12 @@ in {
             hashicorp.terraform
             budparr.language-hugo-vscode
             gruntfuggly.todo-tree
-            ms-vscode-remote.remote-containers
             ms-azuretools.vscode-docker
             ms-azuretools.vscode-containers
-            ms-vscode.remote-server
+            ms-vscode-remote.remote-containers
+            ms-vscode-remote.remote-ssh-edit
             ms-vscode-remote.remote-ssh
             ms-kubernetes-tools.vscode-kubernetes-tools
-            ms-kubernetes-tools.kind-vscode
-            Okteto.remote-kubernetes
-            Okteto.kubernetes-context
           ];
           userSettings = {
             "security.workspace.trust.untrustedFiles" = "open";
@@ -156,14 +153,15 @@ in {
       devpod-desktop
       devcontainer
       kind
+      okteto
     ];
 
     programs.bash = {
       shellAliases = {
-        c = "codium .";
-        cnix = "codium /home/netsa/nixos";
-        cvscode = "codium /home/netsa/nixos/home-manager/modules/vscode/settings.json";
-        cknownhosts = "codium ~/.ssh/known_hosts";
+        c = "code .";
+        cnix = "code /home/netsa/nixos";
+        cvscode = "code /home/netsa/nixos/home-manager/modules/vscode/settings.json";
+        cknownhosts = "code ~/.ssh/known_hosts";
       };
     };
   };
