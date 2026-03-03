@@ -36,6 +36,15 @@ in {
             hashicorp.terraform
             budparr.language-hugo-vscode
             gruntfuggly.todo-tree
+            ms-vscode-remote.remote-containers
+            ms-azuretools.vscode-docker
+            ms-azuretools.vscode-containers
+            ms-vscode.remote-server
+            ms-vscode-remote.remote-ssh
+            ms-kubernetes-tools.vscode-kubernetes-tools
+            ms-kubernetes-tools.kind-vscode
+            Okteto.remote-kubernetes
+            Okteto.kubernetes-context
           ];
           userSettings = {
             "security.workspace.trust.untrustedFiles" = "open";
@@ -144,8 +153,9 @@ in {
       gemini-cli
       kubectl
       alejandra
-      devpod
+      devpod-desktop
       devcontainer
+      kind
     ];
 
     programs.bash = {
