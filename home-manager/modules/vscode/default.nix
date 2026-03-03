@@ -12,7 +12,7 @@ in {
     # VSCode
     programs.vscode = {
       enable = true;
-      package = pkgs.vscodium;
+      # package = pkgs.vscodium;
       mutableExtensionsDir = true;
       profiles = {
         default = {
@@ -144,6 +144,8 @@ in {
       gemini-cli
       kubectl
       alejandra
+      devpod
+      devcontainer
     ];
 
     programs.bash = {

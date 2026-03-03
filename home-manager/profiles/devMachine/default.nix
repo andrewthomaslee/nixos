@@ -51,6 +51,7 @@
       yq
       rsync
       httpie
+      mediawriter
     ];
   };
 }

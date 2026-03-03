@@ -48,6 +48,9 @@
     virtualisation.docker.enable = true;
   };
 
+  # Enable sudo without password
+  security.sudo.wheelNeedsPassword = false;
+
   # User Profiles
   home-manager.users.netsa = flake-self.homeConfigurations.devMachine;
   home-manager.users.root = flake-self.homeConfigurations.devMachine;
