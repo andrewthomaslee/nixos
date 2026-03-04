@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   clan-net = {
     filesystems.ext4.enable = true;
+    secrets.enable = true;
 
     # kubernetes host
     kubernetes.k3s = {
