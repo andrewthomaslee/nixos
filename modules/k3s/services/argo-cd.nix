@@ -17,9 +17,10 @@ in {
         repo = "https://argoproj.github.io/argo-helm";
         version = "9.4.2";
         hash = "sha256-B4/iQMgfnhj57s0XN6AaDgcPmdYP7fL/Wj0MrdihuiM=";
-        targetNamespace = "kube-system";
+        createNamespace = true;
+        targetNamespace = "argocd";
         values = {
-          namespaceOverride = "kube-system";
+          namespaceOverride = "argocd";
           global.domain = "argocd.${domain}";
           configs = {
             secret.argocdServerAdminPassword = "${lib.trim (lib.removePrefix "admin:" config.clan.core.vars.generators.middleware-admin.files.hash.value)}";
@@ -31,7 +32,7 @@ in {
               kind = "Ingress";
               metadata = {
                 name = "argocd";
-                namespace = "kube-system";
+                namespace = "argocd";
                 annotations."traefik.ingress.kubernetes.io/router.entrypoints" = "web";
               };
               spec = {

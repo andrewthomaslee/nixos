@@ -783,11 +783,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769772878,
-        "narHash": "sha256-qFa07e8pE9lGSKlqc7v7co9cBLVETFg4pIn4GhkF7S8=",
+        "lastModified": 1772126302,
+        "narHash": "sha256-zgsXYRTHHVes9aU7TqVCk1gUofeiEgrGOJZPXbMoBzU=",
         "owner": "andrewthomaslee",
         "repo": "kubefetch",
-        "rev": "2565ff15cd42a7c81ef8c2c4348206e2f79b72e7",
+        "rev": "34d0a96b343e0040c8e47185b32657e91528b0fb",
         "type": "github"
       },
       "original": {
