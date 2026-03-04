@@ -10,7 +10,7 @@ in {
   options.clan-net.defaults.ssh.enable = lib.mkEnableOption "SSH configuration";
 
   config = lib.mkIf cfg.enable {
-    environment.variables.SSH_CONFIG_PATH = "~/.ssh/config.local";
+    home.sessionVariables.SSH_CONFIG_PATH = "~/.ssh/config.local";
 
     programs.ssh = let
       extraOptions = {
