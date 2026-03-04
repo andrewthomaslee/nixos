@@ -12,7 +12,7 @@ in {
     # VSCode
     programs.vscode = {
       enable = true;
-      # package = pkgs.vscodium;
+      package = pkgs.vscodium;
       mutableExtensionsDir = true;
       profiles = {
         default = {
@@ -26,22 +26,14 @@ in {
             charliermarsh.ruff
             ms-python.python
             tamasfe.even-better-toml
-            ziglang.vscode-zig
             esbenp.prettier-vscode
             ecmel.vscode-html-css
             catppuccin.catppuccin-vsc-icons
-            ms-toolsai.jupyter
             rooveterinaryinc.roo-cline
             irongeek.vscode-env
             hashicorp.terraform
             budparr.language-hugo-vscode
             gruntfuggly.todo-tree
-            ms-azuretools.vscode-docker
-            ms-azuretools.vscode-containers
-            ms-vscode-remote.remote-containers
-            ms-vscode-remote.remote-ssh-edit
-            ms-vscode-remote.remote-ssh
-            ms-kubernetes-tools.vscode-kubernetes-tools
           ];
           userSettings = {
             "security.workspace.trust.untrustedFiles" = "open";
@@ -158,10 +150,10 @@ in {
 
     programs.bash = {
       shellAliases = {
-        c = "code .";
-        cnix = "code /home/netsa/nixos";
-        cvscode = "code /home/netsa/nixos/home-manager/modules/vscode/settings.json";
-        cknownhosts = "code ~/.ssh/known_hosts";
+        c = "codium .";
+        cnix = "codium /home/netsa/nixos";
+        cvscode = "codium /home/netsa/nixos/home-manager/modules/vscode/settings.json";
+        cknownhosts = "codium ~/.ssh/known_hosts";
       };
     };
   };
