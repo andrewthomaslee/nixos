@@ -9,6 +9,8 @@
       manager.enable = true;
       config.cilium.enable = true; # TODO: make traefik ingress option
       services = {
+        longhorn.enable = true;
+        argo-cd.enable = true;
         traefik.enable = true;
       };
     };

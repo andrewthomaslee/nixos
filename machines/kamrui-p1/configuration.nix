@@ -76,6 +76,10 @@ in {
       clusterInit = true;
       manager.enable = true;
       config.cilium.enable = true;
+      services = {
+        longhorn.enable = true;
+        argo-cd.enable = true;
+      };
     };
 
     services = {

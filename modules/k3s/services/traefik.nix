@@ -9,7 +9,7 @@
   cfg = config.clan-net.kubernetes.k3s.services.traefik;
   k3s = clan-facts.k3s;
   domain = builtins.head k3s.domains;
-  trustedIPs = [k3s.cluster-cidr.IPv4 "127.0.0.1/8" "192.168.1.0/24"];
+  trustedIPs = [k3s.cluster-cidr.IPv4 k3s.cluster-cidr.IPv6 "127.0.0.1/8" "192.168.1.0/24"];
   k3sDomains = domains:
     builtins.listToAttrs (map (
         name: {
