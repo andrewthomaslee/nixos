@@ -43,7 +43,7 @@ in {
     in {
       enable = true;
       enableDefaultConfig = false;
-      include = lib.mkDefault ["~/.ssh/config.local"];
+      includes = lib.mkDefault ["~/.ssh/config.local"];
       matchBlocks =
         {
           helsinki-box = {
