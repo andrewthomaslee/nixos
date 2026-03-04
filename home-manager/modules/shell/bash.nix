@@ -37,6 +37,7 @@ in {
         virt-host-validate = "nix shell nixpkgs#libvirt";
         # backups
         fabric-backup = "rsync -av --progress --delete kamrui-p1:/srv/minecraft/fabric/world/ /mnt/storagebox/BACKUPS/minecraft/fabric/world/";
+        fabric-backup-local = "rsync -av --progress --delete /srv/minecraft/fabric/world/ /mnt/storagebox/Backups/fabric/world/";
         # k3s
         k3s-wipe = "systemctl stop k3s.service && rm -fr /var/lib/rancher/ && rm -fr /etc/rancher/ && k3s-killall.sh";
       };
