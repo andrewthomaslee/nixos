@@ -1,4 +1,4 @@
-REMOTE=$(jq -r '.k3s.manager' "$REPO_ROOT"/clan-facts.json)
+REMOTE=$(jq -r '.k3s.init' "$REPO_ROOT"/clan-facts.json)
 
 echo "==> Fetching kubeconfig from $REMOTE . . ."
 
