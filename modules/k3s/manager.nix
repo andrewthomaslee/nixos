@@ -24,8 +24,8 @@ in {
       disable = ["servicelb"];
       clusterInit = config.clan-net.kubernetes.k3s.clusterInit;
       extraFlags = [
-        "--cluster-cidr=${kube.cluster-cidr.IPv4}"
-        "--service-cidr=${kube.service-cidr.IPv4}"
+        "--cluster-cidr=${kube.cluster-cidr.IPv4},${kube.cluster-cidr.IPv6}"
+        "--service-cidr=${kube.service-cidr.IPv4},${kube.service-cidr.IPv6}"
       ];
     };
   };

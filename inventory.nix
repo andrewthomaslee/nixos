@@ -1,7 +1,9 @@
 {
   self,
   clan-facts,
-}: {
+}: let
+  public = clan-facts.networking.public;
+in {
   inherit (clan-facts) meta;
 
   machines = {
@@ -69,6 +71,26 @@
       roles.desktop.tags.desktop = {};
       roles.server.tags.server = {};
       roles.devMachine.tags.devMachine = {};
+    };
+
+    # End-2-end encrypted P2P IPv6 overlay network
+    # https://docs.clan.lol/main/services/official/mycelium/
+    mycelium = {
+      roles.peer.tags.server = {};
+      roles.peer.settings.addHostedPublicNodes = false;
+      roles.peer.extraModules = [
+        {
+          # dynamically add peers from infra.json Private IPs
+          services.mycelium.peers =
+            builtins.map
+            (ip: "tcp://${ip}:9651")
+            (builtins.attrValues public.IPv4);
+          networking.firewall = {
+            allowedTCPPorts = [9651];
+            trustedInterfaces = ["mycelium"];
+          };
+        }
+      ];
     };
 
     importer = {

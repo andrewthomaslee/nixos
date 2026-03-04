@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.clan-net.kubernetes.k3s.config.cilium;
-  kube = clan-facts.k3s;
+  cidr = clan-facts.k3s.cluster-cidr;
 in {
   options.clan-net.kubernetes.k3s.config.cilium.enable = lib.mkEnableOption "cilium";
 
@@ -48,13 +48,15 @@ in {
             };
 
             ipv4.enabled = true;
+            ipv6.enabled = true;
 
             ipam = {
               mode = "kubernetes";
-              operator.clusterPoolIPv4PodCIDRList = [kube.cluster-cidr.IPv4];
+              operator = {
+                clusterPoolIPv4PodCIDRList = [cidr.IPv4];
+                clusterPoolIPv6PodCIDRList = [cidr.IPv6];
+              };
             };
-
-            envoy.enabled = false;
           };
         };
       };

@@ -4,7 +4,7 @@
 
     # kubernetes host
     kubernetes.k3s = {
-      enable = false;
+      enable = true;
       manager.enable = true;
       config.cilium.enable = true;
     };

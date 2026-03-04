@@ -10,6 +10,7 @@
   init = clan-facts.k3s.init;
   net = clan-facts.networking.public;
   privateIPv4 = net.IPv4.${hostName};
+  privateIPv6 = lib.trim config.clan.core.vars.generators.mycelium.files.ip.value;
   initIPv4 = net.IPv4.${init};
 in {
   imports = [
@@ -51,9 +52,9 @@ in {
         if cfg.clusterInit
         then ""
         else "https://${initIPv4}:6443";
-      nodeIP = privateIPv4;
+      nodeIP = "${privateIPv4},${privateIPv6}";
       extraFlags = [
-        "--node-external-ip=${privateIPv4}"
+        "--node-external-ip=${privateIPv4},${privateIPv6}"
       ];
     };
 
