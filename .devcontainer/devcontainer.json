@@ -10,7 +10,7 @@
             "version": "latest"
         }
     },
-    "postCreateCommand": "nix develop",
+    "postCreateCommand": "bash",
     "customizations": {
         "vscode": {
             "extensions": [
