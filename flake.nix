@@ -454,7 +454,7 @@
               program =
                 (writeShellApplication {
                   name = "tmp-pod";
-                  runtimeInputs = [k3s];
+                  runtimeInputs = [k3s_1_35];
                   text = builtins.readFile ./scripts/tmp-pod.sh;
                 })
                 + "/bin/tmp-pod";
