@@ -10,6 +10,8 @@ in {
   options.clan-net.defaults.ssh.enable = lib.mkEnableOption "SSH configuration";
 
   config = lib.mkIf cfg.enable {
+    environment.variables.SSH_CONFIG_PATH = "~/.ssh/config.local";
+
     programs.ssh = let
       extraOptions = {
         "PreferredAuthentications" = "publickey";
@@ -41,6 +43,7 @@ in {
     in {
       enable = true;
       enableDefaultConfig = false;
+      include = lib.mkDefault ["~/.ssh/config.local"];
       matchBlocks =
         {
           helsinki-box = {
