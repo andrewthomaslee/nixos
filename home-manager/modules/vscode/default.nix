@@ -34,6 +34,7 @@ in {
             hashicorp.terraform
             budparr.language-hugo-vscode
             gruntfuggly.todo-tree
+            ms-azuretools.vscode-docker
           ];
           userSettings = {
             "security.workspace.trust.untrustedFiles" = "open";
