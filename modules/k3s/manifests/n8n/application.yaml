@@ -53,7 +53,6 @@ spec:
           persistence:
             enabled: true
             accessMode: ReadWriteMany
-            volumeName: n8n-main-data
             storageClass: longhorn
             size: 30Gi
           resources:
@@ -74,8 +73,7 @@ spec:
             enabled: true
           persistence:
             enabled: true
-            accessMode: ReadWriteOnce
-            volumeName: n8n-worker-data
+            accessMode: ReadWriteMany
             storageClass: longhorn
             size: 30Gi
           resources:
