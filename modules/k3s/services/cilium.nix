@@ -6,6 +6,7 @@
 }: let
   cfg = config.clan-net.kubernetes.k3s.config.cilium;
   cidr = clan-facts.k3s.cluster-cidr;
+  domain = builtins.head clan-facts.k3s.domains;
 in {
   options.clan-net.kubernetes.k3s.config.cilium.enable = lib.mkEnableOption "cilium";
 
@@ -58,6 +59,39 @@ in {
               };
             };
           };
+          extraObjects = [
+            {
+              apiVersion = "networking.k8s.io/v1";
+              kind = "Ingress";
+              metadata = {
+                name = "hubble-ui";
+                namespace = "kube-system";
+                annotations."traefik.ingress.kubernetes.io/router.entrypoints" = "web";
+              };
+              spec = {
+                ingressClassName = "traefik";
+                rules = [
+                  {
+                    host = "hubble.${domain}";
+                    http = {
+                      paths = [
+                        {
+                          path = "/";
+                          pathType = "Prefix";
+                          backend = {
+                            service = {
+                              name = "hubble-ui";
+                              port.number = 80;
+                            };
+                          };
+                        }
+                      ];
+                    };
+                  }
+                ];
+              };
+            }
+          ];
         };
       };
     };

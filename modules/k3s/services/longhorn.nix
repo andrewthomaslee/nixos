@@ -68,9 +68,7 @@ in {
                             backend = {
                               service = {
                                 name = "longhorn-frontend";
-                                port = {
-                                  number = 80;
-                                };
+                                port.number = 80;
                               };
                             };
                           }
