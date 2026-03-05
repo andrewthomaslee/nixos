@@ -52,7 +52,7 @@ spec:
           count: 1
           persistence:
             enabled: true
-            accessMode: ReadWriteMany
+            accessMode: ReadWriteOnce
             storageClass: longhorn
             size: 30Gi
           resources:
@@ -72,10 +72,7 @@ spec:
           waitMainNodeReady:
             enabled: true
           persistence:
-            enabled: true
-            accessMode: ReadWriteMany
-            storageClass: longhorn
-            size: 30Gi
+            enabled: false
           resources:
             requests:
               cpu: 1000m
