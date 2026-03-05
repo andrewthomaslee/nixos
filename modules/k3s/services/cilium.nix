@@ -59,7 +59,7 @@ in {
               };
             };
           };
-          extraObjects = [
+          extraDeploy = [
             {
               apiVersion = "networking.k8s.io/v1";
               kind = "Ingress";
