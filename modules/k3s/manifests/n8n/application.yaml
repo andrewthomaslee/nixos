@@ -1,0 +1,101 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: n8n
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: n8n
+    repoURL: https://community-charts.github.io/helm-charts
+    targetRevision: 1.16.29
+    helm:
+      releaseName: n8n
+      values: |
+        timezone: America/Chicago
+
+        ingress:
+          enabled: true
+          className: traefik
+          hosts:
+            - host: n8n.andrewlee.cloud
+              paths:
+                - path: /
+                  pathType: Prefix
+        
+        db:
+          type: postgresdb
+
+        postgresql:
+          enabled: true
+
+        redis:
+          enabled: true
+
+        webhook:
+          mode: queue
+          url: "https://webhook-n8n.andrewlee.cloud"
+          autoscaling:
+            enabled: true
+            minReplicas: 1
+            maxReplicas: 2
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 512m
+              memory: 512Mi
+          
+
+        main:
+          count: 1
+          persistence:
+            enabled: true
+            accessMode: ReadWriteMany
+            volumeName: n8n-main-data
+            storageClass: longhorn
+            size: 30Gi
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 512m
+              memory: 512Mi
+      
+        worker:
+          mode: queue
+          autoscaling:
+            enabled: true
+            minReplicas: 1
+            maxReplicas: 2
+          waitMainNodeReady:
+            enabled: true
+          persistence:
+            enabled: true
+            accessMode: ReadWriteOnce
+            volumeName: n8n-worker-data
+            storageClass: longhorn
+            size: 30Gi
+          resources:
+            requests:
+              cpu: 1000m
+              memory: 250Mi
+            limits:
+              cpu: 2000m
+              memory: 2Gi
+
+        
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: n8n
+  
+  syncPolicy:
+    syncOptions:
+      - PruneLast=true
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
