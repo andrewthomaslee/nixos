@@ -18,7 +18,6 @@ in {
         lfs.enable = true;
 
         ignores = [
-          "tags"
           "*.swp"
           "result"
           ".claude"
