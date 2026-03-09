@@ -126,6 +126,8 @@ in {
               "git log"
               "git diff"
               "git show"
+              "nix flake check --all-systems --show-trace"
+              "nix eval"
             ];
             "terminal.integrated.initialHint" = false;
             "roo-cline.debug" = false;
