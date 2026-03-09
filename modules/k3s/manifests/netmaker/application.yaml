@@ -40,11 +40,7 @@ spec:
           enabled: false
 
         ingress:
-          enabled: true
-          className: traefik
-          tls: false
-          annotations:
-            traefik.ingress.kubernetes.io/router.entrypoints: web
+          enabled: false
 
         postgresql-ha:
           enabled: true
