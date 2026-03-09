@@ -22,16 +22,12 @@ spec:
     helm:
       releaseName: netmaker
       values: |
-        baseDomain: "nm.andrewlee.cloud"
+        baseDomain: "andrewlee.cloud"
 
         ui:
           replicas: 1
 
-        mq:
-          replicas: 1
-
         server:
-          replicas: 1
           RWX:
             storageClassName: "longhorn"
           storageSize: 4Gi
