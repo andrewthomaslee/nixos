@@ -1,0 +1,40 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+  name: netmaker
+  namespace: netmaker
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: broker-nm.andrewlee.cloud
+    http:
+      paths:
+      - backend:
+          service:
+            name: netmaker-mqtt
+            port:
+              number: 8883
+        path: /
+        pathType: Prefix
+  - host: api-nm.andrewlee.cloud
+    http:
+      paths:
+      - backend:
+          service:
+            name: netmaker-rest
+            port:
+              number: 8081
+        path: /
+        pathType: Prefix
+  - host: dashboard-nm.andrewlee.cloud
+    http:
+      paths:
+      - backend:
+          service:
+            name: netmaker-ui
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
