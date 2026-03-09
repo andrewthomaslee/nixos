@@ -37,10 +37,7 @@ spec:
           storageSize: 4Gi
 
         dns:
-          enabled: true
-          storageSize: 4Gi
-          RWX:
-            storageClassName: "longhorn"
+          enabled: false
 
         ingress:
           enabled: true
