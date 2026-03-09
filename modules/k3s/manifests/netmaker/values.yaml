@@ -1,0 +1,170 @@
+# Default values for netmaker.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+
+baseDomain: "nm.example.com" # required value
+
+# -- override the name for netmaker objects
+nameOverride: ""
+
+# -- override the full name for netmaker objects
+fullnameOverride: ""
+
+serviceAccount:
+  # -- Specifies whether a service account should be created
+  create: true
+  # -- Annotations to add to the service account
+  annotations: {}
+  # -- Name of SA to use. If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# -- pod annotations to add
+podAnnotations: {}
+
+# -- pod security contect to add
+podSecurityContext: {}
+# fsGroup: 2000
+
+ui:
+  # -- how many UI replicas to create
+  replicas: 2
+  image:
+    # -- The image repo to pull Netmaker image from
+    repository: gravitl/netmaker-ui
+    # -- Pull Policy for images
+    pullPolicy: Always
+    # -- Override the image tag to pull
+    tag: "v1.2.0"
+
+mq:
+  # -- how many MQTT replicas to create
+  replicas: 2
+  username: netmaker
+  password: 3yyerWGdds43yegGR
+server:
+  # -- number of netmaker server replicas to create
+  replicas: 2
+  image:
+    # -- The image repo to pull Netmaker image from
+    repository: gravitl/netmaker
+    # -- Pull Policy for images
+    pullPolicy: Always
+    # -- Override the image tag to pull
+    tag: "v1.2.0"
+  RWX:
+    storageClassName: ""
+  storageSize: 128Mi
+  masterKey: "netmaker"
+  ee:
+    licensekey: ""
+    tenantId: ""
+   # Duration of JWT token validity in seconds
+  jwtDuration: 43200
+  # Auto disable a user's connecteds clients bassed on JWT token expiration
+  racAutoDisable: "true" 
+   # "<azure-ad|github|google|oidc>"
+  authProvider: ""  
+   # "<client id of your oauth provider>"
+  oAuthclientID: ""
+   # "<client secret of your oauth provider>"
+  oAuthClientSecret: ""
+   # "https://dashboard.<netmaker base domain>"
+  frontendURL: ""
+  # "<only for azure, you may optionally specify the tenant for the OAuth>"
+  azureTenant: "" 
+  # https://oidc.yourprovider.com - URL of oidc provider
+  oidcIssuer: "" 
+  turn:
+    enabled: false
+    turnHost: ""
+    turnApiHost: ""
+    turnUsername: ""
+    turnPassword: ""
+
+dns:
+  # -- whether or not to deploy coredns
+  enabled: false
+  storageSize: 128Mi
+  RWX:
+    storageClassName: ""
+
+setIpForwarding:
+  enabled: true
+
+service:
+  # -- type for netmaker server services
+  type: ClusterIP
+  # -- port for API service
+  restPort: 8081
+  # -- port for MQTT service
+  mqPort: 443
+  # -- port for UI service
+  uiPort: 80
+
+certManager:
+  # -- whether to create a ClusterIssuer for cert-manager
+  enabled: false
+  # -- name of the ClusterIssuer to create
+  issuerName: letsencrypt-prod
+  # -- email address for Let's Encrypt registration (required if enabled)
+  email: "your-email@example.com"
+
+ingress:
+  # -- attempts to configure ingress if true
+  enabled: true
+  # -- ingress class name (e.g. nginx, traefik)
+  className: nginx
+  tls: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  hostPrefix:
+    ui: "dashboard"
+    broker: "broker"
+    rest: "api"
+db:
+  type: "postgres"
+  host: ""
+  port: 5432
+  username: postgres
+  # -- postgres pass to generate
+  password: password123 # set your own secure password
+  # -- postgress db to generate
+  database: netmaker
+  # -- postgres sslmode (disable, require, verify-ca, verify-full)
+  sslmode: disable
+
+postgresql-ha:
+  # -- whether to install PostgreSQL HA as a dependency
+  # Set to false and install PostgreSQL separately to avoid Helm size limits
+  enabled: true
+  global:
+    imageRegistry: public.ecr.aws
+
+  postgresql:
+    image:
+      registry: public.ecr.aws
+      repository: bitnami/postgresql-repmgr
+      tag: 18.0.0-debian-12-r12
+      pullPolicy: IfNotPresent
+    # other postgres settings...
+    replicaCount: 2
+    username: postgres
+    password: password123
+    database: netmaker
+    repmgrUsername: repmgr        
+    repmgrPassword: password123
+    repmgrDatabase: repmgr
+
+  pgpool:
+    image:
+      registry: public.ecr.aws
+      repository: bitnami/pgpool
+      tag: 4.6.3-debian-12-r5
+      pullPolicy: IfNotPresent
+    # -- pgpool admin password (set to avoid password prompts on upgrades)
+    adminPassword: password123
+
+  persistence:
+    size: 1Gi
+

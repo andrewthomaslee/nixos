@@ -1,0 +1,56 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: netmaker
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: netmaker
+  syncPolicy:
+    syncOptions:
+      - PruneLast=true
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true  
+  source:
+    chart: netmaker
+    repoURL: https://gravitl.github.io/netmaker-helm/
+    targetRevision: 1.4.0
+    helm:
+      releaseName: netmaker
+      values: |
+        baseDomain: "nm.andrewlee.cloud"
+
+        ui:
+          replicas: 1
+
+        mq:
+          replicas: 1
+
+        server:
+          replicas: 1
+          RWX:
+            storageClassName: "longhorn"
+          storageSize: 4Gi
+
+        dns:
+          enabled: true
+          storageSize: 4Gi
+          RWX:
+            storageClassName: "longhorn"
+
+        ingress:
+          enabled: true
+          className: traefik
+          tls: false
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: web
+
+        postgresql-ha:
+          enabled: true
+          persistence:
+            size: 4Gi
+       
