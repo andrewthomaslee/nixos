@@ -83,6 +83,10 @@ in {
     };
 
     services = {
+      ollama = {
+        enable = true;
+        package = pkgs.ollama-rocm;
+      };
       # 🪼 jellyfin media server
       jellyfin.enable = true;
 
