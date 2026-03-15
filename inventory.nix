@@ -2,7 +2,7 @@
   self,
   clan-facts,
 }: let
-  public = clan-facts.networking.public;
+  domain = clan-facts.meta.domain;
 in {
   inherit (clan-facts) meta;
 
@@ -73,24 +73,27 @@ in {
       roles.devMachine.tags.devMachine = {};
     };
 
-    # End-2-end encrypted P2P IPv6 overlay network
-    # https://docs.clan.lol/main/services/official/mycelium/
-    mycelium = {
-      roles.peer.tags.server = {};
-      roles.peer.settings.addHostedPublicNodes = false;
-      roles.peer.extraModules = [
-        {
-          # dynamically add peers from infra.json Private IPs
-          services.mycelium.peers =
-            builtins.map
-            (ip: "tcp://${ip}:9651")
-            (builtins.attrValues public.IPv4);
-          networking.firewall = {
-            allowedTCPPorts = [9651];
-            trustedInterfaces = ["mycelium"];
-          };
-        }
-      ];
+    wireguard = {
+      module.name = "wireguard";
+      module.input = "clan-core";
+      roles.controller.machines = {
+        nixos.settings = {
+          endpoint = "wireguard.${domain}";
+          port = 51824;
+        };
+        kamrui-p1.settings = {
+          endpoint = "wireguard.${domain}";
+          port = 51823;
+        };
+      };
+      roles.peer.machines = {
+        ghost.settings = {
+          controller = "kamrui-p1";
+        };
+        hp-notebook.settings = {
+          controller = "kamrui-p1";
+        };
+      };
     };
 
     importer = {

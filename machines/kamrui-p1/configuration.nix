@@ -66,13 +66,13 @@ in {
     defaults = {
       storagebox = {
         mountOnAccess = lib.mkForce false;
-        concurrency = 4;
+        concurrency = 5;
       };
     };
 
     # kubernetes host
     kubernetes.k3s = {
-      enable = true;
+      enable = false;
       clusterInit = true;
       manager.enable = true;
       config.cilium.enable = true;
@@ -84,16 +84,16 @@ in {
 
     services = {
       ollama = {
-        enable = true;
+        enable = false;
         package = pkgs.ollama-rocm;
       };
       # 🪼 jellyfin media server
-      jellyfin.enable = true;
+      jellyfin.enable = false;
 
       # -------- ⛏️ minecraft server 🏡 -------- #
-      playit.enable = true;
+      playit.enable = false;
       minecraft = {
-        enable = true;
+        enable = false;
         # --- Fabric Versions --- #
         fabric = {
           serverVersion = "1_21_11";

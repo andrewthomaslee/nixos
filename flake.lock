@@ -562,17 +562,43 @@
         "url": "https://github.com/andrewthomaslee/blog.andrewlee.fun.git"
       }
     },
+    "clan-community": {
+      "inputs": {
+        "clan-core": [
+          "clan-core"
+        ],
+        "flake-parts": "flake-parts_2",
+        "nixpkgs": [
+          "clan-community",
+          "clan-core",
+          "nixpkgs"
+        ],
+        "systems": "systems",
+        "treefmt-nix": "treefmt-nix"
+      },
+      "locked": {
+        "lastModified": 1773048959,
+        "narHash": "sha256-9ciCfim7DQ7EGAR22xDBjMP/GRxH7MNyRjjXFrjjCbY=",
+        "rev": "2ed1db891f14f752405e88b205afa4b47d5b5e37",
+        "type": "tarball",
+        "url": "https://git.clan.lol/api/v1/repos/clan/clan-community/archive/2ed1db891f14f752405e88b205afa4b47d5b5e37.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://git.clan.lol/clan/clan-community/archive/main.tar.gz"
+      }
+    },
     "clan-core": {
       "inputs": {
         "data-mesher": "data-mesher",
         "disko": "disko",
-        "flake-parts": "flake-parts_2",
+        "flake-parts": "flake-parts_3",
         "nix-darwin": "nix-darwin",
         "nix-select": "nix-select",
         "nixpkgs": "nixpkgs",
         "sops-nix": "sops-nix",
-        "systems": "systems",
-        "treefmt-nix": "treefmt-nix"
+        "systems": "systems_2",
+        "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
         "lastModified": 1771668424,
@@ -674,6 +700,27 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
+          "clan-community",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772408722,
+        "narHash": "sha256-rHuJtdcOjK7rAHpHphUb1iCvgkU3GpfvicLMwwnfMT0=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "f20dc5d9b8027381c474144ecabc9034d6a839a3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_3": {
+      "inputs": {
+        "nixpkgs-lib": [
           "clan-core",
           "nixpkgs"
         ]
@@ -692,7 +739,28 @@
         "type": "github"
       }
     },
-    "flake-parts_3": {
+    "flake-parts_4": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "k3s",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772408722,
+        "narHash": "sha256-rHuJtdcOjK7rAHpHphUb1iCvgkU3GpfvicLMwwnfMT0=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "f20dc5d9b8027381c474144ecabc9034d6a839a3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_5": {
       "inputs": {
         "nixpkgs-lib": [
           "uv2nix-template",
@@ -775,6 +843,35 @@
         "type": "github"
       }
     },
+    "k3s": {
+      "inputs": {
+        "clan-core": [
+          "clan-core"
+        ],
+        "flake-parts": "flake-parts_4",
+        "nixpkgs": [
+          "k3s",
+          "clan-core",
+          "nixpkgs"
+        ],
+        "systems": "systems_3",
+        "treefmt-nix": "treefmt-nix_3"
+      },
+      "locked": {
+        "lastModified": 1773447431,
+        "narHash": "sha256-zSsJcSJpW5CgfaB04R+Ix3GG9op3QU+rFd/9WUbfRzU=",
+        "ref": "k3s",
+        "rev": "5fe67797a36b179f490b871d0b3dad52f0d49fcf",
+        "revCount": 17,
+        "type": "git",
+        "url": "https://git.clan.lol/andrewthomaslee/clan-community.git"
+      },
+      "original": {
+        "ref": "k3s",
+        "type": "git",
+        "url": "https://git.clan.lol/andrewthomaslee/clan-community.git"
+      }
+    },
     "kubefetch": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -803,7 +900,7 @@
         ],
         "pyproject-build-systems": "pyproject-build-systems",
         "pyproject-nix": "pyproject-nix",
-        "systems": "systems_2",
+        "systems": "systems_4",
         "uv2nix": "uv2nix"
       },
       "locked": {
@@ -869,7 +966,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_3"
+        "systems": "systems_5"
       },
       "locked": {
         "lastModified": 1771641457,
@@ -1087,9 +1184,11 @@
         "Vein-Miner-Enchantment": "Vein-Miner-Enchantment",
         "Villager-Pickup": "Villager-Pickup",
         "blogAndrewleeFun": "blogAndrewleeFun",
+        "clan-community": "clan-community",
         "clan-core": "clan-core",
         "home-manager": "home-manager",
         "jovian": "jovian",
+        "k3s": "k3s",
         "kubefetch": "kubefetch",
         "moscripts": "moscripts",
         "nix-minecraft": "nix-minecraft",
@@ -1169,10 +1268,82 @@
         "type": "github"
       }
     },
+    "systems_4": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_5": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
+          "clan-community",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770228511,
+        "narHash": "sha256-wQ6NJSuFqAEmIg2VMnLdCnUc0b7vslUohqqGGD+Fyxk=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "337a4fe074be1042a35086f15481d763b8ddc0e7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treefmt-nix_2": {
+      "inputs": {
+        "nixpkgs": [
           "clan-core",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770228511,
+        "narHash": "sha256-wQ6NJSuFqAEmIg2VMnLdCnUc0b7vslUohqqGGD+Fyxk=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "337a4fe074be1042a35086f15481d763b8ddc0e7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treefmt-nix_3": {
+      "inputs": {
+        "nixpkgs": [
+          "k3s",
           "nixpkgs"
         ]
       },
@@ -1217,7 +1388,7 @@
     },
     "uv2nix-template": {
       "inputs": {
-        "flake-parts": "flake-parts_3",
+        "flake-parts": "flake-parts_5",
         "nixpkgs": [
           "nixpkgs"
         ],

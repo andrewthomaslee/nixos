@@ -26,6 +26,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Clan.lol Community
+    clan-community = {
+      url = "https://git.clan.lol/clan/clan-community/archive/main.tar.gz";
+      inputs.clan-core.follows = "clan-core";
+    };
+
+    k3s = {
+      url = "git+https://git.clan.lol/andrewthomaslee/clan-community.git?ref=k3s";
+      inputs.clan-core.follows = "clan-core";
+    };
+
     # --- My Flakes --- #
     moscripts = {
       url = "github:andrewthomaslee/moscripts";
