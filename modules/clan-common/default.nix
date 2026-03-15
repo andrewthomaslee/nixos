@@ -21,5 +21,6 @@
   networking.firewall = {
     enable = lib.mkDefault true;
     allowPing = lib.mkDefault true;
+    trustedInterfaces = ["wireguard"];
   };
 }
