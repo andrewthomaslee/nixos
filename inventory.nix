@@ -13,8 +13,6 @@ in {
     ghost.tags = ["kde" "devMachine" "netsa"];
 
     kamrui-p1.tags = ["server" "netsa"];
-    inuc-celeron.tags = ["server" "netsa"];
-    inuc-i5.tags = ["server" "netsa"];
   };
 
   instances = {
