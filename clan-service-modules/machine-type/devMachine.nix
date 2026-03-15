@@ -6,7 +6,6 @@
   services = {
     fwupd.enable = true;
     acpid.enable = true;
-    netclient.enable = true;
   };
 
   # Often hangs
