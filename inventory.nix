@@ -113,7 +113,7 @@ in {
       roles.default.extraModules = [
         {
           networking = let
-            interfaces = ["wireguard " "cilium+" "lo"];
+            interfaces = ["wireguard " "cilium+"];
           in {
             networkmanager.unmanaged = interfaces;
             firewall = {
@@ -135,7 +135,36 @@ in {
               "--disable=traefik"
               "--disable=servicelb"
             ];
-            manifests.cilium.source = ./modules/k3s/manifests/cilium/chart.yaml;
+          };
+        }
+        {
+          services.k3s.autoDeployCharts = {
+            cilium = {
+              name = "cilium";
+              version = "1.19.1";
+              repo = "https://helm.cilium.io/";
+              hash = "sha256-Uw7b6RnncNLlYcDZQ7An9wjdbH4EGsskGpIJ5G4HMVs=";
+              targetNamespace = "kube-system";
+              extraFieldDefinitions.spec.bootstrap = true;
+              values = {
+                devices = "lo";
+                operator.replicas = 1;
+                kubeProxyReplacement = true;
+                k8sServiceHost = "127.0.0.1";
+                k8sServicePort = "6443";
+
+                ipv4.enabled = true;
+                ipv6.enabled = true;
+
+                ipam = {
+                  mode = "kubernetes";
+                  operator = {
+                    clusterPoolIPv4PodCIDRList = ["10.43.0.0/16"];
+                    clusterPoolIPv6PodCIDRList = ["fd43::/112"];
+                  };
+                };
+              };
+            };
           };
         }
       ];
