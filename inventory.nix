@@ -103,7 +103,7 @@ in {
       roles.default.extraModules = [
         {
           networking = let
-            interfaces = ["wireguard " "cilium+"];
+            interfaces = ["wireguard" "cilium+"];
           in {
             networkmanager.unmanaged = interfaces;
             firewall = {
