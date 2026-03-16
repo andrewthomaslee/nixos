@@ -114,44 +114,24 @@ in {
         }
       ];
       roles.server.extraModules = [
+        modules/k3s/manifests/cilium
         {
-          services.k3s = {
-            extraFlags = [
-              "--tls-san=kamrui-p1.wireguard"
-              "--flannel-backend=none"
-              "--disable-network-policy"
-              "--disable-kube-proxy"
-              "--disable=traefik"
-              "--disable=servicelb"
-            ];
-            autoDeployCharts = {
-              cilium = {
-                name = "cilium";
-                version = "1.19.1";
-                repo = "https://helm.cilium.io/";
-                hash = "sha256-Uw7b6RnncNLlYcDZQ7An9wjdbH4EGsskGpIJ5G4HMVs=";
-                targetNamespace = "kube-system";
-                extraFieldDefinitions.spec.bootstrap = true;
-                values = {
-                  MTU = 1350;
-                  devices = "wireguard";
-                  operator.replicas = 1;
-                  kubeProxyReplacement = true;
-                  k8sServiceHost = "kamrui-p1.wireguard";
-                  k8sServicePort = "6443";
-
-                  ipv4.enabled = true;
-                  ipv6.enabled = true;
-
-                  # ipam = {
-                  #   mode = "kubernetes";
-                  #   operator = {
-                  #     clusterPoolIPv4PodCIDRList = ["10.43.0.0/16"];
-                  #     clusterPoolIPv6PodCIDRList = ["fd43::/112"];
-                  #   };
-                  # };
-                };
-              };
+          services.k3s.extraFlags = [
+            "--disable=traefik"
+            "--disable=servicelb"
+          ];
+        }
+        {
+          clan-net.kubernetes.cluster = {
+            name = "kamrui-p1";
+            id = "kamrui-p1";
+            clusterCidr = {
+              ipv4 = "10.42.0.0/16";
+              ipv6 = "fd42::/56";
+            };
+            serviceCidr = {
+              ipv4 = "10.43.0.0/16";
+              ipv6 = "fd43::/112";
             };
           };
         }
