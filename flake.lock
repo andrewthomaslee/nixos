@@ -781,6 +781,27 @@
         "type": "github"
       }
     },
+    "flake-parts_6": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "wireguard-fullmesh",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772408722,
+        "narHash": "sha256-rHuJtdcOjK7rAHpHphUb1iCvgkU3GpfvicLMwwnfMT0=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "f20dc5d9b8027381c474144ecabc9034d6a839a3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": [
@@ -1199,6 +1220,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "playit": "playit",
         "uv2nix-template": "uv2nix-template",
+        "wireguard-fullmesh": "wireguard-fullmesh",
         "zen-browser": "zen-browser"
       }
     },
@@ -1298,6 +1320,21 @@
         "type": "github"
       }
     },
+    "systems_6": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
@@ -1344,6 +1381,27 @@
       "inputs": {
         "nixpkgs": [
           "k3s",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770228511,
+        "narHash": "sha256-wQ6NJSuFqAEmIg2VMnLdCnUc0b7vslUohqqGGD+Fyxk=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "337a4fe074be1042a35086f15481d763b8ddc0e7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treefmt-nix_4": {
+      "inputs": {
+        "nixpkgs": [
+          "wireguard-fullmesh",
           "nixpkgs"
         ]
       },
@@ -1433,6 +1491,35 @@
         "owner": "pyproject-nix",
         "repo": "uv2nix",
         "type": "github"
+      }
+    },
+    "wireguard-fullmesh": {
+      "inputs": {
+        "clan-core": [
+          "clan-core"
+        ],
+        "flake-parts": "flake-parts_6",
+        "nixpkgs": [
+          "wireguard-fullmesh",
+          "clan-core",
+          "nixpkgs"
+        ],
+        "systems": "systems_6",
+        "treefmt-nix": "treefmt-nix_4"
+      },
+      "locked": {
+        "lastModified": 1773431887,
+        "narHash": "sha256-u1q2oKKdHOMFxqQu3MIY7NH5LYuA7KHprAHY92Hjsk0=",
+        "ref": "wireguard-fullmesh",
+        "rev": "cdb1f0882a3fd2a2bf89e5c9662b1d255fffc358",
+        "revCount": 19,
+        "type": "git",
+        "url": "https://git.clan.lol/andrewthomaslee/clan-community.git"
+      },
+      "original": {
+        "ref": "wireguard-fullmesh",
+        "type": "git",
+        "url": "https://git.clan.lol/andrewthomaslee/clan-community.git"
       }
     },
     "zen-browser": {

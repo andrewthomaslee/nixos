@@ -72,29 +72,19 @@ in {
     };
 
     wireguard = {
-      module.name = "wireguard";
-      module.input = "clan-core";
-      roles.controller.machines = {
-        nixos.settings = {
-          endpoint = "wireguard.${domain}";
-          port = 51824;
-        };
+      module.name = "wireguard-fullmesh";
+      module.input = "wireguard-fullmesh";
+      roles.peer.machines = {
         kamrui-p1.settings = {
           endpoint = "wireguard.${domain}";
           port = 51823;
-        };
-      };
-      roles.peer.machines = {
-        ghost.settings = {
-          controller = "kamrui-p1";
-        };
-        hp-notebook.settings = {
-          controller = "kamrui-p1";
+          ipv4 = "10.100.0.1";
+          ipv6 = "fd10::1";
         };
       };
     };
 
-    k3s = {
+    homelab = {
       module.name = "k3s";
       module.input = "k3s";
       roles.init.machines.kamrui-p1.settings = {
@@ -109,7 +99,7 @@ in {
         };
       };
       roles.server.machines.kamrui-p1 = {};
-      roles.default.machines.kamrui-p1.settings.nodeIP = "127.0.0.1,::1";
+      roles.default.machines.kamrui-p1.settings.nodeIP = "10.100.0.1,fd10::1";
       roles.default.extraModules = [
         {
           networking = let
@@ -125,7 +115,6 @@ in {
       ];
       roles.server.extraModules = [
         {
-          # k3s
           services.k3s = {
             extraFlags = [
               "--tls-san=kamrui-p1.wireguard"
@@ -135,32 +124,30 @@ in {
               "--disable=traefik"
               "--disable=servicelb"
             ];
-          };
-        }
-        {
-          services.k3s.autoDeployCharts = {
-            cilium = {
-              name = "cilium";
-              version = "1.19.1";
-              repo = "https://helm.cilium.io/";
-              hash = "sha256-Uw7b6RnncNLlYcDZQ7An9wjdbH4EGsskGpIJ5G4HMVs=";
-              targetNamespace = "kube-system";
-              extraFieldDefinitions.spec.bootstrap = true;
-              values = {
-                devices = "lo";
-                operator.replicas = 1;
-                kubeProxyReplacement = true;
-                k8sServiceHost = "127.0.0.1";
-                k8sServicePort = "6443";
+            autoDeployCharts = {
+              cilium = {
+                name = "cilium";
+                version = "1.19.1";
+                repo = "https://helm.cilium.io/";
+                hash = "sha256-Uw7b6RnncNLlYcDZQ7An9wjdbH4EGsskGpIJ5G4HMVs=";
+                targetNamespace = "kube-system";
+                extraFieldDefinitions.spec.bootstrap = true;
+                values = {
+                  devices = "wireguard";
+                  operator.replicas = 1;
+                  kubeProxyReplacement = true;
+                  k8sServiceHost = "kamrui-p1.wireguard";
+                  k8sServicePort = "6443";
 
-                ipv4.enabled = true;
-                ipv6.enabled = true;
+                  ipv4.enabled = true;
+                  ipv6.enabled = true;
 
-                ipam = {
-                  mode = "kubernetes";
-                  operator = {
-                    clusterPoolIPv4PodCIDRList = ["10.43.0.0/16"];
-                    clusterPoolIPv6PodCIDRList = ["fd43::/112"];
+                  ipam = {
+                    mode = "kubernetes";
+                    operator = {
+                      clusterPoolIPv4PodCIDRList = ["10.43.0.0/16"];
+                      clusterPoolIPv6PodCIDRList = ["fd43::/112"];
+                    };
                   };
                 };
               };

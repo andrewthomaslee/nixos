@@ -32,6 +32,11 @@
       inputs.clan-core.follows = "clan-core";
     };
 
+    wireguard-fullmesh = {
+      url = "git+https://git.clan.lol/andrewthomaslee/clan-community.git?ref=wireguard-fullmesh";
+      inputs.clan-core.follows = "clan-core";
+    };
+
     k3s = {
       url = "git+https://git.clan.lol/andrewthomaslee/clan-community.git?ref=k3s";
       inputs.clan-core.follows = "clan-core";
