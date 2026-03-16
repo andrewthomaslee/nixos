@@ -103,7 +103,7 @@ in {
       roles.default.extraModules = [
         {
           networking = let
-            interfaces = ["wireguard" "cilium+"];
+            interfaces = ["cilium+" "cilium" "cilium*" "lxc+" "lxc*"];
           in {
             networkmanager.unmanaged = interfaces;
             firewall = {
@@ -125,6 +125,7 @@ in {
           clan-net.kubernetes.cluster = {
             name = "kamrui-p1";
             id = "kamrui-p1";
+            serverAddr = "10.100.0.1";
             clusterCidr = {
               ipv4 = "10.42.0.0/16";
               ipv6 = "fd42::/56";

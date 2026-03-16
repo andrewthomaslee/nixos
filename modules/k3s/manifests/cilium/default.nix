@@ -15,6 +15,9 @@ in {
     id = lib.mkOption {
       type = lib.types.str;
     };
+    serverAddr = lib.mkOption {
+      type = lib.types.str;
+    };
     clusterCidr = {
       ipv4 = lib.mkOption {
         type = lib.types.str;
@@ -35,7 +38,7 @@ in {
 
   config.services.k3s = {
     extraFlags = [
-      "--tls-san=${config.networking.hostName}.wireguard"
+      "--tls-san=${cfg.serverAddr}"
       "--flannel-backend=none"
       "--disable-network-policy"
       "--disable-kube-proxy"
@@ -58,19 +61,11 @@ in {
           devices = "wireguard";
           operator.replicas = 1;
           kubeProxyReplacement = true;
-          k8sServiceHost = "${config.networking.hostName}.wireguard";
+          k8sServiceHost = cfg.serverAddr;
           k8sServicePort = "6443";
 
           ipv4.enabled = true;
           ipv6.enabled = true;
-
-          ipam = {
-            mode = "kubernetes";
-            operator = {
-              clusterPoolIPv4PodCIDRList = [cfg.clusterCidr.ipv4];
-              clusterPoolIPv6PodCIDRList = [cfg.clusterCidr.ipv6];
-            };
-          };
         };
       };
     };
