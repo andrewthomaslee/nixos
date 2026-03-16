@@ -823,6 +823,42 @@
         "type": "github"
       }
     },
+    "gatewayclasses": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-VtiMNBGVBwTHKgYUOnoyNDbWp8SeLOQiVo3ucoSednE=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_gatewayclasses.yaml"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_gatewayclasses.yaml"
+      }
+    },
+    "gateways": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-qPRTqsLfKsH0PqlVniabPWh/uFs0qzjQrC7iYUv3b0A=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_gateways.yaml"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_gateways.yaml"
+      }
+    },
+    "grpcroutes": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-Sia5AnWxMdpvBBpR9D9xviirXfsBUfmXBoA/9cEDkvo=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_grpcroutes.yaml"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_grpcroutes.yaml"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -841,6 +877,18 @@
         "owner": "nix-community",
         "repo": "home-manager",
         "type": "github"
+      }
+    },
+    "httproutes": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-a0N9wz8kqwFCDin92Kl5J+DAGmAbxRt1ascI0KoqSDE=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_httproutes.yaml"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_httproutes.yaml"
       }
     },
     "jovian": {
@@ -1157,6 +1205,18 @@
         "type": "github"
       }
     },
+    "referencegrants": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-13oTv1dYmWXcTuc9grivAyV+p1elIpBkoCSNHiQlNfs=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_referencegrants.yaml"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_referencegrants.yaml"
+      }
+    },
     "root": {
       "inputs": {
         "Anvil-Restoration": "Anvil-Restoration",
@@ -1207,7 +1267,11 @@
         "blogAndrewleeFun": "blogAndrewleeFun",
         "clan-community": "clan-community",
         "clan-core": "clan-core",
+        "gatewayclasses": "gatewayclasses",
+        "gateways": "gateways",
+        "grpcroutes": "grpcroutes",
         "home-manager": "home-manager",
+        "httproutes": "httproutes",
         "jovian": "jovian",
         "k3s": "k3s",
         "kubefetch": "kubefetch",
@@ -1219,6 +1283,8 @@
         ],
         "nixpkgs-unstable": "nixpkgs-unstable",
         "playit": "playit",
+        "referencegrants": "referencegrants",
+        "tlsroutes": "tlsroutes",
         "uv2nix-template": "uv2nix-template",
         "wireguard-fullmesh": "wireguard-fullmesh",
         "zen-browser": "zen-browser"
@@ -1333,6 +1399,18 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+      }
+    },
+    "tlsroutes": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-+NTGRpm3dbVDhOkeQ8y0RlN62jfilo3MJPNTrdUKeIY=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml"
       }
     },
     "treefmt-nix": {

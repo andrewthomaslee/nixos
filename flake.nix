@@ -64,6 +64,34 @@
       inputs.flake-utils.inputs.systems.follows = "clan-core/systems";
     };
 
+    # --- Kubernetes CRDs --- #
+    # Gateway API
+    gatewayclasses = {
+      url = "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_gatewayclasses.yaml";
+      flake = false;
+    };
+    gateways = {
+      url = "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_gateways.yaml";
+      flake = false;
+    };
+    httproutes = {
+      url = "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_httproutes.yaml";
+      flake = false;
+    };
+    referencegrants = {
+      url = "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_referencegrants.yaml";
+      flake = false;
+    };
+    grpcroutes = {
+      url = "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/standard/gateway.networking.k8s.io_grpcroutes.yaml";
+      flake = false;
+    };
+    tlsroutes = {
+      url = "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.4.1/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml";
+      flake = false;
+    };
+
+    # Minecraft
     playit = {
       url = "https://github.com/playit-cloud/playit-agent/releases/download/v0.17.1/playit-linux-amd64";
       flake = false;
