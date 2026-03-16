@@ -70,23 +70,7 @@ in {
       };
     };
 
-    # kubernetes host
-    kubernetes.k3s = {
-      enable = false;
-      clusterInit = true;
-      manager.enable = true;
-      config.cilium.enable = true;
-      services = {
-        longhorn.enable = true;
-        argo-cd.enable = true;
-      };
-    };
-
     services = {
-      ollama = {
-        enable = false;
-        package = pkgs.ollama-rocm;
-      };
       # 🪼 jellyfin media server
       jellyfin.enable = false;
 

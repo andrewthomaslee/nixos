@@ -94,6 +94,53 @@ in {
       };
     };
 
+    k3s = {
+      module.name = "k3s";
+      module.input = "k3s";
+      roles.init.machines.kamrui-p1.settings = {
+        serverAddr = "https://kamrui-p1.wireguard:6443";
+        clusterCidr = {
+          ipv4 = "10.42.0.0/16";
+          ipv6 = "fd42::/56";
+        };
+        serviceCidr = {
+          ipv4 = "10.43.0.0/16";
+          ipv6 = "fd43::/112";
+        };
+      };
+      roles.server.machines.kamrui-p1 = {};
+      roles.default.machines.kamrui-p1.settings.nodeIP = "127.0.0.1,::1";
+      roles.default.extraModules = [
+        {
+          networking = let
+            interfaces = ["wireguard " "cilium+" "lo"];
+          in {
+            networkmanager.unmanaged = interfaces;
+            firewall = {
+              checkReversePath = "loose";
+              trustedInterfaces = interfaces;
+            };
+          };
+        }
+      ];
+      roles.server.extraModules = [
+        {
+          # k3s
+          services.k3s = {
+            extraFlags = [
+              "--tls-san=kamrui-p1.wireguard"
+              "--flannel-backend=none"
+              "--disable-network-policy"
+              "--disable-kube-proxy"
+              "--disable=traefik"
+              "--disable=servicelb"
+            ];
+            manifests.cilium.source = ./modules/k3s/manifests/cilium/chart.yaml;
+          };
+        }
+      ];
+    };
+
     importer = {
       module.name = "importer";
       roles.default.tags.all = {};
