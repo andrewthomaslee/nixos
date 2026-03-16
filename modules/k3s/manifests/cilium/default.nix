@@ -2,70 +2,87 @@
   config,
   lib,
   clan-net-utils,
-  clan-facts,
   ...
 }: let
   inherit (clan-net-utils) writeYamlFile;
-  cfg = config.clan-net.kubernetes.cluster;
+  cfg = config.clan-net.kubernetes.cilium;
 in {
-  options.clan-net.kubernetes.cluster = {
+  options.clan-net.kubernetes.cilium = {
     name = lib.mkOption {
       type = lib.types.str;
+      default = config.networking.hostName;
     };
     id = lib.mkOption {
       type = lib.types.str;
+      default = config.networking.hostName;
     };
-    serverAddr = lib.mkOption {
+    k8sServiceHost = lib.mkOption {
       type = lib.types.str;
+      default = "localhost";
     };
     clusterCidr = {
       ipv4 = lib.mkOption {
         type = lib.types.str;
+        default = "10.42.0.0/16";
       };
       ipv6 = lib.mkOption {
         type = lib.types.str;
-      };
-    };
-    serviceCidr = {
-      ipv4 = lib.mkOption {
-        type = lib.types.str;
-      };
-      ipv6 = lib.mkOption {
-        type = lib.types.str;
+        default = "fd42::/56";
       };
     };
   };
 
-  config.services.k3s = {
-    extraFlags = [
-      "--tls-san=${cfg.serverAddr}"
-      "--flannel-backend=none"
-      "--disable-network-policy"
-      "--disable-kube-proxy"
-    ];
-    manifests.cilium.source = writeYamlFile "cilium.yaml" {
-      apiVersion = "helm.cattle.io/v1";
-      kind = "HelmChart";
-      metadata = {
-        name = "cilium";
-        namespace = "kube-system";
+  config = {
+    # networking
+    networking = let
+      interfaces = ["cilium+" "lxc+"];
+    in {
+      networkmanager.unmanaged = interfaces;
+      firewall = {
+        checkReversePath = "loose";
+        trustedInterfaces = interfaces;
       };
-      spec = {
-        bootstrap = true;
-        repo = "https://helm.cilium.io/";
-        chart = "cilium";
-        version = "1.19.1";
-        targetNamespace = "kube-system";
-        valuesContent = lib.generators.toYAML {} {
-          MTU = 1350;
-          devices = "wireguard";
-          operator.replicas = 1;
-          kubeProxyReplacement = true;
-          k8sServiceHost = cfg.serverAddr;
-          k8sServicePort = "6443";
+    };
+    # k3s
+    services.k3s = lib.mkIf (config.services.k3s.role == "server") {
+      extraFlags = [
+        "--tls-san=${cfg.k8sServiceHost}"
+        "--flannel-backend=none"
+        "--disable-network-policy"
+        "--disable-kube-proxy"
+      ];
+      manifests.cilium.source = writeYamlFile "cilium.yaml" {
+        apiVersion = "helm.cattle.io/v1";
+        kind = "HelmChart";
+        metadata = {
+          name = "cilium";
+          namespace = "kube-system";
+        };
+        spec = {
+          bootstrap = true;
+          repo = "https://helm.cilium.io/";
+          chart = "cilium";
+          version = "1.19.1";
+          targetNamespace = "kube-system";
+          valuesContent = lib.generators.toYAML {} {
+            MTU = 1350;
+            devices = "wireguard";
+            operator.replicas = 1;
+            kubeProxyReplacement = true;
+            k8sServiceHost = cfg.k8sServiceHost;
+            k8sServicePort = "6443";
 
-          ipv4.enabled = true;
-          ipv6.enabled = true;
+            ipv4.enabled = true;
+            ipv6.enabled = true;
+
+            ipam = {
+              mode = "cluster-pool";
+              operator = {
+                clusterPoolIPv4PodCIDRList = [cfg.clusterCidr.ipv4];
+                clusterPoolIPv6PodCIDRList = [cfg.clusterCidr.ipv4];
+              };
+            };
+          };
         };
       };
     };

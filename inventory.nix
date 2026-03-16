@@ -84,57 +84,31 @@ in {
       };
     };
 
-    homelab = {
+    homelab = let
+      clusterSettings = clan-facts.kubernetes.homelab;
+    in {
       module.name = "k3s";
       module.input = "k3s";
       roles.init.machines.kamrui-p1.settings = {
         serverAddr = "https://kamrui-p1.wireguard:6443";
-        clusterCidr = {
-          ipv4 = "10.42.0.0/16";
-          ipv6 = "fd42::/56";
-        };
-        serviceCidr = {
-          ipv4 = "10.43.0.0/16";
-          ipv6 = "fd43::/112";
-        };
+        inherit (clusterSettings) clusterCidr serviceCidr;
       };
       roles.server.machines.kamrui-p1 = {};
       roles.default.machines.kamrui-p1.settings.nodeIP = "10.100.0.1,fd10::1";
       roles.default.extraModules = [
+        modules/k3s/manifests/cilium
         {
-          networking = let
-            interfaces = ["cilium+" "cilium" "cilium*" "lxc+" "lxc*"];
-          in {
-            networkmanager.unmanaged = interfaces;
-            firewall = {
-              checkReversePath = "loose";
-              trustedInterfaces = interfaces;
-            };
+          clan-net.kubernetes.cilium = {
+            inherit (clusterSettings) clusterCidr;
           };
         }
       ];
       roles.server.extraModules = [
-        modules/k3s/manifests/cilium
         {
           services.k3s.extraFlags = [
             "--disable=traefik"
             "--disable=servicelb"
           ];
-        }
-        {
-          clan-net.kubernetes.cluster = {
-            name = "kamrui-p1";
-            id = "kamrui-p1";
-            serverAddr = "10.100.0.1";
-            clusterCidr = {
-              ipv4 = "10.42.0.0/16";
-              ipv6 = "fd42::/56";
-            };
-            serviceCidr = {
-              ipv4 = "10.43.0.0/16";
-              ipv6 = "fd43::/112";
-            };
-          };
         }
       ];
     };
