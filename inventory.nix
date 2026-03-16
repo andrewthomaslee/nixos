@@ -143,13 +143,13 @@ in {
                   ipv4.enabled = true;
                   ipv6.enabled = true;
 
-                  ipam = {
-                    mode = "kubernetes";
-                    operator = {
-                      clusterPoolIPv4PodCIDRList = ["10.43.0.0/16"];
-                      clusterPoolIPv6PodCIDRList = ["fd43::/112"];
-                    };
-                  };
+                  # ipam = {
+                  #   mode = "kubernetes";
+                  #   operator = {
+                  #     clusterPoolIPv4PodCIDRList = ["10.43.0.0/16"];
+                  #     clusterPoolIPv6PodCIDRList = ["fd43::/112"];
+                  #   };
+                  # };
                 };
               };
             };
