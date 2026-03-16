@@ -133,6 +133,7 @@ in {
                 targetNamespace = "kube-system";
                 extraFieldDefinitions.spec.bootstrap = true;
                 values = {
+                  MTU = 1360;
                   devices = "wireguard";
                   operator.replicas = 1;
                   kubeProxyReplacement = true;
