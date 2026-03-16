@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  clan-facts,
   clan-net-utils,
   gatewayclasses,
   gateways,
@@ -24,16 +25,16 @@ in {
     };
     k8sServiceHost = lib.mkOption {
       type = lib.types.str;
-      default = "localhost";
+      default = clan-facts.kubernetes.${cfg.name}.serverAddr;
     };
     clusterCidr = {
       ipv4 = lib.mkOption {
         type = lib.types.str;
-        default = "10.42.0.0/16";
+        default = clan-facts.kubernetes.${cfg.name}.clusterCidr.ipv4;
       };
       ipv6 = lib.mkOption {
         type = lib.types.str;
-        default = "fd42::/56";
+        default = clan-facts.kubernetes.${cfg.name}.clusterCidr.ipv6;
       };
     };
   };
@@ -56,6 +57,7 @@ in {
         "--flannel-backend=none"
         "--disable-network-policy"
         "--disable-kube-proxy"
+        "--allocate-node-cidrs=false"
       ];
       manifests = {
         gatewayclasses.source = gatewayclasses;

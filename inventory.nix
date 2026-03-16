@@ -99,8 +99,7 @@ in {
         modules/k3s/manifests/cilium
         {
           clan-net.kubernetes.cilium = {
-            k8sServiceHost = clusterSettings.serverAddr;
-            inherit (clusterSettings) clusterCidr id name;
+            inherit (clusterSettings) id name;
           };
         }
       ];
