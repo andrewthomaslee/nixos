@@ -67,8 +67,8 @@ in {
           ipam = {
             mode = "kubernetes";
             operator = {
-              clusterPoolIPv4PodCIDRList = [cfg.serviceCidr.ipv4];
-              clusterPoolIPv6PodCIDRList = [cfg.serviceCidr.ipv6];
+              clusterPoolIPv4PodCIDRList = [cfg.clusterCidr.ipv4];
+              clusterPoolIPv6PodCIDRList = [cfg.clusterCidr.ipv6];
             };
           };
         };
