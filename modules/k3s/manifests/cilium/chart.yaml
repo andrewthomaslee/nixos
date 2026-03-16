@@ -19,10 +19,6 @@ spec:
   valuesContent: |-
     devices: "lo"
     MTU: 65535
-    routingMode: "native"
-    autoDirectNodeRoutes: true
-    ipv4NativeRoutingCIDR: "10.42.0.0/16"
-    ipv6NativeRoutingCIDR: "fd42::/56" 
     kubeProxyReplacement: true
     k8sServiceHost: "127.0.0.1"
     k8sServicePort: 6443
@@ -33,7 +29,7 @@ spec:
     ipv6:
       enabled: true
     ipam:
-      mode: "cluster-pool"
+      mode: "kubernetes"
       operator:
         clusterPoolIPv4PodCIDRList: ["10.42.0.0/16"]
         clusterPoolIPv6PodCIDRList: ["fd42::/56"]

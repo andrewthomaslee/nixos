@@ -1,5 +1,5 @@
 # Initialize variables.
-REMOTE=$(jq -r '.k3s.init' "$REPO_ROOT"/clan-facts.json)
+REMOTE=$1
 TOKEN_PATH="$HOME/.kube/tokens"
 
 echo "==> Fetching k3s Token from: $REMOTE"
