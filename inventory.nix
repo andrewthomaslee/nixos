@@ -90,7 +90,7 @@ in {
       module.name = "k3s";
       module.input = "k3s";
       roles.init.machines.kamrui-p1.settings = {
-        serverAddr = "https://kamrui-p1.wireguard:6443";
+        serverAddr = "https://${clusterSettings.serverAddr}:6443";
         inherit (clusterSettings) clusterCidr serviceCidr;
       };
       roles.server.machines.kamrui-p1 = {};
@@ -99,7 +99,8 @@ in {
         modules/k3s/manifests/cilium
         {
           clan-net.kubernetes.cilium = {
-            inherit (clusterSettings) clusterCidr;
+            k8sServiceHost = clusterSettings.serverAddr;
+            inherit (clusterSettings) clusterCidr id name;
           };
         }
       ];
