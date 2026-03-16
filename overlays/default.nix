@@ -21,7 +21,7 @@ in
     netbird-management = inputs.nixpkgs-unstable.legacyPackages.${super.stdenv.hostPlatform.system}.netbird-management;
 
     # k3s
-    k3s_1_35 = inputs.nixpkgs-unstable.legacyPackages.${super.stdenv.hostPlatform.system}.k3s_1_35;
+    k3s = inputs.nixpkgs-unstable.legacyPackages.${super.stdenv.hostPlatform.system}.k3s_1_35;
 
     # tailscale
     tailscale = inputs.nixpkgs-unstable.legacyPackages.${super.stdenv.hostPlatform.system}.tailscale;
