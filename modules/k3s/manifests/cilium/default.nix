@@ -57,7 +57,6 @@ in {
         "--flannel-backend=none"
         "--disable-network-policy"
         "--disable-kube-proxy"
-        "--allocate-node-cidrs=false"
       ];
       manifests = {
         gatewayclasses.source = gatewayclasses;
@@ -95,17 +94,11 @@ in {
               ipv6.enabled = true;
 
               ipam = {
-                mode = "cluster-pool";
+                mode = "kubernetes";
                 operator = {
                   clusterPoolIPv4PodCIDRList = [cfg.clusterCidr.ipv4];
                   clusterPoolIPv6PodCIDRList = [cfg.clusterCidr.ipv6];
                 };
-              };
-
-              hubble = {
-                enabled = true;
-                relay.enabled = true;
-                ui.enabled = true;
               };
 
               gatewayAPI = {
