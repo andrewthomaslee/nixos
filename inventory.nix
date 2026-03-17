@@ -107,7 +107,6 @@ in {
         {
           services.k3s.extraFlags = [
             "--disable=traefik"
-            "--disable=servicelb"
           ];
         }
       ];

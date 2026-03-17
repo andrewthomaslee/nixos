@@ -79,6 +79,7 @@ in {
             version = "1.19.1";
             targetNamespace = "kube-system";
             valuesContent = lib.generators.toYAML {} {
+              rollOutCiliumPods = true;
               cluster = {
                 inherit (cfg) name id;
               };
@@ -104,16 +105,9 @@ in {
               gatewayAPI = {
                 enabled = true;
                 enableAlpn = true;
-                hostNetwork.enabled = true;
                 gatewayClass.create = "true"; # must be a string
               };
-              envoy = {
-                enabled = true;
-                securityContext.capabilities = {
-                  keepCapNetBindService = true;
-                  envoy = ["NET_BIND_SERVICE" "NET_ADMIN" "SYS_ADMIN"];
-                };
-              };
+              envoy.enabled = true;
             };
           };
         };
