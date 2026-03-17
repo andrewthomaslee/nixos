@@ -105,7 +105,7 @@ in {
                 enabled = true;
                 enableAlpn = true;
                 hostNetwork.enabled = true;
-                gatewayClass.create = "false";
+                gatewayClass.create = "true"; # must be a string
               };
               envoy = {
                 enabled = true;
