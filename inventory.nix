@@ -101,6 +101,21 @@ in {
           clan-net.kubernetes.cilium = {
             inherit (clusterSettings) id name;
           };
+
+          networking.firewall = {
+            # web traffic
+            allowedTCPPorts = [
+              80
+              443
+            ];
+            # node port range
+            allowedTCPPortRanges = [
+              {
+                from = 30000;
+                to = 32767;
+              }
+            ];
+          };
         }
       ];
       roles.server.extraModules = [
