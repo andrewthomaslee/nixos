@@ -128,6 +128,9 @@ in {
               "git show"
               "nix flake check --all-systems --show-trace"
               "nix eval"
+              "nix flake show"
+              "nix build"
+              "nix flake check"
             ];
             "terminal.integrated.initialHint" = false;
             "roo-cline.debug" = false;
