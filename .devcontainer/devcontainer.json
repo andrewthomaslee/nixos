@@ -1,16 +1,13 @@
 {
     "name": "nix-devcontainer",
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
     "features": {
-        "ghcr.io/devcontainers/features/nix:1": {
-            "version": "latest",
-            "extraNixConfig": "experimental-features = nix-command flakes"
-        },
         "ghcr.io/tailscale/codespace/tailscale": {
             "version": "latest"
         }
     },
-    "postCreateCommand": "bash",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -18,7 +15,6 @@
                 "Tailscale.vscode-tailscale",
                 "ms-azuretools.vscode-docker",
                 "kamadorueda.alejandra",
-                "jnoortheen.nix-ide",
                 "supermaven.supermaven",
                 "redhat.vscode-yaml",
                 "rooveterinaryinc.roo-cline",
