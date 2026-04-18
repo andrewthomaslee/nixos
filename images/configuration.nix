@@ -45,7 +45,7 @@ with lib; {
     users.users.root.openssh.authorizedKeys.keys = [clan-facts.ssh_public_key];
 
     # Enable flakes
-    nix.package = pkgs.nixVersions.stable;
+    # nix.package = pkgs.nixVersions.stable;
 
     # Install some basic utilities
     environment.systemPackages = with pkgs; [

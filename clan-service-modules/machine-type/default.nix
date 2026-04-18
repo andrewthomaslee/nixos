@@ -18,12 +18,14 @@
     flake-self,
     home-manager,
     nix-minecraft,
+    determinate,
     ...
   }: {
     # Home manager
     imports = [
       home-manager.nixosModules.home-manager
       nix-minecraft.nixosModules.minecraft-servers
+      determinate.nixosModules.default
     ];
     home-manager = {
       useUserPackages = true;

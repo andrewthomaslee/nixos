@@ -63,7 +63,7 @@ in {
     # Enable flakes
     nix = {
       # Enable flakes
-      package = pkgs.nixVersions.stable;
+      # package = pkgs.nixVersions.stable;
 
       extraOptions = ''
         fallback = true
