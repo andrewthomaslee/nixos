@@ -3,7 +3,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_116446982";
         content = {
           type = "gpt";
           partitions = {
@@ -20,7 +20,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = ["umask=0077"];
+                mountOptions = ["umask=0077" "noatime"];
               };
             };
             nixos = {
