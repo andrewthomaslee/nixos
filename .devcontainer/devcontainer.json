@@ -16,13 +16,10 @@
             "extensions": [
                 "jnoortheen.nix-ide",
                 "Tailscale.vscode-tailscale",
-                "ms-azuretools.vscode-docker",
                 "kamadorueda.alejandra",
                 "supermaven.supermaven",
                 "redhat.vscode-yaml",
-                "rooveterinaryinc.roo-cline",
                 "irongeek.vscode-env",
-                "hashicorp.terraform",
                 "gruntfuggly.todo-tree"
             ]
         }
