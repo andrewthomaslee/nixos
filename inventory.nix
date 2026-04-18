@@ -1,9 +1,7 @@
 {
   self,
   clan-facts,
-}: let
-  domain = clan-facts.meta.domain;
-in {
+}: {
   inherit (clan-facts) meta;
 
   machines = {
@@ -13,6 +11,7 @@ in {
     ghost.tags = ["kde" "devMachine" "netsa"];
 
     kamrui-p1.tags = ["server" "netsa"];
+    hel-1.tags = ["server" "netsa"];
   };
 
   instances = {
@@ -80,6 +79,12 @@ in {
           port = 51823;
           ipv4 = "10.100.0.1";
           ipv6 = "fd10::1";
+        };
+        hel-1.settings = {
+          endpoint = "wireguard.andrewlee.cloud";
+          port = 51820;
+          ipv4 = "10.100.0.2";
+          ipv6 = "fd10::2";
         };
       };
     };
