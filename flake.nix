@@ -16,7 +16,7 @@
 
     # --- Flakes --- #
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -431,22 +431,15 @@
       # Each subdirectory in ./templates/<template-name> is a
       # template, which can be used for new proects with:
       # `nix flake init`
-      templates =
-        builtins.listToAttrs (
-          map (name: {
-            inherit name;
-            value = {
-              path = ./templates + "/${name}";
-              description = (import (./templates + "/${name}/flake.nix")).description;
-            };
-          }) (builtins.attrNames (builtins.readDir ./templates))
-        )
-        // {
-          uv2nix = {
-            path = uv2nix-template;
-            description = "Hello world application using uv2nix";
+      templates = builtins.listToAttrs (
+        map (name: {
+          inherit name;
+          value = {
+            path = ./templates + "/${name}";
+            description = (import (./templates + "/${name}/flake.nix")).description;
           };
-        };
+        }) (builtins.attrNames (builtins.readDir ./templates))
+      );
 
       # Output all modules in ./modules/<module-name> to flake. Modules should be in
       # individual subdirectories and contain a default.nix file.
