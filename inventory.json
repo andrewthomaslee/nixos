@@ -11,6 +11,15 @@
     },
     "kamrui-p1": {
       "installedAt": 1768343439
+    },
+    "hel-1": {
+      "deploy": {
+        "targetHost": "root@62.238.2.9"
+      },
+      "tags": [
+        "server",
+        "netsa"
+      ]
     }
   }
 }
