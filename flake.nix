@@ -469,7 +469,7 @@
         map
         (name: {
           inherit name;
-          value = {...}: {
+          value = {
             imports =
               [
                 (./home-manager/profiles + "/${name}")
