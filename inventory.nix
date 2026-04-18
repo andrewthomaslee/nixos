@@ -76,7 +76,7 @@ in {
       module.input = "wireguard-fullmesh";
       roles.peer.machines = {
         kamrui-p1.settings = {
-          endpoint = "wireguard.${domain}";
+          endpoint = "wireguard.andrewlee.fun";
           port = 51823;
           ipv4 = "10.100.0.1";
           ipv6 = "fd10::1";
