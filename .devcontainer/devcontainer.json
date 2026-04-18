@@ -3,6 +3,9 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
+    "remoteUser": "vscode",
+    "updateRemoteUserUID": true,
+    "postCreateCommand": "sudo chown -R $(whoami) /nix",
     "features": {
         "ghcr.io/tailscale/codespace/tailscale": {
             "version": "latest"

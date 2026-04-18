@@ -10,6 +10,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 RUN curl -fsSL https://install.determinate.systems/nix | sh -s -- install linux \
     --extra-conf "sandbox = false" \
     --init none \
-    --no-confirm
+    --no-confirm \
+    && chown -R vscode:vscode /nix
 
 ENV PATH="${PATH}:/nix/var/nix/profiles/default/bin"
