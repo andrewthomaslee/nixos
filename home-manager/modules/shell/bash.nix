@@ -25,9 +25,21 @@ in {
         nfs = "nix flake show --all-systems";
         nixos-facter = "sudo nix run nixpkgs#nixos-facter -- -o facter.json";
         # local nixos rebuild commands
-        nixos-rebuild-boot = "sudo nixos-rebuild boot --flake /home/netsa/nixos#${osConfig.networking.hostName}";
-        nixos-rebuild-switch = "sudo nixos-rebuild switch --flake /home/netsa/nixos#${osConfig.networking.hostName}";
-        nixos-rebuild-test = "sudo nixos-rebuild test --flake /home/netsa/nixos#${osConfig.networking.hostName}";
+        nixos-rebuild-boot = "sudo nixos-rebuild boot --flake /home/netsa/nixos#${
+          if osConfig != null
+          then osConfig.networking.hostName
+          else "default"
+        }";
+        nixos-rebuild-switch = "sudo nixos-rebuild switch --flake /home/netsa/nixos#${
+          if osConfig != null
+          then osConfig.networking.hostName
+          else "default"
+        }";
+        nixos-rebuild-test = "sudo nixos-rebuild test --flake /home/netsa/nixos#${
+          if osConfig != null
+          then osConfig.networking.hostName
+          else "default"
+        }";
         # nixos-rebuild tests
         nixos-current-system = "readlink -f /nix/var/nix/profiles/system && readlink -f /run/current-system";
         # misc

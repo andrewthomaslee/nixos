@@ -24,5 +24,5 @@
     };
   };
   nix.settings.allowed-users = ["madi"];
-  home-manager.users.madi = flake-self.homeConfigurations.desktop;
+  home-manager.users.madi = flake-self.homeProfiles.desktop;
 }

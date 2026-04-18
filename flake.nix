@@ -463,9 +463,8 @@
       inherit (clan.config) clanInternals nixosConfigurations;
       clan = clan.config;
 
-      # Each subdirectory in ./home-manager/profiles/<profile-name> is a
-      # home-manager profile
-      homeConfigurations = builtins.listToAttrs (
+      # Unbuilt home-manager profiles for use in NixOS modules
+      homeProfiles = builtins.listToAttrs (
         map
         (name: {
           inherit name;
@@ -475,6 +474,34 @@
                 (./home-manager/profiles + "/${name}")
               ]
               ++ (builtins.attrValues self.homeManagerModules);
+          };
+        })
+        (
+          builtins.attrNames (
+            nixpkgs.lib.filterAttrs (n: v: v == "directory") (builtins.readDir ./home-manager/profiles)
+          )
+        )
+      );
+
+      # Each subdirectory in ./home-manager/profiles/<profile-name> is a
+      # home-manager profile
+      homeConfigurations = builtins.listToAttrs (
+        map
+        (name: {
+          inherit name;
+          value = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgsFor."x86_64-linux";
+            modules = [
+              self.homeProfiles.${name}
+              {
+                home.username = "netsa";
+                home.homeDirectory = "/home/netsa";
+              }
+            ];
+            extraSpecialArgs = {
+              flake-self = self;
+              inherit inputs self clan-facts nixpkgsFor;
+            };
           };
         })
         (

@@ -52,7 +52,7 @@ in {
             port = 23;
             inherit extraOptions addKeysToAgent;
           };
-          helsinki-box-sub1 = lib.optionalAttrs (osConfig.clan-net.defaults.storagebox.boxUser == "u488514-sub1") {
+          helsinki-box-sub1 = lib.optionalAttrs (osConfig != null && (osConfig.clan-net.defaults.storagebox.boxUser or "") == "u488514-sub1") {
             hostname = "u488514-sub1.your-storagebox.de";
             user = "u488514-sub1";
             port = 23;

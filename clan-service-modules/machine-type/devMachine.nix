@@ -52,8 +52,8 @@
   security.sudo.wheelNeedsPassword = false;
 
   # User Profiles
-  home-manager.users.netsa = flake-self.homeConfigurations.devMachine;
-  home-manager.users.root = flake-self.homeConfigurations.devMachine;
+  home-manager.users.netsa = flake-self.homeProfiles.devMachine;
+  home-manager.users.root = flake-self.homeProfiles.devMachine;
 
   services.logind.settings.Login.RuntimeDirectorySize = "10G";
 
