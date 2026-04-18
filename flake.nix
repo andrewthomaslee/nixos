@@ -2,11 +2,15 @@
   description = "andrewthomaslee's nixos (inspired by github.com/pinpox/nixos )";
 
   inputs = {
-    # Clan.lol
-    clan-core.url = "https://git.clan.lol/clan/clan-core/archive/main.tar.gz";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
-    # Rolling Release of Nixpkgs from Clan.lol
-    nixpkgs.follows = "clan-core/nixpkgs";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
+
+    # Clan.lol
+    clan-core = {
+      url = "https://git.clan.lol/clan/clan-core/archive/main.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -353,6 +357,7 @@
         system:
           import nixpkgs {
             inherit system;
+            config.allowUnfree = true;
             overlays = [
               self.overlays.default
               nix-minecraft.overlay
@@ -372,7 +377,7 @@
         specialArgs =
           {
             flake-self = self;
-            inherit clan-facts;
+            inherit clan-facts nixpkgsFor;
           }
           // inputs;
 
@@ -498,7 +503,7 @@
               program =
                 (writeShellApplication {
                   name = "tmp-pod";
-                  runtimeInputs = [k3s_1_35];
+                  runtimeInputs = [k3s];
                   text = builtins.readFile ./scripts/tmp-pod.sh;
                 })
                 + "/bin/tmp-pod";

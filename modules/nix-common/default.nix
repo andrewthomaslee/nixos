@@ -4,6 +4,7 @@
   lib,
   flake-self,
   nixpkgs,
+  nixpkgsFor,
   ...
 }:
 with lib; let
@@ -45,15 +46,14 @@ in {
     # and root e.g. `nix-channel --remove nixos`. `nix-channel
     # --list` should be empty for all users afterwards
     nix.nixPath = ["nixpkgs=flake:nixpkgs"];
-    nixpkgs.overlays = [flake-self.overlays.default];
 
     # Let 'nixos-version --json' know the Git revision of this flake.
     system.configurationRevision = nixpkgs.lib.mkIf (flake-self ? rev) flake-self.rev;
     nix.registry.nixpkgs.flake = nixpkgs;
     nix.registry.clan-net.flake = flake-self;
 
-    # Allow unfree licenced packages
-    nixpkgs.config.allowUnfree = true;
+    # Override pkgs globally to use our configured instance
+    nixpkgs.pkgs = lib.mkOverride 0 nixpkgsFor.${config.nixpkgs.hostPlatform.system};
 
     clan.core.vars.generators."nix" = {
       prompts.nix-access-tokens.persist = true;

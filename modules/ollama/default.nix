@@ -29,15 +29,15 @@ in {
         port = 8434;
         ollamaUrl = "http://localhost:11434";
       };
-      tailscale.serve = {
-        enable = true;
-        services.ollama = {
-          advertised = true;
-          endpoints = {
-            "tcp:11434" = "tcp://localhost:11434";
-          };
-        };
-      };
+      # tailscale.serve = {
+      #   enable = true;
+      #   services.ollama = {
+      #     advertised = true;
+      #     endpoints = {
+      #       "tcp:11434" = "tcp://localhost:11434";
+      #     };
+      #   };
+      # };
     };
   };
 }

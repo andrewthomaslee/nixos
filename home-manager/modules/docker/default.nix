@@ -35,8 +35,8 @@ in {
     home.sessionVariables = {
       COMPOSE_BAKE = "true";
     };
-    home.packages = with pkgs; [
-      ducker # Terminal app for managing docker containers, inspired by K9s
-    ];
+    # home.packages = with pkgs; [
+    #   # ducker # Terminal app for managing docker containers, inspired by K9s
+    # ];
   };
 }

@@ -31,12 +31,12 @@ in {
     };
 
     # tailscale kube api load balancer
-    services.tailscale.serve = {
-      enable = true;
-      services."kube-api-clan-net" = {
-        endpoints."tcp:6443" = "tcp://localhost:6443";
-        advertised = true;
-      };
-    };
+    # services.tailscale.serve = {
+    #   enable = true;
+    #   services."kube-api-clan-net" = {
+    #     endpoints."tcp:6443" = "tcp://localhost:6443";
+    #     advertised = true;
+    #   };
+    # };
   };
 }

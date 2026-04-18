@@ -48,7 +48,7 @@ in {
 
   config = mkIf cfg.enable {
     programs.zed-editor = {
-      enable = true;
+      enable = false;
       installRemoteServer = true;
       extensions = [
         "nix"
