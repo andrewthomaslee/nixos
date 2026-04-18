@@ -73,6 +73,7 @@
         httpie
         rsync
         fastfetch
+        fh
       ];
     };
   };
