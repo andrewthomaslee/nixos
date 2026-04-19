@@ -15,6 +15,7 @@
     pkgs,
     lib,
     config,
+    inputs,
     flake-self,
     home-manager,
     nix-minecraft,
@@ -73,6 +74,7 @@
         httpie
         rsync
         fastfetch
+        inputs.fh.packages.${system}.default
       ];
     };
   };
