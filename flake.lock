@@ -548,11 +548,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771866277,
-        "narHash": "sha256-UjDsCOjycPXL72HapR0NH0Z0Z2EfPOTaNCMmWN75Cjo=",
+        "lastModified": 1776615122,
+        "narHash": "sha256-CLxVa4j/fePAw6BC6VKueBmcSK+JamUAkzGIWn6L2rw=",
         "ref": "refs/heads/main",
-        "rev": "ebce08ca8543e7b1de44282f084702de4772ec2a",
-        "revCount": 47,
+        "rev": "8b72fd0dfb8252cf68fb3ebf76c50bcf178c697d",
+        "revCount": 48,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/andrewthomaslee/blog.andrewlee.fun.git"
@@ -603,11 +603,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1776557977,
-        "narHash": "sha256-j+UWg3fR6jWKPqkPoqRf1a6nR1b/AnZXDuh04H+voUc=",
-        "rev": "e9ced950bedc726492e5cb52139bf5f17258dc69",
+        "lastModified": 1776611865,
+        "narHash": "sha256-tmo3lkyqmWSi1HqUDpxUoeW89BH7qR4xxK6n0GOIL+E=",
+        "rev": "8f8f587cd47495391fc170381a6e2242a0370cc8",
         "type": "tarball",
-        "url": "https://git.clan.lol/api/v1/repos/clan/clan-core/archive/e9ced950bedc726492e5cb52139bf5f17258dc69.tar.gz"
+        "url": "https://git.clan.lol/api/v1/repos/clan/clan-core/archive/8f8f587cd47495391fc170381a6e2242a0370cc8.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -720,11 +720,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773889306,
-        "narHash": "sha256-PAqwnsBSI9SVC2QugvQ3xeYCB0otOwCacB1ueQj2tgw=",
+        "lastModified": 1776607438,
+        "narHash": "sha256-M/fus9ENW+JAL2L8XabQ7Sq+a2CsvjjueB9SKQzUNp0=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "5ad85c82cc52264f4beddc934ba57f3789f28347",
+        "rev": "156dd93f5972adad7d6318bc87f8755086e30731",
         "type": "github"
       },
       "original": {
@@ -758,7 +758,9 @@
       "inputs": {
         "crane": "crane",
         "fenix": "fenix",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1761780713,
@@ -1125,17 +1127,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1776532248,
-        "narHash": "sha256-2CQAypdxtfBCP7hOLtAfJlpdHTpF38H52bx50Sy/nG0=",
-        "owner": "andrewthomaslee",
-        "repo": "kubefetch",
-        "rev": "7beca81a8ccad93dcdf89a0c273e4c57def3b99c",
-        "type": "github"
+        "lastModified": 1769772878,
+        "narHash": "sha256-qFa07e8pE9lGSKlqc7v7co9cBLVETFg4pIn4GhkF7S8=",
+        "rev": "2565ff15cd42a7c81ef8c2c4348206e2f79b72e7",
+        "revCount": 66,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/andrewthomaslee/kubefetch/0.9.0/019da194-8751-7cb0-a634-706bb0a86c2e/source.tar.gz"
       },
       "original": {
-        "owner": "andrewthomaslee",
-        "repo": "kubefetch",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/andrewthomaslee/kubefetch/0.9.0"
       }
     },
     "moscripts": {
@@ -1149,17 +1150,16 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1756669228,
-        "narHash": "sha256-nhfvGDaCDBdZwGPviEtoJJrq7M5oa/ygyj0DpHSdMRc=",
-        "owner": "andrewthomaslee",
-        "repo": "moscripts",
-        "rev": "cf80a00ee038e9d5729bdc807173b189da83ab62",
-        "type": "github"
+        "lastModified": 1776608080,
+        "narHash": "sha256-4vVq0KIJe/no8+6RMDLFgc6PhbsKas45+vvJBzkKw7k=",
+        "rev": "c7b7977f4494fc1d48eada86d6f8e9174a74d0e1",
+        "revCount": 77,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/andrewthomaslee/moscripts/0.1.0/019da619-cbca-7990-81d0-6071370e1994/source.tar.gz"
       },
       "original": {
-        "owner": "andrewthomaslee",
-        "repo": "moscripts",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/andrewthomaslee/moscripts/0.1.0"
       }
     },
     "nix": {
@@ -1339,30 +1339,16 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1761468971,
-        "narHash": "sha256-vY2OLVg5ZTobdroQKQQSipSIkHlxOTrIF1fsMzPh8w8=",
-        "rev": "78e34d1667d32d8a0ffc3eba4591ff256e80576e",
-        "revCount": 811770,
+        "lastModified": 1776434932,
+        "narHash": "sha256-gyqXNMgk3sh+ogY5svd2eNLJ6oEwzbAeaoBrrxD0lKk=",
+        "rev": "c7f47036d3df2add644c46d712d14262b7d86c0c",
+        "revCount": 911245,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.2505.811770%2Brev-78e34d1667d32d8a0ffc3eba4591ff256e80576e/019a23fb-89f0-7302-a573-f6bf7dde9cf5/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.2511.911245%2Brev-c7f47036d3df2add644c46d712d14262b7d86c0c/019d9f2e-2f19-74b2-9677-8c9e984b1823/source.tar.gz"
       },
       "original": {
         "type": "tarball",
         "url": "https://flakehub.com/f/NixOS/nixpkgs/0"
-      }
-    },
-    "nixpkgs_4": {
-      "locked": {
-        "lastModified": 1775888245,
-        "narHash": "sha256-nwASzrRDD1JBEu/o8ekKYEXm/oJW6EMCzCRdrwcLe90=",
-        "rev": "13043924aaa7375ce482ebe2494338e058282925",
-        "revCount": 978638,
-        "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/DeterminateSystems/nixpkgs-weekly/0.1.978638%2Brev-13043924aaa7375ce482ebe2494338e058282925/019d8a9c-62d4-7081-8145-107410bd19e6/source.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/%2A.tar.gz"
       }
     },
     "playit": {
@@ -1551,7 +1537,7 @@
         "kubefetch": "kubefetch",
         "moscripts": "moscripts",
         "nix-minecraft": "nix-minecraft",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "playit": "playit",
         "referencegrants": "referencegrants",

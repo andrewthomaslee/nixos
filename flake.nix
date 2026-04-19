@@ -4,9 +4,12 @@
   inputs = {
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
-    nixpkgs.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/*.tar.gz";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
 
-    fh.url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
+    fh = {
+      url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Clan.lol
     clan-core = {
@@ -50,7 +53,7 @@
 
     # --- My Flakes --- #
     moscripts = {
-      url = "github:andrewthomaslee/moscripts";
+      url = "https://flakehub.com/f/andrewthomaslee/moscripts/0.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -65,7 +68,7 @@
     };
 
     kubefetch = {
-      url = "github:andrewthomaslee/kubefetch";
+      url = "https://flakehub.com/f/andrewthomaslee/kubefetch/0.9.0";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.inputs.systems.follows = "clan-core/systems";
     };
@@ -398,6 +401,8 @@
               packages = [
                 clan-core.packages.${system}.clan-cli
                 inputs.fh.packages.${system}.default
+                moscripts
+                kubefetch
               ];
               shellHook = ''
                 export REPO_ROOT=$(git rev-parse --show-toplevel)
