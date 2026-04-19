@@ -36,11 +36,6 @@ printf "%-18s: ${BOLD}${GREEN}%s${RESET}\n" "/boot" "$disk_boot_usage"
 disk_root_usage=$(df -h / | awk 'NR==2 {print $5 " of " $2}')
 printf "%-18s: ${BOLD}${GREEN}%s${RESET}\n" "/" "$disk_root_usage"
 
-# Disk Usage /mnt/san
-disk_san_usage=$(df -h /mnt/san | awk 'NR==2 {print $5 " of " $2}')
-printf "%-18s: ${BOLD}${GREEN}%s${RESET}\n" "/" "$disk_san_usage"
-
-
-# Disk Usage /mnt/arc
-disk_arc_usage=$(df -h /mnt/arc | awk 'NR==2 {print $5 " of " $2}')
-printf "%-18s: ${BOLD}${GREEN}%s${RESET}\n" "/" "$disk_arc_usage"
+# Disk Usage /mnt/bazzite
+disk_bazzite_usage=$(df -h /mnt/bazzite | awk 'NR==2 {print $5 " of " $2}')
+printf "%-18s: ${BOLD}${GREEN}%s${RESET}\n" "/" "$disk_bazzite_usage"
