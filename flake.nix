@@ -4,7 +4,9 @@
   inputs = {
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
+    nixpkgs.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/*.tar.gz";
+
+    fh.url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
 
     # Clan.lol
     clan-core = {
@@ -395,6 +397,7 @@
               buildInputs = [pkgs.bash];
               packages = [
                 clan-core.packages.${system}.clan-cli
+                inputs.fh.packages.${system}.default
               ];
               shellHook = ''
                 export REPO_ROOT=$(git rev-parse --show-toplevel)
