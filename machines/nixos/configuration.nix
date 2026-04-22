@@ -20,7 +20,7 @@
     modesetting.enable = true;
     open = false;
     powerManagement.enable = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
   };
   boot.initrd.kernelModules = [
     "nvidia"
